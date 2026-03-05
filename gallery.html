@@ -106,25 +106,25 @@
         .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.06); }
 
         .nav-inner {
-            max-width: 1400px; margin: 0 auto;
-            padding: 0 clamp(1rem, 3vw, 2rem);
-            display: flex; align-items: center; justify-content: space-evenly;
-            gap: 1rem; height: 120px; transition: height 0.3s ease;
+            max-width: 1600px; margin: 0 auto;
+            padding: 0 clamp(1.5rem, 4vw, 3rem);
+            display: flex; align-items: center; justify-content: space-between;
+            height: 80px; transition: height 0.3s ease;
         }
         .nav.scrolled .nav-inner { height: 80px; }
 
-        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
         .nav-logo-img {
-            height: 90px; width: auto; object-fit: contain; transition: height 0.3s ease;
+            height: 75px; width: auto; object-fit: contain; transition: height 0.3s ease;
         }
-        .nav.scrolled .nav-logo-img { height: 55px; }
-        .nav-logo-img.horizontal-logo { max-width: 260px; height: auto; max-height: 75px; }
-        .nav.scrolled .nav-logo-img.horizontal-logo { max-width: 200px; max-height: 50px; }
+        .nav.scrolled .nav-logo-img { height: 75px; }
+        .nav-logo-img.horizontal-logo { max-width: clamp(160px, 18vw, 220px); height: auto; max-height: 55px; }
+        .nav.scrolled .nav-logo-img.horizontal-logo { max-width: clamp(160px, 18vw, 220px); max-height: 55px; }
 
-        .nav-links { display: flex; align-items: center; gap: 1.4rem; }
+        .nav-links { display: flex; align-items: center; gap: clamp(1.4rem, 2.8vw, 2.5rem); }
         .nav-links a {
-            font-size: 0.85rem; font-weight: 500; color: var(--warm-gray);
-            transition: color 0.25s; position: relative;
+            font-size: 0.82rem; font-weight: 500; color: var(--warm-gray);
+            transition: color 0.25s; position: relative; letter-spacing: 0.01em;
         }
         .nav-links a:hover { color: var(--forest); }
         .nav-links a.active { color: var(--forest); font-weight: 600; }
@@ -137,8 +137,8 @@
         .nav-links a.active::after { width: 100%; }
 
         .nav-cta {
-            padding: 10px 22px; background: var(--terracotta); color: white !important;
-            border-radius: 10px; font-weight: 600; font-size: 0.85rem;
+            padding: 8px 18px; background: var(--terracotta); color: white !important;
+            border-radius: 10px; font-weight: 600; font-size: 0.82rem;
             transition: all 0.3s; box-shadow: 0 2px 8px rgba(196,114,75,0.25);
         }
         .nav-cta:hover {
@@ -150,7 +150,7 @@
         /* Dropdown */
         .nav-dropdown { position: relative; }
         .nav-dropdown-toggle {
-            font-size: 0.85rem; font-weight: 500; color: var(--warm-gray);
+            font-size: 0.82rem; font-weight: 500; color: var(--warm-gray);
             background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px;
             transition: color 0.25s; padding: 0;
         }
@@ -173,18 +173,6 @@
         }
         .nav-dropdown-menu a:hover { background: var(--cream); }
         .dropdown-icon { font-size: 1rem; width: 22px; text-align: center; }
-
-        /* Language Toggle */
-        .lang-toggle {
-            display: flex; gap: 2px; background: var(--cream); border-radius: 8px; padding: 3px;
-            border: 1px solid var(--light-gray);
-        }
-        .lang-btn {
-            padding: 4px 10px; border: none; border-radius: 6px; font-size: 0.72rem;
-            font-weight: 700; letter-spacing: 0.05em; cursor: pointer; transition: all 0.2s;
-            background: transparent; color: var(--warm-gray);
-        }
-        .lang-btn.active { background: var(--forest); color: white; }
 
         /* Mobile Toggle */
         .mobile-toggle {
@@ -540,7 +528,7 @@
     <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
             <a href="index.html" class="nav-logo">
-                <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+                <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
             </a>
             <div class="nav-links" id="navLinks">
                 <a href="residential.html">Residential</a>
@@ -564,10 +552,6 @@
                 </div>
                 <a href="estimate.html">Free Estimate</a>
                 <a href="index.html#contact" class="nav-cta">Get Started</a>
-                <div class="lang-toggle" id="langToggle" aria-label="Language selector">
-                    <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
-                    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
-                </div>
             </div>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
         </div>
@@ -975,7 +959,7 @@
             <div class="footer-inner">
                 <div class="footer-brand">
                     <a href="index.html" class="nav-logo" style="margin-bottom: 0.5rem;">
-                        <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" style="height: 50px; width: auto; filter: brightness(0) invert(1); opacity: 0.8;">
+                        <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png" alt="Meraki Roofing" style="height: 50px; width: auto; filter: brightness(0) invert(1); opacity: 0.8;">
                     </a>
                     <p>Locally owned roofing experts serving the El Paso community with heart, quality, and integrity.</p>
                 </div>
@@ -1342,7 +1326,7 @@
                 document.documentElement.setAttribute('data-theme', saved);
             }
             const navImg = document.getElementById('navLogoImg');
-            const logoMap = { 'default': 'images/logos/logo-charcoal-amber-h.png', 'charcoal-amber': 'images/logos/logo-charcoal-amber-h.png', 'plum-h': 'images/logos/logo-charcoal-amber-h.png' };
+            const logoMap = { 'default': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png', 'charcoal-amber': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png', 'plum-h': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png' };
             if (navImg && saved && logoMap[saved]) {
                 navImg.src = logoMap[saved];
                 if (['charcoal-amber', 'plum-h'].includes(saved)) navImg.classList.add('horizontal-logo');

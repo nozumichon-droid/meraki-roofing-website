@@ -156,15 +156,15 @@
         }
         .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.06); }
         .nav-inner {
-            max-width: 1400px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem);
-            display: flex; align-items: center; justify-content: space-evenly;
-            gap: 1rem; height: 120px; transition: height 0.3s ease;
+            max-width: 1600px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 3rem);
+            display: flex; align-items: center; justify-content: space-between;
+            height: 80px; transition: height 0.3s ease;
         }
 
         .nav.scrolled .nav-inner {
             height: 80px;
         }
-        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
         .nav-logo-icon {
             width: 38px;
             height: 32px;
@@ -176,24 +176,24 @@
         .nav-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
 
         .nav-logo-img {
-            height: 90px;
+            height: 75px;
             width: auto;
             object-fit: contain;
             transition: height 0.3s ease;
         }
 
         .nav.scrolled .nav-logo-img {
-            height: 55px;
+            height: 75px;
         }
         /* When horizontal logo is active, constrain logo width */
         .nav-logo-img.horizontal-logo {
-            max-width: 260px;
+            max-width: clamp(160px, 18vw, 220px);
             height: auto;
-            max-height: 75px;
+            max-height: 55px;
         }
         .nav.scrolled .nav-logo-img.horizontal-logo {
-            max-width: 200px;
-            max-height: 50px;
+            max-width: clamp(160px, 18vw, 220px);
+            max-height: 55px;
         }
 
 
@@ -225,8 +225,8 @@
             margin-top: 3px;
             border-radius: 1px;
         }
-        .nav-links { display: flex; align-items: center; gap: 1.4rem; list-style: none; }
-        .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--warm-gray); transition: color 0.25s; position: relative; text-decoration: none; }
+        .nav-links { display: flex; align-items: center; gap: clamp(1.4rem, 2.8vw, 2.5rem); list-style: none; }
+        .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--warm-gray); transition: color 0.25s; position: relative; text-decoration: none; letter-spacing: 0.01em; }
         .nav-links a:hover { color: var(--forest); }
         .nav-links a.active { color: var(--forest); font-weight: 600; }
         .nav-links a::after {
@@ -236,8 +236,8 @@
         .nav-links a:hover::after { width: 100%; }
         .nav-links a.active::after { width: 100%; }
         .nav-cta {
-            background: var(--terracotta) !important; color: white !important; padding: 10px 22px;
-            border-radius: 8px; font-weight: 600 !important; font-size: 0.88rem !important;
+            background: var(--terracotta) !important; color: white !important; padding: 8px 18px;
+            border-radius: 8px; font-weight: 600 !important; font-size: 0.82rem !important;
             transition: all 0.25s !important; box-shadow: 0 2px 8px rgba(196, 114, 75, 0.25);
         }
         .nav-cta:hover {
@@ -246,52 +246,13 @@
         }
         .nav-cta::after { display: none !important; }
 
-        /* Language Toggle */
-        .lang-toggle {
-            display: flex;
-            align-items: center;
-            background: var(--warm-white);
-            border: 2px solid var(--light-gray);
-            border-radius: 20px;
-            padding: 4px;
-            gap: 4px;
-            font-weight: 700;
-            margin-left: 0.5rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .lang-toggle:hover {
-            border-color: var(--forest);
-        }
-
-        .lang-btn {
-            padding: 4px 10px;
-            border: none;
-            background: transparent;
-            color: var(--warm-gray);
-            font-weight: 700;
-            cursor: pointer;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            font-size: 0.75rem;
-        }
-
-        .lang-btn.active {
-            background: var(--forest);
-            color: white;
-        }
-
-        .lang-btn:hover:not(.active) {
-            color: var(--forest);
-        }
-
         /* Resources Dropdown */
         .nav-dropdown {
             position: relative;
         }
 
         .nav-dropdown-toggle {
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             font-weight: 500;
             color: var(--warm-gray);
             cursor: pointer;
@@ -1020,7 +981,6 @@
             }
             .nav-links.active a { padding: 14px 0; border-bottom: 1px solid var(--light-gray); }
             .nav-links.active .nav-cta { margin-top: 12px; text-align: center; display: block; }
-            .nav-links.active .lang-toggle { margin: 12px 0 0 0; align-self: flex-start; }
 
             /* Mobile dropdown */
             .nav-dropdown { width: 100%; }
@@ -1261,7 +1221,7 @@
     <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
             <a href="index.html" class="nav-logo">
-                <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+                <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
             </a>
 
             <div class="nav-links" id="navLinks">
@@ -1286,10 +1246,6 @@
                 </div>
                 <a href="estimate.html" data-i18n="nav.estimate">Free Estimate</a>
                 <a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a>
-                <div class="lang-toggle" id="langToggle" aria-label="Language selector">
-                    <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
-                    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
-                </div>
             </div>
 
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
@@ -1878,74 +1834,7 @@
             }
         };
 
-        // Main translation function
-        function setLanguage(lang) {
-            // Validate language
-            if (!translations[lang]) {
-                console.warn('Language not available:', lang);
-                lang = 'en';
-            }
-
-            // Store preference in localStorage
-            localStorage.setItem('preferred-language', lang);
-
-            // Update document language attribute
-            document.documentElement.lang = lang === 'es' ? 'es' : 'en';
-
-            // Update all elements with data-i18n attribute
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.dataset.i18n;
-
-                // Store original text on first run
-                if (!originalTexts[key]) {
-                    if (el.tagName === 'INPUT' && el.type === 'text' || el.type === 'tel' || el.type === 'email') {
-                        originalTexts[key] = el.placeholder;
-                    } else if (el.tagName === 'OPTION') {
-                        originalTexts[key] = el.textContent;
-                    } else if (el.tagName === 'SELECT') {
-                        // For select, store the default option's text
-                        originalTexts[key] = el.querySelector('option[value=""]')?.textContent || el.textContent;
-                    } else {
-                        originalTexts[key] = el.textContent;
-                    }
-                }
-
-                // Apply translation or revert to English
-                const translatedText = lang === 'es' && translations.es[key] ? translations.es[key] : originalTexts[key];
-
-                if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
-                    el.placeholder = translatedText;
-                } else if (el.tagName === 'OPTION') {
-                    el.textContent = translatedText;
-                } else if (el.tagName === 'SELECT') {
-                    // For select, update the default option
-                    const defaultOption = el.querySelector('option[value=""]');
-                    if (defaultOption) {
-                        defaultOption.textContent = translatedText;
-                    }
-                } else {
-                    el.textContent = translatedText;
-                }
-            });
-
-            // Update active button states
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === lang);
-            });
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferred-language') || 'en';
-            setLanguage(savedLang);
-        });
-
-        // Fallback for very fast page loads
-        if (document.readyState !== 'loading') {
-            const savedLang = localStorage.getItem('preferred-language') || 'en';
-            setLanguage(savedLang);
-        }
-    </script>
+</script>
 
     <!-- Theme Toggle -->
     <div class="theme-toggle" id="themeToggle">
@@ -1994,14 +1883,14 @@
         }
 
         const logoMap = {
-            'default': 'images/logos/logo-charcoal-amber-h.png',
-            'charcoal-amber': 'images/logos/logo-charcoal-amber-h.png',
-                'plum-h': 'images/logos/logo-charcoal-amber-h.png',
+            'default': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
+            'charcoal-amber': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
+                'plum-h': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
         };
 
         const footerLogoMap = {
-            'charcoal-amber': 'images/logos/logo-charcoal-amber-wh.png',
-                'plum-h': 'images/logos/logo-charcoal-amber-wh.png',
+            'charcoal-amber': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
+                'plum-h': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
         };
 
         const horizontalThemes = ['charcoal-amber', 'plum-h'];

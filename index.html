@@ -167,22 +167,11 @@
                 gap: 0.3rem;
                 padding: 0 1rem;
             }
-            .lang-toggle {
-                position: static;
-                transform: none;
-                margin-left: auto;
-            }
         }
 
         @media (max-width: 600px) {
             .weather-bar { font-size: 0.7rem; padding: 5px 0; }
             .weather-bar .weather-cta { display: none; }
-            .lang-toggle {
-                position: static;
-                transform: none;
-                order: 10;
-                margin: 2px auto 0;
-            }
             .weather-bar-inner {
                 flex-wrap: wrap;
                 gap: 0.25rem;
@@ -208,9 +197,9 @@
         }
 
         .nav-inner {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
-            padding: 0 clamp(1rem, 3vw, 2rem);
+            padding: 0 clamp(1.5rem, 4vw, 3rem);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -229,14 +218,14 @@
         }
 
         .nav-logo-img {
-            height: 90px;
+            height: 135px;
             width: auto;
             object-fit: contain;
             transition: height 0.3s ease;
         }
 
         .nav.scrolled .nav-logo-img {
-            height: 55px;
+            height: 80px;
         }
 
         /* Keep these for footer SVG logos */
@@ -287,27 +276,28 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: clamp(0.8rem, 1.5vw, 1.4rem);
+            gap: clamp(1.2rem, 2.2vw, 2rem);
         }
 
         .nav-links a {
-            font-size: 0.84rem;
+            font-size: 0.88rem;
             font-weight: 500;
             color: var(--warm-gray);
             transition: color 0.25s;
             position: relative;
             white-space: nowrap;
+            letter-spacing: 0.01em;
         }
 
         /* When horizontal logo is active, constrain logo width */
         .nav-logo-img.horizontal-logo {
-            max-width: clamp(220px, 22vw, 340px);
+            max-width: clamp(280px, 28vw, 420px);
             height: auto;
-            max-height: 95px;
+            max-height: 120px;
         }
         .nav.scrolled .nav-logo-img.horizontal-logo {
-            max-width: clamp(180px, 18vw, 260px);
-            max-height: 60px;
+            max-width: clamp(220px, 22vw, 320px);
+            max-height: 75px;
         }
 
         .nav-links a:hover { color: var(--forest); }
@@ -365,62 +355,6 @@
         }
         .nav-phone::after { display: none !important; }
         .nav-phone svg { flex-shrink: 0; }
-
-        /* Language Toggle */
-        .lang-toggle {
-            position: absolute;
-            right: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 16px;
-            padding: 2px;
-            cursor: pointer;
-            font-family: var(--font-body);
-            font-size: 0.7rem;
-            font-weight: 600;
-            transition: border-color 0.3s ease;
-        }
-
-        .lang-toggle:hover {
-            border-color: rgba(255,255,255,0.35);
-        }
-
-        .lang-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 4px 10px;
-            border-radius: 14px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-family: var(--font-body);
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.45);
-            transition: all 0.25s ease;
-            line-height: 1;
-            white-space: nowrap;
-        }
-
-        .lang-btn .lang-flag {
-            font-size: 0.82rem;
-            line-height: 1;
-        }
-
-        .lang-btn.active {
-            background: rgba(255,255,255,0.18);
-            color: white;
-        }
-
-        .lang-btn:hover:not(.active) {
-            color: rgba(255,255,255,0.7);
-        }
 
         /* Resources Dropdown */
         .nav-dropdown {
@@ -541,7 +475,7 @@
         /* ============ HERO ============ */
         .hero {
             padding-top: 104px;
-            background: linear-gradient(180deg, rgba(30,30,30,0.45) 0%, rgba(30,30,30,0.5) 100%), url('images/hero-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(180deg, rgba(30,30,30,0.45) 0%, rgba(30,30,30,0.5) 100%), url('images/Website Images/hero background 1.png') center top/cover no-repeat;
             position: relative;
             overflow: hidden;
             min-height: 92vh;
@@ -561,14 +495,7 @@
         }
 
         .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 250px;
-            background: linear-gradient(to top, var(--cream) 0%, rgba(253,245,243,0.7) 35%, rgba(253,245,243,0.3) 60%, transparent 100%);
-            pointer-events: none;
+            display: none;
         }
 
         /* Subtle roof pattern overlay — disabled */
@@ -599,7 +526,7 @@
             font-family: var(--font-body);
         }
         .hero-cert-wrap {
-            margin-top: 1.25rem;
+            margin-top: 1.5rem;
             position: relative;
             display: block;
         }
@@ -610,14 +537,20 @@
             text-decoration: none;
         }
         .hero-cert-badge {
-            height: 100px;
+            height: 150px;
             width: auto;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
+            filter: drop-shadow(0 4px 18px rgba(255,255,255,0.15)) drop-shadow(0 2px 8px rgba(0,0,0,0.4));
             transition: transform 0.3s ease, filter 0.3s ease;
+            animation: cert-glow 3s ease-in-out infinite;
+        }
+        @keyframes cert-glow {
+            0%, 100% { filter: drop-shadow(0 4px 18px rgba(255,255,255,0.15)) drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
+            50% { filter: drop-shadow(0 4px 24px rgba(255,255,255,0.3)) drop-shadow(0 2px 12px rgba(255,92,52,0.25)); }
         }
         .hero-cert-link:hover .hero-cert-badge {
             transform: scale(1.1);
-            filter: drop-shadow(0 6px 20px rgba(255,92,52,0.4));
+            filter: drop-shadow(0 6px 28px rgba(255,92,52,0.5)) drop-shadow(0 2px 10px rgba(255,255,255,0.25));
+            animation: none;
         }
         .hero-cert-tooltip {
             position: absolute;
@@ -722,12 +655,13 @@
         }
 
         .hero-sub {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.7);
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.95);
             line-height: 1.8;
             margin-bottom: 2.25rem;
             max-width: 500px;
-            text-shadow: 0 1px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+            font-weight: 500;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.5);
         }
 
         .hero-actions {
@@ -3467,7 +3401,7 @@
             .hero h1 .tw-line { margin: 0 auto; }
             .hero-trust-line { text-align: center; }
             .hero-cert-wrap { text-align: center; }
-            .hero-cert-badge { height: 90px; }
+            .hero-cert-badge { height: 130px; }
             .hero-sub { margin: 0 auto 2.25rem; }
             .hero-actions { justify-content: center; }
             .estimate-badge { justify-content: center; }
@@ -3530,10 +3464,6 @@
                 border-bottom: 1px solid var(--light-gray);
             }
 
-            .nav-links.active .lang-toggle {
-                margin: 12px 0 0 0;
-                align-self: flex-start;
-            }
 
             .nav-links.active .nav-cta {
                 margin-top: 12px;
@@ -3573,7 +3503,7 @@
 
             .hero { min-height: auto; }
             .hero-trust-line { font-size: 0.72rem; text-align: center; }
-            .hero-cert-badge { height: 80px; }
+            .hero-cert-badge { height: 110px; }
             .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
             .hero h1 .tw-line { margin: 0 auto; }
 
@@ -4071,10 +4001,6 @@
             </span>
             <span class="weather-divider hide-mobile">|</span>
             <a href="#estimate" class="weather-cta" data-i18n="weather.cta">Schedule your free roof inspection →</a>
-            <div class="lang-toggle" id="langToggle" aria-label="Language selector">
-                <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')"><span class="lang-flag">&#127482;&#127480;</span> English</button>
-                <button class="lang-btn" data-lang="es" onclick="setLanguage('es')"><span class="lang-flag">&#127474;&#127485;</span> Español</button>
-            </div>
         </div>
     </div>
 
@@ -4082,7 +4008,7 @@
     <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
             <a href="#" class="nav-logo">
-                <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+                <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
             </a>
 
             <div class="nav-links" id="navLinks">
@@ -6878,61 +6804,6 @@
             }
         };
 
-        // Main translation function
-        function setLanguage(lang) {
-            // Validate language
-            if (!translations[lang]) {
-                console.warn('Language not available:', lang);
-                lang = 'en';
-            }
-
-            // Store preference in localStorage
-            localStorage.setItem('preferred-language', lang);
-
-            // Update document language attribute
-            document.documentElement.lang = lang === 'es' ? 'es' : 'en';
-
-            // Update all elements with data-i18n attribute
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.dataset.i18n;
-
-                // Store original text on first run
-                if (!originalTexts[key]) {
-                    if (el.tagName === 'INPUT' && el.type === 'text' || el.type === 'tel' || el.type === 'email') {
-                        originalTexts[key] = el.placeholder;
-                    } else if (el.tagName === 'OPTION') {
-                        originalTexts[key] = el.textContent;
-                    } else if (el.tagName === 'SELECT') {
-                        // For select, store the default option's text
-                        originalTexts[key] = el.querySelector('option[value=""]')?.textContent || el.textContent;
-                    } else {
-                        originalTexts[key] = el.textContent;
-                    }
-                }
-
-                // Apply translation or revert to English
-                const translatedText = lang === 'es' && translations.es[key] ? translations.es[key] : originalTexts[key];
-
-                if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
-                    el.placeholder = translatedText;
-                } else if (el.tagName === 'OPTION') {
-                    el.textContent = translatedText;
-                } else if (el.tagName === 'SELECT') {
-                    // For select, update the default option
-                    const defaultOption = el.querySelector('option[value=""]');
-                    if (defaultOption) {
-                        defaultOption.textContent = translatedText;
-                    }
-                } else {
-                    el.textContent = translatedText;
-                }
-            });
-
-            // Update active button states
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === lang);
-            });
-        }
 
         // ============ WEATHER BAR (Open-Meteo — free, no API key) ============
         (function() {
@@ -7058,11 +6929,11 @@
             // Logo mapping per theme
             /* All themes use the same real logo — horizontal for nav */
             const logoMap = {
-                'default': 'images/logos/meraki-horizontal.png',
-                'charcoal-amber': 'images/logos/meraki-horizontal.png',
-                'navy-gold': 'images/logos/meraki-horizontal.png',
-                'slate-sage': 'images/logos/meraki-horizontal.png',
-                'plum-h': 'images/logos/meraki-horizontal.png',
+                'default': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
+                'charcoal-amber': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
+                'navy-gold': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
+                'slate-sage': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
+                'plum-h': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
             };
 
             const footerLogoMap = {};
@@ -7623,17 +7494,6 @@
             window.addEventListener('resize', () => { buildDots(); goTo(Math.min(currentIndex, getMaxIndex())); });
         })();
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferred-language') || 'en';
-            setLanguage(savedLang);
-        });
-
-        // Fallback for very fast page loads
-        if (document.readyState !== 'loading') {
-            const savedLang = localStorage.getItem('preferred-language') || 'en';
-            setLanguage(savedLang);
-        }
 
         // Typewriter animation — plays once on load, two lines sequentially
         (function initTypewriter() {

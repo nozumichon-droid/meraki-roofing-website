@@ -96,15 +96,14 @@
         .nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
 
         .nav-inner {
-            max-width: 1280px;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 0 2rem;
-            height: 120px;
+            padding: 0 clamp(1.5rem, 4vw, 3rem);
+            height: 80px;
             transition: height 0.3s ease;
             display: flex;
             align-items: center;
-            justify-content: space-evenly;
-            gap: 1rem;
+            justify-content: space-between;
         }
 
         .nav.scrolled .nav-inner {
@@ -114,8 +113,7 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            text-decoration: none;
+            flex-shrink: 0;
         }
 
         .nav-logo-icon {
@@ -129,24 +127,24 @@
         .nav-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
 
         .nav-logo-img {
-            height: 90px;
+            height: 75px;
             width: auto;
             object-fit: contain;
             transition: height 0.3s ease;
         }
 
         .nav.scrolled .nav-logo-img {
-            height: 55px;
+            height: 75px;
         }
         /* When horizontal logo is active, constrain logo width */
         .nav-logo-img.horizontal-logo {
-            max-width: 260px;
+            max-width: clamp(160px, 18vw, 220px);
             height: auto;
-            max-height: 75px;
+            max-height: 55px;
         }
         .nav.scrolled .nav-logo-img.horizontal-logo {
-            max-width: 200px;
-            max-height: 50px;
+            max-width: clamp(160px, 18vw, 220px);
+            max-height: 55px;
         }
 
 
@@ -183,15 +181,16 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 1.4rem;
+            gap: clamp(1.4rem, 2.8vw, 2.5rem);
         }
 
         .nav-links a {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 500;
             color: var(--warm-gray);
             transition: color 0.25s;
             position: relative;
+            letter-spacing: 0.01em;
         }
 
         .nav-links a:hover { color: var(--forest); }
@@ -213,10 +212,10 @@
         .nav-cta {
             background: var(--terracotta) !important;
             color: white !important;
-            padding: 10px 22px;
+            padding: 8px 18px;
             border-radius: 8px;
             font-weight: 600 !important;
-            font-size: 0.88rem !important;
+            font-size: 0.82rem !important;
             transition: all 0.25s !important;
             box-shadow: 0 2px 8px rgba(196, 114, 75, 0.25);
         }
@@ -235,7 +234,7 @@
         }
 
         .nav-dropdown-toggle {
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             font-weight: 500;
             color: var(--warm-gray);
             cursor: pointer;
@@ -400,69 +399,294 @@
             margin-right: auto;
         }
 
-        /* Coming Soon Section */
-        .coming-soon {
-            padding: 80px 2rem;
-            text-align: center;
-        }
-
-        .coming-soon .container {
-            max-width: 800px;
+        /* ============ BLOG SECTION ============ */
+        .blog-section {
+            padding: 60px 2rem 80px;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
-        .coming-soon h2 {
+        .blog-section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section-header h2 {
             font-family: var(--font-display);
-            font-size: clamp(1.5rem, 3vw, 2.2rem);
-            color: var(--forest);
-            margin-bottom: 1rem;
-        }
-
-        .coming-soon p {
-            color: var(--warm-gray);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-        }
-
-        .blog-topics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .topic-card {
-            background: white;
-            border: 1px solid var(--light-gray);
-            border-radius: 12px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .topic-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            border-color: var(--terracotta);
-        }
-
-        .topic-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .topic-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.15rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
             color: var(--forest);
             margin-bottom: 0.5rem;
         }
 
-        .topic-card p {
-            font-size: 0.9rem;
+        .blog-section-header p {
             color: var(--warm-gray);
-            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Featured Post */
+        .blog-featured {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .blog-featured:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
+        }
+
+        .blog-featured-img {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-featured-img-placeholder {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            background: linear-gradient(135deg, rgba(58,58,58,0.9) 0%, rgba(42,42,42,0.95) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            padding: 2rem;
+        }
+
+        .blog-featured-img-placeholder svg {
+            opacity: 0.35;
+        }
+
+        .blog-featured-body {
+            padding: 2.5rem 2.5rem 2.5rem 0;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            background: rgba(255,92,52,0.1);
+            color: var(--terracotta);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 0.85rem;
+        }
+
+        .blog-tag--guide { background: rgba(58,58,58,0.08); color: var(--forest); }
+        .blog-tag--storm { background: rgba(100,150,200,0.12); color: #4682B4; }
+        .blog-tag--maintenance { background: rgba(76,175,80,0.1); color: #388E3C; }
+        .blog-tag--insurance { background: rgba(156,39,176,0.1); color: #7B1FA2; }
+
+        .blog-featured-body h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+            color: var(--forest);
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-featured-body h3 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .blog-featured-body h3 a:hover {
+            color: var(--terracotta);
+        }
+
+        .blog-excerpt {
+            font-size: 0.95rem;
+            color: var(--warm-gray);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 1.25rem;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .blog-read-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--terracotta);
+            text-decoration: none;
+            transition: gap 0.2s ease, color 0.2s;
+        }
+
+        .blog-read-link:hover {
+            gap: 10px;
+            color: var(--terracotta-dark);
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+        }
+
+        .blog-card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .blog-card-img-placeholder {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, rgba(58,58,58,0.85) 0%, rgba(42,42,42,0.9) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .blog-card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card-body h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--forest);
+            line-height: 1.35;
+            margin-bottom: 0.6rem;
+        }
+
+        .blog-card-body h3 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .blog-card-body h3 a:hover { color: var(--terracotta); }
+
+        .blog-card-body .blog-excerpt {
+            font-size: 0.88rem;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .blog-card-body .blog-meta {
+            margin-bottom: 0;
+        }
+
+        /* Coming Soon Cards */
+        .blog-upcoming {
+            margin-top: 3rem;
+        }
+
+        .blog-upcoming-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-upcoming-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--forest);
+        }
+
+        .blog-upcoming-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background: var(--cream);
+            color: var(--warm-gray);
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+
+        .blog-upcoming-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        .blog-upcoming-card {
+            background: var(--cream);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 1.5rem 1.25rem;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+
+        .blog-upcoming-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .blog-upcoming-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-upcoming-card h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--forest);
+            margin-bottom: 0.4rem;
+        }
+
+        .blog-upcoming-card p {
+            font-size: 0.82rem;
+            color: var(--warm-gray);
+            line-height: 1.5;
         }
 
         /* Newsletter CTA */
@@ -642,7 +866,11 @@
                 font-size: 0.85rem;
             }
 
-            .blog-topics { grid-template-columns: 1fr 1fr; }
+            .blog-featured { grid-template-columns: 1fr; }
+            .blog-featured-body { padding: 2rem; }
+            .blog-featured-img-placeholder { min-height: 200px; }
+            .blog-grid { grid-template-columns: 1fr 1fr; }
+            .blog-upcoming-grid { grid-template-columns: 1fr 1fr; }
 
             .newsletter-form {
                 flex-direction: column;
@@ -661,59 +889,10 @@
                 font-size: 1.5rem;
             }
 
-            .blog-topics { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .blog-upcoming-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        /* Language Toggle */
-        .lang-toggle {
-            display: flex;
-            align-items: center;
-            background: var(--warm-white);
-            border: 2px solid var(--light-gray);
-            border-radius: 20px;
-            padding: 2px;
-            cursor: pointer;
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-left: 0.5rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .lang-toggle:hover {
-            border-color: var(--forest);
-        }
-
-        .lang-btn {
-            padding: 4px 10px;
-            border-radius: 16px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--warm-gray);
-            transition: all 0.25s ease;
-            line-height: 1;
-        }
-
-        .lang-btn.active {
-            background: var(--forest);
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .lang-toggle {
-                margin-left: 0.25rem;
-            }
-
-            .lang-btn {
-                padding: 3px 8px;
-                font-size: 0.7rem;
-            }
-        }
-    
         /* ============ THEME TOGGLE UI ============ */
         .theme-toggle {
             position: fixed;
@@ -804,7 +983,7 @@
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <a href="index.html" class="nav-logo">
-                <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+                <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
             </a>
 
             <div class="nav-links" id="navLinks">
@@ -829,10 +1008,6 @@
                 </div>
                 <a href="estimate.html" data-i18n="nav.estimate">Free Estimate</a>
                 <a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a>
-                <div class="lang-toggle" id="langToggle" aria-label="Language selector">
-                    <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
-                    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
-                </div>
             </div>
 
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
@@ -854,35 +1029,136 @@
         </div>
     </section>
 
-    <!-- Coming Soon -->
-    <section class="coming-soon">
-        <div class="container">
-            <h2 data-i18n="blog.coming.title">Fresh Content Coming Soon</h2>
-            <p data-i18n="blog.coming.desc">We're putting together helpful guides, seasonal tips, and expert advice to help El Paso homeowners and businesses get the most out of their roofs. Here's a preview of what's on the way:</p>
+    <!-- Blog Content -->
+    <section class="blog-section">
 
-            <div class="blog-topics">
-                <div class="topic-card">
-                    <div class="topic-icon">🌦️</div>
-                    <h3 data-i18n="blog.topic.storm">Storm Prep</h3>
-                    <p data-i18n="blog.topic.storm.desc">How to prepare your roof for El Paso's monsoon season, hail, and high winds.</p>
+        <!-- Featured Post -->
+        <div class="blog-section-header">
+            <h2>Featured Article</h2>
+        </div>
+
+        <a href="blog-hail-damage-guide.html" class="blog-featured" style="text-decoration:none; color:inherit;">
+            <div class="blog-featured-img">
+                <img src="images/Website Images/Blog Images/hail-damage.jpg" alt="Hail damaged roof in El Paso with Franklin Mountains in background" class="blog-featured-img-photo" style="width:100%; height:100%; min-height:320px; object-fit:cover;">
+            </div>
+            <div class="blog-featured-body">
+                <span class="blog-tag blog-tag--storm">Storm Damage</span>
+                <h3>Complete Guide to Hail Damage: Detection, Repair, and Insurance Claims</h3>
+                <div class="blog-meta">
+                    <span class="blog-meta-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        March 3, 2026
+                    </span>
+                    <span class="blog-meta-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        12 min read
+                    </span>
                 </div>
-                <div class="topic-card">
-                    <div class="topic-icon">🔧</div>
-                    <h3 data-i18n="blog.topic.maintenance">Maintenance Tips</h3>
-                    <p data-i18n="blog.topic.maintenance.desc">Simple DIY checks and seasonal maintenance to extend your roof's lifespan.</p>
+                <p class="blog-excerpt">Hail damage is one of the most underestimated roof problems. This guide covers everything you need to know about identifying hail damage, navigating insurance claims, deciding between repair and replacement, and preventing future damage in El Paso.</p>
+                <span class="blog-read-link">
+                    Read Full Guide
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </span>
+            </div>
+        </a>
+
+        <!-- More Articles -->
+        <div class="blog-section-header">
+            <h2>More Articles</h2>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Article 2: El Paso Roofing Guide -->
+            <a href="blog-el-paso-roofing-guide.html" class="blog-card" style="text-decoration:none; color:inherit;">
+                <img src="images/Website Images/Blog Images/ep-roofing-guide.jpg" alt="The Complete El Paso Roofing Guide" class="blog-card-img">
+                <div class="blog-card-body">
+                    <span class="blog-tag blog-tag--guide">Homeowner Guide</span>
+                    <h3>The Complete El Paso Roofing Guide: Everything a Homeowner Needs to Know</h3>
+                    <p class="blog-excerpt">From climate challenges and material comparisons to realistic costs and maintenance — the definitive guide for El Paso homeowners.</p>
+                    <div class="blog-meta">
+                        <span class="blog-meta-item">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            March 3, 2026
+                        </span>
+                        <span class="blog-meta-item">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            20 min read
+                        </span>
+                    </div>
                 </div>
-                <div class="topic-card">
-                    <div class="topic-icon">💡</div>
-                    <h3 data-i18n="blog.topic.materials">Material Guides</h3>
-                    <p data-i18n="blog.topic.materials.desc">Comparing shingles, metal, tile, and flat roofing for El Paso's desert climate.</p>
+            </a>
+
+            <!-- Article 3: Repair vs Replacement -->
+            <a href="blog-repair-vs-replacement.html" class="blog-card" style="text-decoration:none; color:inherit;">
+                <img src="images/Website Images/Blog Images/repair-vs-replacement.jpg" alt="Homeowner deciding between roof repair and replacement in El Paso" class="blog-card-img">
+                <div class="blog-card-body">
+                    <span class="blog-tag blog-tag--maintenance">Maintenance</span>
+                    <h3>Roof Repair vs. Replacement: How to Make the Right Call in El Paso</h3>
+                    <p class="blog-excerpt">When does patching make sense, and when should you invest in a full replacement? Costs, signs, and the El Paso climate factor.</p>
+                    <div class="blog-meta">
+                        <span class="blog-meta-item">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            March 5, 2026
+                        </span>
+                        <span class="blog-meta-item">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            10 min read
+                        </span>
+                    </div>
                 </div>
-                <div class="topic-card">
-                    <div class="topic-icon">📋</div>
-                    <h3 data-i18n="blog.topic.insurance">Insurance Help</h3>
-                    <p data-i18n="blog.topic.insurance.desc">Navigating roof insurance claims, what's covered, and how to maximize your payout.</p>
+            </a>
+
+            <!-- Article 4: Insurance Claims -->
+            <a href="blog-insurance-claims-guide.html" class="blog-card" style="text-decoration:none; color:inherit;">
+                <img src="images/Website Images/Blog Images/insurance-claim.jpg" alt="Property damage insurance claim form for El Paso weather event" class="blog-card-img">
+                <div class="blog-card-body">
+                    <span class="blog-tag blog-tag--insurance">Insurance</span>
+                    <h3>How to Maximize Your Roof Insurance Claim in El Paso</h3>
+                    <p class="blog-excerpt">Step-by-step strategies to ensure you get the full payout you deserve when filing a hail or storm damage claim in Texas.</p>
+                    <div class="blog-meta">
+                        <span class="blog-meta-item">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            March 5, 2026
+                        </span>
+                        <span class="blog-meta-item">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            14 min read
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Upcoming Topics -->
+        <div class="blog-upcoming">
+            <div class="blog-upcoming-header">
+                <h3>More On the Way</h3>
+                <span class="blog-upcoming-badge">Coming Soon</span>
+            </div>
+            <div class="blog-upcoming-grid">
+                <div class="blog-upcoming-card">
+                    <div class="blog-upcoming-icon">🌡️</div>
+                    <h4>Preparing Your Roof for El Paso's Hail Season</h4>
+                    <p>Seasonal checklist and tips to minimize storm damage.</p>
+                </div>
+                <div class="blog-upcoming-card">
+                    <div class="blog-upcoming-icon">🏗️</div>
+                    <h4>Metal Roofing 101 for Desert Climates</h4>
+                    <p>Is metal right for your El Paso home? Costs, pros, and longevity.</p>
+                </div>
+                <div class="blog-upcoming-card">
+                    <div class="blog-upcoming-icon">🔍</div>
+                    <h4>What to Expect During a Professional Roof Inspection</h4>
+                    <p>A walkthrough of our inspection process and what we look for.</p>
+                </div>
+                <div class="blog-upcoming-card">
+                    <div class="blog-upcoming-icon">📜</div>
+                    <h4>Understanding Your Roof Warranty</h4>
+                    <p>Material vs. workmanship warranties — what's actually covered.</p>
                 </div>
             </div>
         </div>
+
     </section>
 
     <!-- Newsletter Signup -->
@@ -1030,19 +1306,7 @@
                 'blog.hero.title': 'Blog de Meraki Roofing',
                 'blog.hero.desc': 'Consejos de expertos, perspectivas de la industria y asesoramiento práctico para ayudarle a proteger su inversión más importante, su techo.',
 
-                // Coming Soon Section
-                'blog.coming.title': 'Nuevo Contenido Próximamente',
-                'blog.coming.desc': 'Estamos preparando guías útiles, consejos de temporada y asesoramiento experto para ayudar a los propietarios y negocios de El Paso a sacar el máximo provecho de sus techos. Aquí hay una vista previa de lo que se aproxima:',
-
-                // Blog Topics
-                'blog.topic.storm': 'Preparación para Tormentas',
-                'blog.topic.storm.desc': 'Cómo preparar su techo para la temporada de monzones, granizo y vientos fuertes de El Paso.',
-                'blog.topic.maintenance': 'Consejos de Mantenimiento',
-                'blog.topic.maintenance.desc': 'Verificaciones DIY simples y mantenimiento de temporada para extender la vida útil de su techo.',
-                'blog.topic.materials': 'Guías de Materiales',
-                'blog.topic.materials.desc': 'Comparación de tejas, metal, azulejos y techumbre plana para el clima desértico de El Paso.',
-                'blog.topic.insurance': 'Ayuda de Seguros',
-                'blog.topic.insurance.desc': 'Navegando reclamaciones de seguros de techo, qué está cubierto y cómo maximizar su pago.',
+                // Blog section (static content — no i18n keys needed for current layout)
 
                 // Newsletter
                 'blog.newsletter.title': 'Reciba Notificaciones Cuando Publiquemos',
@@ -1052,73 +1316,6 @@
             }
         };
 
-        // Main translation function
-        function setLanguage(lang) {
-            // Validate language
-            if (!translations[lang]) {
-                console.warn('Language not available:', lang);
-                lang = 'en';
-            }
-
-            // Store preference in localStorage
-            localStorage.setItem('preferred-language', lang);
-
-            // Update document language attribute
-            document.documentElement.lang = lang === 'es' ? 'es' : 'en';
-
-            // Update all elements with data-i18n attribute
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.dataset.i18n;
-
-                // Store original text on first run
-                if (!originalTexts[key]) {
-                    if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
-                        originalTexts[key] = el.placeholder;
-                    } else if (el.tagName === 'OPTION') {
-                        originalTexts[key] = el.textContent;
-                    } else if (el.tagName === 'SELECT') {
-                        // For select, store the default option's text
-                        originalTexts[key] = el.querySelector('option[value=""]')?.textContent || el.textContent;
-                    } else {
-                        originalTexts[key] = el.textContent;
-                    }
-                }
-
-                // Apply translation or revert to English
-                const translatedText = lang === 'es' && translations.es[key] ? translations.es[key] : originalTexts[key];
-
-                if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
-                    el.placeholder = translatedText;
-                } else if (el.tagName === 'OPTION') {
-                    el.textContent = translatedText;
-                } else if (el.tagName === 'SELECT') {
-                    // For select, update the default option
-                    const defaultOption = el.querySelector('option[value=""]');
-                    if (defaultOption) {
-                        defaultOption.textContent = translatedText;
-                    }
-                } else {
-                    el.textContent = translatedText;
-                }
-            });
-
-            // Update active button states
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === lang);
-            });
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferred-language') || 'en';
-            setLanguage(savedLang);
-        });
-
-        // Fallback for very fast page loads
-        if (document.readyState !== 'loading') {
-            const savedLang = localStorage.getItem('preferred-language') || 'en';
-            setLanguage(savedLang);
-        }
     </script>
 
     <!-- Theme Toggle -->
@@ -1168,14 +1365,14 @@
         }
 
         const logoMap = {
-            'default': 'images/logos/logo-charcoal-amber-h.png',
-            'charcoal-amber': 'images/logos/logo-charcoal-amber-h.png',
-                'plum-h': 'images/logos/logo-charcoal-amber-h.png',
+            'default': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
+            'charcoal-amber': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
+                'plum-h': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
         };
 
         const footerLogoMap = {
-            'charcoal-amber': 'images/logos/logo-charcoal-amber-wh.png',
-                'plum-h': 'images/logos/logo-charcoal-amber-wh.png',
+            'charcoal-amber': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
+                'plum-h': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
         };
 
         const horizontalThemes = ['charcoal-amber', 'plum-h'];
