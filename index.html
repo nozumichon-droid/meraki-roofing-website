@@ -160,9 +160,33 @@
         }
 
 
+        @media (max-width: 768px) {
+            .weather-bar-inner {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.3rem;
+                padding: 0 1rem;
+            }
+            .lang-toggle {
+                position: static;
+                transform: none;
+                margin-left: auto;
+            }
+        }
+
         @media (max-width: 600px) {
             .weather-bar { font-size: 0.7rem; padding: 5px 0; }
             .weather-bar .weather-cta { display: none; }
+            .lang-toggle {
+                position: static;
+                transform: none;
+                order: 10;
+                margin: 2px auto 0;
+            }
+            .weather-bar-inner {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
         }
 
         /* ============ NAVIGATION ============ */
@@ -517,7 +541,7 @@
         /* ============ HERO ============ */
         .hero {
             padding-top: 104px;
-            background: linear-gradient(180deg, rgba(42,23,32,0.82) 0%, rgba(61,37,48,0.78) 100%), url('images/hero-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(180deg, rgba(30,30,30,0.45) 0%, rgba(30,30,30,0.5) 100%), url('images/hero-bg.jpg') center/cover no-repeat;
             position: relative;
             overflow: hidden;
             min-height: 92vh;
@@ -568,6 +592,7 @@
             font-size: 0.85rem;
             font-weight: 500;
             color: rgba(255,255,255,0.55);
+            text-shadow: 0 1px 6px rgba(0,0,0,0.35);
             letter-spacing: 0.04em;
             margin-bottom: 1.25rem;
             text-transform: uppercase;
@@ -646,6 +671,7 @@
             margin-bottom: 1.25rem;
             letter-spacing: -0.01em;
             font-weight: 700;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4);
         }
 
         .hero h1 .tw-line {
@@ -701,6 +727,7 @@
             line-height: 1.8;
             margin-bottom: 2.25rem;
             max-width: 500px;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
         }
 
         .hero-actions {
@@ -4450,7 +4477,7 @@
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
                     <h3 data-i18n="quick.financing">Maintenance</h3>
-                    <p data-i18n="quick.financing.desc">Annual plans starting at $199 to protect your investment.</p>
+                    <p data-i18n="quick.financing.desc">Annual plans starting at $449 to protect your investment.</p>
                 </a>
             </div>
         </div>
@@ -5240,6 +5267,10 @@
                         <div class="storm-check" data-i18n="storm.check4">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             We meet with your adjuster
+                        </div>
+                        <div class="storm-check" data-i18n="storm.check5">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Deductible assistance
                         </div>
                     </div>
 
@@ -6131,7 +6162,7 @@
 
             function flowMaintenance() {
                 addBotMessage("Smart thinking! Our maintenance plans help extend your roof's lifespan and catch small issues before they become expensive repairs.", 900)
-                .then(() => addBotMessage("We offer three tiers: Essential ($199/yr), Premium ($349/yr), and Elite ($549/yr). Each includes annual inspections and priority scheduling.", 1100))
+                .then(() => addBotMessage("We offer two tiers: Essential ($449/yr) and Premium ($749/yr). Each includes annual inspections and priority scheduling.", 1100))
                 .then(() => {
                     setQuickReplies([
                         { label: '📋 See full plan details', action: () => { window.location.href = 'maintenance.html'; } },
