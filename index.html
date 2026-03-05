@@ -30,20 +30,20 @@
            ============================================ */
 
         :root {
-            /* Brand Colors — Plum & Persimmon (Default) */
-            --forest: #3D2530;
-            --forest-deep: #2A1720;
+            /* Brand Colors — Charcoal & Amber (Default) */
+            --forest: #3A3A3A;
+            --forest-deep: #2A2A2A;
             --terracotta: #FF5C34;
             --terracotta-dark: #E5482A;
             --terracotta-light: #FFB09A;
-            --cream: #FDF5F3;
-            --cream-dark: #F5E8E4;
-            --warm-white: #FDFAF9;
-            --charcoal: #2D2020;
-            --warm-gray: #7A6565;
-            --light-gray: #EAE0DD;
-            --gold: #C9A0A8;
-            --gold-light: #E8CDD2;
+            --cream: #F5F3EF;
+            --cream-dark: #EAE6DF;
+            --warm-white: #FAFAF8;
+            --charcoal: #2D2D2D;
+            --warm-gray: #6B6B6B;
+            --light-gray: #DCDCDC;
+            --gold: #D4A85C;
+            --gold-light: #F0DDB8;
 
             /* Typography */
             --font-display: 'Lora', Georgia, serif;
@@ -572,6 +572,59 @@
             margin-bottom: 1.25rem;
             text-transform: uppercase;
             font-family: var(--font-body);
+        }
+        .hero-cert-wrap {
+            margin-top: 1.25rem;
+            position: relative;
+            display: block;
+        }
+        .hero-cert-link {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .hero-cert-badge {
+            height: 100px;
+            width: auto;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .hero-cert-link:hover .hero-cert-badge {
+            transform: scale(1.1);
+            filter: drop-shadow(0 6px 20px rgba(255,92,52,0.4));
+        }
+        .hero-cert-tooltip {
+            position: absolute;
+            bottom: -32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: var(--terracotta);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            padding: 5px 14px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            letter-spacing: 0.02em;
+        }
+        .hero-cert-tooltip::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid var(--terracotta);
+        }
+        .hero-cert-link:hover .hero-cert-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
         .hero-trust-star {
             color: var(--terracotta-light);
@@ -3386,6 +3439,8 @@
             .hero-inner { grid-template-columns: 1fr; text-align: center; }
             .hero h1 .tw-line { margin: 0 auto; }
             .hero-trust-line { text-align: center; }
+            .hero-cert-wrap { text-align: center; }
+            .hero-cert-badge { height: 90px; }
             .hero-sub { margin: 0 auto 2.25rem; }
             .hero-actions { justify-content: center; }
             .estimate-badge { justify-content: center; }
@@ -3491,6 +3546,7 @@
 
             .hero { min-height: auto; }
             .hero-trust-line { font-size: 0.72rem; text-align: center; }
+            .hero-cert-badge { height: 80px; }
             .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
             .hero h1 .tw-line { margin: 0 auto; }
 
@@ -3599,9 +3655,9 @@
         [data-theme="charcoal-amber"] {
             --forest: #3A3A3A;
             --forest-deep: #2A2A2A;
-            --terracotta: #D97706;
-            --terracotta-dark: #B86305;
-            --terracotta-light: #F5B74A;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
             --cream: #F5F3EF;
             --cream-dark: #EAE6DF;
             --warm-white: #FAFAF8;
@@ -3646,21 +3702,21 @@
             --gold-light: #DDD4BC;
         }
 
-        /* Palette 5: Plum & Persimmon — Horizontal Logo */
+        /* Palette X: Plum & Persimmon — Horizontal Logo */
         [data-theme="plum-h"] {
-            --forest: #3D2530;
-            --forest-deep: #2A1720;
+            --forest: #3A3A3A;
+            --forest-deep: #2A2A2A;
             --terracotta: #FF5C34;
             --terracotta-dark: #E5482A;
             --terracotta-light: #FFB09A;
-            --cream: #FDF5F3;
-            --cream-dark: #F5E8E4;
-            --warm-white: #FDFAF9;
-            --charcoal: #2D2020;
-            --warm-gray: #7A6565;
-            --light-gray: #EAE0DD;
-            --gold: #C9A0A8;
-            --gold-light: #E8CDD2;
+            --cream: #F5F3EF;
+            --cream-dark: #EAE6DF;
+            --warm-white: #FAFAF8;
+            --charcoal: #2D2D2D;
+            --warm-gray: #6B6B6B;
+            --light-gray: #DCDCDC;
+            --gold: #D4A85C;
+            --gold-light: #F0DDB8;
         }
 
         /* ============ THEME TOGGLE UI ============ */
@@ -4044,7 +4100,7 @@
             <div class="hero-inner">
                 <div class="hero-content hero-load-anim">
                     <div class="hero-trust-line" data-i18n="hero.trust">
-                        <span class="hero-trust-star">★</span> 4.9 Stars <span class="hero-trust-sep">·</span> GAF Certified® <span class="hero-trust-sep">·</span> Licensed & Insured
+                        <span class="hero-trust-star">★</span> 4.9 Stars <span class="hero-trust-sep">·</span> GAF Certified® <span class="hero-trust-sep">·</span> Licensed, Bonded & Insured
                     </div>
                     <h1><span class="tw-line" data-i18n="hero.h1.line1">Protect What</span><span class="tw-line" data-i18n="hero.h1.line2">Matters Most</span><em data-i18n="hero.h1.em">With a Team You Can Trust</em></h1>
                     <p class="hero-sub" data-i18n="hero.sub">We treat every home like our own — honest pricing, clear communication, and a roof you'll love for decades.</p>
@@ -4069,7 +4125,12 @@
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
                         100% free · No obligation · Response in ~2 hours
                     </div>
-
+                    <div class="hero-cert-wrap">
+                        <a href="gaf.html" class="hero-cert-link" aria-label="View our GAF Certification">
+                            <img src="images/logos/certified-plus.png" alt="GAF Certified Plus Residential Roofing Contractor" class="hero-cert-badge">
+                            <span class="hero-cert-tooltip">View Our Certification →</span>
+                        </a>
+                    </div>
                     <!-- Intent Routing Tiles -->
                 </div>
 
@@ -4319,7 +4380,7 @@
                 <div class="trust-badge terra">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
-                <span data-i18n="trust.licensed">Licensed & Insured</span>
+                <span data-i18n="trust.licensed">Licensed, Bonded & Insured</span>
             </div>
             <div class="trust-divider"></div>
             <div class="trust-item">
@@ -4367,7 +4428,7 @@
                     <div class="intent-tile-icon" style="background: #FEE8E8;">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8694A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     </div>
-                    <h3 data-i18n="quick.inspection">Emergency Repair</h3>
+                    <h3 data-i18n="quick.inspection">Emergency Inspection & Repair</h3>
                     <p data-i18n="quick.inspection.desc">Leaking right now? We respond within 2 hours.</p>
                 </a>
                 <a href="estimate.html" class="intent-tile" data-event="cta_click" data-intent="replacement">
@@ -4403,7 +4464,7 @@
                     <div class="stat-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     </div>
-                    <div class="stat-number"><span data-target="185" class="counter">0</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-number"><span data-target="587" class="counter">0</span><span class="stat-suffix">+</span></div>
                     <div class="stat-label" data-i18n="stats.served">Projects Completed</div>
                 </div>
                 <div class="stat-item fade-up">
@@ -4424,7 +4485,7 @@
                     <div class="stat-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                     </div>
-                    <div class="stat-number"><span data-target="78" class="counter">0</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-number"><span data-target="238" class="counter">0</span><span class="stat-suffix">+</span></div>
                     <div class="stat-label" data-i18n="stats.warranty">Insurance Claims Handled</div>
                 </div>
             </div>
@@ -4460,19 +4521,6 @@
                     </div>
                     <h3 data-i18n="service.asphalt">Asphalt Shingle Roofing</h3>
                     <p data-i18n="service.asphalt.desc">Professional installation and replacement of asphalt shingle roofs. Durable, affordable, and available in a wide range of styles and colors to match your home.</p>
-                </div>
-
-                <div class="service-card fade-up">
-                    <div class="service-icon" style="background: var(--cream-dark);">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="6" width="20" height="12" rx="2"/>
-                            <path d="M12 12h.01"/>
-                            <path d="M17 12h.01"/>
-                            <path d="M7 12h.01"/>
-                        </svg>
-                    </div>
-                    <h3 data-i18n="service.slate">Natural Slate Roofing</h3>
-                    <p data-i18n="service.slate.desc">Expert repair and installation of natural slate roofs. Timeless elegance that can last over a century with proper care and maintenance.</p>
                 </div>
 
                 <div class="service-card fade-up">
@@ -4559,6 +4607,14 @@
             <div class="cert-grid fade-up">
                 <div class="cert-card">
                     <div class="cert-icon cert-icon--forest">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+                    </div>
+                    <h3 class="cert-title">GAF Unlimited Wind Warranty</h3>
+                    <p class="cert-desc">GAF's premium shingles come with an unlimited wind speed warranty — no maximum mph cap. While most shingles only cover winds up to 110–130 mph, qualifying GAF shingles installed by a Certified Plus contractor like Meraki are covered against wind damage at any speed, giving El Paso homeowners peace of mind during severe storms.</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon cert-icon--forest">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                     </div>
                     <h3 class="cert-title" data-i18n="cert.bbb">BBB A+ Rated</h3>
@@ -4569,7 +4625,7 @@
                     <div class="cert-icon cert-icon--terracotta">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </div>
-                    <h3 class="cert-title" data-i18n="cert.licensed">Licensed & Insured</h3>
+                    <h3 class="cert-title" data-i18n="cert.licensed">Licensed, Bonded & Insured</h3>
                     <p class="cert-desc" data-i18n="cert.licensed.desc">Fully licensed in Texas with comprehensive liability and workers' compensation insurance for your protection.</p>
                 </div>
             </div>
@@ -4585,11 +4641,6 @@
                         <div class="warranty-years">10 Yr</div>
                         <h4 class="warranty-card-title" data-i18n="warranty.workmanship">Workmanship Warranty</h4>
                         <p class="warranty-card-desc" data-i18n="warranty.workmanship.desc">Our standard labor warranty covers any installation-related issues for a full decade.</p>
-                    </div>
-                    <div class="warranty-card">
-                        <div class="warranty-years">25 Yr</div>
-                        <h4 class="warranty-card-title" data-i18n="warranty.material">Manufacturer Material Warranty</h4>
-                        <p class="warranty-card-desc" data-i18n="warranty.material.desc">Premium materials backed by manufacturer guarantees of 25-50 years depending on the product.</p>
                     </div>
                     <div class="warranty-card">
                         <div class="warranty-years">50 Yr</div>
@@ -4637,21 +4688,12 @@
                         </div>
                     </div>
 
-                    <!-- Row 2: Stories + Project Type -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem;" class="calc-row-2col">
-                        <div>
-                            <label style="display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest-deep); margin-bottom: 0.5rem;">Stories</label>
-                            <div style="display: flex; gap: 0.5rem;">
-                                <button type="button" class="calc-toggle active" data-stories="1" onclick="selectStories(this)" style="flex: 1; padding: 10px; border: 1.5px solid var(--terracotta); border-radius: 8px; background: var(--terracotta); color: white; font-weight: 600; font-size: 0.85rem; cursor: pointer; font-family: var(--font-body); transition: all 0.2s;">1 Story</button>
-                                <button type="button" class="calc-toggle" data-stories="2" onclick="selectStories(this)" style="flex: 1; padding: 10px; border: 1.5px solid var(--light-gray); border-radius: 8px; background: white; color: var(--charcoal); font-weight: 600; font-size: 0.85rem; cursor: pointer; font-family: var(--font-body); transition: all 0.2s;">2+ Stories</button>
-                            </div>
-                        </div>
-                        <div>
-                            <label style="display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest-deep); margin-bottom: 0.5rem;">Project Type</label>
-                            <select id="calcProject" style="width: 100%; padding: 12px 14px; border: 1.5px solid var(--light-gray); border-radius: 10px; font-family: var(--font-body); font-size: 0.88rem; color: var(--charcoal); background: white; outline: none; cursor: pointer;">
-                                <option value="replace">Replacement (tear-off)</option>
-                                <option value="new">New Construction</option>
-                            </select>
+                    <!-- Row 2: Stories -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest-deep); margin-bottom: 0.5rem;">Stories</label>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button type="button" class="calc-toggle active" data-stories="1" onclick="selectStories(this)" style="flex: 1; padding: 10px; border: 1.5px solid var(--terracotta); border-radius: 8px; background: var(--terracotta); color: white; font-weight: 600; font-size: 0.85rem; cursor: pointer; font-family: var(--font-body); transition: all 0.2s;">1 Story</button>
+                            <button type="button" class="calc-toggle" data-stories="2" onclick="selectStories(this)" style="flex: 1; padding: 10px; border: 1.5px solid var(--light-gray); border-radius: 8px; background: white; color: var(--charcoal); font-weight: 600; font-size: 0.85rem; cursor: pointer; font-family: var(--font-body); transition: all 0.2s;">2+ Stories</button>
                         </div>
                     </div>
 
@@ -5162,7 +5204,7 @@
                 <div class="process-step fade-up">
                     <div class="process-num">3</div>
                     <h3 data-i18n="process.step3.title">Expert Installation</h3>
-                    <p data-i18n="process.step3.desc">Our skilled crew handles everything with care and precision. We protect your property and keep the site clean.</p>
+                    <p data-i18n="process.step3.desc">Our skilled crew handles everything with care and precision. Permits are pulled from the city to provide you peace of mind. We protect your property and keep the site clean.</p>
                 </div>
                 <div class="process-step fade-up">
                     <div class="process-num">4</div>
@@ -5632,16 +5674,16 @@
             <div class="theme-panel-title">Color Palette</div>
             <button class="theme-option active" data-theme="default">
                 <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#3A3A3A"></div>
                     <div class="theme-swatch" style="background:#FF5C34"></div>
-                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                    <div class="theme-swatch" style="background:#D4A85C"></div>
                 </div>
-                Plum & Persimmon
+                Charcoal & Amber
             </button>
             <button class="theme-option" data-theme="charcoal-amber">
                 <div class="theme-swatches">
                     <div class="theme-swatch" style="background:#3A3A3A"></div>
-                    <div class="theme-swatch" style="background:#D97706"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
                     <div class="theme-swatch" style="background:#D4A85C"></div>
                 </div>
                 Charcoal & Amber
@@ -5666,7 +5708,7 @@
             <div style="font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#bbb; padding: 0 10px 4px;">Horizontal Logo</div>
             <button class="theme-option" data-theme="plum-h">
                 <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#3A3A3A"></div>
                     <div class="theme-swatch" style="background:#FF5C34"></div>
                     <div class="theme-swatch" style="background:#C9A0A8"></div>
                 </div>
@@ -6027,7 +6069,7 @@
 
             function flowEstimate() {
                 addBotMessage("Great news — we have an instant estimate calculator that gives you real price ranges in about 60 seconds!", 800)
-                .then(() => addBotMessage("No contact info needed. Just answer a few questions about your roof size, material preference, and project type.", 1000))
+                .then(() => addBotMessage("No contact info needed. Just answer a few questions about your roof size, material preference, and home details.", 1000))
                 .then(() => {
                     setQuickReplies([
                         { label: '🔢 Open estimate calculator', action: () => { window.location.href = 'estimate.html'; } },
@@ -6363,14 +6405,10 @@
         function updateCalc() {
             const sqft = parseInt(document.getElementById('calcSize').value);
             const mat = document.getElementById('calcMaterial').value;
-            const proj = document.getElementById('calcProject').value;
             const [lowRate, highRate] = materialPricing[mat];
 
             let low = sqft * lowRate;
             let high = sqft * highRate;
-
-            // Tear-off surcharge
-            if (proj === 'replace') { low += sqft * 1.50; high += sqft * 2.50; }
 
             // 2-story surcharge
             if (calcStories >= 2) { low *= 1.15; high *= 1.15; }
@@ -6395,7 +6433,6 @@
 
         document.getElementById('calcSize').addEventListener('input', updateCalc);
         document.getElementById('calcMaterial').addEventListener('change', updateCalc);
-        document.getElementById('calcProject').addEventListener('change', updateCalc);
 
         // Initialize
         updateCalc();

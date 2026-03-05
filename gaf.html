@@ -19,15 +19,15 @@
 
     <style>
         :root {
-            --forest: #3D2530;
-            --forest-deep: #2A1720;
+            --forest: #3A3A3A;
+            --forest-deep: #2A2A2A;
             --terracotta: #FF5C34;
             --terracotta-dark: #E5482A;
-            --cream: #FDF5F3;
-            --gold: #C9A0A8;
-            --warm-white: #FDFAF9;
-            --warm-gray: #7A6565;
-            --light-gray: #EAE0DD;
+            --cream: #F5F3EF;
+            --gold: #D4A85C;
+            --warm-white: #FAFAF8;
+            --warm-gray: #6B6B6B;
+            --light-gray: #DCDCDC;
             --font-display: 'Lora', serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -36,9 +36,9 @@
         [data-theme="charcoal-amber"] {
             --forest: #3A3A3A;
             --forest-deep: #2A2A2A;
-            --terracotta: #D97706;
-            --terracotta-dark: #B86305;
-            --terracotta-light: #F5B74A;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
             --cream: #F5F3EF;
             --cream-dark: #EAE6DF;
             --warm-white: #FAFAF8;
@@ -50,21 +50,21 @@
         }
 
 
-        /* Palette 8: Plum & Persimmon — Horizontal Logo */
+        /* Palette X: Plum & Persimmon — Horizontal Logo */
         [data-theme="plum-h"] {
-            --forest: #3D2530;
-            --forest-deep: #2A1720;
+            --forest: #3A3A3A;
+            --forest-deep: #2A2A2A;
             --terracotta: #FF5C34;
             --terracotta-dark: #E5482A;
             --terracotta-light: #FFB09A;
-            --cream: #FDF5F3;
-            --cream-dark: #F5E8E4;
-            --warm-white: #FDFAF9;
-            --charcoal: #2D2020;
-            --warm-gray: #7A6565;
-            --light-gray: #EAE0DD;
-            --gold: #C9A0A8;
-            --gold-light: #E8CDD2;
+            --cream: #F5F3EF;
+            --cream-dark: #EAE6DF;
+            --warm-white: #FAFAF8;
+            --charcoal: #2D2D2D;
+            --warm-gray: #6B6B6B;
+            --light-gray: #DCDCDC;
+            --gold: #D4A85C;
+            --gold-light: #F0DDB8;
         }
 
 
@@ -477,6 +477,37 @@
             margin: 1.2rem auto 0;
         }
 
+        .gaf-warranty-callout {
+            background: rgba(58,58,58,0.04);
+            border-left: 3px solid var(--terracotta);
+            border-radius: 0 10px 10px 0;
+            padding: 1.1rem 1.4rem;
+            margin: 1.5rem auto 0;
+            max-width: 540px;
+            text-align: left;
+        }
+        .gaf-warranty-callout h4 {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--forest);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .gaf-warranty-callout p {
+            font-size: 0.85rem;
+            line-height: 1.65;
+            color: var(--warm-gray);
+            margin: 0;
+        }
+        .gaf-warranty-callout strong {
+            color: var(--forest);
+        }
+
         .gaf-logos-row {
             display: flex;
             align-items: center;
@@ -545,8 +576,8 @@
             background: white;
             border-radius: 16px;
             width: 100%;
-            max-width: 700px;
-            max-height: 90vh;
+            max-width: 950px;
+            max-height: 92vh;
             overflow: hidden;
             box-shadow: 0 25px 80px rgba(0,0,0,0.4);
             position: relative;
@@ -585,7 +616,7 @@
         }
         .cert-modal-body iframe {
             width: 100%;
-            height: 70vh;
+            height: 78vh;
             border: none;
         }
         .cert-modal-footer {
@@ -1116,11 +1147,14 @@
                 <div class="gaf-stat-label">of roofers earn GAF certification</div>
             </div>
             <p class="gaf-body-text">As a Certified Plus contractor, we deliver superior products, extended warranties, and proven reliability on every project.</p>
+            <div class="gaf-warranty-callout">
+                <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Workmanship Warranty</h4>
+                <p>A GAF workmanship warranty covers costs associated with "misapplication" — leaks or damage caused by installation errors, not just material defects. Unlike standard contractor guarantees, these enhanced warranties are <strong>backed directly by GAF</strong>, meaning they'll honor the coverage even if your original roofing contractor goes out of business.</p>
+            </div>
             <a href="javascript:void(0)" onclick="document.getElementById('certModal').classList.add('active')" class="gaf-badge">View Our Certification <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px;"><path d="M15 3h6v6"/><path d="M10 14L21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
             <div class="gaf-logos-row">
                 <img src="images/logos/certified-plus.png" alt="GAF Certified Plus Residential Roofing Contractor">
                 <img src="images/logos/certified-weather-stop_logo.png" alt="GAF Certified Weather Stopper Roofing Contractor">
-                <img src="images/logos/gaf-certified-commercial.png" alt="GAF Certified Commercial Contractor">
             </div>
         </div>
     </section>
@@ -1402,16 +1436,16 @@
             <div class="theme-panel-title">Color Palette</div>
             <button class="theme-option active" data-theme="default">
                 <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#3A3A3A"></div>
                     <div class="theme-swatch" style="background:#FF5C34"></div>
-                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                    <div class="theme-swatch" style="background:#D4A85C"></div>
                 </div>
-                Plum & Persimmon
+                Charcoal & Amber
             </button>
             <button class="theme-option" data-theme="charcoal-amber">
                 <div class="theme-swatches">
                     <div class="theme-swatch" style="background:#3A3A3A"></div>
-                    <div class="theme-swatch" style="background:#D97706"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
                     <div class="theme-swatch" style="background:#D4A85C"></div>
                 </div>
                 Charcoal & Amber
@@ -1420,7 +1454,7 @@
             <div style="font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#bbb; padding: 0 10px 4px;">Horizontal Logo</div>
             <button class="theme-option" data-theme="plum-h">
                 <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#3A3A3A"></div>
                     <div class="theme-swatch" style="background:#FF5C34"></div>
                     <div class="theme-swatch" style="background:#C9A0A8"></div>
                 </div>
@@ -1443,14 +1477,14 @@
         }
 
         const logoMap = {
-            'default': 'images/logos/logo-plum-flat-transparent.png',
+            'default': 'images/logos/logo-charcoal-amber-h.png',
             'charcoal-amber': 'images/logos/logo-charcoal-amber-h.png',
-                'plum-h': 'images/logos/logo-plum-flat-h.png',
+                'plum-h': 'images/logos/logo-charcoal-amber-h.png',
         };
 
         const footerLogoMap = {
             'charcoal-amber': 'images/logos/logo-charcoal-amber-wh.png',
-                'plum-h': 'images/logos/logo-plum-flat-wh.png',
+                'plum-h': 'images/logos/logo-charcoal-amber-wh.png',
         };
 
         const horizontalThemes = ['charcoal-amber', 'plum-h'];
@@ -1544,7 +1578,7 @@
                 </button>
             </div>
             <div class="cert-modal-body">
-                <iframe src="docs/gaf-certified-plus-certificate.pdf" title="GAF Certified Plus Certificate"></iframe>
+                <iframe src="docs/gaf-certified-plus-certificate.pdf#toolbar=0&navpanes=0&view=FitH" title="GAF Certified Plus Certificate"></iframe>
             </div>
             <div class="cert-modal-footer">
                 <a href="docs/gaf-certified-plus-certificate.pdf" target="_blank">Open in new tab ↗</a>
