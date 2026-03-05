@@ -1,0 +1,15 @@
+.DS_Store
+*.DS_Store
+Thumbs.db
+.env
+node_modules/
+Roofs Done/
+Central Before After W*/
+East GAF Charcoal/
+IMAGE-PROMPTS-GUIDE.md
+test.md
+horizontal-logo-preview.html
+images/DSC*.jpg
+images/East *.jpg
+images/logos/*_HQ.png
+images/logos/ChatGPT*

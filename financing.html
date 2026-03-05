@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meraki Roofing offers flexible financing options for quality roofing services in El Paso, TX. $0 down, low monthly payments, quick approval.">
+    <meta name="keywords" content="roofing financing, roof financing El Paso, affordable roofing, home improvement loans">
+    <meta name="author" content="Meraki Roofing">
+    <meta name="canonical" href="https://merakiroofing.com/financing">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Affordable Roofing Financing Options | Meraki Roofing">
+    <meta property="og:description" content="Flexible financing for your roofing project. $0 down, low monthly payments, quick approval.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://merakiroofing.com/financing">
+    <meta property="og:image" content="https://merakiroofing.com/og-financing.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Affordable Roofing Financing | Meraki Roofing">
+    <meta name="twitter:description" content="$0 down. Low monthly payments. Quick approval. Flexible financing for El Paso roofing.">
+
+    <title>Financing Options | Meraki Roofing - El Paso, TX</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --font-display: 'Lora', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* Palette 5: Charcoal & Amber */
+        [data-theme="charcoal-amber"] {
+            --forest: #3A3A3A;
+            --forest-deep: #2A2A2A;
+            --terracotta: #D97706;
+            --terracotta-dark: #B86305;
+            --terracotta-light: #F5B74A;
+            --cream: #F5F3EF;
+            --cream-dark: #EAE6DF;
+            --warm-white: #FAFAF8;
+            --charcoal: #2D2D2D;
+            --warm-gray: #6B6B6B;
+            --light-gray: #DCDCDC;
+            --gold: #D4A85C;
+            --gold-light: #F0DDB8;
+        }
+
+
+        /* Palette 8: Plum & Persimmon — Horizontal Logo */
+        [data-theme="plum-h"] {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 72px;
+        }
+        a { text-decoration: none; }
+
+        /* ============ ACCESSIBILITY ============ */
+        /* Focus styles */
+        *:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        /* ============ NAVIGATION ============ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(253, 252, 250, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(44, 74, 62, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 1rem;
+            height: 120px;
+            transition: height 0.3s ease;
+        }
+
+        .nav.scrolled .nav-inner {
+            height: 80px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo-icon {
+            width: 38px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-logo-icon svg { width: 100%; height: 100%; }
+        .nav-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+
+        .nav-logo-img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
+        }
+
+        .nav.scrolled .nav-logo-img {
+            height: 55px;
+        }
+        /* When horizontal logo is active, constrain logo width */
+        .nav-logo-img.horizontal-logo {
+            max-width: 260px;
+            height: auto;
+            max-height: 75px;
+        }
+        .nav.scrolled .nav-logo-img.horizontal-logo {
+            max-width: 200px;
+            max-height: 50px;
+        }
+
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 1;
+            position: relative;
+        }
+
+        .nav-logo-text span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--terracotta);
+            margin-top: 1px;
+        }
+
+        .nav-logo-accent {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--terracotta);
+            margin-top: 3px;
+            border-radius: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--warm-gray);
+            transition: color 0.25s;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: var(--forest); }
+
+        .nav-links a.active { color: var(--forest); font-weight: 600; }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--terracotta);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--terracotta) !important;
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            font-size: 0.88rem !important;
+            transition: all 0.25s !important;
+            box-shadow: 0 2px 8px rgba(196, 114, 75, 0.25);
+        }
+
+        .nav-cta:hover {
+            background: var(--terracotta-dark) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(196, 114, 75, 0.35);
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            background: var(--warm-white);
+            border: 2px solid var(--light-gray);
+            border-radius: 20px;
+            padding: 2px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--forest);
+        }
+
+        .lang-btn {
+            padding: 4px 10px;
+            border-radius: 16px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--warm-gray);
+            transition: all 0.25s ease;
+            line-height: 1;
+        }
+
+        .lang-btn.active {
+            background: var(--forest);
+            color: white;
+        }
+
+        /* Resources Dropdown */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--warm-gray);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0;
+            transition: color 0.25s;
+        }
+
+        .nav-dropdown-toggle:hover { color: var(--forest); }
+
+        .nav-dropdown-toggle svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.25s;
+        }
+
+        .nav-dropdown.open .nav-dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+            min-width: 220px;
+            padding: 8px 0;
+            z-index: 1000;
+            border: 1px solid var(--light-gray);
+            animation: dropdownFade 0.2s ease;
+        }
+
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-top: 1px solid var(--light-gray);
+            border-left: 1px solid var(--light-gray);
+        }
+
+        .nav-dropdown.open .nav-dropdown-menu {
+            display: block;
+        }
+
+        .nav-dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px !important;
+            font-size: 0.88rem;
+            color: var(--warm-gray);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-dropdown-menu a::after { display: none !important; }
+
+        .nav-dropdown-menu a:hover {
+            background: var(--cream);
+            color: var(--forest);
+        }
+
+        .nav-dropdown-menu .dropdown-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2.5px;
+            background: var(--forest);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--forest);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            z-index: 10000;
+            font-weight: 600;
+            transition: top 0.3s;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            background:
+                radial-gradient(ellipse at 80% 80%, rgba(255,92,52,0.12) 0%, transparent 60%),
+                linear-gradient(135deg, var(--forest-deep) 0%, var(--forest) 60%, var(--forest-deep) 100%);
+            color: var(--warm-white);
+            padding: 140px 2rem 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.03em;
+        }
+        .hero-breadcrumb a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .hero-breadcrumb a:hover { color: rgba(255,255,255,0.85); }
+        .hero-breadcrumb .sep { font-size: 0.6rem; opacity: 0.4; }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            margin-bottom: 0.6rem;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: clamp(0.88rem, 1.8vw, 1rem);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 11px 26px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--terracotta);
+            color: var(--warm-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--warm-white);
+            border: 2px solid var(--warm-white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--warm-white);
+            color: var(--forest);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--forest);
+            border: 2px solid var(--forest);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--forest);
+            color: var(--warm-white);
+        }
+
+        /* ============ SECTIONS GENERAL ============ */
+        section {
+            padding: 80px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Lora', serif;
+            font-size: 40px;
+            color: var(--forest);
+            margin-bottom: 16px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--warm-gray);
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: var(--warm-white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            animation: fadeUp 0.6s ease-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gold);
+        }
+
+        .card h3 {
+            font-family: 'Lora', serif;
+            font-size: 24px;
+            color: var(--forest);
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .card p {
+            color: var(--warm-gray);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--terracotta);
+        }
+
+        /* ============ WHY FINANCE SECTION ============ */
+        .why-finance {
+            background-color: var(--cream);
+        }
+
+        .benefit-card {
+            background-color: var(--warm-white);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--terracotta);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateX(5px);
+        }
+
+        .benefit-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card h3 {
+            font-family: 'Lora', serif;
+            font-size: 22px;
+            color: var(--forest);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .benefit-card p {
+            color: var(--warm-gray);
+            font-size: 15px;
+        }
+
+        /* ============ FINANCING PARTNERS ============ */
+        .partners {
+            background-color: var(--warm-white);
+        }
+
+        .partner-card {
+            background-color: var(--cream);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            animation: fadeUp 0.6s ease-out;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gold);
+        }
+
+        .partner-logo {
+            height: 40px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: var(--forest);
+            font-size: 14px;
+        }
+
+        .partner-card h3 {
+            font-family: 'Lora', serif;
+            font-size: 20px;
+            color: var(--forest);
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .partner-card p {
+            color: var(--warm-gray);
+            font-size: 14px;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .partner-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .partner-features li {
+            color: var(--charcoal);
+            font-size: 14px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+
+        .partner-features li:last-child {
+            border-bottom: none;
+        }
+
+        .partner-features li::before {
+            content: '✓';
+            color: var(--terracotta);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .partner-card .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* ============ HOW IT WORKS ============ */
+        .how-it-works {
+            background-color: var(--cream);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .step {
+            text-align: center;
+            animation: fadeUp 0.6s ease-out;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--forest);
+            color: var(--warm-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            font-family: 'Lora', serif;
+        }
+
+        .step h3 {
+            font-family: 'Lora', serif;
+            font-size: 20px;
+            color: var(--forest);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .step p {
+            color: var(--warm-gray);
+            font-size: 14px;
+        }
+
+        /* ============ FINANCING CALCULATOR ============ */
+        .calculator {
+            background-color: var(--warm-white);
+        }
+
+        .calculator-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--cream);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .calculator-group {
+            margin-bottom: 30px;
+        }
+
+        .calculator-label {
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 12px;
+            display: block;
+            font-size: 14px;
+        }
+
+        .calculator-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: var(--charcoal);
+            transition: border-color 0.3s ease;
+        }
+
+        .calculator-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .calculator-slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--light-gray);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .calculator-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .calculator-slider::-webkit-slider-thumb:hover {
+            background: var(--terracotta-dark);
+        }
+
+        .calculator-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .calculator-slider::-moz-range-thumb:hover {
+            background: var(--terracotta-dark);
+        }
+
+        .slider-value {
+            display: inline-block;
+            background-color: var(--gold-light);
+            color: var(--forest);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .calculator-result {
+            background-color: var(--warm-white);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+            border: 2px solid var(--gold);
+        }
+
+        .calculator-result p {
+            font-size: 14px;
+            color: var(--warm-gray);
+            margin-bottom: 10px;
+        }
+
+        .monthly-payment {
+            font-family: 'Lora', serif;
+            font-size: 42px;
+            color: var(--forest);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .payment-period {
+            font-size: 14px;
+            color: var(--warm-gray);
+        }
+
+        .calculator-disclaimer {
+            font-size: 12px;
+            color: var(--warm-gray);
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        /* ============ FAQ SECTION ============ */
+        .faq {
+            background-color: var(--cream);
+        }
+
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--warm-white);
+            margin-bottom: 16px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+            animation: fadeUp 0.6s ease-out;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--warm-white);
+            border: none;
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--forest);
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: var(--cream-dark);
+        }
+
+        .faq-question.active {
+            background-color: var(--gold-light);
+            color: var(--forest);
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            color: var(--terracotta);
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: var(--warm-white);
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 0 20px 20px;
+        }
+
+        .faq-answer p {
+            color: var(--warm-gray);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CTA SECTION ============ */
+        .final-cta {
+            background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+            color: var(--warm-white);
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .final-cta h2 {
+            font-family: 'Lora', serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .final-cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .final-cta .btn {
+            margin: 0 8px;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background-color: var(--charcoal);
+            color: var(--light-gray);
+            padding: 50px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .nav-logo-icon {
+            width: 38px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .nav-logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 1;
+            position: relative;
+        }
+
+        .nav-logo-text span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--terracotta);
+            margin-top: 1px;
+        }
+
+        .nav-logo-accent {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--terracotta);
+            margin-top: 3px;
+            border-radius: 1px;
+        }
+
+        .footer-section h4 {
+            color: var(--warm-white);
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            color: var(--light-gray);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--warm-white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--gold);
+            color: var(--charcoal);
+        }
+
+        /* ============ STICKY MOBILE CTA ============ */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--forest);
+            padding: 12px 20px;
+            text-align: center;
+            z-index: 40;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .sticky-cta a {
+            color: var(--warm-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-block;
+        }
+
+        .sticky-cta a:hover {
+            opacity: 0.85;
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .animate-on-scroll.visible {
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 76px;
+                left: 0;
+                right: 0;
+                background: var(--warm-white);
+                padding: 1.5rem;
+                border-top: 1px solid var(--light-gray);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                gap: 0;
+            }
+
+            .nav-links.active a {
+                padding: 14px 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .nav-links.active .nav-cta {
+                margin-top: 12px;
+                text-align: center;
+                display: block;
+            }
+
+            .nav-links.active .lang-toggle {
+                margin: 12px 0 0 0;
+                align-self: flex-start;
+            }
+
+            /* Mobile dropdown */
+            .nav-dropdown { width: 100%; }
+
+            .nav-dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid var(--light-gray);
+                justify-content: space-between;
+            }
+
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                background: var(--cream);
+                min-width: 100%;
+                animation: none;
+            }
+
+            .nav-dropdown-menu::before { display: none; }
+
+            .nav-dropdown-menu a {
+                padding: 12px 20px !important;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                font-size: 0.85rem;
+            }
+
+            .sticky-cta {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 16px 20px;
+                padding-bottom: calc(16px + env(safe-area-inset-bottom));
+            }
+
+            .hero {
+                padding: 130px 1.5rem 2rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .calculator-container {
+                padding: 25px;
+            }
+
+            .monthly-payment {
+                font-size: 32px;
+            }
+
+            .final-cta h2 {
+                font-size: 28px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: center;
+            }
+
+            .social-icons {
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .calculator-container {
+                padding: 20px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+    
+        /* ============ THEME TOGGLE UI ============ */
+        .theme-toggle {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+        .theme-toggle-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--forest);
+            color: white;
+            border: 2px solid white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            transition: all 0.3s;
+        }
+        .theme-toggle-btn:hover { transform: scale(1.1); }
+        .theme-panel {
+            position: absolute;
+            bottom: 54px;
+            left: 0;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+            padding: 1rem;
+            min-width: 220px;
+            opacity: 0;
+            transform: translateY(10px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.25s ease;
+        }
+        .theme-panel.open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .theme-panel-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--warm-gray);
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+            border: none;
+            background: none;
+            width: 100%;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+        .theme-option:hover { background: var(--cream); }
+        .theme-option.active { background: var(--cream); font-weight: 700; }
+        .theme-swatches { display: flex; gap: 3px; flex-shrink: 0; }
+        .theme-swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 1.5px solid rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .theme-toggle { bottom: 80px; left: 16px; }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ============ NAVIGATION ============ -->
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="residential.html" data-i18n="nav.residential">Residential</a>
+                <a href="commercial.html" data-i18n="nav.commercial">Commercial</a>
+                <a href="storm-damage.html" data-i18n="nav.storm">Storm Damage</a>
+                <a href="maintenance.html" data-i18n="nav.maintenance">Maintenance</a>
+                <div class="nav-dropdown" id="resourcesDropdown">
+                    <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.resources">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="financing.html" role="menuitem" data-i18n="nav.financing"><span class="dropdown-icon">💰</span> Financing Options</a>
+                        <a href="insurance-claims.html" role="menuitem" data-i18n="nav.insurance"><span class="dropdown-icon">📋</span> Insurance Claims</a>
+                        <a href="gallery.html" role="menuitem" data-i18n="nav.gallery"><span class="dropdown-icon">📸</span> Gallery</a>
+                        <a href="gaf.html" role="menuitem" data-i18n="nav.gaf"><span class="dropdown-icon">🛡️</span> GAF Products</a>
+                        <a href="index.html#about" role="menuitem" data-i18n="nav.about"><span class="dropdown-icon">🏠</span> About Us</a>
+                        <a href="blog.html" role="menuitem" data-i18n="nav.blog"><span class="dropdown-icon">📝</span> Blog</a>
+                        <a href="index.html#faq" role="menuitem" data-i18n="nav.faq"><span class="dropdown-icon">❓</span> FAQs</a>
+                    </div>
+                </div>
+                <a href="estimate.html" data-i18n="nav.estimate">Free Estimate</a>
+                <a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a>
+                <div class="lang-toggle" id="langToggle" aria-label="Language selector">
+                    <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+                </div>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-cta">
+        <a href="tel:(915)555-1234">Call (915) 861-8039</a>
+    </div>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="sep">›</span>
+                    <span>Financing</span>
+                </nav>
+                <h1 data-i18n="fin.hero.title">Affordable Roofing — Flexible Financing Options</h1>
+                <p data-i18n="fin.hero.subtitle">Make quality roofing accessible to your budget. Explore financing options with $0 down, low monthly payments, and quick approval.</p>
+                <div class="hero-buttons">
+                    <a href="#financing-partners" class="btn btn-primary" data-i18n="fin.hero.btn">Check Your Options</a>
+                    <a href="tel:(915)555-1234" class="btn btn-secondary">Call (915) 861-8039</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Finance Your Roof Section -->
+        <section class="why-finance">
+            <h2 class="section-title" data-i18n="fin.why.title">Why Finance Your Roof?</h2>
+            <p class="section-subtitle" data-i18n="fin.why.subtitle">Roofing is a major investment. Our flexible financing makes it manageable.</p>
+
+            <div class="card-grid">
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">💰</div>
+                    <h3 data-i18n="fin.feature.zero">$0 Down Payment</h3>
+                    <p data-i18n="fin.feature.zero.desc">Get started on your roofing project without breaking the bank. No upfront costs required.</p>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">📊</div>
+                    <h3 data-i18n="fin.feature.flexible">Low Monthly Payments</h3>
+                    <p data-i18n="fin.feature.flexible.desc">Flexible terms starting as low as $89/month, fitting comfortably into your budget.</p>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">⚡</div>
+                    <h3 data-i18n="fin.feature.quick">Quick Approval</h3>
+                    <p data-i18n="fin.feature.quick.desc">Get financing decisions in minutes. Start your project quickly without unnecessary delays.</p>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">✓</div>
+                    <h3 data-i18n="fin.feature.transparent">No Prepayment Penalties</h3>
+                    <p data-i18n="fin.feature.transparent.desc">Pay off your loan early without any additional fees or penalties.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financing Partners Section -->
+        <section class="partners" id="financing-partners">
+            <h2 class="section-title">Our Financing Partners</h2>
+            <p class="section-subtitle">Trusted financing options designed to make your roof investment affordable and accessible.</p>
+
+            <div class="card-grid">
+                <div class="partner-card animate-on-scroll">
+                    <div class="partner-logo">Wells Fargo Home Projects</div>
+                    <h3>Wells Fargo Home Projects</h3>
+                    <p>Access up to $100,000 in financing with flexible terms and competitive rates.</p>
+                    <ul class="partner-features">
+                        <li>Loan amounts up to $100K</li>
+                        <li>0% intro APR options available</li>
+                        <li>Variable APR 6.99-24.99%</li>
+                        <li>Fast approval process</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+
+                <div class="partner-card animate-on-scroll">
+                    <div class="partner-logo">GoodLeap</div>
+                    <h3>GoodLeap</h3>
+                    <p>Clean energy and home improvement financing with simple applications and flexible terms.</p>
+                    <ul class="partner-features">
+                        <li>Flexible terms up to 25 years</li>
+                        <li>Fixed rate options</li>
+                        <li>$0 down payment</li>
+                        <li>Energy-efficient focus</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+
+                <div class="partner-card animate-on-scroll">
+                    <div class="partner-logo">Mosaic</div>
+                    <h3>Mosaic</h3>
+                    <p>Simple online applications with competitive rates for home improvement and solar projects.</p>
+                    <ul class="partner-features">
+                        <li>Competitive fixed rates</li>
+                        <li>Simple online application</li>
+                        <li>Quick funding available</li>
+                        <li>Flexible terms</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Getting financing for your roofing project is simple and straightforward.</p>
+
+            <div class="steps-container">
+                <div class="step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Free Roof Inspection</h3>
+                    <p>We'll assess your roof's condition and provide a comprehensive report of any damage or needed repairs.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3>Get Your Estimate</h3>
+                    <p>Receive a detailed written estimate with a breakdown of materials, labor, and financing options available.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3>Choose a Plan</h3>
+                    <p>Select from multiple financing options with different terms and rates that fit your budget.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">4</div>
+                    <h3>Start Your Project</h3>
+                    <p>Once approved, we'll schedule your project and get started on your new roof right away.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financing Calculator Section -->
+        <section class="calculator">
+            <h2 class="section-title">Financing Calculator</h2>
+            <p class="section-subtitle">Estimate your monthly payment with our simple calculator.</p>
+
+            <div class="calculator-container">
+                <div class="calculator-group">
+                    <label for="loanAmount" class="calculator-label">Loan Amount: <span id="loanAmountValue">$25,000</span></label>
+                    <input type="range" id="loanAmount" class="calculator-slider" min="5000" max="50000" value="25000" step="1000" aria-label="Loan amount slider">
+                    <div class="slider-value" id="loanDisplay">$25,000</div>
+                </div>
+
+                <div class="calculator-group">
+                    <label for="term" class="calculator-label">Loan Term (months)</label>
+                    <select id="term" class="calculator-input" aria-label="Select loan term">
+                        <option value="12">12 months</option>
+                        <option value="24">24 months</option>
+                        <option value="36" selected>36 months</option>
+                        <option value="60">60 months</option>
+                    </select>
+                </div>
+
+                <div class="calculator-group">
+                    <label for="apr" class="calculator-label">APR (%): <span id="aprValue">8.99</span>%</label>
+                    <input type="range" id="apr" class="calculator-slider" min="4.99" max="24.99" value="8.99" step="0.1" aria-label="APR slider">
+                    <div class="slider-value" id="aprDisplay">8.99%</div>
+                </div>
+
+                <div class="calculator-result">
+                    <p>Estimated Monthly Payment</p>
+                    <div class="monthly-payment" id="monthlyPayment">$762</div>
+                    <p class="payment-period">over <span id="termDisplay">36 months</span></p>
+                </div>
+
+                <p class="calculator-disclaimer">* Estimated only. Actual rates depend on credit approval. These are estimates based on typical lending criteria.</p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq">
+            <h2 class="section-title">Financing FAQs</h2>
+            <p class="section-subtitle">Common questions about our roofing financing options.</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+                        Do I need good credit to qualify for financing?
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1">
+                        <p>No, you don't necessarily need perfect credit. Our financing partners work with borrowers of varying credit profiles. While credit score does affect the interest rate offered, options are available for most credit situations. We recommend asking about specific programs that may suit your credit history.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+                        What's the application process like?
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2">
+                        <p>The application process is straightforward. After your roof inspection and estimate, we'll help you apply directly through our financing partners. Most applications are completed online in just a few minutes, and many customers receive approval decisions within hours. We'll walk you through every step of the process.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+                        Can I pay off my loan early without penalties?
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3">
+                        <p>Yes! All of our financing partners offer prepayment without penalties. You can pay off your loan early at any time without any additional fees. This helps you save on interest if you're able to pay off the balance faster.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+                        What roofing services can be financed?
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4">
+                        <p>Most roofing services can be financed, including complete roof replacements, repairs, maintenance, and upgrades. Whether you need a new roof due to age, damage, or just want to upgrade your current system, we can help arrange financing. Financing also covers materials, labor, and any additional roofing-related work needed.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq5">
+                        How long does the approval process take?
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq5" role="region" aria-labelledby="faq5">
+                        <p>Most customers receive approval decisions within minutes to a few hours of submitting their application online. In some cases, additional documentation may be required, which could extend the timeline slightly. We'll keep you updated throughout the process so you know exactly where things stand.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="final-cta">
+            <h2>Ready to Get Started?</h2>
+            <p>Get a free roof inspection and financing quote today.</p>
+            <div style="text-align: center;">
+                <a href="index.html#contact" class="btn btn-secondary">Schedule Free Inspection</a>
+                <a href="tel:(915)555-1234" class="btn btn-primary">Call (915) 861-8039</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="images/logos/meraki-stacked.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9;">
+                </div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="index.html#services">Roof Repair</a></li>
+                    <li><a href="index.html#services">Roof Replacement</a></li>
+                    <li><a href="storm-damage.html">Storm Damage</a></li>
+                    <li><a href="maintenance.html">Maintenance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="financing.html">Financing</a></li>
+                    <li><a href="insurance-claims.html">Insurance Claims</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:(915)555-1234">(915) 861-8039</a></li>
+                    <li><a href="mailto:info@merakiroofing.com">info@merakiroofing.com</a></li>
+                    <li>El Paso, TX</li>
+                    <li><a href="#">Service Area Map</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">© 2026 Meraki Roofing. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://facebook.com" aria-label="Follow on Facebook">f</a>
+                <a href="https://instagram.com" aria-label="Follow on Instagram">📷</a>
+                <a href="https://google.com" aria-label="Find us on Google">G</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "Meraki Roofing Financing",
+      "description": "Flexible financing options for roofing services",
+      "areaServed": "El Paso, TX",
+      "url": "https://merakiroofing.com/financing",
+      "telephone": "(915) 861-8039",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "telephone": "(915) 861-8039"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Wells Fargo Home Projects",
+          "price": "Contact for rates",
+          "priceCurrency": "USD",
+          "eligibleRegion": "US"
+        },
+        {
+          "@type": "Offer",
+          "name": "GoodLeap Financing",
+          "price": "Contact for rates",
+          "priceCurrency": "USD",
+          "eligibleRegion": "US"
+        },
+        {
+          "@type": "Offer",
+          "name": "Mosaic Financing",
+          "price": "Contact for rates",
+          "priceCurrency": "USD",
+          "eligibleRegion": "US"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Main Scripts -->
+    <script>
+        // ===== MOBILE MENU =====
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            mobileToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => { navLinks.classList.remove('active'); mobileToggle.setAttribute('aria-expanded', 'false'); });
+        });
+
+        // ===== RESOURCES DROPDOWN =====
+        const dropdown = document.getElementById('resourcesDropdown');
+        if (dropdown) {
+            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', dropdown.classList.contains('open'));
+            });
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // ===== NAVBAR SCROLL =====
+        const nav = document.getElementById('nav');
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    nav.classList.toggle('scrolled', window.scrollY > 50);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // ===== SCROLL ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ===== FAQ ACCORDION =====
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                const toggle = question.querySelector('.faq-toggle');
+                const isActive = question.classList.contains('active');
+
+                // Close all other FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.querySelector('.faq-question').classList.remove('active');
+                        item.querySelector('.faq-answer').classList.remove('active');
+                        item.querySelector('.faq-toggle').classList.remove('active');
+                        item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                // Toggle current FAQ
+                question.classList.toggle('active');
+                answer.classList.toggle('active');
+                toggle.classList.toggle('active');
+                question.setAttribute('aria-expanded', !isActive);
+            });
+        });
+
+        // ===== FINANCING CALCULATOR =====
+        const loanAmount = document.getElementById('loanAmount');
+        const term = document.getElementById('term');
+        const apr = document.getElementById('apr');
+        const monthlyPayment = document.getElementById('monthlyPayment');
+        const loanDisplay = document.getElementById('loanDisplay');
+        const aprDisplay = document.getElementById('aprDisplay');
+        const loanAmountValue = document.getElementById('loanAmountValue');
+        const aprValue = document.getElementById('aprValue');
+        const termDisplay = document.getElementById('termDisplay');
+
+        function calculatePayment() {
+            const principal = parseFloat(loanAmount.value);
+            const monthlyRate = parseFloat(apr.value) / 100 / 12;
+            const numberOfPayments = parseInt(term.value);
+
+            let payment;
+            if (monthlyRate === 0) {
+                payment = principal / numberOfPayments;
+            } else {
+                payment = (principal * (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments))) /
+                         (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+            }
+
+            monthlyPayment.textContent = '$' + payment.toFixed(0);
+            loanDisplay.textContent = '$' + principal.toLocaleString();
+            loanAmountValue.textContent = '$' + principal.toLocaleString();
+            aprDisplay.textContent = apr.value + '%';
+            aprValue.textContent = apr.value;
+            termDisplay.textContent = numberOfPayments + ' months';
+        }
+
+        loanAmount.addEventListener('input', calculatePayment);
+        term.addEventListener('change', calculatePayment);
+        apr.addEventListener('input', calculatePayment);
+
+        // Initial calculation
+        calculatePayment();
+
+        // ===== GA4 EVENT TRACKING FUNCTION =====
+        function trackEvent(eventName, eventData = {}) {
+            if (typeof window.gtag !== 'undefined') {
+                window.gtag('event', eventName, eventData);
+            }
+            console.log('Event tracked:', eventName, eventData);
+        }
+
+        // Track page view
+        trackEvent('page_view', {
+            page_title: 'Financing',
+            page_path: '/financing'
+        });
+
+        // Track button clicks
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const btnText = btn.textContent.trim();
+                trackEvent('button_click', {
+                    button_name: btnText,
+                    page: 'financing'
+                });
+            });
+        });
+
+        // Track calculator usage
+        [loanAmount, term, apr].forEach(input => {
+            input.addEventListener('change', () => {
+                trackEvent('calculator_interaction', {
+                    loan_amount: loanAmount.value,
+                    term: term.value,
+                    apr: apr.value,
+                    estimated_payment: monthlyPayment.textContent
+                });
+            });
+        });
+
+        // Track FAQ interactions
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const questionText = question.textContent.trim();
+                trackEvent('faq_toggle', {
+                    question: questionText,
+                    page: 'financing'
+                });
+            });
+        });
+    </script>
+
+    <!-- ============ TRANSLATION ENGINE ============ -->
+    <script>
+        // Store original text content on first load
+        const originalTexts = {};
+
+        // Spanish translations for all translatable elements
+        const translations = {
+            es: {
+                // Navigation
+                'nav.residential': 'Residencial',
+                'nav.commercial': 'Comercial',
+                'nav.storm': 'Daño por Tormenta',
+                'nav.maintenance': 'Mantenimiento',
+                'nav.resources': 'Recursos',
+                'nav.financing': 'Opciones de Financiamiento',
+                'nav.insurance': 'Reclamaciones de Seguros',
+                'nav.gallery': 'Galería',
+                'nav.about': 'Acerca de Nosotros',
+                'nav.blog': 'Blog',
+                'nav.faq': 'Preguntas Frecuentes',
+                'nav.estimate': 'Cotización Gratis',
+                'nav.cta': 'Comience Aquí',
+
+                // Financing page
+                'fin.hero.title': 'Financiamiento Asequible Para Su Proyecto de Techumbre',
+                'fin.hero.subtitle': 'Desde $0 de enganche hasta opciones de financiamiento flexible que se ajustan a su presupuesto. Aprobación rápida, sin sorpresas.',
+                'fin.hero.btn': 'Ver Opciones de Financiamiento',
+                'fin.why.title': 'Por Qué Elegir Financiamiento de Meraki',
+                'fin.why.subtitle': 'Hacemos que reparar o reemplazar su techo sea asequible',
+                'fin.feature.zero': 'Sin Enganche',
+                'fin.feature.zero.desc': 'Comience su proyecto sin dinero inicial',
+                'fin.feature.quick': 'Aprobación Rápida',
+                'fin.feature.quick.desc': 'Decisión en menos de 24 horas',
+                'fin.feature.flexible': 'Términos Flexibles',
+                'fin.feature.flexible.desc': 'Pagos mensuales que caben en su presupuesto',
+                'fin.feature.transparent': 'Transparente',
+                'fin.feature.transparent.desc': 'Sin tarifas ocultas o sorpresas',
+                'fin.options.title': 'Opciones de Financiamiento',
+                'fin.options.desc': 'Elija el plan que funcione mejor para usted',
+                'fin.faq.title': 'Preguntas Frecuentes Sobre Financiamiento',
+            }
+        };
+
+        // Main translation function
+        function setLanguage(lang) {
+            // Validate language
+            if (!translations[lang]) {
+                console.warn('Language not available:', lang);
+                lang = 'en';
+            }
+
+            // Store preference in localStorage
+            localStorage.setItem('preferred-language', lang);
+
+            // Update active button
+            document.querySelectorAll('[data-lang]').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+
+            // Translate all elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+
+                // Store original English text on first pass
+                if (!originalTexts[key]) {
+                    originalTexts[key] = el.textContent;
+                }
+
+                // Apply translation or revert to English
+                const translatedText = lang === 'es' && translations.es[key] ? translations.es[key] : originalTexts[key];
+
+                if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
+                    el.placeholder = translatedText;
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = translatedText;
+                } else if (el.tagName === 'BUTTON' && el.classList.contains('lang-btn')) {
+                    // Skip lang buttons
+                } else {
+                    el.textContent = translatedText;
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            setLanguage(savedLang);
+        });
+
+        // Fallback for very fast page loads
+        if (document.readyState !== 'loading') {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            setLanguage(savedLang);
+        }
+    </script>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <div class="theme-panel" id="themePanel">
+            <div class="theme-panel-title">Color Palette</div>
+            <button class="theme-option active" data-theme="default">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
+                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                </div>
+                Plum & Persimmon
+            </button>
+            <button class="theme-option" data-theme="charcoal-amber">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3A3A3A"></div>
+                    <div class="theme-swatch" style="background:#D97706"></div>
+                    <div class="theme-swatch" style="background:#D4A85C"></div>
+                </div>
+                Charcoal & Amber
+            </button>
+                    <div style="border-top: 1px solid #e0e0e0; margin: 6px 0; padding-top: 2px;"></div>
+            <div style="font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#bbb; padding: 0 10px 4px;">Horizontal Logo</div>
+            <button class="theme-option" data-theme="plum-h">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
+                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                </div>
+                Plum & Persimmon (H)
+            </button>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch color theme">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+    </div>
+
+
+    <script>
+    // Theme switcher
+    (function() {
+        let saved = localStorage.getItem('meraki-theme') || 'default';
+        if (['plum-persimmon', 'forest-terracotta', 'forest-h', 'navy-gold', 'slate-sage', 'olive-copper', 'olive-h'].includes(saved)) { saved = 'default'; localStorage.setItem('meraki-theme', 'default'); }
+        if (saved !== 'default') {
+            document.documentElement.setAttribute('data-theme', saved);
+        }
+
+        const logoMap = {
+            'default': 'images/logos/logo-plum-flat-transparent.png',
+            'charcoal-amber': 'images/logos/logo-charcoal-amber-h.png',
+                'plum-h': 'images/logos/logo-plum-flat-h.png',
+        };
+
+        const footerLogoMap = {
+            'charcoal-amber': 'images/logos/logo-charcoal-amber-wh.png',
+                'plum-h': 'images/logos/logo-plum-flat-wh.png',
+        };
+
+        const horizontalThemes = ['charcoal-amber', 'plum-h'];
+
+        function applyLogo(theme) {
+            const navImg = document.getElementById('navLogoImg');
+            if (navImg && logoMap[theme]) {
+                navImg.src = logoMap[theme];
+                if (horizontalThemes.includes(theme)) {
+                    navImg.classList.add('horizontal-logo');
+                } else {
+                    navImg.classList.remove('horizontal-logo');
+                }
+            }
+            const footerImg = document.getElementById('footerLogoImg');
+            if (footerImg) {
+                if (footerLogoMap[theme]) {
+                    footerImg.src = footerLogoMap[theme];
+                    footerImg.style.display = 'block';
+                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
+                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
+                    if (svgLogo) svgLogo.style.display = 'none';
+                    if (textLogo) textLogo.style.display = 'none';
+                } else {
+                    footerImg.style.display = 'none';
+                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
+                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
+                    if (svgLogo) svgLogo.style.display = '';
+                    if (textLogo) textLogo.style.display = '';
+                }
+            }
+        }
+
+        // Apply logo for saved theme on load
+        applyLogo(saved);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Re-apply after DOM ready
+            applyLogo(saved);
+
+            const panel = document.getElementById('themePanel');
+            const toggleBtn = document.getElementById('themeToggleBtn');
+            if (!panel || !toggleBtn) return;
+
+            // Mark active button
+            panel.querySelectorAll('.theme-option').forEach(opt => {
+                if (opt.dataset.theme === saved) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                panel.classList.toggle('open');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('#themeToggle')) {
+                    panel.classList.remove('open');
+                }
+            });
+
+            panel.querySelectorAll('.theme-option').forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const theme = this.dataset.theme;
+                    if (theme === 'default') {
+                        document.documentElement.removeAttribute('data-theme');
+                    } else {
+                        document.documentElement.setAttribute('data-theme', theme);
+                    }
+                    localStorage.setItem('meraki-theme', theme);
+                    panel.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+                    this.classList.add('active');
+                    applyLogo(theme);
+                    panel.classList.remove('open');
+                });
+            });
+        });
+    })();
+    </script>
+
+</body>
+</html>

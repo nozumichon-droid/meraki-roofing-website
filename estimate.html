@@ -1,0 +1,3452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roof Cost Estimate Calculator - Meraki Roofing | El Paso, TX</title>
+    <meta name="description" content="Get an instant roof estimate for your El Paso home. Answer a few questions and receive a ballpark price range in seconds. No email required, no obligations.">
+    <meta name="theme-color" content="#2C4A3E">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Roof Cost Estimate Calculator - Meraki Roofing">
+    <meta property="og:description" content="Get your instant roof estimate in seconds. Professional pricing for El Paso roofing projects.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://merakiroofing.com/estimate">
+    <meta property="og:image" content="https://merakiroofing.com/og-image.jpg">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://merakiroofing.com/estimate">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Meraki Roofing Estimate Calculator",
+        "description": "Interactive roof cost estimate calculator for El Paso roofing projects",
+        "url": "https://merakiroofing.com/estimate",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "USD",
+            "price": "0",
+            "description": "Free roof estimate calculator"
+        },
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Meraki Roofing",
+            "image": "https://merakiroofing.com/logo.jpg",
+            "telephone": "(915) 861-8039",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "El Paso",
+                "addressRegion": "TX",
+                "addressCountry": "US"
+            },
+            "sameAs": ["https://www.facebook.com/merakiroofing", "https://www.instagram.com/merakiroofing"]
+        }
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+            --success: #4CAF50;
+            --error: #E74C3C;
+            --spacing: 1rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-display: 'Lora', serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Palette 5: Charcoal & Amber */
+        [data-theme="charcoal-amber"] {
+            --forest: #3A3A3A;
+            --forest-deep: #2A2A2A;
+            --terracotta: #D97706;
+            --terracotta-dark: #B86305;
+            --terracotta-light: #F5B74A;
+            --cream: #F5F3EF;
+            --cream-dark: #EAE6DF;
+            --warm-white: #FAFAF8;
+            --charcoal: #2D2D2D;
+            --warm-gray: #6B6B6B;
+            --light-gray: #DCDCDC;
+            --gold: #D4A85C;
+            --gold-light: #F0DDB8;
+        }
+
+
+        /* Palette 8: Plum & Persimmon — Horizontal Logo */
+        [data-theme="plum-h"] {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        a { text-decoration: none; }
+
+        /* Navigation */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(253, 252, 250, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(44, 74, 62, 0.08); transition: all 0.3s ease; }
+        .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.06); }
+        .nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); display: flex; align-items: center; justify-content: space-evenly;
+            gap: 1rem; height: 120px; transition: height 0.3s ease; }
+
+        .nav.scrolled .nav-inner {
+            height: 80px;
+        }
+        .nav-logo { display: flex; align-items: center; gap: 12px; }
+        .nav-logo-icon {
+            width: 38px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-logo-icon svg { width: 100%; height: 100%; }
+        .nav-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+
+        .nav-logo-img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
+        }
+
+        .nav.scrolled .nav-logo-img {
+            height: 55px;
+        }
+        /* When horizontal logo is active, constrain logo width */
+        .nav-logo-img.horizontal-logo {
+            max-width: 260px;
+            height: auto;
+            max-height: 75px;
+        }
+        .nav.scrolled .nav-logo-img.horizontal-logo {
+            max-width: 200px;
+            max-height: 50px;
+        }
+
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 1;
+            position: relative;
+        }
+        .nav-logo-text span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--terracotta);
+            margin-top: 1px;
+        }
+
+        .nav-logo-accent {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--terracotta);
+            margin-top: 3px;
+            border-radius: 1px;
+        }
+        .nav-links { display: flex; align-items: center; gap: 1.4rem; }
+        .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--warm-gray); transition: color 0.25s; position: relative; }
+        .nav-links a:hover { color: var(--forest); }
+        .nav-links a.active { color: var(--forest); font-weight: 600; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--terracotta); border-radius: 2px; transition: width 0.3s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active::after { width: 100%; }
+        .nav-cta { background: var(--terracotta) !important; color: white !important; padding: 10px 22px; border-radius: 8px; font-weight: 600 !important; font-size: 0.88rem !important; transition: all 0.25s !important; box-shadow: 0 2px 8px rgba(196, 114, 75, 0.25); }
+        .nav-cta:hover { background: var(--terracotta-dark) !important; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(196, 114, 75, 0.35); }
+        .nav-cta::after { display: none !important; }
+
+        /* Resources Dropdown */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--warm-gray);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0;
+            transition: color 0.25s;
+        }
+
+        .nav-dropdown-toggle:hover { color: var(--forest); }
+
+        .nav-dropdown-toggle svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.25s;
+        }
+
+        .nav-dropdown.open .nav-dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+            min-width: 220px;
+            padding: 8px 0;
+            z-index: 1000;
+            border: 1px solid var(--light-gray);
+            animation: dropdownFade 0.2s ease;
+        }
+
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-top: 1px solid var(--light-gray);
+            border-left: 1px solid var(--light-gray);
+        }
+
+        .nav-dropdown.open .nav-dropdown-menu {
+            display: block;
+        }
+
+        .nav-dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px !important;
+            font-size: 0.88rem;
+            color: var(--warm-gray);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-dropdown-menu a::after { display: none !important; }
+
+        .nav-dropdown-menu a:hover {
+            background: var(--cream);
+            color: var(--forest);
+        }
+
+        .nav-dropdown-menu .dropdown-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .mobile-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .mobile-toggle span { width: 24px; height: 2.5px; background: var(--forest); border-radius: 2px; transition: all 0.3s; }
+        .skip-link { position: absolute; top: -100%; left: 50%; transform: translateX(-50%); background: var(--forest); color: white; padding: 12px 24px; border-radius: 0 0 8px 8px; z-index: 10000; font-weight: 600; transition: top 0.3s; }
+        .skip-link:focus { top: 0; }
+
+        /* Hero Section */
+        .hero {
+            background:
+                radial-gradient(ellipse at 80% 80%, rgba(255,92,52,0.12) 0%, transparent 60%),
+                linear-gradient(135deg, var(--forest-deep) 0%, var(--forest) 60%, var(--forest-deep) 100%);
+            color: var(--warm-white);
+            padding: 140px 2rem 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.03em;
+        }
+        .hero-breadcrumb a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .hero-breadcrumb a:hover { color: rgba(255,255,255,0.85); }
+        .hero-breadcrumb .sep { font-size: 0.6rem; opacity: 0.4; }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            margin-bottom: 0.6rem;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: clamp(0.88rem, 1.8vw, 1rem);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scroll-cta {
+            background-color: var(--gold);
+            color: var(--charcoal);
+            padding: 11px 26px;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(212, 168, 92, 0.3);
+        }
+
+        .scroll-cta:hover {
+            background-color: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 168, 92, 0.4);
+        }
+
+        .scroll-cta:active {
+            transform: translateY(-1px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Calculator Container */
+        .calculator-wrapper {
+            background-color: var(--warm-white);
+            padding: 4rem 1.5rem;
+        }
+
+        .calculator {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background-color: var(--cream);
+            padding: 2rem 1.5rem 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .progress-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .progress-step {
+            flex: 1;
+            min-width: 80px;
+            height: 4px;
+            background-color: var(--light-gray);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .progress-step.active {
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+            box-shadow: 0 2px 8px rgba(212, 168, 92, 0.3);
+        }
+
+        .progress-step.completed {
+            background-color: var(--success);
+        }
+
+        .progress-step:hover {
+            background-color: var(--cream-dark);
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--warm-gray);
+            letter-spacing: 0.5px;
+        }
+
+        /* Step Content */
+        .step-container {
+            padding: 3rem 2rem;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .step {
+            display: none;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .step.active {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .step.exit-left {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .step h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .step-subtitle {
+            color: var(--warm-gray);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Step 1: Roof Size */
+        .size-input-group {
+            margin-bottom: 2rem;
+        }
+
+        .roof-icon {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .roof-svg {
+            width: 120px;
+            height: auto;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .input-label {
+            display: block;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .slider-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(to right, var(--light-gray) 0%, var(--light-gray) 100%);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--terracotta) 100%);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(212, 168, 92, 0.4);
+            transition: var(--transition);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(212, 168, 92, 0.6);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--terracotta) 100%);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(212, 168, 92, 0.4);
+            transition: var(--transition);
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(212, 168, 92, 0.6);
+        }
+
+        .slider-value-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--cream);
+            border-radius: 4px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .value-label {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            font-weight: 500;
+        }
+
+        .value-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--forest);
+            font-family: 'Lora', serif;
+        }
+
+        .helper-text {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .size-input-field {
+            width: 100%;
+            max-width: 200px;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--charcoal);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .size-input-field:focus {
+            outline: none;
+            border-color: var(--gold);
+            background-color: var(--gold-light);
+        }
+
+        /* Material Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .material-card, .project-card, .story-card, .pitch-card {
+            padding: 1.5rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            background-color: white;
+            text-align: center;
+        }
+
+        .material-card:hover, .project-card:hover, .story-card:hover, .pitch-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 4px 16px rgba(212, 168, 92, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .material-card.selected, .project-card.selected, .story-card.selected, .pitch-card.selected {
+            border-color: var(--forest);
+            background: linear-gradient(135deg, rgba(44, 74, 62, 0.05) 0%, rgba(212, 168, 92, 0.05) 100%);
+            box-shadow: 0 6px 20px rgba(44, 74, 62, 0.15);
+        }
+
+        .material-card.selected::before {
+            content: '✓';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 28px;
+            height: 28px;
+            background-color: var(--forest);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .card-input {
+            display: none;
+        }
+
+        .material-badge {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--charcoal);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .material-badge.popular {
+            background-color: var(--terracotta);
+            color: white;
+        }
+
+        .material-badge.value {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .material-badge.premium {
+            background-color: var(--forest);
+            color: white;
+        }
+
+        .material-name {
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .material-price {
+            font-size: 0.95rem;
+            color: var(--warm-gray);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .material-description {
+            font-size: 0.8rem;
+            color: var(--warm-gray);
+            line-height: 1.5;
+        }
+
+        /* Project Type Cards */
+        .project-card {
+            text-align: left;
+            padding: 1.75rem;
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .project-details {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            line-height: 1.5;
+        }
+
+        /* Story & Pitch Cards */
+        .story-card, .pitch-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1.25rem;
+        }
+
+        .story-label, .pitch-label {
+            font-weight: 600;
+            color: var(--charcoal);
+            font-size: 0.95rem;
+        }
+
+        .story-value, .pitch-value {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            margin-top: 0.25rem;
+        }
+
+        .pitch-diagram {
+            width: 100%;
+            max-width: 120px;
+            height: auto;
+            margin: 0.5rem auto;
+            opacity: 0.7;
+        }
+
+        /* Issues Checkboxes */
+        .issues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--gold);
+            background-color: var(--cream);
+        }
+
+        .checkbox-item input {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--forest);
+        }
+
+        .checkbox-label {
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--charcoal);
+            user-select: none;
+        }
+
+        /* Result Screen */
+        .result-screen {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(44, 74, 62, 0.03) 0%, rgba(212, 168, 92, 0.03) 100%);
+            border-radius: 6px;
+            margin-bottom: 2rem;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .result-label {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .price-range {
+            font-family: 'Lora', serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            color: var(--forest);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .price-range-number {
+            display: inline-block;
+            min-width: 180px;
+            animation: priceCountUp 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes priceCountUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-subtext {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
+        .breakdown-panel {
+            background-color: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 6px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .breakdown-title {
+            font-family: 'Lora', serif;
+            font-size: 1.3rem;
+            color: var(--forest);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .breakdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .breakdown-label {
+            color: var(--warm-gray);
+            font-weight: 500;
+        }
+
+        .breakdown-value {
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .breakdown-item.total {
+            padding-top: 1.5rem;
+            margin-top: 1rem;
+            border-top: 2px solid var(--gold);
+        }
+
+        .breakdown-item.total .breakdown-label {
+            font-weight: 700;
+            color: var(--forest);
+            font-size: 1.1rem;
+        }
+
+        .breakdown-item.total .breakdown-value {
+            color: var(--forest);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Refine Estimate Section */
+        .refine-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(44,74,62,0.08), rgba(44,74,62,0.04));
+            border: 2px solid var(--forest);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--forest);
+            transition: all 0.3s ease;
+        }
+
+        .refine-toggle:hover {
+            background: rgba(44,74,62,0.12);
+            box-shadow: 0 2px 12px rgba(44,74,62,0.15);
+        }
+
+        .refine-toggle svg {
+            transition: transform 0.3s ease;
+        }
+
+        .refine-toggle.open svg {
+            transform: rotate(180deg);
+        }
+
+        .refine-panel {
+            display: none;
+            background: var(--warm-white);
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            animation: refineFadeIn 0.3s ease;
+        }
+
+        .refine-panel.open {
+            display: block;
+        }
+
+        @keyframes refineFadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .refine-section {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .refine-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .refine-section-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--forest-deep);
+            margin-bottom: 0.35rem;
+            font-weight: 700;
+        }
+
+        .refine-section-desc {
+            font-size: 0.8rem;
+            color: var(--warm-gray);
+            margin-bottom: 0.75rem;
+        }
+
+        .refine-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .refine-option {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .refine-option:hover {
+            border-color: var(--forest);
+        }
+
+        .refine-option.selected {
+            border-color: var(--forest);
+            background: rgba(44,74,62,0.06);
+            color: var(--forest);
+            font-weight: 600;
+        }
+
+        .refine-option input {
+            display: none;
+        }
+
+        .addon-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .addon-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 0.75rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: var(--charcoal);
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .addon-item:hover {
+            border-color: var(--forest);
+        }
+
+        .addon-item.selected {
+            border-color: var(--forest);
+            background: rgba(44,74,62,0.06);
+        }
+
+        .addon-item input[type="checkbox"] {
+            accent-color: var(--forest);
+            width: 16px;
+            height: 16px;
+        }
+
+        .addon-price {
+            margin-left: auto;
+            font-size: 0.72rem;
+            color: var(--warm-gray);
+            white-space: nowrap;
+        }
+
+        .refine-note {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(212,168,92,0.08);
+            border-radius: 8px;
+            font-size: 0.78rem;
+            color: var(--warm-gray);
+        }
+
+        .financing-box {
+            background-color: var(--gold-light);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+        }
+
+        .financing-label {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .financing-amount {
+            font-family: 'Lora', serif;
+            font-size: 1.75rem;
+            color: var(--forest);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .financing-details {
+            font-size: 0.8rem;
+            color: var(--warm-gray);
+        }
+
+        .trust-elements {
+            background-color: var(--cream);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--forest);
+        }
+
+        .trust-disclaimer {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-item::before {
+            content: '★';
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 1rem 1.75rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-height: 50px;
+        }
+
+        .btn-next, .btn-primary {
+            background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+            color: white;
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .btn-next:hover, .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 74, 62, 0.25);
+        }
+
+        .btn-next:active, .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-back {
+            background-color: white;
+            color: var(--forest);
+            border: 2px solid var(--light-gray);
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .btn-back:hover {
+            border-color: var(--gold);
+            background-color: var(--cream);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--forest);
+            border: 2px solid var(--forest);
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--forest);
+            color: white;
+        }
+
+        .btn-tertiary {
+            background-color: white;
+            color: var(--terracotta);
+            border: 2px solid var(--terracotta);
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .btn-tertiary:hover {
+            background-color: var(--terracotta);
+            color: white;
+        }
+
+        .btn-recalculate {
+            background-color: var(--warm-gray);
+            color: white;
+            margin-top: 1.5rem;
+        }
+
+        .btn-recalculate:hover {
+            background-color: var(--charcoal);
+        }
+
+        /* How We Calculate Section */
+        .how-section {
+            background-color: var(--cream);
+            padding: 4rem 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .how-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .how-section h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--forest);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .how-text {
+            color: var(--charcoal);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .factor-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .factor-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--gold);
+            text-align: center;
+        }
+
+        .factor-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .factor-name {
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .how-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .how-cta a {
+            color: var(--forest);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .how-cta a:hover {
+            color: var(--terracotta);
+            opacity: 0.85;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            padding: 4rem 1.5rem;
+            background-color: var(--warm-white);
+        }
+
+        .comparison-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .comparison-section h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--forest);
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+            color: white;
+            padding: 1.25rem;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-table td {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--light-gray);
+            font-size: 0.95rem;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background-color: var(--cream);
+        }
+
+        .comparison-table tr:hover td {
+            color: var(--forest);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 1.5rem;
+            background-color: var(--cream);
+        }
+
+        .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-section h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--forest);
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .faq-item {
+            background-color: white;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--charcoal);
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background-color: var(--cream);
+            color: var(--forest);
+        }
+
+        .faq-question.active {
+            background-color: var(--gold-light);
+            color: var(--forest);
+        }
+
+        .faq-icon {
+            font-size: 1.25rem;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .faq-text {
+            color: var(--charcoal);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--forest);
+            color: var(--warm-white);
+            padding: 3rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .nav-logo-icon {
+            width: 38px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .nav-logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-logo-text {
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 1;
+            position: relative;
+        }
+
+        .nav-logo-text span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--terracotta);
+            margin-top: 1px;
+        }
+
+        .nav-logo-accent {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--terracotta);
+            margin-top: 3px;
+            border-radius: 1px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-contact {
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Sticky Mobile CTA */
+        .sticky-mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--forest);
+            padding: 1rem 1.5rem;
+            box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+        }
+
+        .sticky-mobile-cta button {
+            width: 100%;
+            background-color: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .sticky-mobile-cta button:hover {
+            background-color: var(--gold-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .factor-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 76px; left: 0; right: 0; background: var(--warm-white); padding: 1.5rem; border-top: 1px solid var(--light-gray); box-shadow: 0 20px 40px rgba(0,0,0,0.1); gap: 0; }
+            .nav-links.active a { padding: 14px 0; border-bottom: 1px solid var(--light-gray); }
+            .nav-links.active .nav-cta { margin-top: 12px; text-align: center; display: block; }
+
+            /* Mobile dropdown */
+            .nav-dropdown { width: 100%; }
+
+            .nav-dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid var(--light-gray);
+                justify-content: space-between;
+            }
+
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                background: var(--cream);
+                min-width: 100%;
+                animation: none;
+            }
+
+            .nav-dropdown-menu::before { display: none; }
+
+            .nav-dropdown-menu a {
+                padding: 12px 20px !important;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 160px 1.5rem 5rem 1.5rem;
+                min-height: 40vh;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.5rem, 4vw, 2.2rem);
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .step-container {
+                padding: 2rem 1.5rem;
+                min-height: auto;
+            }
+
+            .step h2 {
+                font-size: 1.5rem;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .material-card, .project-card, .story-card, .pitch-card {
+                padding: 1rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .btn-next, .btn-back, .btn-secondary, .btn-tertiary {
+                flex: 1;
+                min-width: 100%;
+            }
+
+            .price-range {
+                font-size: 2rem;
+            }
+
+            .sticky-mobile-cta {
+                display: block;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table th, .comparison-table td {
+                padding: 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .progress-bar {
+                gap: 0.5rem;
+            }
+
+            .progress-step {
+                min-width: 60px;
+            }
+
+            .result-screen {
+                padding: 1.5rem;
+            }
+
+            .breakdown-panel {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: white;
+                padding: 1rem;
+                gap: 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+
+            .step h2 {
+                font-size: 1.25rem;
+            }
+
+            .price-range {
+                font-size: 1.75rem;
+            }
+
+            .comparison-table {
+                font-size: 0.75rem;
+            }
+
+            .comparison-table th, .comparison-table td {
+                padding: 0.5rem;
+            }
+
+            .factor-list {
+                grid-template-columns: 1fr;
+            }
+
+            .addon-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .refine-options {
+                flex-direction: column;
+            }
+        }
+
+        /* Loading States */
+        .loading {
+            position: relative;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        button:focus-visible, input:focus-visible, a:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        /* Error State */
+        .error-message {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .error-message::before {
+            content: '⚠';
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            background: var(--warm-white);
+            border: 2px solid var(--light-gray);
+            border-radius: 20px;
+            padding: 2px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--forest);
+        }
+
+        .lang-btn {
+            padding: 4px 10px;
+            border-radius: 16px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--warm-gray);
+            transition: all 0.25s ease;
+            line-height: 1;
+        }
+
+        .lang-btn.active {
+            background: var(--forest);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .lang-toggle {
+                margin-left: 0.25rem;
+            }
+
+            .lang-btn {
+                padding: 3px 8px;
+                font-size: 0.7rem;
+            }
+        }
+    
+        /* ============ THEME TOGGLE UI ============ */
+        .theme-toggle {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+        .theme-toggle-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--forest);
+            color: white;
+            border: 2px solid white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            transition: all 0.3s;
+        }
+        .theme-toggle-btn:hover { transform: scale(1.1); }
+        .theme-panel {
+            position: absolute;
+            bottom: 54px;
+            left: 0;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+            padding: 1rem;
+            min-width: 220px;
+            opacity: 0;
+            transform: translateY(10px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.25s ease;
+        }
+        .theme-panel.open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .theme-panel-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--warm-gray);
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+            border: none;
+            background: none;
+            width: 100%;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+        .theme-option:hover { background: var(--cream); }
+        .theme-option.active { background: var(--cream); font-weight: 700; }
+        .theme-swatches { display: flex; gap: 3px; flex-shrink: 0; }
+        .theme-swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 1.5px solid rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .theme-toggle { bottom: 80px; left: 16px; }
+        }
+
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="residential.html" data-i18n="nav.residential">Residential</a>
+                <a href="commercial.html" data-i18n="nav.commercial">Commercial</a>
+                <a href="storm-damage.html" data-i18n="nav.storm">Storm Damage</a>
+                <a href="maintenance.html" data-i18n="nav.maintenance">Maintenance</a>
+                <div class="nav-dropdown" id="resourcesDropdown">
+                    <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.resources">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="financing.html" role="menuitem"><span class="dropdown-icon">💰</span><span data-i18n="nav.financing">Financing Options</span></a>
+                        <a href="insurance-claims.html" role="menuitem"><span class="dropdown-icon">📋</span><span data-i18n="nav.insurance">Insurance Claims</span></a>
+                        <a href="gallery.html" role="menuitem"><span class="dropdown-icon">📸</span><span data-i18n="nav.gallery">Gallery</span></a>
+                        <a href="gaf.html" role="menuitem"><span class="dropdown-icon">🛡️</span><span data-i18n="nav.gaf">GAF Products</span></a>
+                        <a href="index.html#about" role="menuitem"><span class="dropdown-icon">🏠</span><span data-i18n="nav.about">About Us</span></a>
+                        <a href="blog.html" role="menuitem"><span class="dropdown-icon">📝</span><span data-i18n="nav.blog">Blog</span></a>
+                        <a href="index.html#faq" role="menuitem"><span class="dropdown-icon">❓</span><span data-i18n="nav.faq">FAQs</span></a>
+                    </div>
+                </div>
+                <a href="estimate.html" class="active" data-i18n="nav.estimate">Free Estimate</a>
+                <a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a>
+                <div class="lang-toggle" id="langToggle" aria-label="Language selector">
+                    <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+                </div>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep">›</span>
+                <span>Free Estimate</span>
+            </nav>
+            <h1 data-i18n="est.hero.title">Get Your Instant Roof Estimate</h1>
+            <p data-i18n="est.hero.desc">Answer a few questions and get a ballpark price range in seconds. No email required, no obligations.</p>
+            <button class="scroll-cta" aria-label="Start calculator" data-i18n="est.hero.btn">Start Calculator</button>
+        </div>
+    </section>
+
+    <!-- Main Calculator -->
+    <section class="calculator-wrapper" id="main-content">
+        <div class="calculator">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-step active" id="step1Indicator"></div>
+                    <div class="progress-step" id="step2Indicator"></div>
+                    <div class="progress-step" id="step3Indicator"></div>
+                    <div class="progress-step" id="step4Indicator"></div>
+                    <div class="progress-step" id="step5Indicator"></div>
+                </div>
+                <div class="progress-text" id="progressText" data-i18n="est.progress.step1">Step 1 of 5: Roof Size</div>
+            </div>
+
+            <!-- Calculator Steps -->
+            <div class="step-container">
+                <!-- Step 1: Roof Size -->
+                <div class="step active" id="step1" data-step="1">
+                    <h2 data-i18n="est.step1.title">How large is your roof?</h2>
+                    <p class="step-subtitle" data-i18n="est.step1.subtitle">We'll use this to calculate your estimate</p>
+
+                    <div class="roof-icon">
+                        <svg class="roof-svg" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 60 L60 20 L100 60 Z" stroke="#2C4A3E" stroke-width="2" fill="none"/>
+                            <line x1="60" y1="20" x2="60" y2="60" stroke="#2C4A3E" stroke-width="1" stroke-dasharray="2,2"/>
+                            <rect x="25" y="60" width="70" height="10" stroke="#2C4A3E" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+
+                    <div class="size-input-group">
+                        <label for="roofSize" class="input-label" data-i18n="est.step1.label">Roof Size (Square Feet)</label>
+                        <div class="slider-container">
+                            <input type="range" id="roofSize" min="500" max="15000" value="1800" aria-label="Roof size in square feet">
+                        </div>
+                        <div class="slider-value-display">
+                            <span class="value-label" data-i18n="est.step1.sqft">Square Feet:</span>
+                            <div>
+                                <input type="number" id="sizeInput" class="size-input-field" min="500" max="15000" value="1800" aria-label="Roof size input">
+                            </div>
+                        </div>
+                        <p class="helper-text" data-i18n="est.step1.helper">Not sure? Average home: 1,500-2,200 sq ft · Commercial: 5,000-15,000 sq ft</p>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-next" onclick="nextStep()" data-i18n="est.btn.next">Next Step</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Material Selection -->
+                <div class="step" id="step2" data-step="2">
+                    <h2 data-i18n="est.step2.title">Choose your roofing material</h2>
+                    <p class="step-subtitle" data-i18n="est.step2.subtitle">Select the option that best fits your needs</p>
+
+                    <div class="card-grid" id="materialGrid">
+                        <!-- Generated by JavaScript -->
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-back" onclick="prevStep()" data-i18n="est.btn.back">Back</button>
+                        <button class="btn-next" onclick="nextStep()" data-i18n="est.btn.next">Next Step</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Project Type -->
+                <div class="step" id="step3" data-step="3">
+                    <h2 data-i18n="est.step3.title">What type of project?</h2>
+                    <p class="step-subtitle" data-i18n="est.step3.subtitle">This affects the total cost</p>
+
+                    <div class="card-grid" style="max-width: 600px; margin: 2rem auto;" id="projectGrid">
+                        <!-- Generated by JavaScript -->
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-back" onclick="prevStep()" data-i18n="est.btn.back">Back</button>
+                        <button class="btn-next" onclick="nextStep()" data-i18n="est.btn.next">Next Step</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Home Details -->
+                <div class="step" id="step4" data-step="4">
+                    <h2 data-i18n="est.step4.title">Tell us about your home</h2>
+                    <p class="step-subtitle" data-i18n="est.step4.subtitle">A few more details to refine your estimate</p>
+
+                    <!-- Stories -->
+                    <div style="margin-bottom: 2rem;">
+                        <label class="input-label" data-i18n="est.step4.stories.label">How many stories is your home?</label>
+                        <div class="card-grid" style="max-width: 300px; margin-top: 1rem;" id="storyGrid">
+                            <!-- Generated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Pitch -->
+                    <div style="margin-bottom: 2rem;">
+                        <label class="input-label" data-i18n="est.step4.pitch.label">What's your roof pitch?</label>
+                        <p class="step-subtitle" style="margin-top: 0.5rem;" data-i18n="est.step4.pitch.helper">Not sure? Most El Paso homes are standard (4:12-6:12)</p>
+                        <div class="card-grid" id="pitchGrid">
+                            <!-- Generated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Roof Complexity -->
+                    <div style="margin-bottom: 2rem;">
+                        <label class="input-label" data-i18n="est.step4.complexity.label">Roof shape/complexity</label>
+                        <p class="step-subtitle" style="margin-top: 0.5rem;" data-i18n="est.step4.complexity.helper">More complex layouts require additional labor and materials</p>
+                        <div class="card-grid" id="complexityGrid">
+                            <!-- Generated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Issues -->
+                    <div>
+                        <label class="input-label" data-i18n="est.step4.issues.label">Any known issues? (optional)</label>
+                        <p class="step-subtitle" style="margin-top: 0.5rem;" data-i18n="est.step4.issues.helper">This helps us personalize your follow-up recommendations</p>
+                        <div class="issues-grid" id="issuesGrid">
+                            <!-- Generated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-back" onclick="prevStep()" data-i18n="est.btn.back">Back</button>
+                        <button class="btn-next" onclick="nextStep()" data-i18n="est.btn.see">See Your Estimate</button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Results -->
+                <div class="step" id="step5" data-step="5">
+                    <h2 data-i18n="est.step5.title">Your Roof Estimate</h2>
+
+                    <div class="result-screen">
+                        <div class="result-header">
+                            <div class="result-label" data-i18n="est.step5.cost.label">Estimated Total Cost</div>
+                            <div class="price-range">
+                                <span class="price-range-number" id="priceRange">$0 — $0</span>
+                            </div>
+                            <p class="result-subtext" id="resultSummary"></p>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-panel">
+                        <h3 class="breakdown-title" data-i18n="est.step5.breakdown.title">Cost Breakdown</h3>
+                        <div id="breakdownItems">
+                            <!-- Generated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Refine Your Estimate -->
+                    <button class="refine-toggle" id="refineToggle" onclick="toggleRefine()" data-i18n="est.step5.refine.toggle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        Want a more accurate estimate? Fine-tune your details
+                    </button>
+
+                    <div class="refine-panel" id="refinePanel">
+                        <!-- Existing Layers -->
+                        <div class="refine-section">
+                            <div class="refine-section-title" data-i18n="est.step5.refine.layers.title">Existing Roof Layers</div>
+                            <div class="refine-section-desc" data-i18n="est.step5.refine.layers.desc">More layers = higher tear-off and disposal costs</div>
+                            <div class="refine-options" id="layerOptions">
+                                <label class="refine-option selected" data-value="1">
+                                    <input type="radio" name="layers" value="1" checked onchange="selectLayer(1)">
+                                    1 Layer (Standard)
+                                </label>
+                                <label class="refine-option" data-value="2">
+                                    <input type="radio" name="layers" value="2" onchange="selectLayer(2)">
+                                    2 Layers (+$0.50/sqft)
+                                </label>
+                                <label class="refine-option" data-value="3">
+                                    <input type="radio" name="layers" value="3" onchange="selectLayer(3)">
+                                    3+ Layers (+$1.25/sqft)
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Decking Condition -->
+                        <div class="refine-section">
+                            <div class="refine-section-title" data-i18n="est.step5.refine.decking.title">Decking / Sheathing Condition</div>
+                            <div class="refine-section-desc" data-i18n="est.step5.refine.decking.desc">Damaged plywood underneath may need replacing before new roof goes on</div>
+                            <div class="refine-options" id="deckingOptions">
+                                <label class="refine-option selected" data-value="good">
+                                    <input type="radio" name="decking" value="good" checked onchange="selectDecking('good')">
+                                    Good (No repairs)
+                                </label>
+                                <label class="refine-option" data-value="minor">
+                                    <input type="radio" name="decking" value="minor" onchange="selectDecking('minor')">
+                                    Minor Repairs (~10%)
+                                </label>
+                                <label class="refine-option" data-value="major">
+                                    <input type="radio" name="decking" value="major" onchange="selectDecking('major')">
+                                    Significant Repairs (~25%+)
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Common Add-ons -->
+                        <div class="refine-section">
+                            <div class="refine-section-title" data-i18n="est.step5.refine.addons.title">Common Add-ons</div>
+                            <div class="refine-section-desc" data-i18n="est.step5.refine.addons.desc">Select any extras you'd like included</div>
+                            <div class="addon-grid" id="addonGrid">
+                                <label class="addon-item" data-addon="ridge-vent">
+                                    <input type="checkbox" onchange="toggleAddon('ridge-vent')">
+                                    Ridge Vent
+                                    <span class="addon-price">+$300–$600</span>
+                                </label>
+                                <label class="addon-item" data-addon="drip-edge">
+                                    <input type="checkbox" onchange="toggleAddon('drip-edge')">
+                                    Drip Edge
+                                    <span class="addon-price">+$200–$500</span>
+                                </label>
+                                <label class="addon-item" data-addon="gutters">
+                                    <input type="checkbox" onchange="toggleAddon('gutters')">
+                                    Gutter Replacement
+                                    <span class="addon-price">+$800–$2,000</span>
+                                </label>
+                                <label class="addon-item" data-addon="skylight">
+                                    <input type="checkbox" onchange="toggleAddon('skylight')">
+                                    Skylight Flashing
+                                    <span class="addon-price">+$200–$500</span>
+                                </label>
+                                <label class="addon-item" data-addon="chimney">
+                                    <input type="checkbox" onchange="toggleAddon('chimney')">
+                                    Chimney Flashing
+                                    <span class="addon-price">+$250–$600</span>
+                                </label>
+                                <label class="addon-item" data-addon="soffit-fascia">
+                                    <input type="checkbox" onchange="toggleAddon('soffit-fascia')">
+                                    Soffit & Fascia Repair
+                                    <span class="addon-price">+$500–$1,500</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="refine-note" data-i18n="est.step5.refine.note">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                            Your estimate updates automatically as you adjust these options.
+                        </div>
+                    </div>
+
+                    <div class="financing-box">
+                        <div class="financing-label" data-i18n="est.step5.financing.label">Monthly Payment Option</div>
+                        <div class="financing-amount" id="monthlyPayment">$0/mo</div>
+                        <div class="financing-details" data-i18n="est.step5.financing.details">60-month financing at 5.99% APR (estimate)</div>
+                    </div>
+
+                    <div class="trust-elements">
+                        <p class="trust-disclaimer" data-i18n="est.step5.disclaimer">This is an estimate only. Actual costs may vary based on roof complexity, material availability, and current labor rates.</p>
+                        <div class="trust-badges">
+                            <div class="badge-item" data-i18n="est.step5.badge.rating">4.9★ rated</div>
+                            <div class="badge-item" data-i18n="est.step5.badge.completed">500+ roofs completed</div>
+                            <div class="badge-item" data-i18n="est.step5.badge.licensed">Licensed & Insured</div>
+                        </div>
+                    </div>
+
+                    <div class="button-group" style="flex-direction: column; gap: 1rem;">
+                        <button class="btn-primary" onclick="contactForQuote()" data-i18n="est.step5.btn.quote">Get Your Exact Quote — Free Inspection</button>
+                        <button class="btn-secondary" onclick="window.location.href='financing.html'" data-i18n="est.step5.btn.financing">Explore Financing Options</button>
+                        <button class="btn-tertiary" onclick="window.location.href='tel:(915) 861-8039'" data-i18n="est.step5.btn.call">Call (915) 861-8039</button>
+                    </div>
+
+                    <button class="btn-recalculate" onclick="recalculate()" data-i18n="est.step5.btn.recalculate">← Adjust & Recalculate</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Calculate -->
+    <section class="how-section">
+        <div class="how-content">
+            <h2 data-i18n="est.how.title">How We Calculate Your Estimate</h2>
+            <p class="how-text" data-i18n="est.how.desc">Our estimates are based on current El Paso market rates, updated regularly to reflect material costs and labor availability.</p>
+
+            <div class="factor-list">
+                <div class="factor-item">
+                    <div class="factor-icon">📐</div>
+                    <div class="factor-name" data-i18n="est.how.factor1">Roof Size</div>
+                    <p style="font-size: 0.85rem; color: var(--warm-gray);" data-i18n="est.how.factor1.desc">Square footage of coverage</p>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-icon">🏠</div>
+                    <div class="factor-name" data-i18n="est.how.factor2">Material Type</div>
+                    <p style="font-size: 0.85rem; color: var(--warm-gray);" data-i18n="est.how.factor2.desc">Premium to budget options</p>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-icon">🔨</div>
+                    <div class="factor-name" data-i18n="est.how.factor3">Labor & Removal</div>
+                    <p style="font-size: 0.85rem; color: var(--warm-gray);" data-i18n="est.how.factor3.desc">Installation and tear-off costs</p>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-icon">📊</div>
+                    <div class="factor-name" data-i18n="est.how.factor4">Home Details</div>
+                    <p style="font-size: 0.85rem; color: var(--warm-gray);" data-i18n="est.how.factor4.desc">Stories, pitch, complexity</p>
+                </div>
+            </div>
+
+            <div class="how-cta">
+                <p data-i18n="est.how.cta.text">Want exact pricing based on a site inspection?</p>
+                <a href="#contact-modal" data-i18n="est.how.cta.link">Schedule a free inspection →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison-section">
+        <div class="comparison-content">
+            <h2 data-i18n="est.comparison.title">Material Comparison Guide</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th data-i18n="est.comparison.material">Material</th>
+                        <th data-i18n="est.comparison.cost">Cost/sqft</th>
+                        <th data-i18n="est.comparison.lifespan">Lifespan</th>
+                        <th data-i18n="est.comparison.best">Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Architectural Shingles</strong></td>
+                        <td>$4.00-$7.00</td>
+                        <td>25-30 years</td>
+                        <td>Most homes, popular & reliable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Standing Seam Metal</strong></td>
+                        <td>$9.00-$14.00</td>
+                        <td>40-60 years</td>
+                        <td>Long-term value, durability</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metal Shingle-Style</strong></td>
+                        <td>$7.00-$10.00</td>
+                        <td>30-50 years</td>
+                        <td>Metal look with easier install</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Clay/Concrete Tile</strong></td>
+                        <td>$8.00-$14.00</td>
+                        <td>50+ years</td>
+                        <td>Southwest charm & durability</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flat/Foam (TPO/EPDM)</strong></td>
+                        <td>$4.50-$7.00</td>
+                        <td>15-25 years</td>
+                        <td>Flat roofs, commercial</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Natural Slate</strong></td>
+                        <td>$15.00-$30.00</td>
+                        <td>75-100 years</td>
+                        <td>Luxury, historic properties</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Synthetic Slate</strong></td>
+                        <td>$7.00-$12.00</td>
+                        <td>30-50 years</td>
+                        <td>Slate look, lighter weight</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-content">
+            <h2 data-i18n="est.faq.title">Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span data-i18n="est.faq.q1">How accurate is this estimate?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p class="faq-text" data-i18n="est.faq.a1">Our calculator uses current El Paso market data and provides a solid ballpark range. For exact pricing, we recommend a free on-site inspection where we can evaluate roof complexity, existing damage, and material availability.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span data-i18n="est.faq.q2">Does this estimate include labor costs?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p class="faq-text" data-i18n="est.faq.a2">Yes! Our pricing is fully installed and includes labor, materials, permits, and basic cleanup. Tear-off of existing roofing is an additional charge (shown in the breakdown).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span data-i18n="est.faq.q3">What if my roof is under warranty or insurance covers the damage?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p class="faq-text" data-i18n="est.faq.a3">Great question! Many insurance policies and warranties cover roofing work. We can help you navigate the claims process and work directly with your insurance company. Call us at (915) 861-8039 to discuss.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span data-i18n="est.faq.q4">Do you offer financing?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p class="faq-text" data-i18n="est.faq.a4">Absolutely. We work with several lending partners to offer flexible financing options. Visit our <a href="financing.html">financing page</a> for more details and current offers.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span data-i18n="est.faq.q5">How long does installation take?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p class="faq-text" data-i18n="est.faq.a5">Most residential roof installations take 1-3 days depending on size and complexity. Weather can affect the timeline. We'll provide a specific schedule when you book your free inspection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="images/logos/meraki-stacked.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9;">
+                </div>
+                <p style="font-weight: 500; margin-bottom: 1rem;">Premium roofing solutions for El Paso, TX</p>
+                <div class="footer-contact">
+                    <p>📞 (915) 861-8039</p>
+                    <p>📧 hello@merakiroofing.com</p>
+                    <p>📍 El Paso, TX</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="residential.html">Residential</a></li>
+                    <li><a href="commercial.html">Commercial</a></li>
+                    <li><a href="storm-damage.html">Storm Damage</a></li>
+                    <li><a href="insurance-claims.html">Insurance Claims</a></li>
+                    <li><a href="financing.html">Financing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="maintenance.html">Maintenance Tips</a></li>
+                    <li><a href="estimate.html">Free Estimate</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-divider">
+            <p>&copy; 2025 Meraki Roofing. Licensed & Insured. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-mobile-cta" id="stickyCTA">
+        <button onclick="contactForQuote()" style="background-color: var(--gold); color: var(--charcoal);">Get Free Inspection</button>
+    </div>
+
+    <script>
+        // ========== DATA & STATE ==========
+        const materials = [
+            { id: 'asphalt-arch', name: 'Architectural Shingles', low: 4.00, high: 7.00, badge: 'popular', label: 'Most Popular', description: 'Best all-around choice for most homes' },
+            { id: 'metal-standing', name: 'Metal (Standing Seam)', low: 9.00, high: 14.00, badge: 'premium', label: 'Premium', description: 'Durable, 40-60 year lifespan' },
+            { id: 'metal-shingle', name: 'Metal (Shingle-Style)', low: 7.00, high: 10.00, badge: '', label: '', description: 'Metal look, easier installation' },
+            { id: 'tile', name: 'Clay/Concrete Tile', low: 8.00, high: 14.00, badge: '', label: '', description: 'Southwest style, 50+ year lifespan' },
+            { id: 'flat-foam', name: 'Flat/Foam (TPO/EPDM)', low: 4.50, high: 7.00, badge: '', label: '', description: 'Ideal for flat roofs' },
+            { id: 'slate-natural', name: 'Natural Slate', low: 15.00, high: 30.00, badge: 'premium', label: 'Luxury', description: 'Premium, 75-100 year lifespan' },
+            { id: 'slate-synthetic', name: 'Synthetic Slate', low: 7.00, high: 12.00, badge: '', label: '', description: 'Slate look, lighter weight' }
+        ];
+
+        const projectTypes = [
+            { id: 'replacement', icon: '🔄', title: 'Replacement (Tear-off)', details: 'Remove existing roof and install new. Most common. Price: +$1.50-$2.50/sqft' },
+            { id: 'new-construction', icon: '🏗️', title: 'New Construction', details: 'Fresh install on new structure. No tear-off costs.' }
+        ];
+
+        const stories = [
+            { id: 'one-story', label: '1 Story', value: 1, multiplier: 1.0 },
+            { id: 'two-plus', label: '2+ Stories', value: 2, multiplier: 1.15 }
+        ];
+
+        const pitches = [
+            { id: 'pitch-low', label: 'Low (<4:12)', value: 'low', multiplier: 1.0, description: 'Gentle slope' },
+            { id: 'pitch-standard', label: 'Standard (4:12-6:12)', value: 'standard', multiplier: 1.0, description: 'Most common' },
+            { id: 'pitch-steep', label: 'Steep (>6:12)', value: 'steep', multiplier: 1.10, description: 'High angle' }
+        ];
+
+        const roofComplexities = [
+            { id: 'simple', label: 'Simple', value: 'simple', multiplier: 1.0, description: 'Gable or flat roof, few if any penetrations' },
+            { id: 'moderate', label: 'Moderate', value: 'moderate', multiplier: 1.12, description: 'Hip roof, L-shaped, some valleys' },
+            { id: 'complex', label: 'Complex', value: 'complex', multiplier: 1.25, description: 'Multi-level, dormers, many valleys/angles' }
+        ];
+
+        const issues = [
+            { id: 'leaks', label: 'Leaks' },
+            { id: 'sagging', label: 'Sagging' },
+            { id: 'storm-damage', label: 'Storm Damage' },
+            { id: 'skylight', label: 'Skylight' },
+            { id: 'chimney', label: 'Chimney Flashing' }
+        ];
+
+        // State
+        let currentStep = 1;
+        let formData = {
+            roofSize: 1800,
+            material: 'asphalt-arch',
+            projectType: 'replacement',
+            stories: 'one-story',
+            pitch: 'pitch-standard',
+            roofComplexity: 'simple',
+            issues: [],
+            layers: 1,
+            decking: 'good',
+            addons: []
+        };
+
+        // ========== INITIALIZATION ==========
+        function initCalculator() {
+            renderMaterialCards();
+            renderProjectCards();
+            renderStoryCards();
+            renderPitchCards();
+            renderComplexityCards();
+            renderIssuesCheckboxes();
+            setupEventListeners();
+            setupMobileNav();
+        }
+
+        function setupMobileNav() {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+            mobileToggle.addEventListener('click', () => { const isOpen = navLinks.classList.toggle('active'); mobileToggle.setAttribute('aria-expanded', isOpen); });
+            navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); mobileToggle.setAttribute('aria-expanded', 'false'); }); });
+            const nav = document.getElementById('nav');
+            let ticking = false;
+            window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(() => { nav.classList.toggle('scrolled', window.scrollY > 50); ticking = false; }); ticking = true; } }, { passive: true });
+        }
+
+        // ===== RESOURCES DROPDOWN =====
+        const dropdown = document.getElementById('resourcesDropdown');
+        if (dropdown) {
+            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', dropdown.classList.contains('open'));
+            });
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // ========== RENDER FUNCTIONS ==========
+        function renderMaterialCards() {
+            const grid = document.getElementById('materialGrid');
+            grid.innerHTML = materials.map(material => `
+                <label class="material-card ${material.id === formData.material ? 'selected' : ''}" style="cursor: pointer;">
+                    <input type="radio" name="material" value="${material.id}" class="card-input" ${material.id === formData.material ? 'checked' : ''} onchange="selectMaterial('${material.id}')">
+                    ${material.badge ? `<span class="material-badge ${material.badge}">${material.label}</span>` : ''}
+                    <div class="material-name">${material.name}</div>
+                    <div class="material-price">$${material.low.toFixed(2)} — $${material.high.toFixed(2)}/sqft</div>
+                    <div class="material-description">${material.description}</div>
+                </label>
+            `).join('');
+        }
+
+        function renderProjectCards() {
+            const grid = document.getElementById('projectGrid');
+            grid.innerHTML = projectTypes.map(project => `
+                <label class="project-card ${project.id === formData.projectType ? 'selected' : ''}" style="cursor: pointer;">
+                    <input type="radio" name="projectType" value="${project.id}" class="card-input" ${project.id === formData.projectType ? 'checked' : ''} onchange="selectProject('${project.id}')">
+                    <div class="project-icon">${project.icon}</div>
+                    <div class="project-title">${project.title}</div>
+                    <div class="project-details">${project.details}</div>
+                </label>
+            `).join('');
+        }
+
+        function renderStoryCards() {
+            const grid = document.getElementById('storyGrid');
+            grid.innerHTML = stories.map(story => `
+                <label class="story-card ${story.id === formData.stories ? 'selected' : ''}" style="cursor: pointer;">
+                    <input type="radio" name="stories" value="${story.id}" class="card-input" ${story.id === formData.stories ? 'checked' : ''} onchange="selectStory('${story.id}')">
+                    <div class="story-label">${story.label}</div>
+                    <div class="story-value">${story.value === 1 ? 'Single level' : 'Multiple levels'}</div>
+                </label>
+            `).join('');
+        }
+
+        const pitchDiagrams = {
+            'pitch-low': '<svg width="80" height="44" viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="32" width="72" height="10" rx="1.5" fill="#F0EAE2" stroke="#E8E3DD" stroke-width="1"/><path d="M8 32 L40 22 L72 32" stroke="#C4724B" stroke-width="2.5" fill="rgba(196,114,75,0.06)" stroke-linecap="round" stroke-linejoin="round"/><text x="40" y="15" text-anchor="middle" font-size="9" fill="#6B6560" font-family="Inter,sans-serif">~15°</text></svg>',
+            'pitch-standard': '<svg width="80" height="44" viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="34" width="72" height="8" rx="1.5" fill="#F0EAE2" stroke="#E8E3DD" stroke-width="1"/><path d="M8 34 L40 12 L72 34" stroke="#C4724B" stroke-width="2.5" fill="rgba(196,114,75,0.06)" stroke-linecap="round" stroke-linejoin="round"/><text x="40" y="7" text-anchor="middle" font-size="9" fill="#6B6560" font-family="Inter,sans-serif">~30°</text></svg>',
+            'pitch-steep': '<svg width="80" height="44" viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="38" width="72" height="4" rx="1" fill="#F0EAE2" stroke="#E8E3DD" stroke-width="1"/><path d="M16 38 L40 4 L64 38" stroke="#C4724B" stroke-width="2.5" fill="rgba(196,114,75,0.06)" stroke-linecap="round" stroke-linejoin="round"/><text x="40" y="22" text-anchor="middle" font-size="9" fill="#6B6560" font-family="Inter,sans-serif">~45°+</text></svg>'
+        };
+
+        const complexityDiagrams = {
+            'simple': '<svg width="90" height="48" viewBox="0 0 90 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="32" width="74" height="12" rx="1.5" fill="#F0EAE2" stroke="#E8E3DD" stroke-width="1"/><path d="M12 32 L45 12 L78 32" stroke="#2C4A3E" stroke-width="2.5" fill="rgba(44,74,62,0.06)" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            'moderate': '<svg width="90" height="48" viewBox="0 0 90 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="34" width="74" height="10" rx="1.5" fill="#F0EAE2" stroke="#E8E3DD" stroke-width="1"/><path d="M12 34 L30 18 L48 28 L48 28 L66 14 L78 34" stroke="#2C4A3E" stroke-width="2.5" fill="rgba(44,74,62,0.06)" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            'complex': '<svg width="90" height="48" viewBox="0 0 90 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="36" width="74" height="8" rx="1.5" fill="#F0EAE2" stroke="#E8E3DD" stroke-width="1"/><path d="M12 36 L22 20 L32 28 L42 10 L52 24 L58 16 L68 26 L78 36" stroke="#2C4A3E" stroke-width="2.5" fill="rgba(44,74,62,0.06)" stroke-linecap="round" stroke-linejoin="round"/><rect x="38" y="22" width="8" height="14" stroke="#2C4A3E" stroke-width="1.5" fill="rgba(44,74,62,0.08)" rx="1"/></svg>'
+        };
+
+        function renderPitchCards() {
+            const grid = document.getElementById('pitchGrid');
+            grid.innerHTML = pitches.map(pitch => `
+                <label class="pitch-card ${pitch.id === formData.pitch ? 'selected' : ''}" style="cursor: pointer; text-align: center;">
+                    <input type="radio" name="pitch" value="${pitch.id}" class="card-input" ${pitch.id === formData.pitch ? 'checked' : ''} onchange="selectPitch('${pitch.id}')">
+                    <div style="margin-bottom: 6px;">${pitchDiagrams[pitch.id]}</div>
+                    <div class="pitch-label">${pitch.label}</div>
+                    <div class="pitch-value">${pitch.description}</div>
+                </label>
+            `).join('');
+        }
+
+        function renderComplexityCards() {
+            const grid = document.getElementById('complexityGrid');
+            grid.innerHTML = roofComplexities.map(c => `
+                <label class="pitch-card ${c.id === formData.roofComplexity ? 'selected' : ''}" style="cursor: pointer; text-align: center;">
+                    <input type="radio" name="complexity" value="${c.id}" class="card-input" ${c.id === formData.roofComplexity ? 'checked' : ''} onchange="selectComplexity('${c.id}')">
+                    <div style="margin-bottom: 6px;">${complexityDiagrams[c.id]}</div>
+                    <div class="pitch-label">${c.label}</div>
+                    <div class="pitch-value">${c.description}</div>
+                </label>
+            `).join('');
+        }
+
+        function renderIssuesCheckboxes() {
+            const grid = document.getElementById('issuesGrid');
+            grid.innerHTML = issues.map(issue => `
+                <label class="checkbox-item" style="cursor: pointer;">
+                    <input type="checkbox" name="issue-${issue.id}" value="${issue.id}" class="issue-checkbox" ${formData.issues.includes(issue.id) ? 'checked' : ''} onchange="toggleIssue('${issue.id}')">
+                    <span class="checkbox-label">${issue.label}</span>
+                </label>
+            `).join('');
+        }
+
+        // ========== SELECTION HANDLERS ==========
+        function selectMaterial(materialId) {
+            formData.material = materialId;
+            renderMaterialCards();
+            trackEvent('select_material', { material: materialId });
+        }
+
+        function selectProject(projectId) {
+            formData.projectType = projectId;
+            renderProjectCards();
+            trackEvent('select_project', { project: projectId });
+        }
+
+        function selectStory(storyId) {
+            formData.stories = storyId;
+            renderStoryCards();
+        }
+
+        function selectPitch(pitchId) {
+            formData.pitch = pitchId;
+            renderPitchCards();
+        }
+
+        function selectComplexity(complexityId) {
+            formData.roofComplexity = complexityId;
+            renderComplexityCards();
+        }
+
+        function toggleIssue(issueId) {
+            if (formData.issues.includes(issueId)) {
+                formData.issues = formData.issues.filter(i => i !== issueId);
+            } else {
+                formData.issues.push(issueId);
+            }
+        }
+
+        // ========== REFINE ESTIMATE HANDLERS ==========
+        const addonPrices = {
+            'ridge-vent': { low: 300, high: 600 },
+            'drip-edge': { low: 200, high: 500 },
+            'gutters': { low: 800, high: 2000 },
+            'skylight': { low: 200, high: 500 },
+            'chimney': { low: 250, high: 600 },
+            'soffit-fascia': { low: 500, high: 1500 }
+        };
+
+        function toggleRefine() {
+            const toggle = document.getElementById('refineToggle');
+            const panel = document.getElementById('refinePanel');
+            toggle.classList.toggle('open');
+            panel.classList.toggle('open');
+        }
+
+        function selectLayer(value) {
+            formData.layers = value;
+            document.querySelectorAll('#layerOptions .refine-option').forEach(opt => {
+                opt.classList.toggle('selected', parseInt(opt.dataset.value) === value);
+            });
+            recalculateRefine();
+        }
+
+        function selectDecking(value) {
+            formData.decking = value;
+            document.querySelectorAll('#deckingOptions .refine-option').forEach(opt => {
+                opt.classList.toggle('selected', opt.dataset.value === value);
+            });
+            recalculateRefine();
+        }
+
+        function toggleAddon(addonId) {
+            const idx = formData.addons.indexOf(addonId);
+            if (idx > -1) {
+                formData.addons.splice(idx, 1);
+            } else {
+                formData.addons.push(addonId);
+            }
+            document.querySelector(`.addon-item[data-addon="${addonId}"]`).classList.toggle('selected');
+            recalculateRefine();
+        }
+
+        function recalculateRefine() {
+            calculateAndDisplayResults();
+        }
+
+        // ========== SLIDER & INPUT SYNC ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            const roofSize = document.getElementById('roofSize');
+            const sizeInput = document.getElementById('sizeInput');
+
+            if (roofSize) {
+                roofSize.addEventListener('input', (e) => {
+                    formData.roofSize = parseInt(e.target.value);
+                    sizeInput.value = formData.roofSize;
+                    updateRoofIcon();
+                });
+            }
+
+            if (sizeInput) {
+                sizeInput.addEventListener('input', (e) => {
+                    let value = parseInt(e.target.value) || 0;
+                    value = Math.max(500, Math.min(5000, value));
+                    formData.roofSize = value;
+                    roofSize.value = value;
+                    sizeInput.value = value;
+                    updateRoofIcon();
+                });
+            }
+
+            // Scroll CTA
+            const scrollCTA = document.querySelector('.scroll-cta');
+            if (scrollCTA) {
+                scrollCTA.addEventListener('click', () => {
+                    document.querySelector('.calculator').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            initCalculator();
+        });
+
+        function updateRoofIcon() {
+            const roofSvg = document.querySelector('.roof-svg');
+            if (!roofSvg) return;
+            const scale = Math.min(1.5, 0.8 + (formData.roofSize - 500) / 4500 * 0.7);
+            roofSvg.style.transform = `scale(${scale})`;
+        }
+
+        // ========== STEP NAVIGATION ==========
+        function nextStep() {
+            if (currentStep === 1) {
+                if (formData.roofSize < 500 || formData.roofSize > 15000) {
+                    showError('Please enter a roof size between 500 and 15,000 sq ft');
+                    return;
+                }
+            }
+
+            if (currentStep === 2) {
+                if (!formData.material) {
+                    showError('Please select a roofing material');
+                    return;
+                }
+            }
+
+            if (currentStep === 3) {
+                if (!formData.projectType) {
+                    showError('Please select a project type');
+                    return;
+                }
+            }
+
+            if (currentStep === 4) {
+                if (!formData.stories) {
+                    showError('Please select your home story count');
+                    return;
+                }
+                if (!formData.pitch) {
+                    showError('Please select your roof pitch');
+                    return;
+                }
+            }
+
+            if (currentStep < 5) {
+                goToStep(currentStep + 1);
+                if (currentStep === 4) {
+                    calculateAndDisplayResults();
+                }
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                goToStep(currentStep - 1);
+            }
+        }
+
+        function goToStep(stepNumber) {
+            const currentStepEl = document.getElementById(`step${currentStep}`);
+            const nextStepEl = document.getElementById(`step${stepNumber}`);
+
+            if (currentStepEl) {
+                currentStepEl.classList.remove('active');
+                currentStepEl.classList.add('exit-left');
+            }
+
+            setTimeout(() => {
+                if (currentStepEl) {
+                    currentStepEl.classList.remove('exit-left');
+                }
+
+                if (nextStepEl) {
+                    nextStepEl.classList.add('active');
+                }
+
+                // Update progress bar
+                updateProgressBar(stepNumber);
+                document.querySelector('.calculator').scrollIntoView({ behavior: 'smooth' });
+
+                currentStep = stepNumber;
+                trackEvent('step_view', { step: stepNumber });
+            }, 200);
+        }
+
+        function updateProgressBar(stepNumber) {
+            for (let i = 1; i <= 5; i++) {
+                const indicator = document.getElementById(`step${i}Indicator`);
+                if (i < stepNumber) {
+                    indicator.classList.remove('active');
+                    indicator.classList.add('completed');
+                } else if (i === stepNumber) {
+                    indicator.classList.add('active');
+                    indicator.classList.remove('completed');
+                } else {
+                    indicator.classList.remove('active', 'completed');
+                }
+            }
+
+            const labels = ['Step 1 of 5: Roof Size', 'Step 2 of 5: Material', 'Step 3 of 5: Project Type', 'Step 4 of 5: Home Details', 'Step 5 of 5: Your Estimate'];
+            document.getElementById('progressText').textContent = labels[stepNumber - 1];
+        }
+
+        // ========== CALCULATIONS ==========
+        function calculateEstimate() {
+            const material = materials.find(m => m.id === formData.material);
+            const projectType = projectTypes.find(p => p.id === formData.projectType);
+            const story = stories.find(s => s.id === formData.stories);
+            const pitch = pitches.find(p => p.id === formData.pitch);
+            const complexity = roofComplexities.find(c => c.id === formData.roofComplexity);
+
+            let baseLow = material.low * formData.roofSize;
+            let baseHigh = material.high * formData.roofSize;
+
+            let tearOffLow = 0, tearOffHigh = 0;
+            if (formData.projectType === 'replacement') {
+                tearOffLow = 1.50 * formData.roofSize;
+                tearOffHigh = 2.50 * formData.roofSize;
+            }
+
+            // Extra layer costs (only for replacement)
+            let layerCostLow = 0, layerCostHigh = 0;
+            if (formData.projectType === 'replacement' && formData.layers > 1) {
+                const layerRate = formData.layers === 2 ? 0.50 : 1.25;
+                layerCostLow = layerRate * formData.roofSize;
+                layerCostHigh = layerRate * formData.roofSize;
+            }
+
+            // Decking repair costs
+            let deckingCostLow = 0, deckingCostHigh = 0;
+            if (formData.decking === 'minor') {
+                deckingCostLow = 0.75 * formData.roofSize * 0.10;
+                deckingCostHigh = 1.50 * formData.roofSize * 0.10;
+            } else if (formData.decking === 'major') {
+                deckingCostLow = 0.75 * formData.roofSize * 0.25;
+                deckingCostHigh = 1.50 * formData.roofSize * 0.25;
+            }
+
+            // Add-on costs
+            let addonCostLow = 0, addonCostHigh = 0;
+            formData.addons.forEach(id => {
+                if (addonPrices[id]) {
+                    addonCostLow += addonPrices[id].low;
+                    addonCostHigh += addonPrices[id].high;
+                }
+            });
+
+            let storyMultiplier = story.multiplier;
+            let pitchMultiplier = pitch.multiplier;
+            let complexityMultiplier = complexity.multiplier;
+            let combinedMultiplier = storyMultiplier * pitchMultiplier * complexityMultiplier;
+
+            let totalLow = (baseLow + tearOffLow + layerCostLow + deckingCostLow) * combinedMultiplier + addonCostLow;
+            let totalHigh = (baseHigh + tearOffHigh + layerCostHigh + deckingCostHigh) * combinedMultiplier + addonCostHigh;
+
+            return {
+                baseLow, baseHigh,
+                tearOffLow, tearOffHigh,
+                layerCostLow, layerCostHigh,
+                deckingCostLow, deckingCostHigh,
+                addonCostLow, addonCostHigh,
+                storyMultiplier, pitchMultiplier, complexityMultiplier,
+                totalLow, totalHigh
+            };
+        }
+
+        function calculateAndDisplayResults() {
+            const calc = calculateEstimate();
+            const material = materials.find(m => m.id === formData.material);
+            const story = stories.find(s => s.id === formData.stories);
+            const pitch = pitches.find(p => p.id === formData.pitch);
+            const complexity = roofComplexities.find(c => c.id === formData.roofComplexity);
+
+            // Show/hide layers option based on project type
+            const layerSection = document.getElementById('layerOptions');
+            if (layerSection) {
+                layerSection.closest('.refine-section').style.display = formData.projectType === 'replacement' ? 'block' : 'none';
+            }
+
+            // Format price range
+            const priceRange = document.getElementById('priceRange');
+            const low = Math.round(calc.totalLow);
+            const high = Math.round(calc.totalHigh);
+            priceRange.textContent = `$${low.toLocaleString()} — $${high.toLocaleString()}`;
+
+            // Summary text
+            const stories_label = story.value === 1 ? '1-story' : '2+ story';
+            const pitch_label = pitch.label;
+            const complexity_label = complexity.label.toLowerCase();
+            document.getElementById('resultSummary').textContent = `Your estimate is based on ${material.name} for ${formData.roofSize.toLocaleString()} sq ft, ${stories_label}, ${pitch_label}, ${complexity_label} layout roof`;
+
+            // Breakdown
+            const breakdownItems = document.getElementById('breakdownItems');
+            let html = `
+                <div class="breakdown-item">
+                    <div class="breakdown-label">Base Material Cost</div>
+                    <div class="breakdown-value">$${Math.round(calc.baseLow).toLocaleString()} — $${Math.round(calc.baseHigh).toLocaleString()}</div>
+                </div>
+            `;
+
+            if (formData.projectType === 'replacement') {
+                html += `
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">Tear-off & Removal</div>
+                        <div class="breakdown-value">$${Math.round(calc.tearOffLow).toLocaleString()} — $${Math.round(calc.tearOffHigh).toLocaleString()}</div>
+                    </div>
+                `;
+            }
+
+            if (story.value > 1) {
+                const surcharge = Math.round((calc.baseLow + calc.tearOffLow) * (story.multiplier - 1));
+                html += `
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">2+ Story Surcharge (+15%)</div>
+                        <div class="breakdown-value">$${surcharge.toLocaleString()}</div>
+                    </div>
+                `;
+            }
+
+            if (pitch.multiplier > 1.0) {
+                const surcharge = Math.round((calc.baseLow + calc.tearOffLow) * (pitch.multiplier - 1));
+                html += `
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">Steep Pitch Surcharge (+10%)</div>
+                        <div class="breakdown-value">$${surcharge.toLocaleString()}</div>
+                    </div>
+                `;
+            }
+
+            if (calc.complexityMultiplier > 1.0) {
+                const pct = Math.round((calc.complexityMultiplier - 1) * 100);
+                const surcharge = Math.round((calc.baseLow + calc.tearOffLow) * (calc.complexityMultiplier - 1));
+                const complexity = roofComplexities.find(c => c.id === formData.roofComplexity);
+                html += `
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">${complexity.label} Roof Layout (+${pct}%)</div>
+                        <div class="breakdown-value">$${surcharge.toLocaleString()}</div>
+                    </div>
+                `;
+            }
+
+            // Refine extras
+            if (calc.layerCostLow > 0) {
+                const layerLabel = formData.layers === 2 ? '2-Layer' : '3+ Layer';
+                html += `
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">${layerLabel} Tear-off (+$${formData.layers === 2 ? '0.50' : '1.25'}/sqft)</div>
+                        <div class="breakdown-value">$${Math.round(calc.layerCostLow).toLocaleString()}</div>
+                    </div>
+                `;
+            }
+
+            if (calc.deckingCostLow > 0) {
+                const deckLabel = formData.decking === 'minor' ? 'Minor Decking Repair (~10%)' : 'Significant Decking Repair (~25%)';
+                html += `
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">${deckLabel}</div>
+                        <div class="breakdown-value">$${Math.round(calc.deckingCostLow).toLocaleString()} — $${Math.round(calc.deckingCostHigh).toLocaleString()}</div>
+                    </div>
+                `;
+            }
+
+            if (calc.addonCostLow > 0) {
+                html += `
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">Add-ons (${formData.addons.length} selected)</div>
+                        <div class="breakdown-value">$${Math.round(calc.addonCostLow).toLocaleString()} — $${Math.round(calc.addonCostHigh).toLocaleString()}</div>
+                    </div>
+                `;
+            }
+
+            html += `
+                <div class="breakdown-item total">
+                    <div class="breakdown-label">Total Estimate</div>
+                    <div class="breakdown-value">$${Math.round(calc.totalLow).toLocaleString()} — $${Math.round(calc.totalHigh).toLocaleString()}</div>
+                </div>
+            `;
+
+            breakdownItems.innerHTML = html;
+
+            // Monthly payment
+            const midpoint = (calc.totalLow + calc.totalHigh) / 2;
+            const monthlyRate = 0.0599 / 12;
+            const months = 60;
+            const monthlyPayment = midpoint * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+            document.getElementById('monthlyPayment').textContent = `$${Math.round(monthlyPayment)}/mo`;
+
+            trackEvent('view_estimate', {
+                material: formData.material,
+                size: formData.roofSize,
+                type: formData.projectType,
+                total_low: Math.round(calc.totalLow),
+                total_high: Math.round(calc.totalHigh)
+            });
+        }
+
+        // ========== CTA HANDLERS ==========
+        function contactForQuote() {
+            trackEvent('contact_click', { step: currentStep });
+            window.location.href = 'index.html#contact';
+        }
+
+        function recalculate() {
+            goToStep(1);
+            document.getElementById('roofSize').focus();
+        }
+
+        // ========== FAQ TOGGLE ==========
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+
+            // Close all others
+            document.querySelectorAll('.faq-answer.active').forEach(a => {
+                a.classList.remove('active');
+                a.previousElementSibling.classList.remove('active');
+            });
+
+            // Toggle this one
+            if (!isActive) {
+                answer.classList.add('active');
+                element.classList.add('active');
+            }
+        }
+
+        // ========== UTILITY FUNCTIONS ==========
+        function showError(message) {
+            const container = document.querySelector('.step-container');
+            let errorEl = container.querySelector('.error-message');
+            if (errorEl) errorEl.remove();
+
+            errorEl = document.createElement('div');
+            errorEl.className = 'error-message';
+            errorEl.style.cssText = 'position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background: var(--error); color: white; padding: 1rem 2rem; border-radius: 4px; width: 90%; max-width: 400px; z-index: 1000;';
+            errorEl.textContent = message;
+            container.appendChild(errorEl);
+
+            setTimeout(() => errorEl.remove(), 4000);
+        }
+
+        // ========== ANALYTICS ==========
+        function trackEvent(eventName, eventData = {}) {
+            if (window.gtag) {
+                gtag('event', eventName, eventData);
+            }
+            console.log('Event:', eventName, eventData);
+        }
+
+        // ========== INTERNATIONALIZATION (i18n) ==========
+        // Store original English text for fallback
+        const originalTexts = {};
+
+        // Spanish translations for all translatable elements
+        const translations = {
+            es: {
+                // Navigation
+                'nav.residential': 'Residencial',
+                'nav.commercial': 'Comercial',
+                'nav.storm': 'Daño por Tormenta',
+                'nav.maintenance': 'Mantenimiento',
+                'nav.resources': 'Recursos',
+                'nav.financing': 'Opciones de Financiamiento',
+                'nav.insurance': 'Reclamaciones de Seguros',
+                'nav.gallery': 'Galería',
+                'nav.about': 'Acerca de Nosotros',
+                'nav.blog': 'Blog',
+                'nav.faq': 'Preguntas Frecuentes',
+                'nav.estimate': 'Cotización Gratis',
+                'nav.cta': 'Comience Aquí',
+
+                // Hero section
+                'est.hero.title': 'Obtenga Su Cotización Instantánea de Techo',
+                'est.hero.desc': 'Responda algunas preguntas y obtenga un rango de precio estimado en segundos. Sin correo electrónico requerido, sin obligaciones.',
+                'est.hero.btn': 'Iniciar Calculadora',
+
+                // Progress and steps
+                'est.progress.step1': 'Paso 1 de 5: Tamaño del Techo',
+                'est.step1.title': '¿Qué tan grande es su techo?',
+                'est.step1.subtitle': 'Usaremos esto para calcular su cotización',
+                'est.step1.label': 'Tamaño del Techo (Pies Cuadrados)',
+                'est.step1.sqft': 'Pies Cuadrados:',
+                'est.step1.helper': '¿No está seguro? Hogar promedio: 1,500-2,200 pies cuadrados · Comercial: 5,000-15,000 pies cuadrados',
+
+                // Step 2
+                'est.step2.title': 'Elija su material de techumbre',
+                'est.step2.subtitle': 'Seleccione la opción que mejor se adapte a sus necesidades',
+
+                // Step 3
+                'est.step3.title': '¿Qué tipo de proyecto?',
+                'est.step3.subtitle': 'Esto afecta el costo total',
+
+                // Step 4
+                'est.step4.title': 'Cuéntenos sobre su hogar',
+                'est.step4.subtitle': 'Algunos detalles más para refinar su cotización',
+                'est.step4.stories.label': '¿Cuántos pisos tiene su hogar?',
+                'est.step4.pitch.label': '¿Cuál es la inclinación de su techo?',
+                'est.step4.pitch.helper': '¿No está seguro? La mayoría de los hogares de El Paso son estándar (4:12-6:12)',
+                'est.step4.complexity.label': 'Forma/complejidad del techo',
+                'est.step4.complexity.helper': 'Los diseños más complejos requieren mano de obra y materiales adicionales',
+                'est.step4.issues.label': '¿Algún problema conocido? (opcional)',
+                'est.step4.issues.helper': 'Esto nos ayuda a personalizar nuestras recomendaciones de seguimiento',
+
+                // Buttons
+                'est.btn.next': 'Siguiente Paso',
+                'est.btn.back': 'Atrás',
+                'est.btn.see': 'Ver Su Cotización',
+
+                // Step 5 Results
+                'est.step5.title': 'Su Cotización de Techo',
+                'est.step5.cost.label': 'Costo Total Estimado',
+                'est.step5.breakdown.title': 'Desglose de Costos',
+                'est.step5.refine.toggle': '¿Desea una cotización más precisa? Ajuste sus detalles',
+                'est.step5.refine.layers.title': 'Capas de Techo Existentes',
+                'est.step5.refine.layers.desc': 'Más capas = costos más altos de demolición y disposición',
+                'est.step5.refine.decking.title': 'Condición del Revestimiento / Tablero',
+                'est.step5.refine.decking.desc': 'Es posible que la madera contrachapada dañada debajo necesite ser reemplazada antes de que el techo nuevo se coloque',
+                'est.step5.refine.addons.title': 'Complementos Comunes',
+                'est.step5.refine.addons.desc': 'Seleccione los extras que desea incluir',
+                'est.step5.refine.note': 'Su cotización se actualiza automáticamente a medida que ajusta estas opciones.',
+                'est.step5.financing.label': 'Opción de Pago Mensual',
+                'est.step5.financing.details': 'Financiamiento de 60 meses al 5.99% APR (estimado)',
+                'est.step5.disclaimer': 'Esta es solo una cotización. Los costos reales pueden variar según la complejidad del techo, disponibilidad de materiales y tasas laborales actuales.',
+                'est.step5.badge.rating': 'Calificado 4.9★',
+                'est.step5.badge.completed': 'Más de 500 techos completados',
+                'est.step5.badge.licensed': 'Licenciado y Asegurado',
+                'est.step5.btn.quote': 'Obtenga Su Cotización Exacta — Inspección Gratuita',
+                'est.step5.btn.financing': 'Explorar Opciones de Financiamiento',
+                'est.step5.btn.call': 'Llamar (915) 861-8039',
+                'est.step5.btn.recalculate': '← Ajustar y Recalcular',
+
+                // How We Calculate
+                'est.how.title': 'Cómo Calculamos Su Cotización',
+                'est.how.desc': 'Nuestras cotizaciones se basan en tasas de mercado actuales de El Paso, actualizadas regularmente para reflejar costos de materiales y disponibilidad de mano de obra.',
+                'est.how.factor1': 'Tamaño del Techo',
+                'est.how.factor1.desc': 'Metraje cuadrado de cobertura',
+                'est.how.factor2': 'Tipo de Material',
+                'est.how.factor2.desc': 'Opciones premium a presupuesto',
+                'est.how.factor3': 'Mano de Obra y Demolición',
+                'est.how.factor3.desc': 'Costos de instalación y demolición',
+                'est.how.factor4': 'Detalles del Hogar',
+                'est.how.factor4.desc': 'Pisos, inclinación, complejidad',
+                'est.how.cta.text': '¿Desea precios exactos basados en una inspección del sitio?',
+                'est.how.cta.link': 'Programar inspección gratuita →',
+
+                // Comparison Table
+                'est.comparison.title': 'Guía de Comparación de Materiales',
+                'est.comparison.material': 'Material',
+                'est.comparison.cost': 'Costo/pies cuadrados',
+                'est.comparison.lifespan': 'Vida Útil',
+                'est.comparison.best': 'Mejor Para',
+
+                // FAQ
+                'est.faq.title': 'Preguntas Frecuentes',
+                'est.faq.q1': '¿Qué tan precisa es esta cotización?',
+                'est.faq.a1': 'Nuestra calculadora utiliza datos de mercado actual de El Paso y proporciona un rango sólido. Para precios exactos, recomendamos una inspección gratuita en el sitio donde podemos evaluar la complejidad del techo, daños existentes y disponibilidad de materiales.',
+                'est.faq.q2': '¿Esta cotización incluye costos laborales?',
+                'est.faq.a2': '¡Sí! Nuestros precios están completamente instalados e incluyen mano de obra, materiales, permisos y limpieza básica. La demolición del techo existente es un cargo adicional (mostrado en el desglose).',
+                'est.faq.q3': '¿Y si mi techo está bajo garantía o el seguro cubre el daño?',
+                'est.faq.a3': '¡Buena pregunta! Muchas pólizas de seguros y garantías cubren trabajos de techumbre. Podemos ayudarle a navegar el proceso de reclamación y trabajar directamente con su compañía de seguros. Llámenos al (915) 861-8039 para discutir.',
+                'est.faq.q4': '¿Ofrecen financiamiento?',
+                'est.faq.a4': 'Por supuesto. Trabajamos con varios socios de préstamos para ofrecer opciones de financiamiento flexible. Visite nuestra página de financiamiento para más detalles y ofertas actuales.',
+                'est.faq.q5': '¿Cuánto tarda la instalación?',
+                'est.faq.a5': 'La mayoría de las instalaciones de techos residenciales toman 1-3 días dependiendo del tamaño y la complejidad. El clima puede afectar el cronograma. Le proporcionaremos un horario específico cuando reserve su inspección gratuita.',
+            }
+        };
+
+        // Main translation function
+        function setLanguage(lang) {
+            // Validate language
+            if (!translations[lang]) {
+                console.warn('Language not available:', lang);
+                lang = 'en';
+            }
+
+            // Store preference in localStorage
+            localStorage.setItem('preferred-language', lang);
+
+            // Update document language attribute
+            document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+
+                // Store original text on first run
+                if (!originalTexts[key]) {
+                    if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
+                        originalTexts[key] = el.placeholder;
+                    } else if (el.tagName === 'OPTION') {
+                        originalTexts[key] = el.textContent;
+                    } else if (el.tagName === 'SELECT') {
+                        // For select, store the default option's text
+                        originalTexts[key] = el.querySelector('option[value=""]')?.textContent || el.textContent;
+                    } else {
+                        originalTexts[key] = el.textContent;
+                    }
+                }
+
+                // Apply translation or revert to English
+                const translatedText = lang === 'es' && translations.es[key] ? translations.es[key] : originalTexts[key];
+
+                if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
+                    el.placeholder = translatedText;
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = translatedText;
+                } else if (el.tagName === 'SELECT') {
+                    // For select, update the default option
+                    const defaultOption = el.querySelector('option[value=""]');
+                    if (defaultOption) {
+                        defaultOption.textContent = translatedText;
+                    }
+                } else {
+                    el.textContent = translatedText;
+                }
+            });
+
+            // Update active button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            setLanguage(savedLang);
+        });
+
+        // Fallback for very fast page loads
+        if (document.readyState !== 'loading') {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            setLanguage(savedLang);
+        }
+    </script>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <div class="theme-panel" id="themePanel">
+            <div class="theme-panel-title">Color Palette</div>
+            <button class="theme-option active" data-theme="default">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
+                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                </div>
+                Plum & Persimmon
+            </button>
+            <button class="theme-option" data-theme="charcoal-amber">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3A3A3A"></div>
+                    <div class="theme-swatch" style="background:#D97706"></div>
+                    <div class="theme-swatch" style="background:#D4A85C"></div>
+                </div>
+                Charcoal & Amber
+            </button>
+                    <div style="border-top: 1px solid #e0e0e0; margin: 6px 0; padding-top: 2px;"></div>
+            <div style="font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#bbb; padding: 0 10px 4px;">Horizontal Logo</div>
+            <button class="theme-option" data-theme="plum-h">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
+                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                </div>
+                Plum & Persimmon (H)
+            </button>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch color theme">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+    </div>
+
+
+    <script>
+    // Theme switcher
+    (function() {
+        let saved = localStorage.getItem('meraki-theme') || 'default';
+        if (['plum-persimmon', 'forest-terracotta', 'forest-h', 'navy-gold', 'slate-sage', 'olive-copper', 'olive-h'].includes(saved)) { saved = 'default'; localStorage.setItem('meraki-theme', 'default'); }
+        if (saved !== 'default') {
+            document.documentElement.setAttribute('data-theme', saved);
+        }
+
+        const logoMap = {
+            'default': 'images/logos/logo-plum-flat-transparent.png',
+            'charcoal-amber': 'images/logos/logo-charcoal-amber-h.png',
+                'plum-h': 'images/logos/logo-plum-flat-h.png',
+        };
+
+        const footerLogoMap = {
+            'charcoal-amber': 'images/logos/logo-charcoal-amber-wh.png',
+                'plum-h': 'images/logos/logo-plum-flat-wh.png',
+        };
+
+        const horizontalThemes = ['charcoal-amber', 'plum-h'];
+
+        function applyLogo(theme) {
+            const navImg = document.getElementById('navLogoImg');
+            if (navImg && logoMap[theme]) {
+                navImg.src = logoMap[theme];
+                if (horizontalThemes.includes(theme)) {
+                    navImg.classList.add('horizontal-logo');
+                } else {
+                    navImg.classList.remove('horizontal-logo');
+                }
+            }
+            const footerImg = document.getElementById('footerLogoImg');
+            if (footerImg) {
+                if (footerLogoMap[theme]) {
+                    footerImg.src = footerLogoMap[theme];
+                    footerImg.style.display = 'block';
+                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
+                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
+                    if (svgLogo) svgLogo.style.display = 'none';
+                    if (textLogo) textLogo.style.display = 'none';
+                } else {
+                    footerImg.style.display = 'none';
+                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
+                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
+                    if (svgLogo) svgLogo.style.display = '';
+                    if (textLogo) textLogo.style.display = '';
+                }
+            }
+        }
+
+        // Apply logo for saved theme on load
+        applyLogo(saved);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Re-apply after DOM ready
+            applyLogo(saved);
+
+            const panel = document.getElementById('themePanel');
+            const toggleBtn = document.getElementById('themeToggleBtn');
+            if (!panel || !toggleBtn) return;
+
+            // Mark active button
+            panel.querySelectorAll('.theme-option').forEach(opt => {
+                if (opt.dataset.theme === saved) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                panel.classList.toggle('open');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('#themeToggle')) {
+                    panel.classList.remove('open');
+                }
+            });
+
+            panel.querySelectorAll('.theme-option').forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const theme = this.dataset.theme;
+                    if (theme === 'default') {
+                        document.documentElement.removeAttribute('data-theme');
+                    } else {
+                        document.documentElement.setAttribute('data-theme', theme);
+                    }
+                    localStorage.setItem('meraki-theme', theme);
+                    panel.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+                    this.classList.add('active');
+                    applyLogo(theme);
+                    panel.classList.remove('open');
+                });
+            });
+        });
+    })();
+    </script>
+
+</body>
+</html>

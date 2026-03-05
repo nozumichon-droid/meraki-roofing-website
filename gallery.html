@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse Meraki Roofing's project gallery — real completed projects across El Paso, TX. Residential, commercial, storm repair, and specialty roofing.">
+    <meta name="keywords" content="roofing gallery, roofing projects, El Paso roofing photos, before after roof, roof replacement photos">
+    <meta property="og:title" content="Project Gallery | Meraki Roofing">
+    <meta property="og:description" content="See the Meraki difference — browse our completed roofing projects across El Paso with before & after photos.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://merakiroofing.com/gallery">
+    <link rel="canonical" href="https://merakiroofing.com/gallery">
+
+    <title>Project Gallery | Meraki Roofing in El Paso, TX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <style>
+        :root {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+            --font-display: 'Lora', serif;
+            --font-body: 'Inter', sans-serif;
+            --section-pad: clamp(3rem, 6vw, 5rem);
+        }
+
+        [data-theme="charcoal-amber"] {
+            --forest: #3A3A3A;
+            --forest-deep: #2A2A2A;
+            --terracotta: #D97706;
+            --terracotta-dark: #B86305;
+            --terracotta-light: #F5B74A;
+            --cream: #F5F3EF;
+            --cream-dark: #EAE6DF;
+            --warm-white: #FAFAF8;
+            --charcoal: #2D2D2D;
+            --warm-gray: #6B6B6B;
+            --light-gray: #DCDCDC;
+            --gold: #D4A85C;
+            --gold-light: #F0DDB8;
+        }
+
+        [data-theme="plum-h"] {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            line-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: var(--font-body); }
+
+        /* ============ NAVIGATION ============ */
+        .skip-link {
+            position: absolute; top: -100%; left: 50%; transform: translateX(-50%);
+            background: var(--forest); color: white; padding: 12px 24px;
+            border-radius: 0 0 8px 8px; z-index: 10000; font-weight: 600; transition: top 0.3s;
+        }
+        .skip-link:focus { top: 0; }
+
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(253, 252, 250, 0.92);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(44, 74, 62, 0.08);
+            transition: all 0.3s ease;
+        }
+        .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.06); }
+
+        .nav-inner {
+            max-width: 1400px; margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+            display: flex; align-items: center; justify-content: space-evenly;
+            gap: 1rem; height: 120px; transition: height 0.3s ease;
+        }
+        .nav.scrolled .nav-inner { height: 80px; }
+
+        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-logo-img {
+            height: 90px; width: auto; object-fit: contain; transition: height 0.3s ease;
+        }
+        .nav.scrolled .nav-logo-img { height: 55px; }
+        .nav-logo-img.horizontal-logo { max-width: 260px; height: auto; max-height: 75px; }
+        .nav.scrolled .nav-logo-img.horizontal-logo { max-width: 200px; max-height: 50px; }
+
+        .nav-links { display: flex; align-items: center; gap: 1.4rem; }
+        .nav-links a {
+            font-size: 0.85rem; font-weight: 500; color: var(--warm-gray);
+            transition: color 0.25s; position: relative;
+        }
+        .nav-links a:hover { color: var(--forest); }
+        .nav-links a.active { color: var(--forest); font-weight: 600; }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--terracotta);
+            border-radius: 2px; transition: width 0.25s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active::after { width: 100%; }
+
+        .nav-cta {
+            padding: 10px 22px; background: var(--terracotta); color: white !important;
+            border-radius: 10px; font-weight: 600; font-size: 0.85rem;
+            transition: all 0.3s; box-shadow: 0 2px 8px rgba(196,114,75,0.25);
+        }
+        .nav-cta:hover {
+            background: var(--terracotta-dark); transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(196,114,75,0.35);
+        }
+        .nav-cta::after { display: none !important; }
+
+        /* Dropdown */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle {
+            font-size: 0.85rem; font-weight: 500; color: var(--warm-gray);
+            background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px;
+            transition: color 0.25s; padding: 0;
+        }
+        .nav-dropdown-toggle svg { width: 12px; height: 12px; transition: transform 0.2s; }
+        .nav-dropdown.open .nav-dropdown-toggle svg { transform: rotate(180deg); }
+        .nav-dropdown-toggle:hover { color: var(--forest); }
+        .nav-dropdown-menu {
+            position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%);
+            background: white; border-radius: 14px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            min-width: 220px; padding: 8px; opacity: 0; visibility: hidden;
+            transform: translateX(-50%) translateY(-8px); transition: all 0.2s;
+            border: 1px solid var(--light-gray);
+        }
+        .nav-dropdown.open .nav-dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+        }
+        .nav-dropdown-menu a {
+            display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+            border-radius: 8px; font-size: 0.84rem; font-weight: 500; transition: background 0.15s;
+        }
+        .nav-dropdown-menu a:hover { background: var(--cream); }
+        .dropdown-icon { font-size: 1rem; width: 22px; text-align: center; }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex; gap: 2px; background: var(--cream); border-radius: 8px; padding: 3px;
+            border: 1px solid var(--light-gray);
+        }
+        .lang-btn {
+            padding: 4px 10px; border: none; border-radius: 6px; font-size: 0.72rem;
+            font-weight: 700; letter-spacing: 0.05em; cursor: pointer; transition: all 0.2s;
+            background: transparent; color: var(--warm-gray);
+        }
+        .lang-btn.active { background: var(--forest); color: white; }
+
+        /* Mobile Toggle */
+        .mobile-toggle {
+            display: none; background: none; border: none; cursor: pointer; padding: 8px;
+            flex-direction: column; gap: 5px;
+        }
+        .mobile-toggle span {
+            display: block; width: 22px; height: 2px; background: var(--forest);
+            border-radius: 2px; transition: all 0.3s;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            padding: 140px 0 2.5rem;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 50%, var(--cream-dark) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            max-width: 900px; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem);
+            position: relative;
+        }
+        .hero-breadcrumb {
+            display: flex; align-items: center; justify-content: center;
+            gap: 6px; font-size: 0.78rem; color: var(--warm-gray);
+            margin-bottom: 0.75rem; letter-spacing: 0.03em;
+        }
+        .hero-breadcrumb a { color: var(--warm-gray); text-decoration: none; transition: color 0.2s; }
+        .hero-breadcrumb a:hover { color: var(--forest); }
+        .hero-breadcrumb .sep { font-size: 0.6rem; opacity: 0.4; }
+        .hero h1 {
+            font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.2rem);
+            color: var(--forest-deep); line-height: 1.25; margin-bottom: 0.6rem;
+        }
+        .hero p {
+            font-size: clamp(0.88rem, 1.8vw, 1rem); color: var(--warm-gray); max-width: 650px;
+            margin: 0 auto; line-height: 1.6;
+        }
+
+        /* ============ GALLERY FILTERS ============ */
+        .gallery-section { padding: var(--section-pad) 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem); }
+
+        .section-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.15em; color: var(--terracotta); margin-bottom: 0.6rem;
+        }
+        .section-title {
+            font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem);
+            color: var(--forest-deep); margin-bottom: 0.75rem; line-height: 1.2;
+        }
+
+        .filter-bar {
+            display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .filter-btn {
+            padding: 10px 22px; border: 1.5px solid var(--light-gray); border-radius: 50px;
+            background: white; font-size: 0.85rem; font-weight: 600;
+            color: var(--warm-gray); cursor: pointer; transition: all 0.25s;
+        }
+        .filter-btn:hover { border-color: var(--terracotta); color: var(--terracotta); }
+        .filter-btn.active {
+            background: var(--terracotta); border-color: var(--terracotta); color: white;
+        }
+
+        /* ============ PROJECT GRID ============ */
+        .project-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: white; border-radius: 16px; overflow: hidden;
+            border: 1px solid var(--light-gray); transition: all 0.3s;
+            cursor: pointer;
+        }
+        .project-card:hover {
+            transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+        }
+        .project-card.hidden { display: none; }
+
+        .project-thumb {
+            position: relative; height: 240px; overflow: hidden;
+            background: linear-gradient(135deg, var(--cream-dark), var(--light-gray));
+        }
+        .project-thumb-placeholder {
+            width: 100%; height: 100%; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 8px; color: white;
+        }
+        .project-thumb-placeholder svg { opacity: 0.7; }
+        .project-thumb-placeholder span {
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.1em; opacity: 0.7;
+        }
+
+        .project-badge {
+            position: absolute; top: 12px; left: 12px;
+            padding: 5px 12px; border-radius: 6px; font-size: 0.72rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+            color: white; backdrop-filter: blur(4px);
+        }
+        .project-badge--residential { background: rgba(61,37,48,0.85); }
+        .project-badge--commercial { background: rgba(44,74,62,0.85); }
+        .project-badge--storm { background: rgba(196,114,75,0.85); }
+        .project-badge--metal { background: rgba(120,100,75,0.85); }
+
+        .project-photo-count {
+            position: absolute; bottom: 12px; right: 12px;
+            display: flex; align-items: center; gap: 4px;
+            padding: 5px 10px; border-radius: 6px; font-size: 0.72rem;
+            font-weight: 600; color: white; background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .project-info { padding: 1.25rem; }
+        .project-info h3 {
+            font-family: var(--font-display); font-size: 1.05rem;
+            color: var(--forest-deep); margin-bottom: 0.3rem;
+        }
+        .project-meta {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 0.8rem; color: var(--warm-gray);
+        }
+        .project-meta-item { display: flex; align-items: center; gap: 4px; }
+        .project-meta-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+        /* ============ LIGHTBOX / DETAIL VIEW ============ */
+        .lightbox {
+            position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0,0,0,0.92); backdrop-filter: blur(8px);
+            display: none; align-items: center; justify-content: center;
+            padding: 2rem;
+        }
+        .lightbox.open { display: flex; }
+
+        .lightbox-close {
+            position: absolute; top: 1.5rem; right: 1.5rem;
+            background: rgba(255,255,255,0.1); border: none; border-radius: 50%;
+            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: background 0.2s; color: white;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+        .lightbox-inner {
+            max-width: 900px; width: 100%; max-height: 90vh;
+            background: white; border-radius: 20px; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+
+        .lightbox-gallery {
+            position: relative; height: 500px; background: var(--cream-dark); overflow: hidden;
+        }
+        .lightbox-slide {
+            position: absolute; inset: 0; display: none;
+            align-items: center; justify-content: center; flex-direction: column;
+            gap: 8px; color: var(--warm-gray);
+        }
+        .lightbox-slide.active { display: flex; }
+        .lightbox-slide svg { opacity: 0.4; }
+        .lightbox-slide img { cursor: zoom-in; }
+        .lightbox-slide-label {
+            font-size: 0.82rem; font-weight: 600; color: var(--warm-gray); opacity: 0.6;
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.55); color: white; padding: 6px 16px;
+            border-radius: 8px; backdrop-filter: blur(4px); white-space: nowrap;
+            pointer-events: none;
+        }
+
+        /* Fullscreen zoom overlay */
+        .photo-zoom-overlay {
+            position: fixed; inset: 0; z-index: 10001;
+            background: rgba(0,0,0,0.96); display: none;
+            align-items: center; justify-content: center;
+            cursor: zoom-out; padding: 1rem;
+        }
+        .photo-zoom-overlay.open { display: flex; }
+        .photo-zoom-overlay img {
+            max-width: 95vw; max-height: 95vh; object-fit: contain;
+            border-radius: 4px; box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+        }
+        .photo-zoom-hint {
+            position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+            color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 500;
+            pointer-events: none;
+        }
+
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255,255,255,0.9); border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            color: var(--forest-deep);
+        }
+        .lightbox-nav:hover { background: white; transform: translateY(-50%) scale(1.05); }
+        .lightbox-nav--prev { left: 12px; }
+        .lightbox-nav--next { right: 12px; }
+
+        .lightbox-dots {
+            position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 6px;
+        }
+        .lightbox-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: rgba(0,0,0,0.2); border: none; cursor: pointer; transition: all 0.2s;
+        }
+        .lightbox-dot.active { background: var(--terracotta); width: 20px; border-radius: 4px; }
+
+        .lightbox-details {
+            padding: 1.5rem 2rem 2rem; overflow-y: auto; max-height: 40vh;
+        }
+        .lightbox-title {
+            font-family: var(--font-display); font-size: 1.3rem;
+            color: var(--forest-deep); margin-bottom: 0.3rem;
+        }
+        .lightbox-location {
+            font-size: 0.85rem; color: var(--warm-gray); margin-bottom: 1rem;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .lightbox-description {
+            font-size: 0.9rem; color: var(--charcoal); line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .lightbox-specs {
+            display: flex; gap: 1.5rem; flex-wrap: wrap;
+            padding-top: 1rem; border-top: 1px solid var(--light-gray);
+        }
+        .spec-item { text-align: center; }
+        .spec-value {
+            font-family: var(--font-display); font-size: 1.1rem;
+            color: var(--terracotta); font-weight: 700;
+        }
+        .spec-label { font-size: 0.72rem; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.06em; }
+
+        /* ============ CTA SECTION ============ */
+        .gallery-cta-section {
+            padding: var(--section-pad) 0;
+            background: var(--forest);
+            text-align: center; color: white;
+        }
+        .gallery-cta-section h2 {
+            font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem);
+            margin-bottom: 0.75rem;
+        }
+        .gallery-cta-section p {
+            color: rgba(255,255,255,0.7); max-width: 500px;
+            margin: 0 auto 1.5rem; font-size: 1rem;
+        }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 28px; border-radius: 12px; font-weight: 600;
+            font-size: 0.92rem; transition: all 0.3s; border: none; cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--terracotta); color: white;
+            box-shadow: 0 4px 15px rgba(196,114,75,0.3);
+        }
+        .btn-primary:hover {
+            background: var(--terracotta-dark); transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196,114,75,0.4);
+        }
+        .btn-outline-white {
+            background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3);
+        }
+        .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--forest-deep); color: rgba(255,255,255,0.6);
+            padding: 3rem 0 1.5rem; font-size: 0.85rem;
+        }
+        .footer-inner {
+            display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 2rem; margin-bottom: 2rem;
+        }
+        .footer-brand p { margin-top: 0.75rem; line-height: 1.7; font-size: 0.82rem; }
+        .footer-col h4 {
+            color: white; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.06em;
+        }
+        .footer-col a {
+            display: block; padding: 4px 0; color: rgba(255,255,255,0.6);
+            font-size: 0.82rem; transition: color 0.2s;
+        }
+        .footer-col a:hover { color: white; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;
+        }
+        .footer-social { display: flex; gap: 1rem; }
+        .footer-social a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+        .footer-social a:hover { color: white; }
+
+        /* ============ BACK TO TOP ============ */
+        .back-to-top {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 900;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--forest); color: white; border: none;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+
+        /* ============ ANIMATIONS ============ */
+        .fade-up {
+            opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 900px) {
+            .project-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+            .lightbox-inner { margin: 1rem; }
+            .lightbox-gallery { height: 350px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px;
+                height: 100vh; background: white; flex-direction: column;
+                padding: 5rem 2rem 2rem; gap: 1.2rem;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.1); transition: right 0.3s ease; z-index: 999;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links.active a { opacity: 1; transform: translateX(0); }
+            .nav-links a { font-size: 1rem; opacity: 0; transform: translateX(20px); transition: all 0.3s ease; }
+            .nav-links.active .nav-cta { width: 100%; text-align: center; margin-top: 0.5rem; }
+            .mobile-toggle { display: flex; }
+            .nav-dropdown-menu {
+                position: static; transform: none; box-shadow: none;
+                border: none; padding: 0 0 0 1rem; opacity: 1; visibility: visible;
+            }
+            .hero { padding: 130px 1.5rem 2rem 1.5rem; }
+            .filter-bar { gap: 0.35rem; }
+            .filter-btn { padding: 8px 16px; font-size: 0.78rem; }
+            .project-grid { grid-template-columns: 1fr; }
+            .lightbox-details { padding: 1.25rem; }
+            .lightbox-gallery { height: 280px; }
+            .footer-inner { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="residential.html">Residential</a>
+                <a href="commercial.html">Commercial</a>
+                <a href="storm-damage.html">Storm Damage</a>
+                <a href="maintenance.html">Maintenance</a>
+                <div class="nav-dropdown" id="resourcesDropdown">
+                    <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="financing.html" role="menuitem"><span class="dropdown-icon">💰</span><span>Financing Options</span></a>
+                        <a href="insurance-claims.html" role="menuitem"><span class="dropdown-icon">📋</span><span>Insurance Claims</span></a>
+                        <a href="gallery.html" role="menuitem" class="active"><span class="dropdown-icon">📸</span><span>Gallery</span></a>
+                        <a href="gaf.html" role="menuitem"><span class="dropdown-icon">🛡️</span><span>GAF Products</span></a>
+                        <a href="index.html#about" role="menuitem"><span class="dropdown-icon">🏠</span><span>About Us</span></a>
+                        <a href="blog.html" role="menuitem"><span class="dropdown-icon">📝</span><span>Blog</span></a>
+                        <a href="index.html#faq" role="menuitem"><span class="dropdown-icon">❓</span><span>FAQs</span></a>
+                    </div>
+                </div>
+                <a href="estimate.html">Free Estimate</a>
+                <a href="index.html#contact" class="nav-cta">Get Started</a>
+                <div class="lang-toggle" id="langToggle" aria-label="Language selector">
+                    <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+                </div>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep">›</span>
+                <span>Gallery</span>
+            </nav>
+            <h1>Our Project Gallery</h1>
+            <p>Browse real completed projects across El Paso. Click any project for detailed photos and specs.</p>
+        </div>
+    </section>
+
+    <main id="main-content">
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <!-- Filters -->
+            <div class="filter-bar fade-up">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="storm">Storm Repair</button>
+                <button class="filter-btn" data-filter="metal">Metal & Tile</button>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="project-grid fade-up" id="projectGrid">
+
+                <!-- Project 1 -->
+                <div class="project-card" data-category="residential" data-project="0" onclick="openLightbox(0)">
+                    <div class="project-thumb">
+                        <img src="images/Website Images/Gallery/Residential/Shingle replacement - East Charcoal/shingles-in-progress.jpg" alt="Complete Shingle Replacement — GAF Charcoal" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:14px 14px 0 0;display:block;">
+                        <div class="project-badge project-badge--residential">Residential</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            3 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Complete Shingle Replacement</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                East El Paso
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2025
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-category="storm" data-project="1" onclick="openLightbox(1)">
+                    <div class="project-thumb">
+                        <div class="project-thumb-placeholder" style="background: linear-gradient(135deg, #4A6741, #6B8F62);">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"/><polyline points="13 11 9 17 15 17 11 23"/></svg>
+                            <span>Photo placeholder</span>
+                        </div>
+                        <div class="project-badge project-badge--storm">Storm Repair</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            5 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Hail Damage Full Restoration</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Westside
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2023
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-category="commercial" data-project="2" onclick="openLightbox(2)">
+                    <div class="project-thumb">
+                        <div class="project-thumb-placeholder" style="background: linear-gradient(135deg, var(--forest), var(--forest-deep));">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/></svg>
+                            <span>Photo placeholder</span>
+                        </div>
+                        <div class="project-badge project-badge--commercial">Commercial</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            4 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>TPO Flat Roof System — Warehouse</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Montana Ave
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2023
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" data-category="metal" data-project="3" onclick="openLightbox(3)">
+                    <div class="project-thumb">
+                        <div class="project-thumb-placeholder" style="background: linear-gradient(135deg, #7A6855, #9E8B72);">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
+                            <span>Photo placeholder</span>
+                        </div>
+                        <div class="project-badge project-badge--metal">Metal</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            3 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Standing Seam Metal Roof</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Upper Valley
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2024
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card" data-category="residential" data-project="4" onclick="openLightbox(4)">
+                    <div class="project-thumb">
+                        <div class="project-thumb-placeholder" style="background: linear-gradient(135deg, #6B5D4F, #8A7B6A);">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            <span>Photo placeholder</span>
+                        </div>
+                        <div class="project-badge project-badge--residential">Residential</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            4 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Architectural Shingle Upgrade</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Eastside
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2024
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card" data-category="storm" data-project="5" onclick="openLightbox(5)">
+                    <div class="project-thumb">
+                        <div class="project-thumb-placeholder" style="background: linear-gradient(135deg, #556B4A, #7A9E6B);">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"/><polyline points="13 11 9 17 15 17 11 23"/></svg>
+                            <span>Photo placeholder</span>
+                        </div>
+                        <div class="project-badge project-badge--storm">Storm Repair</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            5 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Emergency Tarp & Full Repair</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Lower Valley
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2023
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card" data-category="commercial" data-project="6" onclick="openLightbox(6)">
+                    <div class="project-thumb">
+                        <div class="project-thumb-placeholder" style="background: linear-gradient(135deg, #3A5548, #527A68);">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/></svg>
+                            <span>Photo placeholder</span>
+                        </div>
+                        <div class="project-badge project-badge--commercial">Commercial</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            3 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Flat Roof Membrane — Retail Space</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Central El Paso
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2022
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="project-card" data-category="metal" data-project="7" onclick="openLightbox(7)">
+                    <div class="project-thumb">
+                        <div class="project-thumb-placeholder" style="background: linear-gradient(135deg, #8E6F4E, #B08E68);">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
+                            <span>Photo placeholder</span>
+                        </div>
+                        <div class="project-badge project-badge--metal">Tile</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            4 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Clay Tile Restoration — Historic Home</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Kern Place
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2024
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="project-card" data-category="residential" data-project="8" onclick="openLightbox(8)">
+                    <div class="project-thumb">
+                        <img src="images/Website Images/Gallery/Residential/Shingle replacement - Central Pewter Gray/completed-pewter-gray.jpg" alt="Full Tear-Off — GAF Pewter Gray" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:14px 14px 0 0;display:block;">
+                        <div class="project-badge project-badge--residential">Residential</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            2 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Full Tear-Off & GAF Timberline HDZ</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Central El Paso
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2025
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 10 -->
+                <div class="project-card" data-category="storm" data-project="9" onclick="openLightbox(9)">
+                    <div class="project-thumb">
+                        <div class="project-thumb-placeholder" style="background: linear-gradient(135deg, #5A7A50, #7DA06A);">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"/><polyline points="13 11 9 17 15 17 11 23"/></svg>
+                            <span>Photo placeholder</span>
+                        </div>
+                        <div class="project-badge project-badge--storm">Insurance Claim</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            5 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Wind Damage — Insurance Claim Handled</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Northeast
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2025
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="residential" data-project="10" onclick="openLightbox(10)">
+                    <div class="project-thumb">
+                        <img src="images/Website Images/Gallery/Residential/Roof coating/East Roof Coating front n.jpg" alt="Roof Coating — Completed project front view" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:14px 14px 0 0;display:block;">
+                        <div class="project-badge project-badge--residential">Residential</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            4 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Roof Coating</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Central El Paso
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2025
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="residential" data-project="11" onclick="openLightbox(11)">
+                    <div class="project-thumb">
+                        <img src="images/Website Images/Gallery/Residential/Shingle replacement - East Shakewood/completed-front-view.jpg" alt="GAF Shakewood Shingle Replacement" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:14px 14px 0 0;display:block;">
+                        <div class="project-badge project-badge--residential">Residential</div>
+                        <div class="project-photo-count">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            2 photos
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>GAF Shakewood — Completed Replacement</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                East El Paso
+                            </span>
+                            <span class="project-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                2025
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="gallery-cta-section">
+        <div class="container fade-up">
+            <h2>Ready to Transform Your Roof?</h2>
+            <p>Every project in this gallery started with a free inspection. Yours can too.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="estimate.html" class="btn btn-primary">Get Your Free Estimate</a>
+                <a href="index.html#contact" class="btn btn-outline-white">Schedule Inspection</a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project details">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="lightbox-inner">
+            <div class="lightbox-gallery" id="lightboxGallery">
+                <!-- Slides injected by JS -->
+                <button class="lightbox-nav lightbox-nav--prev" id="lbPrev" aria-label="Previous photo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button class="lightbox-nav lightbox-nav--next" id="lbNext" aria-label="Next photo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <div class="lightbox-dots" id="lbDots"></div>
+            </div>
+            <div class="lightbox-details" id="lightboxDetails">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Photo Zoom -->
+    <div class="photo-zoom-overlay" id="photoZoom">
+        <img id="photoZoomImg" src="" alt="Full-size photo">
+        <span class="photo-zoom-hint">Click anywhere to close</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo" style="margin-bottom: 0.5rem;">
+                        <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" style="height: 50px; width: auto; filter: brightness(0) invert(1); opacity: 0.8;">
+                    </a>
+                    <p>Locally owned roofing experts serving the El Paso community with heart, quality, and integrity.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="residential.html">Residential Roofing</a>
+                    <a href="commercial.html">Commercial Roofing</a>
+                    <a href="storm-damage.html">Storm Damage</a>
+                    <a href="estimate.html">Free Estimate</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="storm-damage.html">Storm Damage</a>
+                    <a href="insurance-claims.html">Insurance Claims</a>
+                    <a href="financing.html">Financing</a>
+                    <a href="maintenance.html">Maintenance Plans</a>
+                    <a href="gallery.html">Gallery</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="tel:+19158618039">(915) 861-8039</a>
+                    <a href="mailto:info@merakiroofing.com">Email Us</a>
+                    <a href="index.html#contact">Free Inspection</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Meraki Roofing. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                    <a href="#" aria-label="Google"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script>
+        // ===== PROJECT DATA =====
+        const projects = [
+            {
+                title: 'Complete Shingle Replacement',
+                category: 'residential',
+                location: 'East El Paso',
+                year: '2025',
+                description: 'Full tear-off and replacement of a residential roof with GAF Timberline HDZ Charcoal shingles. Old decking removed, new OSB sheathing installed, followed by synthetic underlayment and architectural shingles. Crew completed the job with full cleanup.',
+                photos: [
+                    { src: 'images/Website Images/Gallery/Residential/Shingle replacement - East Charcoal/old-deck-tearoff.jpg', label: 'Old decking exposed after tear-off' },
+                    { src: 'images/Website Images/Gallery/Residential/Shingle replacement - East Charcoal/new-osb-decking.jpg', label: 'New OSB sheathing installed' },
+                    { src: 'images/Website Images/Gallery/Residential/Shingle replacement - East Charcoal/shingles-in-progress.jpg', label: 'GAF Charcoal shingles being installed' }
+                ],
+                specs: { material: 'GAF HDZ Charcoal', duration: '2 days', sqft: '2,200', warranty: '10 yr' }
+            },
+            {
+                title: 'Hail Damage Full Restoration',
+                category: 'storm',
+                location: 'Westside',
+                year: '2023',
+                description: 'Major hail damage assessment and full replacement. Insurance claim handled start to finish — we documented all damage, met with the adjuster on-site, and coordinated the entire replacement. Homeowner paid only their deductible.',
+                photos: ['Hail impact damage on existing shingles', 'Close-up of granule loss and bruising', 'New underlayment being installed', 'Adjuster documentation photos', 'Completed roof — homeowner paid only deductible'],
+                specs: { material: 'Impact-Resistant Shingles', duration: '3 days', sqft: '2,800', warranty: '10 yr' }
+            },
+            {
+                title: 'TPO Flat Roof System — Warehouse',
+                category: 'commercial',
+                location: 'Montana Ave',
+                year: '2023',
+                description: 'Commercial TPO membrane installation for a 5,000+ sq ft warehouse. Included full tear-off of the old built-up roof, new tapered insulation for improved drainage, and fully adhered 60-mil TPO membrane with 20-year manufacturer warranty.',
+                photos: ['Old built-up roof with ponding water', 'Tear-off revealing decking condition', 'New tapered insulation installed', 'Completed TPO membrane — heat-welded seams'],
+                specs: { material: '60-mil TPO', duration: '5 days', sqft: '5,200', warranty: '20 yr' }
+            },
+            {
+                title: 'Standing Seam Metal Roof',
+                category: 'metal',
+                location: 'Upper Valley',
+                year: '2024',
+                description: 'Premium standing seam metal roof installation. 24-gauge Galvalume panels in Burnished Slate. Includes hidden fastener system for a clean, modern look. Excellent wind resistance rated for 140+ mph and expected to last 50+ years.',
+                photos: ['Before — aging asphalt shingles', 'Metal panels being installed', 'Completed — clean standing seam lines'],
+                specs: { material: '24ga Standing Seam', duration: '4 days', sqft: '1,900', warranty: '50 yr' }
+            },
+            {
+                title: 'Architectural Shingle Upgrade',
+                category: 'residential',
+                location: 'Eastside',
+                year: '2024',
+                description: 'Upgraded from basic 3-tab to dimensional architectural shingles. Owens Corning Duration in Brownwood. New synthetic underlayment, upgraded pipe boots, and fresh attic ventilation to prevent heat buildup in El Paso summers.',
+                photos: ['Original 3-tab roof showing age', 'Decking inspection and repairs', 'New synthetic underlayment', 'Finished — Owens Corning Duration shingles'],
+                specs: { material: 'OC Duration', duration: '2 days', sqft: '1,650', warranty: '10 yr' }
+            },
+            {
+                title: 'Emergency Tarp & Full Repair',
+                category: 'storm',
+                location: 'Lower Valley',
+                year: '2023',
+                description: 'Emergency response after severe wind storm. Same-day tarping to prevent further water damage, followed by full repair and partial replacement. Worked with homeowner\'s insurance to cover the cost of materials and labor.',
+                photos: ['Wind damage — missing shingles and exposed decking', 'Emergency tarp installed same day', 'Repair in progress — new decking sections', 'New shingles blending with existing roof', 'Final walkthrough — fully sealed'],
+                specs: { material: 'GAF Timberline', duration: '3 days', sqft: '1,400', warranty: '10 yr' }
+            },
+            {
+                title: 'Flat Roof Membrane — Retail Space',
+                category: 'commercial',
+                location: 'Central El Paso',
+                year: '2022',
+                description: 'Complete flat roof replacement for a retail building with persistent leak issues. Installed modified bitumen membrane with reflective coating to reduce cooling costs. Added new scupper drains for improved water management.',
+                photos: ['Existing roof with multiple patch repairs', 'New modified bitumen base layer', 'Completed membrane with reflective coating'],
+                specs: { material: 'Modified Bitumen', duration: '3 days', sqft: '3,400', warranty: '15 yr' }
+            },
+            {
+                title: 'Clay Tile Restoration — Historic Home',
+                category: 'metal',
+                location: 'Kern Place',
+                year: '2024',
+                description: 'Careful restoration of a historic Kern Place home\'s original clay tile roof. Damaged tiles were individually replaced with matching profiles sourced from specialty suppliers. New waterproof underlayment installed beneath without disturbing the tile layout.',
+                photos: ['Historic clay tile showing damage', 'Careful individual tile removal', 'New underlayment beneath existing tiles', 'Restored — original character preserved'],
+                specs: { material: 'Clay Tile (matched)', duration: '6 days', sqft: '2,100', warranty: '10 yr' }
+            },
+            {
+                title: 'Full Tear-Off & GAF Timberline HDZ',
+                category: 'residential',
+                location: 'Central El Paso',
+                year: '2025',
+                description: 'Complete tear-off with full wood deck replacement and new GAF Timberline HDZ Pewter Gray shingles. The entire roof deck was replaced with new OSB sheathing before installing synthetic underlayment and premium architectural shingles.',
+                photos: [
+                    { src: 'images/Website Images/Gallery/Residential/Shingle replacement - Central Pewter Gray/deck-replacement-in-progress.jpg', label: 'New decking with shingle bundles staged' },
+                    { src: 'images/Website Images/Gallery/Residential/Shingle replacement - Central Pewter Gray/completed-pewter-gray.jpg', label: 'Completed — GAF Pewter Gray overhead view' }
+                ],
+                specs: { material: 'GAF HDZ Pewter Gray', duration: '3 days', sqft: '2,400', warranty: '50 yr' }
+            },
+            {
+                title: 'Wind Damage — Insurance Claim Handled',
+                category: 'storm',
+                location: 'Northeast',
+                year: '2025',
+                description: 'High-wind event caused significant shingle and ridge cap damage. We documented every area of damage, prepared a comprehensive scope of work, and met the insurance adjuster on-site to ensure nothing was missed. Full replacement approved — homeowner paid only their deductible.',
+                photos: ['Wind-lifted shingles along rake edge', 'Ridge cap completely blown off', 'Meeting with insurance adjuster on site', 'Repair underway — new shingles going on', 'Completed — all damage fully addressed'],
+                specs: { material: 'Impact-Resistant', duration: '2 days', sqft: '2,000', warranty: '10 yr' }
+            },
+            {
+                title: 'Roof Coating',
+                category: 'residential',
+                location: 'Central El Paso',
+                year: '2025',
+                description: 'Applied a high-performance elastomeric roof coating to extend the life of an aging flat roof. The reflective white coating reduces surface temperature by up to 30°F, lowering energy costs while sealing minor cracks and preventing leaks — a cost-effective alternative to full replacement.',
+                photos: [
+                    { src: 'images/Website Images/Gallery/Residential/Roof coating/East Roof Coating front n.jpg', label: 'Front view — tile and flat roof sections' },
+                    { src: 'images/Website Images/Gallery/Residential/Roof coating/East Roof Coating back.jpg', label: 'Back view — bright white elastomeric coating' },
+                    { src: 'images/Website Images/Gallery/Residential/Roof coating/East Roof Coating overhead.jpg', label: 'Overhead drone shot — full coating coverage' },
+                    { src: 'images/Website Images/Gallery/Residential/Roof coating/East Roof Coating side.jpg', label: 'Side angle — tile roof with coated flat sections' }
+                ],
+                specs: { material: 'Elastomeric Coating', duration: '1 day', sqft: '1,800', warranty: '5 yr' }
+            },
+            {
+                title: 'GAF Shakewood — Completed Replacement',
+                category: 'residential',
+                location: 'East El Paso',
+                year: '2025',
+                description: 'Beautiful two-story home in East El Paso with new GAF Timberline HDZ shingles in Shakewood. The warm earth-tone color complements the stucco exterior perfectly. Drone photography captures the clean lines and uniform coverage from multiple angles with the Franklin Mountains as a stunning backdrop.',
+                photos: [
+                    { src: 'images/Website Images/Gallery/Residential/Shingle replacement - East Shakewood/completed-front-view.jpg', label: 'Front view — warm Shakewood shingles with arched entry' },
+                    { src: 'images/Website Images/Gallery/Residential/Shingle replacement - East Shakewood/completed-rear-view.jpg', label: 'Rear view — full coverage with mountain backdrop' }
+                ],
+                specs: { material: 'GAF HDZ Shakewood', duration: '2 days', sqft: '2,600', warranty: '10 yr' }
+            }
+        ];
+
+        // ===== FILTER LOGIC =====
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // ===== LIGHTBOX =====
+        const lightbox = document.getElementById('lightbox');
+        const lbGallery = document.getElementById('lightboxGallery');
+        const lbDetails = document.getElementById('lightboxDetails');
+        const lbDots = document.getElementById('lbDots');
+        let currentSlide = 0;
+        let currentPhotos = [];
+
+        function openLightbox(index) {
+            const p = projects[index];
+            currentPhotos = p.photos;
+            currentSlide = 0;
+
+            // Build slides
+            const existingSlides = lbGallery.querySelectorAll('.lightbox-slide');
+            existingSlides.forEach(s => s.remove());
+
+            p.photos.forEach((photo, i) => {
+                const slide = document.createElement('div');
+                slide.className = 'lightbox-slide' + (i === 0 ? ' active' : '');
+                const isObj = typeof photo === 'object' && photo.src;
+                if (isObj) {
+                    slide.innerHTML = `
+                        <img src="${photo.src}" alt="${photo.label}" style="width:100%;height:100%;object-fit:contain;border-radius:8px;">
+                        <span class="lightbox-slide-label">${photo.label}</span>
+                    `;
+                } else {
+                    slide.innerHTML = `
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        <span class="lightbox-slide-label">${photo}</span>
+                    `;
+                }
+                lbGallery.insertBefore(slide, lbGallery.querySelector('.lightbox-nav--prev'));
+            });
+
+            // Build dots
+            lbDots.innerHTML = '';
+            p.photos.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'lightbox-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goToSlide(i));
+                lbDots.appendChild(dot);
+            });
+
+            // Build details
+            const specsHtml = Object.entries(p.specs).map(([key, val]) =>
+                `<div class="spec-item"><div class="spec-value">${val}</div><div class="spec-label">${key}</div></div>`
+            ).join('');
+
+            lbDetails.innerHTML = `
+                <h3 class="lightbox-title">${p.title}</h3>
+                <div class="lightbox-location">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    ${p.location} · ${p.year}
+                </div>
+                <p class="lightbox-description">${p.description}</p>
+                <div class="lightbox-specs">${specsHtml}</div>
+            `;
+
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function goToSlide(index) {
+            const slides = lbGallery.querySelectorAll('.lightbox-slide');
+            const dots = lbDots.querySelectorAll('.lightbox-dot');
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') goToSlide(Math.max(0, currentSlide - 1));
+            if (e.key === 'ArrowRight') goToSlide(Math.min(currentPhotos.length - 1, currentSlide + 1));
+        });
+        document.getElementById('lbPrev').addEventListener('click', (e) => { e.stopPropagation(); goToSlide(Math.max(0, currentSlide - 1)); });
+        document.getElementById('lbNext').addEventListener('click', (e) => { e.stopPropagation(); goToSlide(Math.min(currentPhotos.length - 1, currentSlide + 1)); });
+
+        // ===== FULLSCREEN PHOTO ZOOM =====
+        const photoZoom = document.getElementById('photoZoom');
+        const photoZoomImg = document.getElementById('photoZoomImg');
+
+        // Clicking a real photo in the lightbox opens fullscreen
+        document.getElementById('lightboxGallery').addEventListener('click', (e) => {
+            const img = e.target.closest('.lightbox-slide img');
+            if (img) {
+                e.stopPropagation();
+                photoZoomImg.src = img.src;
+                photoZoomImg.alt = img.alt;
+                photoZoom.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+        // Close zoom on click or Escape
+        photoZoom.addEventListener('click', () => {
+            photoZoom.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && photoZoom.classList.contains('open')) {
+                e.stopImmediatePropagation();
+                photoZoom.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ===== DEEP LINK — auto-open lightbox from #project-N hash =====
+        (function handleDeepLink() {
+            const hash = window.location.hash;
+            const match = hash.match(/^#project-(\d+)$/);
+            if (match) {
+                const idx = parseInt(match[1], 10);
+                if (idx >= 0 && idx < projects.length) {
+                    // Small delay so page renders first
+                    setTimeout(() => {
+                        openLightbox(idx);
+                        // Scroll to gallery section
+                        const gallerySection = document.querySelector('.project-grid');
+                        if (gallerySection) gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 300);
+                }
+            }
+        })();
+
+        // ===== NAVIGATION =====
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        mobileToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            mobileToggle.setAttribute('aria-expanded', isOpen);
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => { navLinks.classList.remove('active'); mobileToggle.setAttribute('aria-expanded', 'false'); });
+        });
+
+        // Dropdown
+        const dropdown = document.getElementById('resourcesDropdown');
+        if (dropdown) {
+            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+            toggle.addEventListener('click', (e) => { e.stopPropagation(); dropdown.classList.toggle('open'); toggle.setAttribute('aria-expanded', dropdown.classList.contains('open')); });
+            document.addEventListener('click', (e) => { if (!dropdown.contains(e.target)) { dropdown.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); } });
+        }
+
+        // Navbar scroll
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { backToTop.classList.toggle('visible', window.scrollY > 600); }, { passive: true });
+        backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        // Theme restore
+        (function() {
+            let saved = localStorage.getItem('meraki-theme');
+            if (['plum-persimmon', 'forest-terracotta', 'forest-h', 'navy-gold', 'slate-sage', 'olive-copper', 'olive-h'].includes(saved)) { saved = 'default'; }
+            if (saved && saved !== 'default') {
+                document.documentElement.setAttribute('data-theme', saved);
+            }
+            const navImg = document.getElementById('navLogoImg');
+            const logoMap = { 'default': 'images/logos/logo-plum-flat-transparent.png', 'charcoal-amber': 'images/logos/logo-charcoal-amber-h.png', 'plum-h': 'images/logos/logo-plum-flat-h.png' };
+            if (navImg && saved && logoMap[saved]) {
+                navImg.src = logoMap[saved];
+                if (['charcoal-amber', 'plum-h'].includes(saved)) navImg.classList.add('horizontal-logo');
+            }
+        })();
+    </script>
+</body>
+</html>

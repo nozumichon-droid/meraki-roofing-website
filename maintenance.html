@@ -1,0 +1,2251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Protect your roof year-round with Meraki Roofing's comprehensive maintenance program. Choose from Essential, Premium, or Elite plans. Save up to $2,400 in avoided repairs.">
+    <meta name="keywords" content="roof maintenance, El Paso roofing, maintenance plans, roof inspection, preventive maintenance">
+    <meta name="author" content="Meraki Roofing">
+    <meta name="canonical" content="https://merakiroofing.com/maintenance">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Roof Maintenance Programs | Meraki Roofing - El Paso">
+    <meta property="og:description" content="Extend your roof's life by 5-15 years with our maintenance plans. Only $199/year.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://merakiroofing.com/maintenance">
+    <meta property="og:image" content="https://merakiroofing.com/og-maintenance.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Roof Maintenance Programs | Meraki Roofing">
+    <meta name="twitter:description" content="Protect your roof year-round. Save $2,400 in avoided repairs with our maintenance plans.">
+
+    <title>Roof Maintenance Programs | Meraki Roofing - El Paso, TX</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <style>
+        :root {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+
+            --font-display: 'Lora', serif;
+            --font-body: 'Inter', sans-serif;
+
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Palette 5: Charcoal & Amber */
+        [data-theme="charcoal-amber"] {
+            --forest: #3A3A3A;
+            --forest-deep: #2A2A2A;
+            --terracotta: #D97706;
+            --terracotta-dark: #B86305;
+            --terracotta-light: #F5B74A;
+            --cream: #F5F3EF;
+            --cream-dark: #EAE6DF;
+            --warm-white: #FAFAF8;
+            --charcoal: #2D2D2D;
+            --warm-gray: #6B6B6B;
+            --light-gray: #DCDCDC;
+            --gold: #D4A85C;
+            --gold-light: #F0DDB8;
+        }
+
+
+        /* Palette 8: Plum & Persimmon — Horizontal Logo */
+        [data-theme="plum-h"] {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            line-height: 1.6;
+        }
+        a { text-decoration: none; }
+
+        /* ===== NAVIGATION ===== */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(253, 252, 250, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(44, 74, 62, 0.08); transition: all 0.3s ease; }
+        .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.06); }
+        .nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); display: flex; align-items: center; justify-content: space-evenly;
+            gap: 1rem; height: 120px; transition: height 0.3s ease; }
+
+        .nav.scrolled .nav-inner {
+            height: 80px;
+        }
+        .nav-logo { display: flex; align-items: center; gap: 12px; }
+        .nav-logo-icon {
+            width: 38px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-logo-icon svg { width: 100%; height: 100%; }
+        .nav-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+
+        .nav-logo-img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
+        }
+
+        .nav.scrolled .nav-logo-img {
+            height: 55px;
+        }
+        /* When horizontal logo is active, constrain logo width */
+        .nav-logo-img.horizontal-logo {
+            max-width: 260px;
+            height: auto;
+            max-height: 75px;
+        }
+        .nav.scrolled .nav-logo-img.horizontal-logo {
+            max-width: 200px;
+            max-height: 50px;
+        }
+
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 1;
+            position: relative;
+        }
+        .nav-logo-text span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--terracotta);
+            margin-top: 1px;
+        }
+
+        .nav-logo-accent {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--terracotta);
+            margin-top: 3px;
+            border-radius: 1px;
+        }
+        .nav-links { display: flex; align-items: center; gap: 1.4rem; }
+        .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--warm-gray); transition: color 0.25s; position: relative; text-decoration: none; }
+        .nav-links a:hover { color: var(--forest); }
+        .nav-links a.active { color: var(--forest); font-weight: 600; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--terracotta); border-radius: 2px; transition: width 0.3s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active::after { width: 100%; }
+        .nav-cta { background: var(--terracotta) !important; color: white !important; padding: 10px 22px; border-radius: 8px; font-weight: 600 !important; font-size: 0.88rem !important; transition: all 0.25s !important; box-shadow: 0 2px 8px rgba(196, 114, 75, 0.25); text-decoration: none !important; }
+        .nav-cta:hover { background: var(--terracotta-dark) !important; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(196, 114, 75, 0.35); }
+        .nav-cta::after { display: none !important; }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            background: var(--warm-white);
+            border: 2px solid var(--light-gray);
+            border-radius: 20px;
+            padding: 2px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--forest);
+        }
+
+        .lang-btn {
+            padding: 4px 10px;
+            border-radius: 16px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--warm-gray);
+            transition: all 0.25s ease;
+            line-height: 1;
+        }
+
+        .lang-btn.active {
+            background: var(--forest);
+            color: white;
+        }
+
+        /* Resources Dropdown */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--warm-gray);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0;
+            transition: color 0.25s;
+        }
+
+        .nav-dropdown-toggle:hover { color: var(--forest); }
+
+        .nav-dropdown-toggle svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.25s;
+        }
+
+        .nav-dropdown.open .nav-dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+            min-width: 220px;
+            padding: 8px 0;
+            z-index: 1000;
+            border: 1px solid var(--light-gray);
+            animation: dropdownFade 0.2s ease;
+        }
+
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-top: 1px solid var(--light-gray);
+            border-left: 1px solid var(--light-gray);
+        }
+
+        .nav-dropdown.open .nav-dropdown-menu {
+            display: block;
+        }
+
+        .nav-dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px !important;
+            font-size: 0.88rem;
+            color: var(--warm-gray);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-dropdown-menu a::after { display: none !important; }
+
+        .nav-dropdown-menu a:hover {
+            background: var(--cream);
+            color: var(--forest);
+        }
+
+        .nav-dropdown-menu .dropdown-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .mobile-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .mobile-toggle span { width: 24px; height: 2.5px; background: var(--forest); border-radius: 2px; transition: all 0.3s; }
+        .skip-link { position: absolute; top: -100%; left: 50%; transform: translateX(-50%); background: var(--forest); color: white; padding: 12px 24px; border-radius: 0 0 8px 8px; z-index: 10000; font-weight: 600; transition: top 0.3s; }
+        .skip-link:focus { top: 0; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 76px; left: 0; right: 0; background: var(--warm-white); padding: 1.5rem; border-top: 1px solid var(--light-gray); box-shadow: 0 20px 40px rgba(0,0,0,0.1); gap: 0; }
+            .nav-links.active a { padding: 14px 0; border-bottom: 1px solid var(--light-gray); }
+            .nav-links.active .nav-cta { margin-top: 12px; text-align: center; display: block; }
+
+            .nav-links.active .lang-toggle {
+                margin: 12px 0 0 0;
+                align-self: flex-start;
+            }
+
+            /* Mobile dropdown */
+            .nav-dropdown { width: 100%; }
+
+            .nav-dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid var(--light-gray);
+                justify-content: space-between;
+            }
+
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                background: var(--cream);
+                min-width: 100%;
+                animation: none;
+            }
+
+            .nav-dropdown-menu::before { display: none; }
+
+            .nav-dropdown-menu a {
+                padding: 12px 20px !important;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                font-size: 0.85rem;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background:
+                radial-gradient(ellipse at 80% 80%, rgba(255,92,52,0.12) 0%, transparent 60%),
+                linear-gradient(135deg, var(--forest-deep) 0%, var(--forest) 60%, var(--forest-deep) 100%);
+            color: white;
+            padding: 140px 2rem 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.03em;
+        }
+        .hero-breadcrumb a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .hero-breadcrumb a:hover { color: rgba(255,255,255,0.85); }
+        .hero-breadcrumb .sep { font-size: 0.6rem; opacity: 0.4; }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            margin-bottom: 0.6rem;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: clamp(0.88rem, 1.8vw, 1rem);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--terracotta);
+            color: white;
+            padding: 11px 26px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 0.88rem;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--terracotta-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(196, 114, 75, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            padding: 11px 26px;
+            border: 2px solid white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.88rem;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--forest);
+            transform: translateY(-3px);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 4rem 1.5rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--warm-gray);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== WHY MAINTENANCE MATTERS ===== */
+        .why-maintenance {
+            background-color: var(--cream);
+        }
+
+        .why-intro {
+            background-color: var(--terracotta);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: 500;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-card {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .comparison-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .comparison-card.without h3 {
+            color: var(--terracotta-dark);
+        }
+
+        .comparison-card.without h3::before {
+            content: '✕';
+            color: #E74C3C;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .comparison-card.with h3::before {
+            content: '✓';
+            color: #27AE60;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+        }
+
+        .comparison-card li {
+            padding: 0.7rem 0;
+            font-size: 1rem;
+            color: var(--warm-gray);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .comparison-card li:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== WHAT'S INCLUDED ===== */
+        .whats-included {
+            background-color: white;
+        }
+
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background-color: var(--cream);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .checklist-item:hover {
+            background-color: var(--gold-light);
+            transform: translateY(-4px);
+        }
+
+        .checklist-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background-color: var(--terracotta);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .checklist-content h4 {
+            font-family: var(--font-display);
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .checklist-content p {
+            font-size: 0.95rem;
+            color: var(--warm-gray);
+        }
+
+        /* ===== PRICING SECTION ===== */
+        .pricing {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 2px solid var(--light-gray);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--gold);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 168, 92, 0.2);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--terracotta);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+
+        .pricing-header {
+            padding: 2rem;
+            background-color: var(--forest);
+            color: white;
+            text-align: center;
+        }
+
+        .pricing-card.featured .pricing-header {
+            background-color: var(--gold);
+            color: var(--forest);
+        }
+
+        .pricing-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .pricing-period {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .pricing-body {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex: 1;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--terracotta);
+            font-weight: bold;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-cta {
+            background-color: var(--terracotta);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .pricing-cta:hover {
+            background-color: var(--terracotta-dark);
+            transform: translateY(-2px);
+        }
+
+        .pricing-card.featured .pricing-cta {
+            background-color: var(--forest);
+        }
+
+        .pricing-card.featured .pricing-cta:hover {
+            background-color: var(--forest-deep);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            background-color: white;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -1.5rem;
+            top: 3rem;
+            width: 3rem;
+            height: 2px;
+            background-color: var(--gold);
+            display: none;
+        }
+
+        @media (min-width: 769px) {
+            .step:not(:last-child)::after {
+                display: block;
+            }
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--gold);
+            color: var(--forest);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--forest);
+            margin-bottom: 0.75rem;
+        }
+
+        .step p {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+        }
+
+        /* ===== EL PASO CLIMATE ===== */
+        .climate {
+            background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+            color: white;
+        }
+
+        .climate .section-title {
+            color: white;
+        }
+
+        .climate-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .climate-item {
+            background-color: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+            backdrop-filter: blur(10px);
+        }
+
+        .climate-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--gold-light);
+        }
+
+        .climate-item p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background-color: var(--cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--terracotta);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--warm-gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-title {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-top: 0.75rem;
+        }
+
+        .stats-box {
+            background-color: var(--forest);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .stats-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-text {
+            font-size: 1rem;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            background-color: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background-color: var(--cream);
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--forest);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: var(--cream-dark);
+        }
+
+        .faq-question.active {
+            background-color: var(--terracotta);
+            color: white;
+        }
+
+        .faq-icon {
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .faq-answer-content {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== FINAL CTA SECTION ===== */
+        .final-cta {
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .final-cta h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .final-cta-phone {
+            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            padding: 1rem 2rem;
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 4px;
+            text-decoration: none;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .final-cta-phone:hover {
+            background-color: rgba(0,0,0,0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--charcoal);
+            color: white;
+            padding: 3rem 1.5rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .nav-logo-icon {
+            width: 38px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .nav-logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 1;
+            position: relative;
+        }
+
+        .nav-logo-text span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--terracotta);
+            margin-top: 1px;
+        }
+
+        .nav-logo-accent {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--terracotta);
+            margin-top: 3px;
+            border-radius: 1px;
+        }
+
+        .footer-section h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--warm-gray);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--light-gray);
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--terracotta);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            z-index: 999;
+            animation: slideUp 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-cta {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 70px;
+            }
+        }
+
+        .sticky-cta a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            padding: 0.75rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 130px 1.5rem 2rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+        }
+    
+        /* ============ THEME TOGGLE UI ============ */
+        .theme-toggle {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+        .theme-toggle-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--forest);
+            color: white;
+            border: 2px solid white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            transition: all 0.3s;
+        }
+        .theme-toggle-btn:hover { transform: scale(1.1); }
+        .theme-panel {
+            position: absolute;
+            bottom: 54px;
+            left: 0;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+            padding: 1rem;
+            min-width: 220px;
+            opacity: 0;
+            transform: translateY(10px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.25s ease;
+        }
+        .theme-panel.open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .theme-panel-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--warm-gray);
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+            border: none;
+            background: none;
+            width: 100%;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+        .theme-option:hover { background: var(--cream); }
+        .theme-option.active { background: var(--cream); font-weight: 700; }
+        .theme-swatches { display: flex; gap: 3px; flex-shrink: 0; }
+        .theme-swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 1.5px solid rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .theme-toggle { bottom: 80px; left: 16px; }
+        }
+
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="residential.html" data-i18n="nav.residential">Residential</a>
+                <a href="commercial.html" data-i18n="nav.commercial">Commercial</a>
+                <a href="storm-damage.html" data-i18n="nav.storm">Storm Damage</a>
+                <a href="maintenance.html" class="active" data-i18n="nav.maintenance">Maintenance</a>
+                <div class="nav-dropdown" id="resourcesDropdown">
+                    <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.resources">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="financing.html" role="menuitem" data-i18n="nav.financing"><span class="dropdown-icon">💰</span> Financing Options</a>
+                        <a href="insurance-claims.html" role="menuitem" data-i18n="nav.insurance"><span class="dropdown-icon">📋</span> Insurance Claims</a>
+                        <a href="gallery.html" role="menuitem" data-i18n="nav.gallery"><span class="dropdown-icon">📸</span> Gallery</a>
+                        <a href="gaf.html" role="menuitem" data-i18n="nav.gaf"><span class="dropdown-icon">🛡️</span> GAF Products</a>
+                        <a href="index.html#about" role="menuitem" data-i18n="nav.about"><span class="dropdown-icon">🏠</span> About Us</a>
+                        <a href="blog.html" role="menuitem" data-i18n="nav.blog"><span class="dropdown-icon">📝</span> Blog</a>
+                        <a href="index.html#faq" role="menuitem" data-i18n="nav.faq"><span class="dropdown-icon">❓</span> FAQs</a>
+                    </div>
+                </div>
+                <a href="estimate.html" data-i18n="nav.estimate">Free Estimate</a>
+                <a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a>
+                <div class="lang-toggle" id="langToggle" aria-label="Language selector">
+                    <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+                </div>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep">›</span>
+                <span>Maintenance</span>
+            </nav>
+            <h1 data-i18n="maint.hero.title">Protect Your Roof Year-Round With Our Maintenance Program</h1>
+            <p data-i18n="maint.hero.subtitle">Most roof problems are preventable. Our maintenance plans extend your roof's life by 5-15 years and catch small issues before they become expensive repairs.</p>
+            <div class="hero-ctas">
+                <a href="#pricing" class="btn-primary" data-i18n="maint.hero.btn_plans">View Plans</a>
+                <a href="tel:+19158618039" class="btn-secondary" data-i18n="maint.hero.btn_call">Call (915) 861-8039</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY MAINTENANCE MATTERS -->
+    <section class="why-maintenance" id="main-content">
+        <div class="section-container">
+            <h2 class="section-title" data-i18n="maint.why.title">Why Roof Maintenance Matters</h2>
+            <div class="why-intro" data-i18n="maint.why.intro">
+                The average roof repair costs $750–$3,500. An annual maintenance plan costs a fraction and prevents 90% of these issues.
+            </div>
+
+            <div class="comparison">
+                <div class="comparison-card without">
+                    <h3 data-i18n="maint.comparison.without">Without Maintenance</h3>
+                    <ul>
+                        <li data-i18n="maint.without.1">Unexpected leaks and water damage</li>
+                        <li data-i18n="maint.without.2">Warranty voided by neglect</li>
+                        <li data-i18n="maint.without.3">Shortened roof lifespan</li>
+                        <li data-i18n="maint.without.4">Emergency repairs at premium costs</li>
+                        <li data-i18n="maint.without.5">Mold and structural damage</li>
+                    </ul>
+                </div>
+                <div class="comparison-card with">
+                    <h3 data-i18n="maint.comparison.with">With Our Program</h3>
+                    <ul>
+                        <li data-i18n="maint.with.1">Peace of mind and protection</li>
+                        <li data-i18n="maint.with.2">Warranty maintained and honored</li>
+                        <li data-i18n="maint.with.3">5-15 extra years of roof life</li>
+                        <li data-i18n="maint.with.4">Scheduled, affordable repairs</li>
+                        <li data-i18n="maint.with.5">Early detection of problems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT'S INCLUDED -->
+    <section class="whats-included">
+        <div class="section-container">
+            <h2 class="section-title" data-i18n="maint.included.title">What's Included in Your Plan</h2>
+            <p class="section-subtitle" data-i18n="maint.included.subtitle">Everything you need for a healthy roof</p>
+
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div class="checklist-content">
+                        <h4 data-i18n="maint.included.1.title">Complete Roof Inspections</h4>
+                        <p data-i18n="maint.included.1.desc">Twice-yearly inspections to catch small issues early</p>
+                    </div>
+                </div>
+
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div class="checklist-content">
+                        <h4 data-i18n="maint.included.2.title">Gutter Cleaning & Inspection</h4>
+                        <p data-i18n="maint.included.2.desc">Keep water flowing properly and prevent backups</p>
+                    </div>
+                </div>
+
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div class="checklist-content">
+                        <h4 data-i18n="maint.included.3.title">Flashing & Sealant Check</h4>
+                        <p data-i18n="maint.included.3.desc">Inspect critical seals around vents and chimneys</p>
+                    </div>
+                </div>
+
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div class="checklist-content">
+                        <h4 data-i18n="maint.included.4.title">Debris Removal</h4>
+                        <p data-i18n="maint.included.4.desc">Remove leaves, branches, and dirt that trap moisture</p>
+                    </div>
+                </div>
+
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div class="checklist-content">
+                        <h4 data-i18n="maint.included.5.title">Attic Ventilation Check</h4>
+                        <p data-i18n="maint.included.5.desc">Ensure proper airflow to prevent rot and mold</p>
+                    </div>
+                </div>
+
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div class="checklist-content">
+                        <h4 data-i18n="maint.included.6.title">Documentation & Reports</h4>
+                        <p data-i18n="maint.included.6.desc">Photo and written records of roof condition</p>
+                    </div>
+                </div>
+
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div class="checklist-content">
+                        <h4 data-i18n="maint.included.7.title">Priority Scheduling</h4>
+                        <p data-i18n="maint.included.7.desc">First availability for repairs and inspections</p>
+                    </div>
+                </div>
+
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div class="checklist-content">
+                        <h4>Storm Damage Monitoring</h4>
+                        <p>Immediate assessment after severe weather</p>
+                    </div>
+                </div>
+
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div class="checklist-content">
+                        <h4>Minor Repairs Included</h4>
+                        <p>Plan-dependent coverage for small fixes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING TIERS -->
+    <section class="pricing" id="pricing">
+        <div class="section-container">
+            <h2 class="section-title" data-i18n="maint.pricing.title">Choose Your Maintenance Plan</h2>
+            <p class="section-subtitle" data-i18n="maint.pricing.subtitle">Flexible options to fit your budget and roof's needs</p>
+
+            <div class="pricing-cards">
+                <!-- Essential Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-name">Essential Plan</div>
+                        <div class="pricing-price">$199</div>
+                        <div class="pricing-period">per year</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li>1 annual inspection</li>
+                            <li>Gutter cleaning (1x)</li>
+                            <li>Written condition report</li>
+                            <li>10% off repairs</li>
+                            <li>Email support</li>
+                        </ul>
+                        <button class="pricing-cta" onclick="handleEnroll('Essential')">Get Started</button>
+                    </div>
+                </div>
+
+                <!-- Premium Plan (Featured) -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <div class="pricing-name">Premium Plan</div>
+                        <div class="pricing-price">$349</div>
+                        <div class="pricing-period">per year</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li>2 inspections per year (spring + fall)</li>
+                            <li>Gutter cleaning (2x)</li>
+                            <li>Photo documentation + detailed report</li>
+                            <li>Minor repairs included (up to $150 value)</li>
+                            <li>15% off additional repairs</li>
+                            <li>Priority scheduling</li>
+                            <li>Phone support</li>
+                        </ul>
+                        <button class="pricing-cta" onclick="handleEnroll('Premium')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Elite Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-name">Elite Plan</div>
+                        <div class="pricing-price">$549</div>
+                        <div class="pricing-period">per year</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li>3 inspections per year</li>
+                            <li>Gutter cleaning (3x)</li>
+                            <li>Comprehensive photo + video documentation</li>
+                            <li>Minor repairs included (up to $300 value)</li>
+                            <li>20% off additional repairs</li>
+                            <li>24-hour priority emergency response</li>
+                            <li>Warranty maintenance compliance</li>
+                            <li>Dedicated account manager</li>
+                            <li>Annual attic inspection included</li>
+                        </ul>
+                        <button class="pricing-cta" onclick="handleEnroll('Elite')">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works">
+        <div class="section-container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Get started in three simple steps</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Plan</h3>
+                    <p>Select the maintenance plan that matches your roof's needs and budget.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Schedule First Inspection</h3>
+                    <p>We'll contact you within 48 hours to schedule your initial comprehensive inspection.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Enjoy Year-Round Protection</h3>
+                    <p>Relax knowing your roof is monitored and maintained by El Paso's most trusted roofers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EL PASO CLIMATE SECTION -->
+    <section class="climate">
+        <div class="section-container">
+            <h2 class="section-title">Why El Paso Roofs Need Extra Care</h2>
+            <p class="section-subtitle">Our desert climate is harsh on roofing materials</p>
+
+            <div class="climate-items">
+                <div class="climate-item">
+                    <h4>☀️ Intense UV Exposure</h4>
+                    <p>El Paso gets 300+ days of sunshine yearly. UV rays degrade shingles, sealants, and membranes faster than in other climates.</p>
+                </div>
+
+                <div class="climate-item">
+                    <h4>⛈️ Desert Hailstorms</h4>
+                    <p>Monsoon season (July-September) brings sudden, violent hailstorms that damage shingles and create impact vulnerabilities.</p>
+                </div>
+
+                <div class="climate-item">
+                    <h4>🌡️ Extreme Temperature Swings</h4>
+                    <p>Temperatures can swing from 30°F to 100°F+ in the same season, causing roofing materials to expand and contract repeatedly.</p>
+                </div>
+
+                <div class="climate-item">
+                    <h4>💨 Dust & Debris Accumulation</h4>
+                    <p>Dust storms and wind blow fine particles that trap moisture on your roof and clog gutters, accelerating decay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS & SOCIAL PROOF -->
+    <section class="testimonials">
+        <div class="section-container">
+            <h2 class="section-title">What Our Maintenance Customers Say</h2>
+            <p class="section-subtitle">Real results from El Paso homeowners</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-text">"We've been on their maintenance plan for three years now. They caught a crack in our flashing before it became a leak. The annual fee is nothing compared to what we would've paid for water damage."</div>
+                    <div class="testimonial-author">Sarah Martinez</div>
+                    <div class="testimonial-title">Homeowner, West El Paso</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-text">"After a hailstorm, Meraki's maintenance program caught damage nobody else could see. Their photo documentation was perfect for our insurance claim. They saved us thousands."</div>
+                    <div class="testimonial-author">James Chen</div>
+                    <div class="testimonial-title">Business Owner, Central El Paso</div>
+                </div>
+            </div>
+
+            <div class="stats-box">
+                <div class="stats-number">$2,400</div>
+                <div class="stats-text">Average savings per customer in avoided repairs and damage claims</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq">
+        <div class="section-container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Get answers about our maintenance programs</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>When is the best time to start a maintenance program?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>The best time is now. If your roof is less than 15 years old, starting a maintenance plan immediately can extend its life by 5-15 years. If your roof is older, maintenance becomes even more critical to prevent sudden, expensive failures. Spring is ideal for seasonal planning, but we enroll customers year-round.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I upgrade or downgrade my plan?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Yes, absolutely. You can upgrade or downgrade your plan anytime. Just let us know, and we'll adjust your plan and billing accordingly. Many customers start with Essential and upgrade to Premium after their first inspection to take advantage of included minor repairs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What happens if you find damage during an inspection?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>We'll provide you with a detailed written and photo report of the damage, along with a repair estimate. Damage covered under your plan's included repair value is handled immediately. For larger repairs, we'll discuss your options and provide financing if needed. If it's covered by insurance, we'll help you file a claim.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Do you service flat or commercial roofs?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Yes, we maintain both residential and commercial roofs. Our maintenance plans can be customized for flat roofs, TPO membranes, metal roofs, and more. Contact us to discuss a maintenance plan tailored to your commercial property's specific needs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is there a contract, or can I cancel anytime?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>No long-term contract required. Your plan renews annually on your enrollment date. You can cancel anytime with 30 days' notice. We're confident you'll love the protection and peace of mind our program provides, so we don't lock you in.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="section-container">
+            <h2>Ready to Protect Your Roof?</h2>
+            <p>Start your maintenance program today and gain peace of mind knowing your roof is protected.</p>
+            <a href="tel:+19158618039" class="final-cta-phone">(915) 861-8039</a>
+            <div>
+                <a href="#pricing" class="btn-primary">View Plans</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="images/logos/meraki-stacked.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9;">
+                </div>
+                <p>Trusted roofing solutions for El Paso homes and businesses since 2010.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="index.html#services">Roof Repair</a></li>
+                    <li><a href="index.html#services">Roof Replacement</a></li>
+                    <li><a href="storm-damage.html">Storm Damage</a></li>
+                    <li><a href="insurance-claims.html">Insurance Claims</a></li>
+                    <li><a href="maintenance.html">Maintenance</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+19158618039">(915) 861-8039</a></li>
+                    <li><a href="mailto:info@merakiroofing.com">info@merakiroofing.com</a></li>
+                    <li>El Paso, Texas 79901</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Meraki Roofing. All rights reserved. | Licensed & Insured</p>
+        </div>
+    </footer>
+
+    <!-- STICKY MOBILE CTA -->
+    <div class="sticky-cta">
+        <a href="tel:+19158618039">Call Now: (915) 861-8039</a>
+    </div>
+
+    <!-- SCHEMA MARKUP -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Meraki Roofing",
+        "image": "https://merakiroofing.com/logo.png",
+        "description": "Professional roofing company in El Paso, Texas offering roof repair, replacement, storm damage, insurance claims, financing, and maintenance programs.",
+        "url": "https://merakiroofing.com",
+        "telephone": "+19158618039",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Main St",
+            "addressLocality": "El Paso",
+            "addressRegion": "TX",
+            "postalCode": "79901",
+            "addressCountry": "US"
+        },
+        "areaServed": "El Paso, TX",
+        "priceRange": "$$"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Roof Maintenance Program",
+        "description": "Comprehensive roof maintenance plans to extend roof life by 5-15 years",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Meraki Roofing"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Essential Plan",
+                "price": "199",
+                "priceCurrency": "USD",
+                "billingDuration": "P1Y"
+            },
+            {
+                "@type": "Offer",
+                "name": "Premium Plan",
+                "price": "349",
+                "priceCurrency": "USD",
+                "billingDuration": "P1Y"
+            },
+            {
+                "@type": "Offer",
+                "name": "Elite Plan",
+                "price": "549",
+                "priceCurrency": "USD",
+                "billingDuration": "P1Y"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "When is the best time to start a maintenance program?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The best time is now. If your roof is less than 15 years old, starting a maintenance plan immediately can extend its life by 5-15 years. If your roof is older, maintenance becomes even more critical to prevent sudden, expensive failures. Spring is ideal for seasonal planning, but we enroll customers year-round."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I upgrade or downgrade my plan?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, absolutely. You can upgrade or downgrade your plan anytime. Just let us know, and we'll adjust your plan and billing accordingly. Many customers start with Essential and upgrade to Premium after their first inspection to take advantage of included minor repairs."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens if you find damage during an inspection?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We'll provide you with a detailed written and photo report of the damage, along with a repair estimate. Damage covered under your plan's included repair value is handled immediately. For larger repairs, we'll discuss your options and provide financing if needed. If it's covered by insurance, we'll help you file a claim."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you service flat or commercial roofs?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we maintain both residential and commercial roofs. Our maintenance plans can be customized for flat roofs, TPO membranes, metal roofs, and more. Contact us to discuss a maintenance plan tailored to your commercial property's specific needs."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there a contract, or can I cancel anytime?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No long-term contract required. Your plan renews annually on your enrollment date. You can cancel anytime with 30 days' notice. We're confident you'll love the protection and peace of mind our program provides, so we don't lock you in."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        mobileToggle.addEventListener('click', () => { const isOpen = navLinks.classList.toggle('active'); mobileToggle.setAttribute('aria-expanded', isOpen); });
+        navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); mobileToggle.setAttribute('aria-expanded', 'false'); }); });
+
+        // ===== RESOURCES DROPDOWN =====
+        const dropdown = document.getElementById('resourcesDropdown');
+        if (dropdown) {
+            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', dropdown.classList.contains('open'));
+            });
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        const nav = document.getElementById('nav');
+        let ticking = false;
+        window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(() => { nav.classList.toggle('scrolled', window.scrollY > 50); ticking = false; }); ticking = true; } }, { passive: true });
+
+        // FAQ Accordion
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const isActive = button.classList.contains('active');
+
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.classList.remove('active');
+                q.nextElementSibling.classList.remove('active');
+            });
+
+            // Toggle current item
+            if (!isActive) {
+                button.classList.add('active');
+                answer.classList.add('active');
+            }
+        }
+
+        // Enroll Button Handler
+        function handleEnroll(planName) {
+            // Track event in GA4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'select_item', {
+                    'items': [{
+                        'id': planName.toLowerCase(),
+                        'name': planName + ' Plan',
+                        'category': 'Maintenance Plan'
+                    }]
+                });
+            }
+
+            // Navigate to contact/enrollment
+            alert('Thank you for your interest in our ' + planName + ' Plan! Please call (915) 861-8039 to complete your enrollment or fill out our contact form.');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- ============ TRANSLATION ENGINE ============ -->
+    <script>
+        // Store original text content on first load
+        const originalTexts = {};
+
+        // Spanish translations for all translatable elements
+        const translations = {
+            es: {
+                // Navigation
+                'nav.residential': 'Residencial',
+                'nav.commercial': 'Comercial',
+                'nav.storm': 'Daño por Tormenta',
+                'nav.maintenance': 'Mantenimiento',
+                'nav.resources': 'Recursos',
+                'nav.financing': 'Opciones de Financiamiento',
+                'nav.insurance': 'Reclamaciones de Seguros',
+                'nav.gallery': 'Galería',
+                'nav.about': 'Acerca de Nosotros',
+                'nav.blog': 'Blog',
+                'nav.faq': 'Preguntas Frecuentes',
+                'nav.estimate': 'Cotización Gratis',
+                'nav.cta': 'Comience Aquí',
+
+                // Maintenance page
+                'maint.hero.title': 'Proteja Su Techo Todo el Año Con Nuestro Programa de Mantenimiento',
+                'maint.hero.subtitle': 'La mayoría de problemas de techo son prevenibles. Nuestros planes de mantenimiento extienden la vida de su techo de 5 a 15 años y detectan pequeños problemas antes de que se conviertan en reparaciones costosas.',
+                'maint.hero.btn_plans': 'Ver Planes',
+                'maint.hero.btn_call': 'Llamar (915) 861-8039',
+                'maint.why.title': 'Por Qué Importa el Mantenimiento del Techo',
+                'maint.why.intro': 'La reparación promedio de techo cuesta entre $750–$3,500. Un plan de mantenimiento anual cuesta una fracción y previene el 90% de estos problemas.',
+                'maint.comparison.without': 'Sin Mantenimiento',
+                'maint.without.1': 'Fugas inesperadas y daño por agua',
+                'maint.without.2': 'Garantía anulada por negligencia',
+                'maint.without.3': 'Vida útil acortada del techo',
+                'maint.without.4': 'Reparaciones de emergencia a precios premium',
+                'maint.without.5': 'Moho y daño estructural',
+                'maint.comparison.with': 'Con Nuestro Programa',
+                'maint.with.1': 'Tranquilidad y protección',
+                'maint.with.2': 'Garantía mantenida y honrada',
+                'maint.with.3': 'De 5 a 15 años adicionales de vida del techo',
+                'maint.with.4': 'Reparaciones programadas y asequibles',
+                'maint.with.5': 'Detección temprana de problemas',
+                'maint.included.title': 'Qué Se Incluye en Su Plan',
+                'maint.included.subtitle': 'Todo lo que necesita para un techo saludable',
+                'maint.included.1.title': 'Inspecciones Completas del Techo',
+                'maint.included.1.desc': 'Inspecciones dos veces al año para detectar pequeños problemas temprano',
+                'maint.included.2.title': 'Limpieza e Inspección de Canaletas',
+                'maint.included.2.desc': 'Mantenga el agua fluyendo correctamente y prevenga obstrucciones',
+                'maint.included.3.title': 'Verificación de Flashing y Sellador',
+                'maint.included.3.desc': 'Inspeccione los sellos críticos alrededor de conductos y chimeneas',
+                'maint.included.4.title': 'Remoción de Escombros',
+                'maint.included.4.desc': 'Retire hojas, ramas y suciedad que atrapan humedad',
+                'maint.included.5.title': 'Verificación de Ventilación del Ático',
+                'maint.included.5.desc': 'Asegure el flujo adecuado de aire para prevenir pudrición y moho',
+                'maint.included.6.title': 'Documentación e Informes',
+                'maint.included.6.desc': 'Registros fotográficos y escritos de la condición del techo',
+                'maint.included.7.title': 'Programación Prioritaria',
+                'maint.included.7.desc': 'Primera disponibilidad para reparaciones e inspecciones',
+                'maint.included.8.title': 'Descuentos en Reparaciones',
+                'maint.included.8.desc': 'Ahorre hasta el 25% en cualquier reparación cubierta',
+                'maint.pricing.title': 'Elija Su Plan de Mantenimiento',
+                'maint.pricing.subtitle': 'Opciones flexibles que se ajusten a su presupuesto y necesidades de techo',
+                'maint.pricing.essential': 'Plan Esencial',
+                'maint.pricing.premium': 'Plan Premium',
+                'maint.pricing.elite': 'Plan Élite',
+                'maint.pricing.per_year': 'por año',
+                'maint.pricing.get_started': 'Comience',
+                'maint.pricing.enroll': 'Inscribirse Ahora',
+                'maint.faq.title': 'Preguntas Frecuentes Sobre Mantenimiento',
+            }
+        };
+
+        // Main translation function
+        function setLanguage(lang) {
+            // Validate language
+            if (!translations[lang]) {
+                console.warn('Language not available:', lang);
+                lang = 'en';
+            }
+
+            // Store preference in localStorage
+            localStorage.setItem('preferred-language', lang);
+
+            // Update active button
+            document.querySelectorAll('[data-lang]').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+
+            // Translate all elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+
+                // Store original English text on first pass
+                if (!originalTexts[key]) {
+                    originalTexts[key] = el.textContent;
+                }
+
+                // Apply translation or revert to English
+                const translatedText = lang === 'es' && translations.es[key] ? translations.es[key] : originalTexts[key];
+
+                if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
+                    el.placeholder = translatedText;
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = translatedText;
+                } else if (el.tagName === 'BUTTON' && el.classList.contains('lang-btn')) {
+                    // Skip lang buttons
+                } else {
+                    el.textContent = translatedText;
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            setLanguage(savedLang);
+        });
+
+        // Fallback for very fast page loads
+        if (document.readyState !== 'loading') {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            setLanguage(savedLang);
+        }
+    </script>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <div class="theme-panel" id="themePanel">
+            <div class="theme-panel-title">Color Palette</div>
+            <button class="theme-option active" data-theme="default">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
+                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                </div>
+                Plum & Persimmon
+            </button>
+            <button class="theme-option" data-theme="charcoal-amber">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3A3A3A"></div>
+                    <div class="theme-swatch" style="background:#D97706"></div>
+                    <div class="theme-swatch" style="background:#D4A85C"></div>
+                </div>
+                Charcoal & Amber
+            </button>
+                    <div style="border-top: 1px solid #e0e0e0; margin: 6px 0; padding-top: 2px;"></div>
+            <div style="font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#bbb; padding: 0 10px 4px;">Horizontal Logo</div>
+            <button class="theme-option" data-theme="plum-h">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
+                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                </div>
+                Plum & Persimmon (H)
+            </button>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch color theme">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+    </div>
+
+
+    <script>
+    // Theme switcher
+    (function() {
+        let saved = localStorage.getItem('meraki-theme') || 'default';
+        if (['plum-persimmon', 'forest-terracotta', 'forest-h', 'navy-gold', 'slate-sage', 'olive-copper', 'olive-h'].includes(saved)) { saved = 'default'; localStorage.setItem('meraki-theme', 'default'); }
+        if (saved !== 'default') {
+            document.documentElement.setAttribute('data-theme', saved);
+        }
+
+        const logoMap = {
+            'default': 'images/logos/logo-plum-flat-transparent.png',
+            'charcoal-amber': 'images/logos/logo-charcoal-amber-h.png',
+                'plum-h': 'images/logos/logo-plum-flat-h.png',
+        };
+
+        const footerLogoMap = {
+            'charcoal-amber': 'images/logos/logo-charcoal-amber-wh.png',
+                'plum-h': 'images/logos/logo-plum-flat-wh.png',
+        };
+
+        const horizontalThemes = ['charcoal-amber', 'plum-h'];
+
+        function applyLogo(theme) {
+            const navImg = document.getElementById('navLogoImg');
+            if (navImg && logoMap[theme]) {
+                navImg.src = logoMap[theme];
+                if (horizontalThemes.includes(theme)) {
+                    navImg.classList.add('horizontal-logo');
+                } else {
+                    navImg.classList.remove('horizontal-logo');
+                }
+            }
+            const footerImg = document.getElementById('footerLogoImg');
+            if (footerImg) {
+                if (footerLogoMap[theme]) {
+                    footerImg.src = footerLogoMap[theme];
+                    footerImg.style.display = 'block';
+                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
+                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
+                    if (svgLogo) svgLogo.style.display = 'none';
+                    if (textLogo) textLogo.style.display = 'none';
+                } else {
+                    footerImg.style.display = 'none';
+                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
+                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
+                    if (svgLogo) svgLogo.style.display = '';
+                    if (textLogo) textLogo.style.display = '';
+                }
+            }
+        }
+
+        // Apply logo for saved theme on load
+        applyLogo(saved);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Re-apply after DOM ready
+            applyLogo(saved);
+
+            const panel = document.getElementById('themePanel');
+            const toggleBtn = document.getElementById('themeToggleBtn');
+            if (!panel || !toggleBtn) return;
+
+            // Mark active button
+            panel.querySelectorAll('.theme-option').forEach(opt => {
+                if (opt.dataset.theme === saved) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                panel.classList.toggle('open');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('#themeToggle')) {
+                    panel.classList.remove('open');
+                }
+            });
+
+            panel.querySelectorAll('.theme-option').forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const theme = this.dataset.theme;
+                    if (theme === 'default') {
+                        document.documentElement.removeAttribute('data-theme');
+                    } else {
+                        document.documentElement.setAttribute('data-theme', theme);
+                    }
+                    localStorage.setItem('meraki-theme', theme);
+                    panel.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+                    this.classList.add('active');
+                    applyLogo(theme);
+                    panel.classList.remove('open');
+                });
+            });
+        });
+    })();
+    </script>
+
+</body>
+</html>

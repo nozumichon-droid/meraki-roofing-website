@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete insurance claims walkthrough for Meraki Roofing in El Paso, TX. We handle your roof insurance claim from start to finish with $0 out-of-pocket for most homeowners.">
+    <meta name="keywords" content="roof insurance claims, El Paso roofing, roof replacement, insurance adjuster, storm damage">
+    <meta property="og:title" content="We Handle Your Roof Insurance Claim — Meraki Roofing">
+    <meta property="og:description" content="Complete insurance claims walkthrough. $0 out-of-pocket for most homeowners. 500+ claims filed.">
+    <meta property="og:image" content="https://merakiroofing.com/og-image-claims.jpg">
+    <meta property="og:url" content="https://merakiroofing.com/insurance-claims">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://merakiroofing.com/insurance-claims">
+    <title>Roof Insurance Claims Walkthrough | Meraki Roofing El Paso</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+        }
+
+        /* Palette 5: Charcoal & Amber */
+        [data-theme="charcoal-amber"] {
+            --forest: #3A3A3A;
+            --forest-deep: #2A2A2A;
+            --terracotta: #D97706;
+            --terracotta-dark: #B86305;
+            --terracotta-light: #F5B74A;
+            --cream: #F5F3EF;
+            --cream-dark: #EAE6DF;
+            --warm-white: #FAFAF8;
+            --charcoal: #2D2D2D;
+            --warm-gray: #6B6B6B;
+            --light-gray: #DCDCDC;
+            --gold: #D4A85C;
+            --gold-light: #F0DDB8;
+        }
+
+
+        /* Palette 8: Plum & Persimmon — Horizontal Logo */
+        [data-theme="plum-h"] {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            line-height: 1.6;
+        }
+        a { text-decoration: none; }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lora', serif;
+            color: var(--forest);
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--warm-white);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--light-gray);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* ============ NAVIGATION ============ */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(253, 252, 250, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(44, 74, 62, 0.08); transition: all 0.3s ease; }
+        .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.06); }
+        .nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); display: flex; align-items: center; justify-content: space-evenly;
+            gap: 1rem; height: 120px; transition: height 0.3s ease; }
+
+        .nav.scrolled .nav-inner {
+            height: 80px;
+        }
+        .nav-logo { display: flex; align-items: center; gap: 12px; }
+        .nav-logo-icon {
+            width: 38px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-logo-icon svg { width: 100%; height: 100%; }
+        .nav-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+
+        .nav-logo-img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
+        }
+
+        .nav.scrolled .nav-logo-img {
+            height: 55px;
+        }
+        /* When horizontal logo is active, constrain logo width */
+        .nav-logo-img.horizontal-logo {
+            max-width: 260px;
+            height: auto;
+            max-height: 75px;
+        }
+        .nav.scrolled .nav-logo-img.horizontal-logo {
+            max-width: 200px;
+            max-height: 50px;
+        }
+
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 1;
+            position: relative;
+        }
+        .nav-logo-text span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--terracotta);
+            margin-top: 1px;
+        }
+
+        .nav-logo-accent {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--terracotta);
+            margin-top: 3px;
+            border-radius: 1px;
+        }
+        .nav-links { display: flex; align-items: center; gap: 1.4rem; }
+        .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--warm-gray); transition: color 0.25s; position: relative; }
+        .nav-links a:hover { color: var(--forest); }
+        .nav-links a.active { color: var(--forest); font-weight: 600; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--terracotta); border-radius: 2px; transition: width 0.3s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active::after { width: 100%; }
+        .nav-cta { background: var(--terracotta) !important; color: white !important; padding: 10px 22px; border-radius: 8px; font-weight: 600 !important; font-size: 0.88rem !important; transition: all 0.25s !important; box-shadow: 0 2px 8px rgba(196, 114, 75, 0.25); }
+        .nav-cta:hover { background: var(--terracotta-dark) !important; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(196, 114, 75, 0.35); }
+        .nav-cta::after { display: none !important; }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            background: var(--warm-white);
+            border: 2px solid var(--light-gray);
+            border-radius: 20px;
+            padding: 2px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--forest);
+        }
+
+        .lang-btn {
+            padding: 4px 10px;
+            border-radius: 16px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--warm-gray);
+            transition: all 0.25s ease;
+            line-height: 1;
+        }
+
+        .lang-btn.active {
+            background: var(--forest);
+            color: white;
+        }
+
+        /* Resources Dropdown */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--warm-gray);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0;
+            transition: color 0.25s;
+        }
+
+        .nav-dropdown-toggle:hover { color: var(--forest); }
+
+        .nav-dropdown-toggle svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.25s;
+        }
+
+        .nav-dropdown.open .nav-dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+            min-width: 220px;
+            padding: 8px 0;
+            z-index: 1000;
+            border: 1px solid var(--light-gray);
+            animation: dropdownFade 0.2s ease;
+        }
+
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-top: 1px solid var(--light-gray);
+            border-left: 1px solid var(--light-gray);
+        }
+
+        .nav-dropdown.open .nav-dropdown-menu {
+            display: block;
+        }
+
+        .nav-dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px !important;
+            font-size: 0.88rem;
+            color: var(--warm-gray);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-dropdown-menu a::after { display: none !important; }
+
+        .nav-dropdown-menu a:hover {
+            background: var(--cream);
+            color: var(--forest);
+        }
+
+        .nav-dropdown-menu .dropdown-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .mobile-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .mobile-toggle span { width: 24px; height: 2.5px; background: var(--forest); border-radius: 2px; transition: all 0.3s; }
+        .skip-link { position: absolute; top: -100%; left: 50%; transform: translateX(-50%); background: var(--forest); color: white; padding: 12px 24px; border-radius: 0 0 8px 8px; z-index: 10000; font-weight: 600; transition: top 0.3s; }
+        .skip-link:focus { top: 0; }
+
+        /* Hero Section */
+        .hero {
+            background:
+                radial-gradient(ellipse at 80% 80%, rgba(255,92,52,0.12) 0%, transparent 60%),
+                linear-gradient(135deg, var(--forest-deep) 0%, var(--forest) 60%, var(--forest-deep) 100%);
+            color: white;
+            padding: 140px 2rem 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.03em;
+        }
+        .hero-breadcrumb a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .hero-breadcrumb a:hover { color: rgba(255,255,255,0.85); }
+        .hero-breadcrumb .sep { font-size: 0.6rem; opacity: 0.4; }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            margin-bottom: 0.6rem;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            color: white;
+        }
+
+        .hero p {
+            font-size: clamp(0.88rem, 1.8vw, 1rem);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background-color: var(--terracotta);
+            color: white;
+            padding: 11px 26px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.88rem;
+        }
+
+        .cta-primary:hover {
+            background-color: var(--terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(196, 114, 75, 0.3);
+        }
+
+        .cta-secondary {
+            background-color: transparent;
+            color: white;
+            padding: 11px 26px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid white;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 0.88rem;
+        }
+
+        .cta-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* Trust Cards Section */
+        .trust-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .trust-card {
+            background-color: var(--cream);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid var(--terracotta);
+            transition: all 0.3s;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .trust-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--forest);
+        }
+
+        .trust-card p {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Steps Section */
+        .steps-container {
+            position: relative;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .step:nth-child(even) {
+            direction: rtl;
+        }
+
+        .step:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .step-number {
+            font-family: 'Lora', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-content {
+            background-color: var(--cream);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--terracotta);
+        }
+
+        .step-content ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .step-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--warm-gray);
+        }
+
+        .step-content li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--terracotta);
+            font-weight: bold;
+        }
+
+        .step-timeline {
+            background-color: var(--gold-light);
+            color: var(--forest);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .step-image {
+            background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+            height: 300px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        /* Checklist Section */
+        .checklist-section {
+            background-color: var(--cream-dark);
+            border-radius: 8px;
+            padding: 3rem;
+        }
+
+        .checklist-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .checklist {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .checklist-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background-color: var(--terracotta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-top: 0.25rem;
+        }
+
+        .checklist-item p {
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        /* Insurance Companies Section */
+        .insurance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .insurance-item {
+            background-color: var(--cream);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--light-gray);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            font-weight: 600;
+            color: var(--forest);
+        }
+
+        .insurance-item:hover {
+            border-color: var(--terracotta);
+            background-color: var(--gold-light);
+        }
+
+        /* Downloadable Checklist Section */
+        .lead-magnet {
+            background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .lead-magnet h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lead-magnet-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group input {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder {
+            color: #ccc;
+        }
+
+        .lead-magnet-submit {
+            background-color: var(--terracotta);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .lead-magnet-submit:hover {
+            background-color: var(--terracotta-dark);
+            transform: translateY(-2px);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--cream);
+            border-left: 4px solid var(--terracotta);
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--cream);
+            transition: all 0.3s;
+            font-weight: 600;
+            color: var(--forest);
+        }
+
+        .faq-question:hover {
+            background-color: var(--cream-dark);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            color: var(--terracotta);
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--warm-gray);
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* CTA Section */
+        .cta-final {
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .cta-final h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-final p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--forest);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .nav-logo-icon {
+            width: 38px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .nav-logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-logo-text {
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 1;
+            position: relative;
+        }
+
+        .nav-logo-text span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--terracotta);
+            margin-top: 1px;
+        }
+
+        .nav-logo-accent {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--terracotta);
+            margin-top: 3px;
+            border-radius: 1px;
+        }
+
+        footer h4 {
+            color: var(--gold);
+            font-family: 'Lora', serif;
+            margin-bottom: 1rem;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+        }
+
+        /* Sticky Mobile CTA */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--terracotta);
+            color: white;
+            padding: 1rem;
+            z-index: 999;
+            text-align: center;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .sticky-cta a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 76px; left: 0; right: 0; background: var(--warm-white); padding: 1.5rem; border-top: 1px solid var(--light-gray); box-shadow: 0 20px 40px rgba(0,0,0,0.1); gap: 0; }
+            .nav-links.active a { padding: 14px 0; border-bottom: 1px solid var(--light-gray); }
+            .nav-links.active .nav-cta { margin-top: 12px; text-align: center; display: block; }
+
+            .nav-links.active .lang-toggle {
+                margin: 12px 0 0 0;
+                align-self: flex-start;
+            }
+
+            /* Mobile dropdown */
+            .nav-dropdown { width: 100%; }
+
+            .nav-dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid var(--light-gray);
+                justify-content: space-between;
+            }
+
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                background: var(--cream);
+                min-width: 100%;
+                animation: none;
+            }
+
+            .nav-dropdown-menu::before { display: none; }
+
+            .nav-dropdown-menu a {
+                padding: 12px 20px !important;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-primary, .cta-secondary {
+                width: 100%;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .step:nth-child(even) {
+                direction: ltr;
+            }
+
+            .step-image {
+                height: 200px;
+                font-size: 2rem;
+            }
+
+            .checklist {
+                grid-template-columns: 1fr;
+            }
+
+            .insurance-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .trust-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .sticky-cta {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 70px;
+            }
+
+            .lead-magnet {
+                padding: 2rem 1rem;
+            }
+
+            .cta-final {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 130px 1.5rem 2rem 1.5rem;
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .trust-card, .step-content {
+                padding: 1.5rem;
+            }
+
+            .insurance-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .trust-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .step {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    
+        /* ============ THEME TOGGLE UI ============ */
+        .theme-toggle {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+        .theme-toggle-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--forest);
+            color: white;
+            border: 2px solid white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            transition: all 0.3s;
+        }
+        .theme-toggle-btn:hover { transform: scale(1.1); }
+        .theme-panel {
+            position: absolute;
+            bottom: 54px;
+            left: 0;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+            padding: 1rem;
+            min-width: 220px;
+            opacity: 0;
+            transform: translateY(10px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.25s ease;
+        }
+        .theme-panel.open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .theme-panel-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--warm-gray);
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+            border: none;
+            background: none;
+            width: 100%;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+        .theme-option:hover { background: var(--cream); }
+        .theme-option.active { background: var(--cream); font-weight: 700; }
+        .theme-swatches { display: flex; gap: 3px; flex-shrink: 0; }
+        .theme-swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 1.5px solid rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .theme-toggle { bottom: 80px; left: 16px; }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="residential.html" data-i18n="nav.residential">Residential</a>
+                <a href="commercial.html" data-i18n="nav.commercial">Commercial</a>
+                <a href="storm-damage.html" data-i18n="nav.storm">Storm Damage</a>
+                <a href="maintenance.html" data-i18n="nav.maintenance">Maintenance</a>
+                <div class="nav-dropdown" id="resourcesDropdown">
+                    <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.resources">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="financing.html" role="menuitem" data-i18n="nav.financing"><span class="dropdown-icon">💰</span> Financing Options</a>
+                        <a href="insurance-claims.html" role="menuitem" data-i18n="nav.insurance"><span class="dropdown-icon">📋</span> Insurance Claims</a>
+                        <a href="gallery.html" role="menuitem" data-i18n="nav.gallery"><span class="dropdown-icon">📸</span> Gallery</a>
+                        <a href="gaf.html" role="menuitem" data-i18n="nav.gaf"><span class="dropdown-icon">🛡️</span> GAF Products</a>
+                        <a href="index.html#about" role="menuitem" data-i18n="nav.about"><span class="dropdown-icon">🏠</span> About Us</a>
+                        <a href="blog.html" role="menuitem" data-i18n="nav.blog"><span class="dropdown-icon">📝</span> Blog</a>
+                        <a href="index.html#faq" role="menuitem" data-i18n="nav.faq"><span class="dropdown-icon">❓</span> FAQs</a>
+                    </div>
+                </div>
+                <a href="estimate.html" data-i18n="nav.estimate">Free Estimate</a>
+                <a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a>
+                <div class="lang-toggle" id="langToggle" aria-label="Language selector">
+                    <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+                </div>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="main-content">
+        <div class="hero-content">
+            <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep">›</span>
+                <span>Insurance Claims</span>
+            </nav>
+            <h1 data-i18n="ins.hero.title">We Handle Your Roof Insurance Claim — Start to Finish</h1>
+            <p data-i18n="ins.hero.subtitle">Navigating insurance doesn't have to be stressful. We've helped hundreds of El Paso homeowners get their roof replaced at little to no out-of-pocket cost.</p>
+            <div class="hero-ctas">
+                <a href="#process" class="cta-primary" data-i18n="ins.hero.btn">Start Your Claim</a>
+                <a href="tel:+19158618039" class="cta-secondary">Call (915) 861-8039</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Trust Us Section -->
+    <section>
+        <h2 data-i18n="ins.why.title">Why Trust Us With Your Claim</h2>
+        <div class="trust-cards">
+            <div class="trust-card">
+                <h3>500+ Claims Filed</h3>
+                <p>Extensive experience navigating the insurance process with proven results for El Paso homeowners.</p>
+            </div>
+            <div class="trust-card">
+                <h3>We Meet Your Adjuster On-Site</h3>
+                <p>We advocate for you during the inspection to ensure every detail is documented and covered.</p>
+            </div>
+            <div class="trust-card">
+                <h3>Complete Documentation Provided</h3>
+                <p>Professional reports with detailed photos, measurements, and specifications ready for submission.</p>
+            </div>
+            <div class="trust-card">
+                <h3>$0 Out-of-Pocket for Qualifying Claims</h3>
+                <p>We work directly with your insurance to minimize your deductible and out-of-pocket expenses.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process">
+        <h2 data-i18n="ins.process.title">Step-by-Step Insurance Claims Process</h2>
+
+        <div class="steps-container">
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-content">
+                    <div class="step-number">01</div>
+                    <h3>Free Roof Inspection</h3>
+                    <p>We'll inspect your entire roof for storm damage and document everything with professional photos and detailed notes.</p>
+                    <ul>
+                        <li>Comprehensive roof evaluation</li>
+                        <li>Professional photo documentation</li>
+                        <li>Detailed condition report</li>
+                        <li>Safety assessment included</li>
+                    </ul>
+                    <div class="step-timeline">⏱ Same day or next day</div>
+                </div>
+                <div class="step-image">🔍</div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="step-image">📋</div>
+                <div class="step-content">
+                    <div class="step-number">02</div>
+                    <h3>Damage Assessment Report</h3>
+                    <p>We create a professional damage report with detailed photos, scope of work, material specifications, and pricing ready for insurance submission.</p>
+                    <ul>
+                        <li>Professional damage documentation</li>
+                        <li>High-quality photos from multiple angles</li>
+                        <li>Detailed scope of repairs</li>
+                        <li>Material specifications & pricing</li>
+                    </ul>
+                    <div class="step-timeline">⏱ 1-2 business days</div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="step-content">
+                    <div class="step-number">03</div>
+                    <h3>File Your Insurance Claim</h3>
+                    <p>We help you file your claim with your insurance provider, providing all required documentation and guiding you through your policy coverage.</p>
+                    <ul>
+                        <li>Complete claim submission</li>
+                        <li>All documentation organized</li>
+                        <li>Policy coverage explanation</li>
+                        <li>Deductible review</li>
+                    </ul>
+                    <div class="step-timeline">⏱ Same day as inspection</div>
+                </div>
+                <div class="step-image">✉️</div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+                <div class="step-image">👔</div>
+                <div class="step-content">
+                    <div class="step-number">04</div>
+                    <h3>Adjuster Meeting</h3>
+                    <p>We schedule and meet with your insurance adjuster on-site, walking them through all documented damage and advocating on your behalf.</p>
+                    <ul>
+                        <li>Schedule adjuster inspection</li>
+                        <li>Present complete damage documentation</li>
+                        <li>Advocate for full coverage</li>
+                        <li>Address any questions or concerns</li>
+                    </ul>
+                    <div class="step-timeline">⏱ Within 5-10 business days</div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+                <div class="step-content">
+                    <div class="step-number">05</div>
+                    <h3>Approval & Scope Agreement</h3>
+                    <p>Review your insurance approval details, confirm the scope of work, and select your materials before scheduling your project.</p>
+                    <ul>
+                        <li>Review approval documentation</li>
+                        <li>Confirm scope of work</li>
+                        <li>Choose shingle color & type</li>
+                        <li>Schedule installation date</li>
+                    </ul>
+                    <div class="step-timeline">⏱ Scheduled with adjuster</div>
+                </div>
+                <div class="step-image">✅</div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step">
+                <div class="step-image">🏗️</div>
+                <div class="step-content">
+                    <div class="step-number">06</div>
+                    <h3>Professional Installation</h3>
+                    <p>Our certified crew will install your new roof with expert craftsmanship, complete a final walkthrough, register your warranty, and clean up all debris.</p>
+                    <ul>
+                        <li>Expert installation by certified crew</li>
+                        <li>Quality materials used throughout</li>
+                        <li>Final walkthrough & inspection</li>
+                        <li>Warranty registration & cleanup</li>
+                    </ul>
+                    <div class="step-timeline">⏱ 2-5 business days for installation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Do After Storm Section -->
+    <section>
+        <h2>What to Do After a Storm</h2>
+        <div class="checklist-section">
+            <h3>Quick Action Checklist</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <p><strong>Document damage</strong> with photos from the ground (don't climb on roof)</p>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <p><strong>Call us immediately</strong> for a free inspection</p>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <p><strong>Avoid storm chasers</strong> and unsolicited roofing contractors</p>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <p><strong>Keep receipts</strong> for any emergency repairs you make</p>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <p><strong>File within 1 year</strong> (Texas law allows up to 1 year to file)</p>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <p><strong>Never pay upfront</strong> for roofing work with insurance claims</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insurance Companies Section -->
+    <section>
+        <h2>Insurance Companies We Work With</h2>
+        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: var(--warm-gray);">We work with ALL major insurance providers to get you the coverage you deserve.</p>
+        <div class="insurance-grid">
+            <div class="insurance-item">State Farm</div>
+            <div class="insurance-item">Allstate</div>
+            <div class="insurance-item">USAA</div>
+            <div class="insurance-item">Farmers Insurance</div>
+            <div class="insurance-item">Progressive</div>
+            <div class="insurance-item">Liberty Mutual</div>
+            <div class="insurance-item">Geico</div>
+            <div class="insurance-item">Nationwide</div>
+            <div class="insurance-item">American Family</div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet Section -->
+    <section>
+        <div class="lead-magnet">
+            <h3>Download Your Free Insurance Claims Checklist</h3>
+            <p>Get our complete guide to navigating the insurance claim process. Enter your information to download instantly.</p>
+            <form class="lead-magnet-form" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Your Phone Number" required>
+                </div>
+                <button type="submit" class="lead-magnet-submit">Download Free Checklist</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Will filing a claim raise my premiums?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>In Texas, filing a weather-related claim (like storm damage) typically does not increase your premiums. Weather damage is considered "Acts of God" and most insurance companies will not penalize you for filing a legitimate claim. We recommend asking your insurance agent to confirm your specific policy details.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What if my claim is denied?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>If your claim is denied, you have options. We can review the denial letter and help you understand why. You can often file an appeal with your insurance company with additional documentation. If you believe the denial is unfair, you can contact the Texas Department of Insurance or consult with an insurance attorney. We're here to help you navigate this process.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do I have to pay a deductible?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, typically you'll need to pay your deductible as outlined in your insurance policy. However, many homeowners end up paying little to nothing out-of-pocket because the insurance payout covers the deductible and the full cost of repairs. We work to maximize your insurance settlement to cover both the deductible and the repair costs.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How long does the process take?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The typical process takes 3-4 weeks from initial inspection to approved claim, though it can vary. The timeline depends on your insurance company, the extent of damage, and how quickly adjuster appointments can be scheduled. We work to expedite the process and keep you informed at every step.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What if my roof has pre-existing damage?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Insurance typically covers new damage caused by storms, not pre-existing wear and tear. However, if pre-existing damage contributed to the failure of your roof during the storm, it may be partially covered. Our detailed inspection will help identify what's storm damage versus pre-existing conditions, and we'll present this clearly to your adjuster.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I choose my own contractor?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, absolutely. You have the right to choose your contractor. We recommend choosing a licensed, insured, local contractor with experience filing insurance claims. This ensures your project is done right and you're working with someone who understands the insurance process. We're honored to be your choice for professional roofing work in El Paso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section>
+        <div class="cta-final">
+            <h2>Ready to Get Your Roof Restored?</h2>
+            <p>Don't navigate insurance claims alone. Let our team of experts handle the process while you focus on what matters most.</p>
+            <a href="tel:+19158618039" class="cta-primary">Call (915) 861-8039 Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <footer-content>
+            <div>
+                <div class="footer-logo">
+                    <img src="images/logos/meraki-stacked.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9;">
+                </div>
+                <p>Professional roofing services in El Paso, TX with over 500 insurance claims filed successfully.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="residential.html">Residential</a></li>
+                    <li><a href="commercial.html">Commercial</a></li>
+                    <li><a href="storm-damage.html">Storm Damage</a></li>
+                    <li><a href="financing.html">Financing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><a href="tel:+19158618039">Phone: (915) 861-8039</a></li>
+                    <li><a href="mailto:info@merakiroofing.com">Email: info@merakiroofing.com</a></li>
+                    <li>El Paso, TX</li>
+                    <li><a href="index.html#contact">Get Free Estimate</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Service Areas</h4>
+                <ul>
+                    <li>El Paso</li>
+                    <li>East El Paso</li>
+                    <li>Northeast El Paso</li>
+                    <li>West El Paso</li>
+                </ul>
+            </div>
+        </footer-content>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Meraki Roofing. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-cta">
+        <a href="tel:+19158618039">📞 Call (915) 861-8039</a>
+    </div>
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Roof Insurance Claims",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Meraki Roofing",
+            "image": "https://merakiroofing.com/logo.png",
+            "description": "Professional roof insurance claim services in El Paso, TX",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "El Paso",
+                "addressLocality": "El Paso",
+                "addressRegion": "TX",
+                "postalCode": "79901"
+            },
+            "telephone": "+1-915-861-8039",
+            "url": "https://merakiroofing.com",
+            "priceRange": "$0-$$$"
+        },
+        "areaServed": "El Paso, TX",
+        "description": "Complete insurance claims walkthrough service for roofing damage"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Will filing a claim raise my premiums?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "In Texas, filing a weather-related claim (like storm damage) typically does not increase your premiums. Weather damage is considered 'Acts of God' and most insurance companies will not penalize you for filing a legitimate claim."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if my claim is denied?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "If your claim is denied, you have options. We can review the denial letter and help you understand why. You can often file an appeal with your insurance company with additional documentation."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I have to pay a deductible?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, typically you'll need to pay your deductible as outlined in your insurance policy. However, many homeowners end up paying little to nothing out-of-pocket because the insurance payout covers the deductible and the full cost of repairs."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does the process take?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The typical process takes 3-4 weeks from initial inspection to approved claim, though it can vary. The timeline depends on your insurance company, the extent of damage, and how quickly adjuster appointments can be scheduled."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if my roof has pre-existing damage?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Insurance typically covers new damage caused by storms, not pre-existing wear and tear. However, if pre-existing damage contributed to the failure of your roof during the storm, it may be partially covered."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I choose my own contractor?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, absolutely. You have the right to choose your contractor. We recommend choosing a licensed, insured, local contractor with experience filing insurance claims."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_ID');
+    </script>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Navigation Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        mobileToggle.addEventListener('click', () => { const isOpen = navLinks.classList.toggle('active'); mobileToggle.setAttribute('aria-expanded', isOpen); });
+        navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); mobileToggle.setAttribute('aria-expanded', 'false'); }); });
+        const nav = document.getElementById('nav');
+        let ticking = false;
+        window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(() => { nav.classList.toggle('scrolled', window.scrollY > 50); ticking = false; }); ticking = true; } }, { passive: true });
+
+        // ===== RESOURCES DROPDOWN =====
+        const dropdown = document.getElementById('resourcesDropdown');
+        if (dropdown) {
+            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', dropdown.classList.contains('open'));
+            });
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Form submission handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const name = form.querySelector('input[type="text"]').value;
+            const email = form.querySelector('input[type="email"]').value;
+            const phone = form.querySelector('input[type="tel"]').value;
+
+            // Here you would typically send this data to a server
+            // For now, we'll just show a success message
+            alert(`Thank you, ${name}! We've sent the checklist to ${email}. We'll call you at ${phone} soon.`);
+            form.reset();
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.trust-card, .step, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+    <!-- ============ TRANSLATION ENGINE ============ -->
+    <script>
+        // Store original text content on first load
+        const originalTexts = {};
+
+        // Spanish translations for all translatable elements
+        const translations = {
+            es: {
+                // Navigation
+                'nav.residential': 'Residencial',
+                'nav.commercial': 'Comercial',
+                'nav.storm': 'Daño por Tormenta',
+                'nav.maintenance': 'Mantenimiento',
+                'nav.resources': 'Recursos',
+                'nav.financing': 'Opciones de Financiamiento',
+                'nav.insurance': 'Reclamaciones de Seguros',
+                'nav.gallery': 'Galería',
+                'nav.about': 'Acerca de Nosotros',
+                'nav.blog': 'Blog',
+                'nav.faq': 'Preguntas Frecuentes',
+                'nav.estimate': 'Cotización Gratis',
+                'nav.cta': 'Comience Aquí',
+
+                // Insurance claims page
+                'ins.hero.title': 'Manejamos Su Reclamación de Seguros de Techo — De Principio a Fin',
+                'ins.hero.subtitle': 'Navegar seguros no tiene que ser estresante. Hemos ayudado a cientos de propietarios de El Paso a reemplazar su techo con poco o ningún costo de su bolsillo.',
+                'ins.hero.btn': 'Comience Su Reclamación',
+                'ins.why.title': 'Por Qué Elegir a Meraki Para Su Reclamación',
+                'ins.why.subtitle': 'Manejamos todo por usted — desde la inspección hasta la aprobación',
+                'ins.feature.inspection': 'Inspección Gratuita',
+                'ins.feature.inspection.desc': 'Evaluación honesta de daño documentado y evaluación de reclamación',
+                'ins.feature.direct': 'Negociación Directa',
+                'ins.feature.direct.desc': 'Trabajamos directamente con su asegurador para maximizar su beneficio',
+                'ins.feature.handling': 'Manejo Completo de Paperwork',
+                'ins.feature.handling.desc': 'Completamos formas y documentación para usted',
+                'ins.feature.zero': 'Sin Costo de Bolsillo',
+                'ins.feature.zero.desc': 'La mayoría de propietarios no pagan nada en proyectos aprobados',
+                'ins.process.title': 'Nuestro Proceso de Reclamación',
+                'ins.process.desc': 'De la inspección a la aprobación en días',
+                'ins.faq.title': 'Preguntas Frecuentes Sobre Reclamaciones de Seguros',
+            }
+        };
+
+        // Main translation function
+        function setLanguage(lang) {
+            // Validate language
+            if (!translations[lang]) {
+                console.warn('Language not available:', lang);
+                lang = 'en';
+            }
+
+            // Store preference in localStorage
+            localStorage.setItem('preferred-language', lang);
+
+            // Update active button
+            document.querySelectorAll('[data-lang]').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+
+            // Translate all elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+
+                // Store original English text on first pass
+                if (!originalTexts[key]) {
+                    originalTexts[key] = el.textContent;
+                }
+
+                // Apply translation or revert to English
+                const translatedText = lang === 'es' && translations.es[key] ? translations.es[key] : originalTexts[key];
+
+                if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
+                    el.placeholder = translatedText;
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = translatedText;
+                } else if (el.tagName === 'BUTTON' && el.classList.contains('lang-btn')) {
+                    // Skip lang buttons
+                } else {
+                    el.textContent = translatedText;
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            setLanguage(savedLang);
+        });
+
+        // Fallback for very fast page loads
+        if (document.readyState !== 'loading') {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            setLanguage(savedLang);
+        }
+    </script>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <div class="theme-panel" id="themePanel">
+            <div class="theme-panel-title">Color Palette</div>
+            <button class="theme-option active" data-theme="default">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
+                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                </div>
+                Plum & Persimmon
+            </button>
+            <button class="theme-option" data-theme="charcoal-amber">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3A3A3A"></div>
+                    <div class="theme-swatch" style="background:#D97706"></div>
+                    <div class="theme-swatch" style="background:#D4A85C"></div>
+                </div>
+                Charcoal & Amber
+            </button>
+                    <div style="border-top: 1px solid #e0e0e0; margin: 6px 0; padding-top: 2px;"></div>
+            <div style="font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#bbb; padding: 0 10px 4px;">Horizontal Logo</div>
+            <button class="theme-option" data-theme="plum-h">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
+                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                </div>
+                Plum & Persimmon (H)
+            </button>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch color theme">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+    </div>
+
+
+    <script>
+    // Theme switcher
+    (function() {
+        let saved = localStorage.getItem('meraki-theme') || 'default';
+        if (['plum-persimmon', 'forest-terracotta', 'forest-h', 'navy-gold', 'slate-sage', 'olive-copper', 'olive-h'].includes(saved)) { saved = 'default'; localStorage.setItem('meraki-theme', 'default'); }
+        if (saved !== 'default') {
+            document.documentElement.setAttribute('data-theme', saved);
+        }
+
+        const logoMap = {
+            'default': 'images/logos/logo-plum-flat-transparent.png',
+            'charcoal-amber': 'images/logos/logo-charcoal-amber-h.png',
+                'plum-h': 'images/logos/logo-plum-flat-h.png',
+        };
+
+        const footerLogoMap = {
+            'charcoal-amber': 'images/logos/logo-charcoal-amber-wh.png',
+                'plum-h': 'images/logos/logo-plum-flat-wh.png',
+        };
+
+        const horizontalThemes = ['charcoal-amber', 'plum-h'];
+
+        function applyLogo(theme) {
+            const navImg = document.getElementById('navLogoImg');
+            if (navImg && logoMap[theme]) {
+                navImg.src = logoMap[theme];
+                if (horizontalThemes.includes(theme)) {
+                    navImg.classList.add('horizontal-logo');
+                } else {
+                    navImg.classList.remove('horizontal-logo');
+                }
+            }
+            const footerImg = document.getElementById('footerLogoImg');
+            if (footerImg) {
+                if (footerLogoMap[theme]) {
+                    footerImg.src = footerLogoMap[theme];
+                    footerImg.style.display = 'block';
+                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
+                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
+                    if (svgLogo) svgLogo.style.display = 'none';
+                    if (textLogo) textLogo.style.display = 'none';
+                } else {
+                    footerImg.style.display = 'none';
+                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
+                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
+                    if (svgLogo) svgLogo.style.display = '';
+                    if (textLogo) textLogo.style.display = '';
+                }
+            }
+        }
+
+        // Apply logo for saved theme on load
+        applyLogo(saved);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Re-apply after DOM ready
+            applyLogo(saved);
+
+            const panel = document.getElementById('themePanel');
+            const toggleBtn = document.getElementById('themeToggleBtn');
+            if (!panel || !toggleBtn) return;
+
+            // Mark active button
+            panel.querySelectorAll('.theme-option').forEach(opt => {
+                if (opt.dataset.theme === saved) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                panel.classList.toggle('open');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('#themeToggle')) {
+                    panel.classList.remove('open');
+                }
+            });
+
+            panel.querySelectorAll('.theme-option').forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const theme = this.dataset.theme;
+                    if (theme === 'default') {
+                        document.documentElement.removeAttribute('data-theme');
+                    } else {
+                        document.documentElement.setAttribute('data-theme', theme);
+                    }
+                    localStorage.setItem('meraki-theme', theme);
+                    panel.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+                    this.classList.add('active');
+                    applyLogo(theme);
+                    panel.classList.remove('open');
+                });
+            });
+        });
+    })();
+    </script>
+
+</body>
+</html>

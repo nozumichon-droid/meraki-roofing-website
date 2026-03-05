@@ -1,0 +1,2207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expert residential roofing services in El Paso, TX. Professional installation, repair, and maintenance with 10-year workmanship warranty.">
+    <meta name="keywords" content="residential roofing, roof repair, roof installation, El Paso, TX">
+    <meta property="og:title" content="Residential Roofing Services | Meraki Roofing">
+    <meta property="og:description" content="Expert residential roofing that protects your family. Professional installation, repair, and maintenance with 10-year warranty.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://merakiroofing.com/residential">
+    <link rel="canonical" href="https://merakiroofing.com/residential">
+
+    <title>Residential Roofing Services | Meraki Roofing in El Paso, TX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <style>
+        :root {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+            --font-display: 'Lora', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* Palette 5: Charcoal & Amber */
+        [data-theme="charcoal-amber"] {
+            --forest: #3A3A3A;
+            --forest-deep: #2A2A2A;
+            --terracotta: #D97706;
+            --terracotta-dark: #B86305;
+            --terracotta-light: #F5B74A;
+            --cream: #F5F3EF;
+            --cream-dark: #EAE6DF;
+            --warm-white: #FAFAF8;
+            --charcoal: #2D2D2D;
+            --warm-gray: #6B6B6B;
+            --light-gray: #DCDCDC;
+            --gold: #D4A85C;
+            --gold-light: #F0DDB8;
+        }
+
+            --warm-gray: #5E6E6B;
+            --light-gray: #D0D8D2;
+            --gold: #B8A97C;
+            --gold-light: #DDD4B8;
+        }
+
+        /* Palette 8: Plum & Persimmon — Horizontal Logo */
+        [data-theme="plum-h"] {
+            --forest: #3D2530;
+            --forest-deep: #2A1720;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #FDF5F3;
+            --cream-dark: #F5E8E4;
+            --warm-white: #FDFAF9;
+            --charcoal: #2D2020;
+            --warm-gray: #7A6565;
+            --light-gray: #EAE0DD;
+            --gold: #C9A0A8;
+            --gold-light: #E8CDD2;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: var(--font-body);
+        }
+
+        /* Navigation */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--forest);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            z-index: 10000;
+            font-weight: 600;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(253, 252, 250, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(44, 74, 62, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 1rem;
+            height: 120px;
+            transition: height 0.3s ease;
+        }
+
+        .nav.scrolled .nav-inner {
+            height: 80px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 38px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .nav-logo-icon svg { width: 100%; height: 100%; }
+
+        .nav-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+
+        .nav-logo-img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
+        }
+
+        .nav.scrolled .nav-logo-img {
+            height: 55px;
+        }
+        /* When horizontal logo is active, constrain logo width */
+        .nav-logo-img.horizontal-logo {
+            max-width: 260px;
+            height: auto;
+            max-height: 75px;
+        }
+        .nav.scrolled .nav-logo-img.horizontal-logo {
+            max-width: 200px;
+            max-height: 50px;
+        }
+
+
+        .nav-logo-text {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--forest-deep);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .nav-logo-text span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.58rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--warm-gray);
+            margin-top: 1px;
+        }
+
+        .nav-logo-accent {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--terracotta);
+            margin-top: 3px;
+            border-radius: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--warm-gray);
+            transition: color 0.25s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--forest);
+        }
+
+        .nav-links a.active {
+            color: var(--forest);
+            font-weight: 600;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--terracotta);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--terracotta) !important;
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            font-size: 0.88rem !important;
+            transition: all 0.25s !important;
+            box-shadow: 0 2px 8px rgba(196, 114, 75, 0.25);
+            cursor: pointer;
+            border: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--terracotta-dark) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(196, 114, 75, 0.35);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        /* Resources Dropdown */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--warm-gray);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0;
+            transition: color 0.25s;
+        }
+
+        .nav-dropdown-toggle:hover { color: var(--forest); }
+
+        .nav-dropdown-toggle svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.25s;
+        }
+
+        .nav-dropdown.open .nav-dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+            min-width: 220px;
+            padding: 8px 0;
+            z-index: 1000;
+            border: 1px solid var(--light-gray);
+            animation: dropdownFade 0.2s ease;
+        }
+
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-top: 1px solid var(--light-gray);
+            border-left: 1px solid var(--light-gray);
+        }
+
+        .nav-dropdown.open .nav-dropdown-menu {
+            display: block;
+        }
+
+        .nav-dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px !important;
+            font-size: 0.88rem;
+            color: var(--warm-gray);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-dropdown-menu a::after { display: none !important; }
+
+        .nav-dropdown-menu a:hover {
+            background: var(--cream);
+            color: var(--forest);
+        }
+
+        .nav-dropdown-menu .dropdown-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2.5px;
+            background: var(--forest);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background:
+                radial-gradient(ellipse at 80% 80%, rgba(255,92,52,0.12) 0%, transparent 60%),
+                linear-gradient(135deg, var(--forest-deep) 0%, var(--forest) 60%, var(--forest-deep) 100%);
+            color: white;
+            padding: 140px 2rem 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Roofline pattern */
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 20H0z' fill='rgba(255,255,255,0.015)'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.03em;
+        }
+        .hero-breadcrumb a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .hero-breadcrumb a:hover { color: rgba(255,255,255,0.85); }
+        .hero-breadcrumb .sep { font-size: 0.6rem; opacity: 0.4; }
+
+        @keyframes heroSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 1.25rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            margin-bottom: 0.6rem;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: clamp(0.88rem, 1.8vw, 1rem);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .hero-trust {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            font-weight: 500;
+        }
+
+        .hero-trust span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hero-trust svg { color: var(--gold); }
+
+        .btn {
+            padding: 11px 26px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--terracotta);
+            color: white;
+            box-shadow: 0 4px 16px rgba(196, 114, 75, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(196, 114, 75, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--forest);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
+        #main-content {
+            scroll-margin-top: 76px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: var(--warm-white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--forest);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--warm-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(44, 74, 62, 0.1);
+            border-color: var(--terracotta);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--cream);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            color: var(--terracotta);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--terracotta);
+            color: white;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--forest);
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .service-card p {
+            color: var(--warm-gray);
+            line-height: 1.75;
+            font-size: 0.9rem;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            padding: 4rem 0;
+            background: var(--cream);
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .why-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 14px;
+            text-align: center;
+            border: 1px solid var(--light-gray);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            transition: all 0.3s;
+        }
+
+        .why-card:nth-child(1) { animation-delay: 0.1s; }
+        .why-card:nth-child(2) { animation-delay: 0.2s; }
+        .why-card:nth-child(3) { animation-delay: 0.3s; }
+        .why-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+        }
+
+        .why-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .why-icon.gold { background: rgba(212,168,92,0.12); color: var(--gold); }
+        .why-icon.forest { background: rgba(44,74,62,0.1); color: var(--forest); }
+        .why-icon.terra { background: rgba(196,114,75,0.1); color: var(--terracotta); }
+
+        .why-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--forest-deep);
+            margin-bottom: 0.4rem;
+        }
+
+        .why-card p {
+            color: var(--warm-gray);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        /* Social Proof Strip */
+        .trust-strip {
+            padding: 1.5rem 0;
+            background: var(--forest-deep);
+            color: white;
+        }
+
+        .trust-strip-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .trust-strip-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .trust-strip-item svg { color: var(--gold); flex-shrink: 0; }
+
+        .trust-strip-divider {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Testimonial */
+        .testimonial-spotlight {
+            padding: 4rem 0;
+            background: var(--warm-white);
+        }
+
+        .testimonial-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-display);
+            font-size: 5rem;
+            color: var(--terracotta-light);
+            line-height: 1;
+            opacity: 0.5;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-stars svg { fill: #FBBC05; }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            color: var(--charcoal);
+            line-height: 1.85;
+            font-style: italic;
+            margin-bottom: 1.25rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--forest-deep);
+        }
+
+        .testimonial-role {
+            font-size: 0.78rem;
+            color: var(--warm-gray);
+        }
+
+        .testimonial-google {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 1rem;
+            font-size: 0.72rem;
+            color: var(--warm-gray);
+        }
+
+        .testimonial-google svg { flex-shrink: 0; }
+
+        /* Process Section */
+        .process {
+            padding: 5rem 0;
+            background: var(--warm-white);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        /* Connector line across all steps */
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 60px;
+            right: 60px;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, var(--light-gray) 0, var(--light-gray) 8px, transparent 8px, transparent 14px);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step:nth-child(1) { animation-delay: 0.1s; }
+        .process-step:nth-child(2) { animation-delay: 0.25s; }
+        .process-step:nth-child(3) { animation-delay: 0.4s; }
+        .process-step:nth-child(4) { animation-delay: 0.55s; }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: var(--forest);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 12px rgba(44, 74, 62, 0.2);
+            border: 3px solid white;
+            position: relative;
+        }
+
+        .process-step h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            color: var(--warm-gray);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        /* Financing Teaser */
+        .financing-teaser {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--terracotta-light) 100%);
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .financing-teaser h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            color: var(--forest-deep);
+            margin-bottom: 1.5rem;
+        }
+
+        .financing-details {
+            font-size: 1.3rem;
+            color: var(--forest-deep);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .financing-details span {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 4rem 2rem;
+            background: var(--forest);
+            color: white;
+            text-align: center;
+            border-radius: 12px;
+            margin: 3rem 0;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .final-cta h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin-bottom: 2rem;
+            line-height: 1.3;
+        }
+
+        .final-cta .btn {
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .contact-info a {
+            color: var(--gold);
+        }
+
+        /* Sticky Mobile CTA */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid var(--light-gray);
+            padding: 1rem;
+            z-index: 500;
+            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .mobile-cta-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .mobile-cta-text {
+            flex: 1;
+        }
+
+        .mobile-cta-text p {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+        }
+
+        .mobile-cta-text p strong {
+            display: block;
+            color: var(--forest);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .mobile-cta a {
+            background: var(--terracotta);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .mobile-cta a:hover {
+            background: var(--terracotta-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 76px;
+                left: 0;
+                right: 0;
+                background: var(--warm-white);
+                padding: 1.5rem;
+                border-top: 1px solid var(--light-gray);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+                gap: 0;
+            }
+
+            .nav-links.active a {
+                padding: 14px 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .nav-links.active .nav-cta {
+                margin-top: 12px;
+                text-align: center;
+                display: block;
+            }
+
+            /* Mobile dropdown */
+            .nav-dropdown { width: 100%; }
+
+            .nav-dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid var(--light-gray);
+                justify-content: space-between;
+            }
+
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                background: var(--cream);
+                min-width: 100%;
+                animation: none;
+            }
+
+            .nav-dropdown-menu::before { display: none; }
+
+            .nav-dropdown-menu a {
+                padding: 12px 20px !important;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                font-size: 0.85rem;
+            }
+
+            .mobile-cta {
+                display: flex;
+            }
+
+            body {
+                padding-bottom: 100px;
+            }
+
+            .hero-ctas {
+                gap: 1rem;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-grid::before { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 130px 1.5rem 2rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .mobile-cta-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .mobile-cta a {
+                text-align: center;
+                display: block;
+            }
+        }
+
+        /* Intersection Observer animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            background: var(--warm-white);
+            border: 2px solid var(--light-gray);
+            border-radius: 20px;
+            padding: 2px;
+            gap: 0;
+            margin-left: 0.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--forest);
+        }
+
+        .lang-btn {
+            padding: 4px 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--forest);
+            color: white;
+            border-radius: 18px;
+            margin-left: 0;
+        }
+    
+        /* ============ THEME TOGGLE UI ============ */
+        .theme-toggle {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+        .theme-toggle-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--forest);
+            color: white;
+            border: 2px solid white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            transition: all 0.3s;
+        }
+        .theme-toggle-btn:hover { transform: scale(1.1); }
+        .theme-panel {
+            position: absolute;
+            bottom: 54px;
+            left: 0;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+            padding: 1rem;
+            min-width: 220px;
+            opacity: 0;
+            transform: translateY(10px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.25s ease;
+        }
+        .theme-panel.open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .theme-panel-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--warm-gray);
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+            border: none;
+            background: none;
+            width: 100%;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+        .theme-option:hover { background: var(--cream); }
+        .theme-option.active { background: var(--cream); font-weight: 700; }
+        .theme-swatches { display: flex; gap: 3px; flex-shrink: 0; }
+        .theme-swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 1.5px solid rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .theme-toggle { bottom: 80px; left: 16px; }
+        }
+
+        /* GAF Widget Tabs */
+        .gaf-widgets-section {
+            padding: 3rem 0;
+        }
+        .gaf-widgets-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .gaf-widgets-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--forest);
+            margin-bottom: 0.4rem;
+        }
+        .gaf-widgets-header p {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+        }
+        .gaf-widget-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .gaf-widget-tab {
+            padding: 9px 18px;
+            border-radius: 100px;
+            border: 1.5px solid var(--light-gray);
+            background: white;
+            color: var(--warm-gray);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: inherit;
+        }
+        .gaf-widget-tab:hover {
+            border-color: var(--terracotta-light);
+            color: var(--forest);
+        }
+        .gaf-widget-tab.active {
+            background: var(--forest);
+            color: white;
+            border-color: var(--forest);
+        }
+        .gaf-widget-panel {
+            display: none;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--light-gray);
+        }
+        .gaf-widget-panel.active {
+            display: block;
+        }
+        .gaf-widget-panel iframe {
+            display: block;
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        @media (max-width: 640px) {
+            .gaf-widget-tab {
+                padding: 7px 14px;
+                font-size: 0.75rem;
+            }
+            .gaf-widget-panel iframe {
+                height: 600px;
+            }
+        }
+
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Meraki Roofing",
+        "description": "Expert residential and commercial roofing services in El Paso, Texas",
+        "url": "https://merakiroofing.com",
+        "telephone": "+1-915-861-8039",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Main Street",
+            "addressLocality": "El Paso",
+            "addressRegion": "TX",
+            "postalCode": "79901",
+            "addressCountry": "US"
+        },
+        "areaServed": "El Paso, TX",
+        "ratingValue": "4.9",
+        "ratingCount": "500"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Residential Roofing Services",
+        "description": "Professional residential roofing installation, repair, and maintenance",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Meraki Roofing"
+        },
+        "areaServed": "El Paso, TX"
+    }
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logos/meraki-horizontal.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="residential.html" class="active" data-i18n="nav.residential">Residential</a>
+                <a href="commercial.html" data-i18n="nav.commercial">Commercial</a>
+                <a href="storm-damage.html" data-i18n="nav.storm">Storm Damage</a>
+                <a href="maintenance.html" data-i18n="nav.maintenance">Maintenance</a>
+                <div class="nav-dropdown" id="resourcesDropdown">
+                    <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.resources">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="financing.html" role="menuitem"><span class="dropdown-icon">💰</span><span data-i18n="nav.financing">Financing Options</span></a>
+                        <a href="insurance-claims.html" role="menuitem"><span class="dropdown-icon">📋</span><span data-i18n="nav.insurance">Insurance Claims</span></a>
+                        <a href="gallery.html" role="menuitem"><span class="dropdown-icon">📸</span><span data-i18n="nav.gallery">Gallery</span></a>
+                        <a href="gaf.html" role="menuitem"><span class="dropdown-icon">🛡️</span><span data-i18n="nav.gaf">GAF Products</span></a>
+                        <a href="index.html#about" role="menuitem"><span class="dropdown-icon">🏠</span><span data-i18n="nav.about">About Us</span></a>
+                        <a href="blog.html" role="menuitem"><span class="dropdown-icon">📝</span><span data-i18n="nav.blog">Blog</span></a>
+                        <a href="index.html#faq" role="menuitem"><span class="dropdown-icon">❓</span><span data-i18n="nav.faq">FAQs</span></a>
+                    </div>
+                </div>
+                <a href="estimate.html" data-i18n="nav.estimate">Free Estimate</a>
+                <a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a>
+                <div class="lang-toggle" id="langToggle" aria-label="Language selector">
+                    <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+                </div>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep">›</span>
+                <span>Residential</span>
+            </nav>
+            <h1 data-i18n="res.hero.title">Residential Roofing <em>Built to Protect</em> Your Family</h1>
+            <p data-i18n="res.hero.subtitle">Your home is your biggest investment. We deliver expert roofing with craftsmanship and materials built to withstand El Paso's toughest conditions.</p>
+            <div class="hero-ctas">
+                <a href="estimate.html" class="btn btn-primary" data-i18n="res.hero.btn.estimate">Get Free Estimate</a>
+                <a href="tel:+19158618039" class="btn btn-secondary" data-i18n="res.hero.btn.call">Call (915) 861-8039</a>
+            </div>
+        </div>
+    </section>
+
+    <main id="main-content">
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-i18n="res.services.title">Residential Roofing Services</h2>
+                    <p data-i18n="res.services.desc">We offer a complete range of roofing solutions designed to protect your home and enhance its value</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <h3 data-i18n="res.service.asphalt">Asphalt Shingle Roofing</h3>
+                        <p data-i18n="res.service.asphalt.desc">Professional installation of architectural shingles from GAF and Owens Corning. Durable, affordable, and available in many styles. 25–30 year lifespan.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
+                        </div>
+                        <h3 data-i18n="res.service.slate">Natural Slate Roofing</h3>
+                        <p data-i18n="res.service.slate.desc">Expert repair and installation of natural slate. Timeless elegance with a 75–100 year lifespan. The premium choice for distinctive homes.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+                        </div>
+                        <h3 data-i18n="res.service.tile">Tile Roofing</h3>
+                        <p data-i18n="res.service.tile.desc">Clay and concrete tile roofing perfect for El Paso's Southwest aesthetic. Exceptional durability with 50+ year lifespan.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <h3 data-i18n="res.service.coating">Roof Coatings</h3>
+                        <p data-i18n="res.service.coating.desc">Extend your roof's life with elastomeric and reflective coatings. Reduces energy costs and protects against El Paso's intense UV exposure.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"/><polyline points="13 11 9 17 15 17 11 23"/></svg>
+                        </div>
+                        <h3 data-i18n="res.service.storm">Storm Damage Repair</h3>
+                        <p data-i18n="res.service.storm.desc">Fast response to hail, wind, and rain damage. Full insurance claim assistance included at no extra cost.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6L2 12l6 6"/><path d="M2 12h20"/><path d="M22 6v12"/></svg>
+                        </div>
+                        <h3 data-i18n="res.service.gutter">Gutter Services</h3>
+                        <p data-i18n="res.service.gutter.desc">Complete gutter installation, repair, and cleaning. Protect your home's foundation and landscaping from water damage.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Strip -->
+        <div class="trust-strip">
+            <div class="container">
+                <div class="trust-strip-inner">
+                    <div class="trust-strip-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        500+ Homes Served
+                    </div>
+                    <div class="trust-strip-divider"></div>
+                    <div class="trust-strip-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        4.9-Star Rating
+                    </div>
+                    <div class="trust-strip-divider"></div>
+                    <div class="trust-strip-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        GAF Certified
+                    </div>
+                    <div class="trust-strip-divider"></div>
+                    <div class="trust-strip-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        10-Year Warranty
+                    </div>
+                    <div class="trust-strip-divider"></div>
+                    <div class="trust-strip-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Locally Owned — El Paso
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAF Product Resources Banner -->
+        <section style="padding: 2rem 0;">
+            <div class="container" style="display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; background: var(--cream); border-radius: 12px; padding: 1.5rem 2rem; border-left: 4px solid var(--terracotta);">
+                <div>
+                    <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--forest); margin-bottom: 0.25rem;">GAF Certified Plus — Explore Our Products & Warranties</h3>
+                    <p style="font-size: 0.85rem; color: var(--warm-gray); margin: 0;">Only 7% of roofers earn this certification. See what it means for your roof.</p>
+                </div>
+                <a href="gaf.html" class="btn btn-primary" style="white-space: nowrap; font-size: 0.82rem; padding: 9px 20px; flex-shrink: 0;">View GAF Details →</a>
+            </div>
+        </section>
+
+        <!-- Why Choose Section -->
+        <section class="why-choose">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-i18n="res.why.title">Why Choose Meraki for Your Home</h2>
+                    <p data-i18n="res.why.subtitle">We're trusted by hundreds of homeowners in El Paso</p>
+                </div>
+
+                <div class="why-choose-grid">
+                    <div class="why-card">
+                        <div class="why-icon gold">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        </div>
+                        <h3 data-i18n="res.why.rating">4.9 ★ Rating</h3>
+                        <p data-i18n="res.why.rating.desc">500+ homes served with exceptional craftsmanship and 5-star service</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon forest">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <h3 data-i18n="res.why.inspections">Free Inspections</h3>
+                        <p data-i18n="res.why.inspections.desc">No-obligation roof assessments to identify any issues early</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon terra">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3 data-i18n="res.why.warranty">10-Year Warranty</h3>
+                        <p data-i18n="res.why.warranty.desc">Industry-leading workmanship warranty on every installation</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon forest">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <h3 data-i18n="res.why.local">Local & Insured</h3>
+                        <p data-i18n="res.why.local.desc">Licensed, insured, and locally owned by El Paso residents</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial -->
+        <section class="testimonial-spotlight">
+            <div class="container">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FBBC05"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FBBC05"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FBBC05"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FBBC05"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FBBC05"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Meraki Roofing replaced our entire roof after a hailstorm. They handled our insurance claim and made the whole process completely painless. The crew was professional, on time, and left our yard spotless. Couldn't be happier with the result."</p>
+                    <div class="testimonial-author">Maria R.</div>
+                    <div class="testimonial-role">Homeowner, West El Paso</div>
+                    <div class="testimonial-google">
+                        <svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                        Posted on Google
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-i18n="res.process.title">Our Installation Process</h2>
+                    <p data-i18n="res.process.subtitle">From inspection to completion, we make the process transparent and hassle-free</p>
+                </div>
+
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="process-number">1</div>
+                        <h3 data-i18n="res.process.step1">Inspection</h3>
+                        <p data-i18n="res.process.step1.desc">Thorough assessment of your roof's condition and any damage</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-number">2</div>
+                        <h3 data-i18n="res.process.step2">Proposal</h3>
+                        <p data-i18n="res.process.step2.desc">Detailed estimate and options tailored to your needs and budget</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-number">3</div>
+                        <h3 data-i18n="res.process.step3">Installation</h3>
+                        <p data-i18n="res.process.step3.desc">Professional installation with premium materials and expert craftsmanship</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-number">4</div>
+                        <h3 data-i18n="res.process.step4">Walkthrough</h3>
+                        <p data-i18n="res.process.step4.desc">Final inspection to ensure your complete satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financing Teaser -->
+        <section class="container">
+            <div class="financing-teaser">
+                <h2 data-i18n="res.financing.title">Quality Roofing That Fits Your Budget</h2>
+                <div class="financing-details">
+                    <span data-i18n="res.financing.down">$0 Down</span>
+                    <span data-i18n="res.financing.monthly">As low as $89/mo</span>
+                </div>
+                <a href="financing.html" class="btn btn-primary" data-i18n="res.financing.btn">Explore Financing Options</a>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="container">
+            <div class="final-cta">
+                <h2 data-i18n="res.cta.title">Protect Your Home With a Roof You Can Trust</h2>
+                <a href="estimate.html" class="btn btn-primary" data-i18n="res.cta.btn">Get Your Free Estimate Today</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="mobile-cta">
+        <div class="mobile-cta-content">
+            <div class="mobile-cta-text">
+                <p><strong data-i18n="res.mobile.ready">Ready to Get Started?</strong>
+                <span data-i18n="res.mobile.cta">Get your free estimate</span></p>
+            </div>
+            <a href="estimate.html" data-i18n="res.mobile.btn">Estimate</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/logos/meraki-stacked.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9;">
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>El Paso, TX</strong></p>
+                        <p><a href="tel:+19158618039">(915) 861-8039</a></p>
+                        <p><a href="mailto:info@merakiroofing.com">info@merakiroofing.com</a></p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3 data-i18n="footer.services">Services</h3>
+                    <ul>
+                        <li><a href="residential.html" data-i18n="footer.residential">Residential Roofing</a></li>
+                        <li><a href="commercial.html" data-i18n="footer.commercial">Commercial Roofing</a></li>
+                        <li><a href="storm-damage.html" data-i18n="footer.storm">Storm Damage</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 data-i18n="footer.resources">Resources</h3>
+                    <ul>
+                        <li><a href="insurance-claims.html" data-i18n="footer.insurance">Insurance Claims</a></li>
+                        <li><a href="financing.html" data-i18n="footer.financing">Financing</a></li>
+                        <li><a href="maintenance.html" data-i18n="footer.maintenance">Maintenance Plans</a></li>
+                        <li><a href="reviews.html" data-i18n="footer.reviews">Reviews</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 data-i18n="footer.company">Company</h3>
+                    <ul>
+                        <li><a href="index.html#about" data-i18n="footer.about">About Us</a></li>
+                        <li><a href="estimate.html" data-i18n="footer.estimate">Free Estimate</a></li>
+                        <li><a href="index.html#contact" data-i18n="footer.contact">Contact</a></li>
+                        <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2025 Meraki Roofing. All rights reserved. Licensed & Insured. Locally Owned in El Paso, TX.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GAF Widget Tabs
+        document.querySelectorAll('.gaf-widget-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.gafTab;
+                document.querySelectorAll('.gaf-widget-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.gaf-widget-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.querySelector(`[data-gaf-panel="${target}"]`).classList.add('active');
+            });
+        });
+
+        // Navigation Mobile Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            mobileToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // ===== RESOURCES DROPDOWN =====
+        const dropdown = document.getElementById('resourcesDropdown');
+        if (dropdown) {
+            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', dropdown.classList.contains('open'));
+            });
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // Navigation Scroll Effect
+        const nav = document.getElementById('nav');
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    nav.classList.toggle('scrolled', window.scrollY > 50);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.service-card, .why-card, .process-step, .financing-teaser, .final-cta').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+
+        // Google Analytics tracking for key interactions
+        function trackEvent(eventName, eventData) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', eventName, eventData);
+            }
+        }
+
+        // Track CTA clicks
+        document.querySelectorAll('.btn-primary, .nav-cta').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const destination = btn.getAttribute('href');
+                trackEvent('cta_click', {
+                    'cta_type': 'button',
+                    'destination': destination
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // ===== TRANSLATIONS =====
+        const originalTexts = {};
+        const translations = {
+            es: {
+                // Navigation
+                'nav.residential': 'Residencial',
+                'nav.commercial': 'Comercial',
+                'nav.storm': 'Daño por Tormenta',
+                'nav.maintenance': 'Mantenimiento',
+                'nav.resources': 'Recursos',
+                'nav.financing': 'Opciones de Financiamiento',
+                'nav.insurance': 'Reclamaciones de Seguros',
+                'nav.gallery': 'Galería',
+                'nav.about': 'Acerca de Nosotros',
+                'nav.blog': 'Blog',
+                'nav.faq': 'Preguntas Frecuentes',
+                'nav.estimate': 'Cotización Gratis',
+                'nav.cta': 'Comience Aquí',
+
+                // Residential Hero Section
+                'res.hero.title': 'Techumbre Residencial — Construida para Proteger Su Familia',
+                'res.hero.subtitle': 'Su hogar es su inversión más grande. Ofrecemos techumbre experta que protege lo que más le importa, con artesanía y materiales construidos para durar.',
+                'res.hero.btn.estimate': 'Obtenga Cotización Gratis',
+                'res.hero.btn.call': 'Llamar (915) 861-8039',
+
+                // Residential Services
+                'res.services.title': 'Servicios de Techumbre Residencial',
+                'res.services.desc': 'Ofrecemos una gama completa de soluciones de techumbre diseñadas para proteger su hogar y mejorar su valor',
+                'res.service.asphalt': 'Techumbre de Tejas Asfálticas',
+                'res.service.asphalt.desc': 'Instalación profesional de tejas arquitectónicas. Duraderas, asequibles, y disponibles en muchos estilos. Vida útil de 25-30 años.',
+                'res.service.slate': 'Techumbre de Pizarra Natural',
+                'res.service.slate.desc': 'Reparación e instalación experta. Elegancia sin igual, vida útil de 75-100 años.',
+                'res.service.tile': 'Techumbre de Teja',
+                'res.service.tile.desc': 'Techumbre de teja de barro y concreto perfecta para la estética Suroeste de El Paso. Vida útil de 50+ años.',
+                'res.service.coating': 'Recubrimientos de Techo',
+                'res.service.coating.desc': 'Extienda la vida de su techo con recubrimientos elastoméricos y reflectantes. Reduce costos de energía, protege contra UV.',
+                'res.service.storm': 'Reparación de Daño por Tormenta',
+                'res.service.storm.desc': 'Respuesta rápida a daño por granizo, viento y lluvia. Asistencia con reclamaciones de seguros incluida.',
+                'res.service.gutter': 'Servicios de Canaletas',
+                'res.service.gutter.desc': 'Instalación, reparación y limpieza completas de canaletas.',
+
+                // Why Choose
+                'res.why.title': 'Por Qué Elegir Meraki para Su Hogar',
+                'res.why.subtitle': 'Somos de confianza para cientos de propietarios en El Paso',
+                'res.why.rating': 'Calificación de 4.9 ★',
+                'res.why.rating.desc': '500+ hogares atendidos con artesanía y servicio excepcional',
+                'res.why.inspections': 'Inspecciones Gratuitas',
+                'res.why.inspections.desc': 'Evaluaciones sin obligación para identificar cualquier problema de techumbre',
+                'res.why.warranty': 'Garantía de 10 Años',
+                'res.why.warranty.desc': 'Garantía de mano de obra líder en la industria en todas las instalaciones',
+                'res.why.local': 'Local y Asegurado',
+                'res.why.local.desc': 'Licenciado, asegurado, y de propiedad local por residentes de El Paso',
+
+                // Process
+                'res.process.title': 'Nuestro Proceso de Instalación',
+                'res.process.subtitle': 'De la inspección a la finalización, hacemos el proceso transparente y sin complicaciones',
+                'res.process.step1': 'Inspección',
+                'res.process.step1.desc': 'Evaluación exhaustiva de la condición de su techo y cualquier daño',
+                'res.process.step2': 'Propuesta',
+                'res.process.step2.desc': 'Cotización detallada y opciones personalizadas a sus necesidades y presupuesto',
+                'res.process.step3': 'Instalación',
+                'res.process.step3.desc': 'Instalación profesional con materiales premium y artesanía experta',
+                'res.process.step4': 'Revisión Final',
+                'res.process.step4.desc': 'Inspección final para asegurar su total satisfacción',
+
+                // Financing
+                'res.financing.title': 'Techumbre de Calidad que se Ajusta a Su Presupuesto',
+                'res.financing.down': '$0 de Entrada',
+                'res.financing.monthly': 'Tan bajo como $89/mes',
+                'res.financing.btn': 'Explorar Opciones de Financiamiento',
+
+                // CTA
+                'res.cta.title': 'Proteja Su Hogar Con un Techo en el Que Pueda Confiar',
+                'res.cta.btn': 'Obtenga Su Cotización Gratis Hoy',
+
+                // Mobile CTA
+                'res.mobile.ready': '¿Listo para Comenzar?',
+                'res.mobile.cta': 'Obtenga su cotización gratis',
+                'res.mobile.btn': 'Cotización',
+
+                // Footer
+                'footer.services': 'Servicios',
+                'footer.residential': 'Techumbre Residencial',
+                'footer.commercial': 'Techumbre Comercial',
+                'footer.storm': 'Daño por Tormenta',
+                'footer.resources': 'Recursos',
+                'footer.insurance': 'Reclamaciones de Seguros',
+                'footer.financing': 'Financiamiento',
+                'footer.maintenance': 'Planes de Mantenimiento',
+                'footer.reviews': 'Reseñas',
+                'footer.company': 'Compañía',
+                'footer.about': 'Acerca de Nosotros',
+                'footer.estimate': 'Cotización Gratis',
+                'footer.contact': 'Contacto',
+                'footer.privacy': 'Política de Privacidad',
+                'footer.copyright': '© 2025 Meraki Roofing. Todos los derechos reservados. Licenciado y Asegurado. De Propiedad Local en El Paso, TX.',
+            }
+        };
+
+        // Store original texts
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (!originalTexts[key]) {
+                    if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
+                        originalTexts[key] = el.placeholder;
+                    } else if (el.tagName === 'OPTION') {
+                        originalTexts[key] = el.textContent;
+                    } else {
+                        originalTexts[key] = el.textContent;
+                    }
+                }
+            });
+        });
+
+        // Main translation function
+        function setLanguage(lang) {
+            // Validate language
+            if (!translations[lang]) {
+                console.warn('Language not available:', lang);
+                lang = 'en';
+            }
+
+            // Store preference in localStorage
+            localStorage.setItem('preferred-language', lang);
+
+            // Update document language attribute
+            document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+
+                // Store original text on first run
+                if (!originalTexts[key]) {
+                    if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
+                        originalTexts[key] = el.placeholder;
+                    } else if (el.tagName === 'OPTION') {
+                        originalTexts[key] = el.textContent;
+                    } else {
+                        originalTexts[key] = el.textContent;
+                    }
+                }
+
+                // Apply translation or revert to English
+                const translatedText = lang === 'es' && translations.es[key] ? translations.es[key] : originalTexts[key];
+
+                if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'tel' || el.type === 'email')) {
+                    el.placeholder = translatedText;
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = translatedText;
+                } else {
+                    el.textContent = translatedText;
+                }
+            });
+
+            // Update active button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            setLanguage(savedLang);
+        });
+
+        // Fallback for very fast page loads
+        if (document.readyState !== 'loading') {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            setLanguage(savedLang);
+        }
+    </script>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <div class="theme-panel" id="themePanel">
+            <div class="theme-panel-title">Color Palette</div>
+            <button class="theme-option active" data-theme="default">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
+                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                </div>
+                Plum & Persimmon
+            </button>
+            <button class="theme-option" data-theme="charcoal-amber">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3A3A3A"></div>
+                    <div class="theme-swatch" style="background:#D97706"></div>
+                    <div class="theme-swatch" style="background:#D4A85C"></div>
+                </div>
+                Charcoal & Amber
+            </button>
+                    <div style="border-top: 1px solid #e0e0e0; margin: 6px 0; padding-top: 2px;"></div>
+            <div style="font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#bbb; padding: 0 10px 4px;">Horizontal Logo</div>
+            <button class="theme-option" data-theme="plum-h">
+                <div class="theme-swatches">
+                    <div class="theme-swatch" style="background:#3D2530"></div>
+                    <div class="theme-swatch" style="background:#FF5C34"></div>
+                    <div class="theme-swatch" style="background:#C9A0A8"></div>
+                </div>
+                Plum & Persimmon (H)
+            </button>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch color theme">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+    </div>
+
+
+    <script>
+    // Theme switcher
+    (function() {
+        let saved = localStorage.getItem('meraki-theme') || 'default';
+        if (['plum-persimmon', 'forest-terracotta', 'forest-h', 'navy-gold', 'slate-sage', 'olive-copper', 'olive-h'].includes(saved)) { saved = 'default'; localStorage.setItem('meraki-theme', 'default'); }
+        if (saved !== 'default') {
+            document.documentElement.setAttribute('data-theme', saved);
+        }
+
+        const logoMap = {
+            'default': 'images/logos/logo-plum-flat-transparent.png',
+            'charcoal-amber': 'images/logos/logo-charcoal-amber-h.png',
+                'plum-h': 'images/logos/logo-plum-flat-h.png',
+        };
+
+        const footerLogoMap = {
+            'charcoal-amber': 'images/logos/logo-charcoal-amber-wh.png',
+                'plum-h': 'images/logos/logo-plum-flat-wh.png',
+        };
+
+        const horizontalThemes = ['charcoal-amber', 'plum-h'];
+
+        function applyLogo(theme) {
+            const navImg = document.getElementById('navLogoImg');
+            if (navImg && logoMap[theme]) {
+                navImg.src = logoMap[theme];
+                if (horizontalThemes.includes(theme)) {
+                    navImg.classList.add('horizontal-logo');
+                } else {
+                    navImg.classList.remove('horizontal-logo');
+                }
+            }
+            const footerImg = document.getElementById('footerLogoImg');
+            if (footerImg) {
+                if (footerLogoMap[theme]) {
+                    footerImg.src = footerLogoMap[theme];
+                    footerImg.style.display = 'block';
+                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
+                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
+                    if (svgLogo) svgLogo.style.display = 'none';
+                    if (textLogo) textLogo.style.display = 'none';
+                } else {
+                    footerImg.style.display = 'none';
+                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
+                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
+                    if (svgLogo) svgLogo.style.display = '';
+                    if (textLogo) textLogo.style.display = '';
+                }
+            }
+        }
+
+        // Apply logo for saved theme on load
+        applyLogo(saved);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Re-apply after DOM ready
+            applyLogo(saved);
+
+            const panel = document.getElementById('themePanel');
+            const toggleBtn = document.getElementById('themeToggleBtn');
+            if (!panel || !toggleBtn) return;
+
+            // Mark active button
+            panel.querySelectorAll('.theme-option').forEach(opt => {
+                if (opt.dataset.theme === saved) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                panel.classList.toggle('open');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('#themeToggle')) {
+                    panel.classList.remove('open');
+                }
+            });
+
+            panel.querySelectorAll('.theme-option').forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const theme = this.dataset.theme;
+                    if (theme === 'default') {
+                        document.documentElement.removeAttribute('data-theme');
+                    } else {
+                        document.documentElement.setAttribute('data-theme', theme);
+                    }
+                    localStorage.setItem('meraki-theme', theme);
+                    panel.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+                    this.classList.add('active');
+                    applyLogo(theme);
+                    panel.classList.remove('open');
+                });
+            });
+        });
+    })();
+    </script>
+
+</body>
+</html>
