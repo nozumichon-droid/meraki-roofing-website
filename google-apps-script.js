@@ -8,7 +8,7 @@
 // 3. In Row 1, add these headers:
 //    A1: Timestamp | B1: Address | C1: Latitude | D1: Longitude
 //    E1: Roof Size (sqft) | F1: Pitch | G1: Complexity | H1: Source Page
-//    I1: Estimated Cost | J1: City | K1: State
+//    I1: Estimated Cost | J1: City | K1: State | L1: Name | M1: Phone | N1: Email
 //
 // 4. Click Extensions → Apps Script
 // 5. Delete the default code and paste EVERYTHING below
@@ -39,7 +39,10 @@ function doPost(e) {
       data.source || '',
       data.estimatedCost || '',
       data.city || '',
-      data.state || ''
+      data.state || '',
+      data.name || '',
+      data.phone || '',
+      data.email || ''
     ]);
 
     return ContentService

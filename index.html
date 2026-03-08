@@ -1190,6 +1190,77 @@
             box-shadow: 0 6px 20px rgba(196, 114, 75, 0.35);
         }
 
+        /* ============ LEAD GATE FORM ============ */
+        .scanner-gate-form {
+            text-align: center;
+            padding: 0.5rem 0;
+        }
+
+        .scanner-gate-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 0.6rem;
+            background: linear-gradient(135deg, var(--terracotta), #d4845a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(196, 114, 75, 0.3);
+        }
+
+        .scanner-gate-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            color: var(--forest-deep);
+            margin-bottom: 0.15rem;
+        }
+
+        .scanner-gate-sub {
+            font-size: 0.78rem;
+            color: var(--warm-gray);
+            margin-bottom: 1rem;
+        }
+
+        .scanner-gate-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .scanner-gate-fields input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1.5px solid var(--light-gray);
+            border-radius: 10px;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            color: var(--charcoal);
+            outline: none;
+            transition: all 0.25s;
+            box-sizing: border-box;
+        }
+
+        .scanner-gate-fields input:focus {
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(196, 114, 75, 0.12);
+        }
+
+        .scanner-gate-fields input.gate-error {
+            border-color: #c44b4b;
+            box-shadow: 0 0 0 3px rgba(196, 75, 75, 0.12);
+        }
+
+        .scanner-gate-privacy {
+            font-size: 0.68rem;
+            color: #b0a89e;
+            margin-top: 0.5rem;
+        }
+
+        .scanner-gate-form.shake {
+            animation: shake 0.4s ease;
+        }
+
         /* White area below the map for results/actions */
         .hero-scanner-details {
             background: rgba(255,255,255,0.96);
@@ -7015,30 +7086,53 @@
                     }
                 }
 
-                updateCalc();
+                // Don't update calc yet — store for after gate
+                let complexityLabel = 'Simple';
+                if (segments.length > 2 && segments.length <= 4) complexityLabel = 'Moderate';
+                if (segments.length > 4) complexityLabel = 'Complex';
 
-                // Log lead to Google Sheet
-                logLeadToSheet({
-                    address: homePendingAddress || '',
-                    lat: lat,
-                    lng: lng,
-                    roofSize: sqft,
-                    pitch: '',
-                    complexity: segments.length <= 2 ? 'simple' : segments.length <= 4 ? 'moderate' : 'complex',
-                    source: 'Homepage Calculator',
-                    estimatedCost: '',
-                    city: '',
-                    state: ''
-                });
+                window._homeScanData = {
+                    sqft, clamped, segmentCount: segments.length, complexityLabel,
+                    address: homePendingAddress || '', lat, lng,
+                    complexity: segments.length <= 2 ? 'simple' : segments.length <= 4 ? 'moderate' : 'complex'
+                };
 
                 // Make marker non-draggable
                 if (homeMarker) homeMarker.setDraggable(false);
 
-                // Show success status
+                // Show gate form instead of results
                 document.getElementById('homeAnalyzing').style.display = 'none';
-                status.style.display = 'block';
-                status.style.color = 'var(--terracotta)';
-                status.innerHTML = '<strong>Found!</strong> ~' + sqft.toLocaleString() + ' sq ft roof (' + segments.length + ' sections). Estimate updated below.';
+                document.getElementById('homeMapWrap').style.display = 'none';
+                status.style.display = 'none';
+
+                // Insert gate form below the address section
+                let homeGateDiv = document.getElementById('homeGateContainer');
+                if (!homeGateDiv) {
+                    homeGateDiv = document.createElement('div');
+                    homeGateDiv.id = 'homeGateContainer';
+                    const addressSection = document.getElementById('homeAddressSection');
+                    addressSection.parentNode.insertBefore(homeGateDiv, addressSection.nextSibling);
+                }
+                homeGateDiv.innerHTML = `
+                    <div class="scanner-gate-form" id="homeGateForm" style="background: var(--cream); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--light-gray); margin-top: 1rem;">
+                        <div class="scanner-gate-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div class="scanner-gate-title">Your roof scan is ready!</div>
+                        <p class="scanner-gate-sub">Enter your info to see your estimate</p>
+                        <div class="scanner-gate-fields">
+                            <input type="text" id="homeGateName" placeholder="Full Name" autocomplete="name">
+                            <input type="tel" id="homeGatePhone" placeholder="Phone Number" autocomplete="tel">
+                            <input type="email" id="homeGateEmail" placeholder="Email Address" autocomplete="email">
+                            <input type="text" name="fax" style="display:none" tabindex="-1" autocomplete="off">
+                        </div>
+                        <button class="hero-scanner-cta" onclick="unlockHomeResults()">
+                            See My Results
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </button>
+                        <p class="scanner-gate-privacy">We'll never spam you. Your info stays private.</p>
+                    </div>
+                `;
 
             } catch (err) {
                 document.getElementById('homeAnalyzing').style.display = 'none';
@@ -7196,48 +7290,43 @@
                 if (segments.length > 2 && segments.length <= 4) complexityLabel = 'Moderate';
                 if (segments.length > 4) complexityLabel = 'Complex';
 
-                // Show hero results panel
+                // Store results for after gate (don't show yet)
+                window._heroScanData = {
+                    sqft, segmentCount: segments.length, complexityLabel, clamped,
+                    address: heroPendingAddress || '', lat, lng,
+                    complexity: segments.length <= 2 ? 'simple' : segments.length <= 4 ? 'moderate' : 'complex'
+                };
+
+                // Show lead gate form instead of results
                 const resultsDiv = document.getElementById('heroScannerResults');
                 resultsDiv.innerHTML = `
-                    <div class="hero-scanner-result-row">
-                        <div class="hero-scanner-stat">
-                            <div class="hero-scanner-stat-value">${sqft.toLocaleString()}</div>
-                            <div class="hero-scanner-stat-label">Sq Ft</div>
+                    <div class="scanner-gate-form" id="heroGateForm">
+                        <div class="scanner-gate-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                         </div>
-                        <div class="hero-scanner-stat">
-                            <div class="hero-scanner-stat-value">${segments.length}</div>
-                            <div class="hero-scanner-stat-label">Sections</div>
+                        <div class="scanner-gate-title">Your roof scan is ready!</div>
+                        <p class="scanner-gate-sub">Enter your info to see your estimate</p>
+                        <div class="scanner-gate-fields">
+                            <input type="text" id="heroGateName" placeholder="Full Name" autocomplete="name">
+                            <input type="tel" id="heroGatePhone" placeholder="Phone Number" autocomplete="tel">
+                            <input type="email" id="heroGateEmail" placeholder="Email Address" autocomplete="email">
+                            <input type="text" name="fax" style="display:none" tabindex="-1" autocomplete="off">
                         </div>
-                        <div class="hero-scanner-stat">
-                            <div class="hero-scanner-stat-value">${complexityLabel}</div>
-                            <div class="hero-scanner-stat-label">Complexity</div>
-                        </div>
+                        <button class="hero-scanner-cta" onclick="unlockHeroResults()">
+                            See My Results
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </button>
+                        <p class="scanner-gate-privacy">We'll never spam you. Your info stays private.</p>
                     </div>
-                    <button class="hero-scanner-cta" onclick="prefillEstimatorAddress(); document.getElementById('estimate').scrollIntoView({behavior:'smooth'})">
-                        See Your Estimate
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </button>
                 `;
                 resultsDiv.classList.add('active');
 
-                // Hide map, show results
+                // Hide map, show gate
                 document.getElementById('heroAnalyzing').style.display = 'none';
                 document.getElementById('heroMapWrap').style.display = 'none';
                 status.style.display = 'none';
 
                 if (heroMarker) heroMarker.setDraggable(false);
-
-                // Log lead
-                logLeadToSheet({
-                    address: heroPendingAddress || '',
-                    lat: lat, lng: lng,
-                    roofSize: sqft,
-                    pitch: '',
-                    complexity: segments.length <= 2 ? 'simple' : segments.length <= 4 ? 'moderate' : 'complex',
-                    source: 'Hero Scanner',
-                    estimatedCost: '',
-                    city: '', state: ''
-                });
 
             } catch (err) {
                 document.getElementById('heroAnalyzing').style.display = 'none';
@@ -7268,6 +7357,167 @@
                     homeInput.style.flex = '1';
                 }
             }
+        }
+
+        // ============ GATE VALIDATION & UNLOCK ============
+
+        function validateGateForm(nameId, phoneId, emailId) {
+            const name = document.getElementById(nameId)?.value.trim();
+            const phone = document.getElementById(phoneId)?.value.replace(/\D/g, '');
+            const email = document.getElementById(emailId)?.value.trim();
+            let valid = true;
+
+            // Reset error states
+            [nameId, phoneId, emailId].forEach(id => {
+                document.getElementById(id)?.classList.remove('gate-error');
+            });
+
+            if (!name) { document.getElementById(nameId)?.classList.add('gate-error'); valid = false; }
+            if (!phone || phone.length < 10) { document.getElementById(phoneId)?.classList.add('gate-error'); valid = false; }
+            if (!email || !email.includes('@') || !email.includes('.')) { document.getElementById(emailId)?.classList.add('gate-error'); valid = false; }
+
+            if (!valid) {
+                const form = document.getElementById(nameId)?.closest('.scanner-gate-form');
+                if (form) {
+                    form.classList.remove('shake');
+                    void form.offsetWidth; // force reflow
+                    form.classList.add('shake');
+                }
+            }
+
+            return valid ? { name, phone, email } : null;
+        }
+
+        function sendGateLead(contact, scanData, source) {
+            // Send via Web3Forms (email notification)
+            try {
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: '9996427a-e610-43eb-a8d8-f2896b9529fc',
+                        subject: 'Roof Scan Lead — ' + (scanData.address || 'Unknown'),
+                        from_name: 'Meraki Roofing Scanner',
+                        name: contact.name,
+                        phone: contact.phone,
+                        email: contact.email,
+                        address: scanData.address,
+                        roof_size: scanData.sqft + ' sq ft',
+                        complexity: scanData.complexityLabel,
+                        sections: scanData.segmentCount,
+                        source: source
+                    })
+                });
+            } catch(e) { console.warn('Web3Forms send failed:', e); }
+
+            // Also log to Google Sheet
+            logLeadToSheet({
+                address: scanData.address,
+                lat: scanData.lat, lng: scanData.lng,
+                roofSize: scanData.sqft,
+                pitch: '',
+                complexity: scanData.complexity,
+                source: source,
+                estimatedCost: '',
+                city: '', state: '',
+                name: contact.name,
+                phone: contact.phone,
+                email: contact.email
+            });
+
+            // GA4 event
+            if (typeof trackEvent === 'function') {
+                trackEvent('scanner_lead_captured', { source: source, roof_size: scanData.sqft });
+            }
+        }
+
+        function unlockHeroResults() {
+            // Check honeypot
+            const fax = document.querySelector('#heroGateForm input[name="fax"]');
+            if (fax && fax.value) return;
+
+            const contact = validateGateForm('heroGateName', 'heroGatePhone', 'heroGateEmail');
+            if (!contact) return;
+
+            const d = window._heroScanData;
+            if (!d) return;
+
+            // Send lead
+            sendGateLead(contact, d, 'Hero Scanner');
+
+            // Now auto-fill calculator
+            document.getElementById('calcSize').value = d.clamped;
+            let autoComplexity;
+            if (d.segmentCount <= 2) autoComplexity = document.querySelector('.calc-complexity[data-complexity="simple"]');
+            else if (d.segmentCount <= 4) autoComplexity = document.querySelector('.calc-complexity[data-complexity="moderate"]');
+            else autoComplexity = document.querySelector('.calc-complexity[data-complexity="complex"]');
+            if (autoComplexity) autoComplexity.click();
+            updateCalc();
+
+            // Show results panel
+            const resultsDiv = document.getElementById('heroScannerResults');
+            resultsDiv.innerHTML = `
+                <div class="hero-scanner-result-row">
+                    <div class="hero-scanner-stat">
+                        <div class="hero-scanner-stat-value">${d.sqft.toLocaleString()}</div>
+                        <div class="hero-scanner-stat-label">Sq Ft</div>
+                    </div>
+                    <div class="hero-scanner-stat">
+                        <div class="hero-scanner-stat-value">${d.segmentCount}</div>
+                        <div class="hero-scanner-stat-label">Sections</div>
+                    </div>
+                    <div class="hero-scanner-stat">
+                        <div class="hero-scanner-stat-value">${d.complexityLabel}</div>
+                        <div class="hero-scanner-stat-label">Complexity</div>
+                    </div>
+                </div>
+                <button class="hero-scanner-cta" onclick="prefillEstimatorAddress(); document.getElementById('estimate').scrollIntoView({behavior:'smooth'})">
+                    See Your Estimate
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+            `;
+        }
+
+        function unlockHomeResults() {
+            // Check honeypot
+            const fax = document.querySelector('#homeGateForm input[name="fax"]');
+            if (fax && fax.value) return;
+
+            const contact = validateGateForm('homeGateName', 'homeGatePhone', 'homeGateEmail');
+            if (!contact) return;
+
+            const d = window._homeScanData;
+            if (!d) return;
+
+            // Send lead
+            sendGateLead(contact, d, 'Homepage Calculator');
+
+            // Now auto-fill calculator
+            document.getElementById('calcSize').value = d.clamped;
+            let autoComplexity;
+            if (d.segmentCount <= 2) autoComplexity = document.querySelector('.calc-complexity[data-complexity="simple"]');
+            else if (d.segmentCount <= 4) autoComplexity = document.querySelector('.calc-complexity[data-complexity="moderate"]');
+            else autoComplexity = document.querySelector('.calc-complexity[data-complexity="complex"]');
+            if (autoComplexity) {
+                autoComplexity.click();
+                autoComplexity.style.animation = 'homeSatPulse 1.5s ease';
+                if (!autoComplexity.querySelector('.home-auto-badge')) {
+                    const badge = document.createElement('div');
+                    badge.className = 'home-auto-badge';
+                    badge.textContent = 'Auto-detected';
+                    autoComplexity.appendChild(badge);
+                }
+            }
+            updateCalc();
+
+            // Remove gate form, show success
+            const gateContainer = document.getElementById('homeGateContainer');
+            if (gateContainer) gateContainer.remove();
+
+            const status = document.getElementById('homeLookupStatus');
+            status.style.display = 'block';
+            status.style.color = 'var(--terracotta)';
+            status.innerHTML = '<strong>Found!</strong> ~' + d.sqft.toLocaleString() + ' sq ft roof (' + d.segmentCount + ' sections). Estimate updated below.';
         }
 
         // Also init Places autocomplete for hero address input
