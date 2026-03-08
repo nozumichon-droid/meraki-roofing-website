@@ -26,6 +26,22 @@
         // ⚠️ REPLACE WITH YOUR GOOGLE CLOUD API KEY
         // Enable: Maps JavaScript API, Places API, Solar API
         const GOOGLE_API_KEY = 'AIzaSyAE4jxqe0LLsTj2MURRzEX5KSSgjQJs3O0';
+
+        // ⚠️ GOOGLE SHEETS LEAD TRACKING
+        // Paste your Apps Script Web App URL here (see google-apps-script.js for setup)
+        const GOOGLE_SHEET_WEBHOOK_URL = ''; // e.g. 'https://script.google.com/macros/s/AKfycb.../exec'
+
+        function logLeadToSheet(data) {
+            if (!GOOGLE_SHEET_WEBHOOK_URL) return;
+            try {
+                fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+            } catch(e) { /* silent fail — don't disrupt UX */ }
+        }
     </script>
     <style>
         /* ============================================
@@ -142,7 +158,7 @@
         }
 
         .weather-bar .uv-badge {
-            background: var(--terracotta);
+            background: #D94420;
             color: white;
             font-size: 0.65rem;
             font-weight: 800;
@@ -480,7 +496,7 @@
         /* ============ HERO ============ */
         .hero {
             padding-top: 104px;
-            background: linear-gradient(180deg, rgba(30,30,30,0.45) 0%, rgba(30,30,30,0.5) 100%), url('images/Website Images/hero background 1.png') center 70%/cover no-repeat;
+            background: linear-gradient(180deg, rgba(30,30,30,0.45) 0%, rgba(30,30,30,0.5) 100%), url('images/Website Images/hero background 1.webp') center 70%/cover no-repeat;
             position: relative;
             overflow: hidden;
             min-height: 92vh;
@@ -2798,8 +2814,11 @@
             display: block;
             font-size: 0.88rem;
             color: rgba(255,255,255,0.7);
-            padding: 5px 0;
+            padding: 8px 0;
             transition: color 0.2s;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
         }
 
         .footer-col a:hover { color: var(--gold); }
@@ -2816,7 +2835,7 @@
 
         .footer-bottom p {
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.35);
+            color: rgba(255,255,255,0.6);
         }
 
         .footer-social {
@@ -2825,8 +2844,8 @@
         }
 
         .footer-social a {
-            width: 36px;
-            height: 36px;
+            width: 44px;
+            height: 44px;
             border-radius: 8px;
             background: rgba(255,255,255,0.06);
             display: flex;
@@ -2886,7 +2905,7 @@
         .sticky-cta-call:hover { background: var(--forest-deep); }
 
         .sticky-cta-estimate {
-            background: var(--terracotta);
+            background: #D94420;
             color: white;
         }
 
@@ -3705,6 +3724,21 @@
             transform: translateY(0);
         }
 
+        /* Mobile fix: prevent address lookup row from overflowing */
+        @media (max-width: 480px) {
+            #homeAddressSection > div {
+                flex-wrap: wrap !important;
+            }
+            #homeAddressInput {
+                min-width: 0 !important;
+                flex: 1 1 100% !important;
+            }
+            #homeLookupBtn {
+                flex: 1 1 100% !important;
+                text-align: center;
+            }
+        }
+
     </style>
     <!-- Schema.org Structured Data for AEO/LLM Optimization -->
     <script type="application/ld+json">
@@ -3933,7 +3967,7 @@
     <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
             <a href="#" class="nav-logo">
-                <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+                <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.webp" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg" width="350" height="80">
             </a>
 
             <div class="nav-links" id="navLinks">
@@ -4005,7 +4039,7 @@
                     </div>
                     <div class="hero-cert-wrap">
                         <a href="gaf.html" class="hero-cert-link" aria-label="View our GAF Certification">
-                            <img src="images/logos/certified-plus.png" alt="GAF Certified Plus Residential Roofing Contractor" class="hero-cert-badge">
+                            <img src="images/logos/certified-plus.webp" alt="GAF Certified Plus Residential Roofing Contractor" class="hero-cert-badge" width="300" height="300">
                             <span class="hero-cert-tooltip">View Our Certification →</span>
                         </a>
                         <!-- SMS QR - Desktop -->
@@ -4495,7 +4529,7 @@
                     <a href="gaf.html" class="btn btn-primary" style="margin-top: 0.75rem; font-size: 0.82rem; padding: 9px 20px;">Explore GAF Products & Warranties →</a>
                 </div>
                 <div class="gaf-logo">
-                    <img src="images/logos/GAF logo with white outline - TO BE USED ON RED BACKGROUND.png" alt="GAF Certified Logo">
+                    <img src="images/logos/GAF logo with white outline - TO BE USED ON RED BACKGROUND.png" alt="GAF Certified Logo" width="650" height="650">
                 </div>
             </div>
 
@@ -4586,7 +4620,7 @@
                             Scan Your Roof from Space
                         </label>
                         <div style="display: flex; gap: 0.5rem;">
-                            <input type="text" id="homeAddressInput" placeholder="Enter your address..." style="flex: 1; padding: 11px 14px; border: 1.5px solid var(--light-gray); border-radius: 10px; font-family: var(--font-body); font-size: 0.88rem; color: var(--charcoal); outline: none;" autocomplete="off">
+                            <input type="text" id="homeAddressInput" placeholder="Enter your address..." aria-label="Enter your home address" style="flex: 1; padding: 11px 14px; border: 1.5px solid var(--light-gray); border-radius: 10px; font-family: var(--font-body); font-size: 0.88rem; color: var(--charcoal); outline: none;" autocomplete="off">
                             <button type="button" id="homeLookupBtn" onclick="homeLookupRoof()" style="padding: 11px 18px; background: var(--forest); color: white; border: none; border-radius: 10px; font-weight: 600; font-size: 0.82rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: all 0.2s;">Look Up</button>
                         </div>
                         <div id="homeLookupStatus" style="font-size: 0.8rem; margin-top: 0.4rem; display: none;"></div>
@@ -4612,7 +4646,7 @@
                     <!-- Row 1: Size + Material -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;" class="calc-row-2col">
                         <div>
-                            <label style="display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest-deep); margin-bottom: 0.5rem;">Roof Size (sq ft)</label>
+                            <label for="calcSize" style="display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest-deep); margin-bottom: 0.5rem;">Roof Size (sq ft)</label>
                             <input type="range" id="calcSize" min="500" max="15000" value="1800" step="1" style="width: 100%; accent-color: var(--terracotta); margin-bottom: 0.35rem;">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <span style="font-size: 0.75rem; color: var(--warm-gray);">500</span>
@@ -4621,7 +4655,7 @@
                             </div>
                         </div>
                         <div>
-                            <label style="display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest-deep); margin-bottom: 0.5rem;">Material</label>
+                            <label for="calcMaterial" style="display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest-deep); margin-bottom: 0.5rem;">Material</label>
                             <select id="calcMaterial" style="width: 100%; padding: 12px 14px; border: 1.5px solid var(--light-gray); border-radius: 10px; font-family: var(--font-body); font-size: 0.88rem; color: var(--charcoal); background: white; outline: none; cursor: pointer;">
                                 <option value="arch" selected>Architectural Shingles ($3.75–7)</option>
                                 <option value="metalstand">Standing Seam Metal ($9–14)</option>
@@ -4649,17 +4683,17 @@
                         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem;" class="calc-row-3col">
                             <!-- Simple Roof -->
                             <button type="button" class="calc-complexity active" data-complexity="simple" onclick="selectComplexity(this)" style="padding: 12px 8px; border: 1.5px solid var(--terracotta); border-radius: 10px; background: rgba(196,114,75,0.06); cursor: pointer; text-align: center; font-family: var(--font-body); transition: all 0.2s;">
-                                <img src="images/roof-simple.png" alt="Simple Roof" style="width: 100px; height: auto; display: block; margin: 0 auto 6px;">
+                                <img src="images/roof-simple.webp" alt="Simple Roof" width="200" height="124" style="width: 100px; height: auto; display: block; margin: 0 auto 6px;">
                                 <div style="font-size: 0.78rem; font-weight: 600; color: var(--forest-deep);">Simple</div>
                             </button>
                             <!-- Moderate Roof -->
                             <button type="button" class="calc-complexity" data-complexity="moderate" onclick="selectComplexity(this)" style="padding: 12px 8px; border: 1.5px solid var(--light-gray); border-radius: 10px; background: white; cursor: pointer; text-align: center; font-family: var(--font-body); transition: all 0.2s;">
-                                <img src="images/roof-moderate.png" alt="Moderate Roof" style="width: 100px; height: auto; display: block; margin: 0 auto 6px;">
+                                <img src="images/roof-moderate.webp" alt="Moderate Roof" width="200" height="118" style="width: 100px; height: auto; display: block; margin: 0 auto 6px;">
                                 <div style="font-size: 0.78rem; font-weight: 600; color: var(--forest-deep);">Moderate</div>
                             </button>
                             <!-- Complex Roof -->
                             <button type="button" class="calc-complexity" data-complexity="complex" onclick="selectComplexity(this)" style="padding: 12px 8px; border: 1.5px solid var(--light-gray); border-radius: 10px; background: white; cursor: pointer; text-align: center; font-family: var(--font-body); transition: all 0.2s;">
-                                <img src="images/roof-complex.png" alt="Complex Roof" style="width: 100px; height: auto; display: block; margin: 0 auto 6px;">
+                                <img src="images/roof-complex.webp" alt="Complex Roof" width="200" height="130" style="width: 100px; height: auto; display: block; margin: 0 auto 6px;">
                                 <div style="font-size: 0.78rem; font-weight: 600; color: var(--forest-deep);">Complex</div>
                             </button>
                         </div>
@@ -4692,7 +4726,7 @@
             <div class="about-grid">
                 <div class="about-visual fade-up">
                     <div class="about-image-main">
-                        <img src="images/about-hero.jpg" alt="Completed Meraki Roofing project — Shakewood shingle replacement in East El Paso with mountain views" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="images/about-hero.webp" alt="Completed Meraki Roofing project — Shakewood shingle replacement in East El Paso with mountain views" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="about-accent">
                         <div class="about-accent-num">10+</div>
@@ -4776,45 +4810,45 @@
                 <div class="gallery-grid fade-up">
                     <a href="gallery.html#project-0" class="gallery-item" style="text-decoration:none;color:inherit;">
                         <div class="gallery-images">
-                            <div class="gallery-before" style="background: url('images/Website Images/Gallery/Residential/Shingle replacement - East Charcoal/old-deck-tearoff.jpg') center/cover;">
+                            <div class="gallery-before" style="background: url('images/Website Images/Gallery/Residential/Shingle replacement - East Charcoal/old-deck-tearoff.webp') center/cover;">
                                 <span class="gallery-label">Before</span>
                             </div>
-                            <div class="gallery-after" style="background: url('images/Website Images/Gallery/Residential/Shingle replacement - East Charcoal/shingles-in-progress.jpg') center/cover;">
+                            <div class="gallery-after" style="background: url('images/Website Images/Gallery/Residential/Shingle replacement - East Charcoal/shingles-in-progress.webp') center/cover;">
                                 <span class="gallery-label">After</span>
                             </div>
                         </div>
                         <div class="gallery-info">
-                            <h4 data-i18n="gallery.project1">Complete Shingle Replacement</h4>
+                            <h3 data-i18n="gallery.project1">Complete Shingle Replacement</h3>
                             <p data-i18n="gallery.project1.loc">East El Paso — Residential</p>
                         </div>
                     </a>
 
                     <a href="gallery.html#project-8" class="gallery-item" style="text-decoration:none;color:inherit;">
                         <div class="gallery-images">
-                            <div class="gallery-before" style="background: url('images/Website Images/Gallery/Residential/Shingle replacement - Central Pewter Gray/deck-replacement-in-progress.jpg') center/cover;">
+                            <div class="gallery-before" style="background: url('images/Website Images/Gallery/Residential/Shingle replacement - Central Pewter Gray/deck-replacement-in-progress.webp') center/cover;">
                                 <span class="gallery-label">Before</span>
                             </div>
-                            <div class="gallery-after" style="background: url('images/Website Images/Gallery/Residential/Shingle replacement - Central Pewter Gray/completed-pewter-gray.jpg') center/cover;">
+                            <div class="gallery-after" style="background: url('images/Website Images/Gallery/Residential/Shingle replacement - Central Pewter Gray/completed-pewter-gray.webp') center/cover;">
                                 <span class="gallery-label">After</span>
                             </div>
                         </div>
                         <div class="gallery-info">
-                            <h4 data-i18n="gallery.project2">Full Tear-Off & Deck Replacement</h4>
+                            <h3 data-i18n="gallery.project2">Full Tear-Off & Deck Replacement</h3>
                             <p data-i18n="gallery.project2.loc">Central El Paso — Residential</p>
                         </div>
                     </a>
 
                     <a href="gallery.html#project-10" class="gallery-item" style="text-decoration:none;color:inherit;">
                         <div class="gallery-images">
-                            <div class="gallery-before" style="background: url('images/Website Images/Gallery/Residential/Roof coating/East Roof Coating overhead.jpg') center/cover;">
+                            <div class="gallery-before" style="background: url('images/Website Images/Gallery/Residential/Roof coating/East Roof Coating overhead.webp') center/cover;">
                                 <span class="gallery-label">Overhead</span>
                             </div>
-                            <div class="gallery-after" style="background: url('images/Website Images/Gallery/Residential/Roof coating/East Roof Coating back.jpg') center/cover;">
+                            <div class="gallery-after" style="background: url('images/Website Images/Gallery/Residential/Roof coating/East Roof Coating back.webp') center/cover;">
                                 <span class="gallery-label">Detail</span>
                             </div>
                         </div>
                         <div class="gallery-info">
-                            <h4 data-i18n="gallery.project3">Elastomeric Roof Coating</h4>
+                            <h3 data-i18n="gallery.project3">Elastomeric Roof Coating</h3>
                             <p data-i18n="gallery.project3.loc">Central El Paso — Residential</p>
                         </div>
                     </a>
@@ -4834,11 +4868,11 @@
                 <div class="project-grid fade-up">
                     <a href="gallery.html#project-0" class="project-card" data-category="residential" style="text-decoration:none;color:inherit;">
                         <div class="project-card-img">
-                            <img src="images/Website Images/Gallery/Residential/Shingle replacement - East Charcoal/shingles-in-progress.jpg" alt="Full Shingle Replacement" loading="lazy">
+                            <img src="images/Website Images/Gallery/Residential/Shingle replacement - East Charcoal/shingles-in-progress.webp" alt="Full Shingle Replacement" loading="lazy">
                             <div class="project-card-overlay"><span>Residential</span></div>
                         </div>
                         <div class="project-card-info">
-                            <h4 data-i18n="project.card1">Full Shingle Replacement</h4>
+                            <h3 data-i18n="project.card1">Full Shingle Replacement</h3>
                             <p data-i18n="project.card1.loc">East El Paso</p>
                         </div>
                     </a>
@@ -4851,18 +4885,18 @@
                             <div class="project-card-overlay"><span>Storm Repair</span></div>
                         </div>
                         <div class="project-card-info">
-                            <h4 data-i18n="project.card2">Hail Damage Restoration</h4>
+                            <h3 data-i18n="project.card2">Hail Damage Restoration</h3>
                             <p data-i18n="project.card2.loc">Westside — Insurance Claim</p>
                         </div>
                     </a>
 
                     <a href="gallery.html#project-10" class="project-card" data-category="commercial" style="text-decoration:none;color:inherit;">
                         <div class="project-card-img">
-                            <img src="images/Website Images/Gallery/Residential/Roof coating/East Roof Coating overhead.jpg" alt="Flat Roof Coating" loading="lazy">
+                            <img src="images/Website Images/Gallery/Residential/Roof coating/East Roof Coating overhead.webp" alt="Flat Roof Coating" loading="lazy">
                             <div class="project-card-overlay"><span>Roof Coating</span></div>
                         </div>
                         <div class="project-card-info">
-                            <h4 data-i18n="project.card3">Elastomeric Roof Coating</h4>
+                            <h3 data-i18n="project.card3">Elastomeric Roof Coating</h3>
                             <p data-i18n="project.card3.loc">Central El Paso</p>
                         </div>
                     </a>
@@ -4875,18 +4909,18 @@
                             <div class="project-card-overlay"><span>Metal & Tile</span></div>
                         </div>
                         <div class="project-card-info">
-                            <h4 data-i18n="project.card4">Standing Seam Metal Roof</h4>
+                            <h3 data-i18n="project.card4">Standing Seam Metal Roof</h3>
                             <p data-i18n="project.card4.loc">Upper Valley — Residential</p>
                         </div>
                     </a>
 
                     <a href="gallery.html#project-11" class="project-card" data-category="residential" style="text-decoration:none;color:inherit;">
                         <div class="project-card-img">
-                            <img src="images/Website Images/Gallery/Residential/Shingle replacement - East Shakewood/completed-front-view.jpg" alt="GAF Shakewood Shingle Upgrade" loading="lazy">
+                            <img src="images/Website Images/Gallery/Residential/Shingle replacement - East Shakewood/completed-front-view.webp" alt="GAF Shakewood Shingle Upgrade" loading="lazy">
                             <div class="project-card-overlay"><span>Residential</span></div>
                         </div>
                         <div class="project-card-info">
-                            <h4 data-i18n="project.card5">GAF Shakewood — Completed</h4>
+                            <h3 data-i18n="project.card5">GAF Shakewood — Completed</h3>
                             <p data-i18n="project.card5.loc">East El Paso</p>
                         </div>
                     </a>
@@ -4899,7 +4933,7 @@
                             <div class="project-card-overlay"><span>Storm Repair</span></div>
                         </div>
                         <div class="project-card-info">
-                            <h4 data-i18n="project.card6">Emergency Tarp & Full Repair</h4>
+                            <h3 data-i18n="project.card6">Emergency Tarp & Full Repair</h3>
                             <p data-i18n="project.card6.loc">Lower Valley — Wind Damage</p>
                         </div>
                     </a>
@@ -4912,7 +4946,7 @@
                             <div class="project-card-overlay"><span>Commercial</span></div>
                         </div>
                         <div class="project-card-info">
-                            <h4 data-i18n="project.card7">TPO Roofing System</h4>
+                            <h3 data-i18n="project.card7">TPO Roofing System</h3>
                             <p data-i18n="project.card7.loc">Montana Ave — Warehouse</p>
                         </div>
                     </a>
@@ -4925,7 +4959,7 @@
                             <div class="project-card-overlay"><span>Metal & Tile</span></div>
                         </div>
                         <div class="project-card-info">
-                            <h4 data-i18n="project.card8">Clay Tile Restoration</h4>
+                            <h3 data-i18n="project.card8">Clay Tile Restoration</h3>
                             <p data-i18n="project.card8.loc">Kern Place — Historic Home</p>
                         </div>
                     </a>
@@ -5253,7 +5287,7 @@
                     </div>
 
                     <div class="area-neighborhoods">
-                        <h4 data-i18n="area.neighborhoods.title">Neighborhoods We Serve</h4>
+                        <h3 data-i18n="area.neighborhoods.title">Neighborhoods We Serve</h3>
                         <div class="area-tags">
                             <span class="area-tag" data-filter="all">All Areas</span>
                             <span class="area-tag">Westside</span>
@@ -5556,7 +5590,7 @@
             <div class="footer-inner">
                 <div class="footer-brand">
                     <a href="#" class="nav-logo" aria-label="Meraki Roofing home">
-                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1) brightness(1.1);">
+                        <img src="images/logos/primary_light_HQ.webp" alt="Meraki Roofing" width="400" height="301" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1) brightness(1.1);">
                     </a>
                     <p data-i18n="footer.brand.desc">Meraki Roofing is El Paso's top-rated roofing contractor. We deliver expert roof replacements, repairs, and storm damage restoration backed by GAF-certified quality and a 10-year workmanship warranty.</p>
                 </div>
@@ -5611,7 +5645,7 @@
 
     <!-- ============ STICKY MOBILE CTA BAR ============ -->
     <!-- ============ CHATBOT ============ -->
-    <button class="chatbot-fab" id="chatFab" aria-label="Open chat">
+    <button class="chatbot-fab" id="chatFab" aria-label="Chat Now">
         <span class="chatbot-badge">1</span>
         <span class="chatbot-label" id="chatLabel">Chat Now</span>
         <svg class="fab-chat" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -5631,7 +5665,7 @@
         <div class="chatbot-messages" id="chatMessages"></div>
         <div class="chat-quick-replies" id="chatQuickReplies"></div>
         <div class="chatbot-input">
-            <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off">
+            <input type="text" id="chatInput" placeholder="Type a message..." aria-label="Type a message" autocomplete="off">
             <button id="chatSend" aria-label="Send message">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             </button>
@@ -5640,11 +5674,11 @@
 
     <div class="sticky-cta" id="stickyCta" role="complementary" aria-label="Quick contact actions">
         <div class="sticky-cta-inner">
-            <a href="tel:+19158618039" class="sticky-cta-call" aria-label="Call Meraki Roofing now" data-event="click_to_call" data-source="sticky_bar">
+            <a href="tel:+19158618039" class="sticky-cta-call" aria-label="Call Now" data-event="click_to_call" data-source="sticky_bar">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 Call Now
             </a>
-            <a href="#contact" class="sticky-cta-estimate" aria-label="Request a free estimate" data-event="cta_click" data-source="sticky_bar">
+            <a href="#contact" class="sticky-cta-estimate" aria-label="Free Estimate" data-event="cta_click" data-source="sticky_bar">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                 Free Estimate
             </a>
@@ -6398,6 +6432,7 @@
         let homeMap = null;
         let homeMarker = null;
         let homePendingLoc = null;
+        let homePendingAddress = '';
 
         function homeWait(ms) { return new Promise(r => setTimeout(r, ms)); }
 
@@ -6409,6 +6444,7 @@
             const btn = document.getElementById('homeLookupBtn');
 
             if (!address) return;
+            homePendingAddress = address;
             if (GOOGLE_API_KEY === 'YOUR_API_KEY_HERE') {
                 status.style.display = 'block';
                 status.style.color = '#9a3030';
@@ -6547,6 +6583,20 @@
                 }
 
                 updateCalc();
+
+                // Log lead to Google Sheet
+                logLeadToSheet({
+                    address: homePendingAddress || '',
+                    lat: lat,
+                    lng: lng,
+                    roofSize: sqft,
+                    pitch: '',
+                    complexity: segments.length <= 2 ? 'simple' : segments.length <= 4 ? 'moderate' : 'complex',
+                    source: 'Homepage Calculator',
+                    estimatedCost: '',
+                    city: '',
+                    state: ''
+                });
 
                 // Make marker non-draggable
                 if (homeMarker) homeMarker.setDraggable(false);

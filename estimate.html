@@ -28,6 +28,21 @@
         // Enable these APIs in Google Cloud Console: Maps JavaScript API, Places API, Solar API
         // Restrict key to your domain: merakiroofing.com
         const GOOGLE_API_KEY = 'AIzaSyAE4jxqe0LLsTj2MURRzEX5KSSgjQJs3O0';
+
+        // Google Sheets lead tracker — paste your Web App URL here after setup
+        const GOOGLE_SHEET_WEBHOOK_URL = ''; // e.g. 'https://script.google.com/macros/s/AKfycb.../exec'
+
+        function logLeadToSheet(data) {
+            if (!GOOGLE_SHEET_WEBHOOK_URL) return; // skip if not configured yet
+            try {
+                fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+            } catch(e) { /* silent fail — don't disrupt UX */ }
+        }
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -2087,7 +2102,22 @@
                 min-height: 460px;
             }
             .address-card {
-                padding: 1.5rem;
+                padding: 1.25rem;
+                max-width: calc(100vw - 3rem);
+                box-sizing: border-box;
+            }
+            .address-field {
+                font-size: 0.9rem;
+                padding: 12px 12px 12px 38px;
+            }
+            .address-icon {
+                left: 10px;
+                width: 18px;
+                height: 18px;
+            }
+            .btn-lookup {
+                padding: 12px 16px;
+                font-size: 0.9rem;
             }
             .map-overlay-content h2 {
                 font-size: 1.3rem;
@@ -2307,7 +2337,10 @@
             display: block;
             font-size: 0.88rem;
             color: rgba(255,255,255,0.7);
-            padding: 5px 0;
+            padding: 8px 0;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
             transition: color 0.2s;
             text-decoration: none;
         }
@@ -2326,7 +2359,7 @@
 
         .footer-bottom p {
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.35);
+            color: rgba(255,255,255,0.6);
         }
 
         .footer-social {
@@ -2335,8 +2368,8 @@
         }
 
         .footer-social a {
-            width: 36px;
-            height: 36px;
+            width: 44px;
+            height: 44px;
             border-radius: 8px;
             background: rgba(255,255,255,0.06);
             display: flex;
@@ -2370,7 +2403,7 @@
     <nav class="nav scrolled" id="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
             <a href="index.html" class="nav-logo">
-                <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
+                <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.webp" alt="Meraki Roofing" width="350" height="80" class="nav-logo-img horizontal-logo" id="navLogoImg">
             </a>
             <div class="nav-links" id="navLinks">
                 <a href="residential.html" data-i18n="nav.residential">Residential</a>
@@ -2927,7 +2960,7 @@
             <div class="footer-inner">
                 <div class="footer-brand">
                     <a href="#" class="nav-logo" aria-label="Meraki Roofing home">
-                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1) brightness(1.1);">
+                        <img src="images/logos/primary_light_HQ.webp" alt="Meraki Roofing" width="400" height="301" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1) brightness(1.1);">
                     </a>
                     <p>Get an instant roofing estimate for your El Paso home. Our satellite-powered calculator provides accurate pricing for roof replacement, repairs, and storm damage restoration.</p>
                 </div>
@@ -3175,6 +3208,20 @@
                 formData.roofComplexity = complexityId;
 
                 trackEvent('solar_lookup_success', { sqft: totalSqFt, segments: segments.length });
+
+                // Log lead to Google Sheet
+                logLeadToSheet({
+                    address: pendingAddress,
+                    lat: lat,
+                    lng: lng,
+                    roofSize: totalSqFt,
+                    pitch: pitchLabel,
+                    complexity: complexityId,
+                    source: 'Estimate Calculator',
+                    estimatedCost: '',
+                    city: '',
+                    state: ''
+                });
 
             } catch (err) {
                 document.getElementById('analyzingLoading').style.display = 'none';
@@ -3464,9 +3511,9 @@
         };
 
         const complexityDiagrams = {
-            'simple': '<img src="images/roof-simple.png" alt="Simple Roof" style="width:100px;height:auto;">',
-            'moderate': '<img src="images/roof-moderate.png" alt="Moderate Roof" style="width:100px;height:auto;">',
-            'complex': '<img src="images/roof-complex.png" alt="Complex Roof" style="width:100px;height:auto;">'
+            'simple': '<img src="images/roof-simple.webp" alt="Simple Roof" style="width:100px;height:auto;">',
+            'moderate': '<img src="images/roof-moderate.webp" alt="Moderate Roof" style="width:100px;height:auto;">',
+            'complex': '<img src="images/roof-complex.webp" alt="Complex Roof" style="width:100px;height:auto;">'
         };
 
         function renderPitchCards() {
@@ -3956,6 +4003,20 @@
                 type: 'replacement',
                 total_low: Math.round(calc.totalLow),
                 total_high: Math.round(calc.totalHigh)
+            });
+
+            // Log final estimate to Google Sheet (update row with cost)
+            logLeadToSheet({
+                address: pendingAddress || '',
+                lat: '',
+                lng: '',
+                roofSize: formData.roofSize,
+                pitch: formData.pitch,
+                complexity: formData.roofComplexity,
+                source: 'Estimate Calculator — Final',
+                estimatedCost: '$' + Math.round(calc.totalLow).toLocaleString() + ' — $' + Math.round(calc.totalHigh).toLocaleString(),
+                city: '',
+                state: ''
             });
         }
 
