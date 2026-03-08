@@ -853,24 +853,50 @@
 
         /* ============ HERO FORM CARD ============ */
         .hero-form-card {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            padding: 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* White card background applied to content sections, not the whole card */
+        .hero-tab-content {
+            padding: 2rem;
+        }
+
+        .hero-tab-content#hero-scanner {
+            padding: 0;          /* map bg bleeds full width */
+            background: none;    /* keep transparent for map */
+        }
+
+        .hero-tab-content#hero-contact {
             background: rgba(255,255,255,0.96);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.4);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-            position: relative;
+        }
+
+        .hero-form-divider {
+            background: rgba(255,255,255,0.96);
+        }
+
+        .hero-review-slideshow {
+            background: rgba(255,255,255,0.96);
+            padding: 0 2rem 1.5rem;
+            border-radius: 0 0 20px 20px;
         }
 
         /* ============ HERO TAB BAR ============ */
         .hero-tab-bar {
             display: flex;
             gap: 0;
-            margin: -2rem -2rem 1.5rem -2rem;
+            margin: 0;
             border-bottom: 1px solid var(--light-gray);
             border-radius: 20px 20px 0 0;
             overflow: hidden;
+            background: rgba(255,255,255,0.96);
         }
 
         .hero-tab {
@@ -925,7 +951,7 @@
         /* --- Map background behind address area --- */
         .hero-scanner-map-bg {
             position: relative;
-            margin: -2rem -2rem 1rem -2rem;   /* bleed to card edges */
+            margin: 0;           /* no negative margins needed - scanner tab has no padding */
             overflow: hidden;
         }
 
@@ -1162,6 +1188,12 @@
             background: var(--terracotta-dark);
             transform: translateY(-1px);
             box-shadow: 0 6px 20px rgba(196, 114, 75, 0.35);
+        }
+
+        /* White area below the map for results/actions */
+        .hero-scanner-details {
+            background: rgba(255,255,255,0.96);
+            padding: 0.75rem 2rem 1.5rem;
         }
 
         .hero-scanner-or {
@@ -3942,12 +3974,13 @@
             .hero h1 .tw-line { margin: 0 auto; }
 
             /* Hero tabs mobile */
-            .hero-tab-bar { margin: -2rem -2rem 1.25rem -2rem; }
             .hero-tab { padding: 12px 8px; font-size: 0.78rem; gap: 4px; }
             .hero-tab svg { width: 14px; height: 14px; }
-            .hero-scanner-map-bg { margin: -2rem -1.5rem 1rem -1.5rem; }
             #heroBgMap { height: 190px; }
             .hero-scanner-map-overlay { padding: 1.25rem 1.25rem 1rem; }
+            .hero-scanner-details { padding: 0.5rem 1.25rem 1rem; }
+            .hero-tab-content#hero-contact { padding: 1.5rem; }
+            .hero-review-slideshow { padding: 0 1.25rem 1rem; }
             .hero-scanner-title { font-size: 1rem; }
             #heroMap { height: 220px; }
             .hero-scanner-row { flex-wrap: wrap; max-width: 100%; }
@@ -4433,30 +4466,33 @@
                                 </div>
                             </div>
 
-                            <!-- Map container -->
-                            <div id="heroMapWrap">
-                                <div id="heroMap"></div>
-                                <!-- Pin verify bar -->
-                                <div id="heroPinVerify">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" style="flex-shrink: 0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    <div style="flex: 1; line-height: 1.3;">
-                                        <strong style="font-size: 0.82rem; color: var(--forest-deep);">Is this your roof?</strong>
-                                        <span style="font-size: 0.72rem; color: var(--warm-gray); display: block;">Drag pin to adjust</span>
+                            <!-- Scanner details area (white bg below the map) -->
+                            <div class="hero-scanner-details">
+                                <!-- Map container -->
+                                <div id="heroMapWrap">
+                                    <div id="heroMap"></div>
+                                    <!-- Pin verify bar -->
+                                    <div id="heroPinVerify">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" style="flex-shrink: 0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                        <div style="flex: 1; line-height: 1.3;">
+                                            <strong style="font-size: 0.82rem; color: var(--forest-deep);">Is this your roof?</strong>
+                                            <span style="font-size: 0.72rem; color: var(--warm-gray); display: block;">Drag pin to adjust</span>
+                                        </div>
+                                        <button type="button" onclick="heroConfirmPin()" style="padding: 8px 16px; background: var(--terracotta); color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 0.8rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: all 0.2s; flex-shrink: 0;">Confirm</button>
                                     </div>
-                                    <button type="button" onclick="heroConfirmPin()" style="padding: 8px 16px; background: var(--terracotta); color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 0.8rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: all 0.2s; flex-shrink: 0;">Confirm</button>
+                                    <!-- Analyzing spinner overlay -->
+                                    <div id="heroAnalyzing">
+                                        <div style="width: 36px; height: 36px; border: 3px solid rgba(255,255,255,0.3); border-top-color: var(--terracotta); border-radius: 50%; animation: homeSpin 0.8s linear infinite;"></div>
+                                        <p style="color: white; font-weight: 600; font-size: 0.85rem; margin: 0;">Analyzing your roof...</p>
+                                    </div>
                                 </div>
-                                <!-- Analyzing spinner overlay -->
-                                <div id="heroAnalyzing">
-                                    <div style="width: 36px; height: 36px; border: 3px solid rgba(255,255,255,0.3); border-top-color: var(--terracotta); border-radius: 50%; animation: homeSpin 0.8s linear infinite;"></div>
-                                    <p style="color: white; font-weight: 600; font-size: 0.85rem; margin: 0;">Analyzing your roof...</p>
+
+                                <!-- Results panel (hidden until scan completes) -->
+                                <div class="hero-scanner-results" id="heroScannerResults"></div>
+
+                                <div class="hero-scanner-or">
+                                    Or <a href="#estimate">enter your roof size manually</a>
                                 </div>
-                            </div>
-
-                            <!-- Results panel (hidden until scan completes) -->
-                            <div class="hero-scanner-results" id="heroScannerResults"></div>
-
-                            <div class="hero-scanner-or">
-                                Or <a href="#estimate">enter your roof size manually</a>
                             </div>
                         </div>
 
