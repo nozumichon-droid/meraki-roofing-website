@@ -144,8 +144,8 @@
         /* Navigation */
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(253, 252, 250, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(44, 74, 62, 0.08); transition: all 0.3s ease; }
         .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.06); }
-        .nav-inner { max-width: 1600px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 3rem); display: flex; align-items: center; justify-content: space-between;
-            height: 80px; transition: height 0.3s ease; }
+        .nav-inner { max-width: 1500px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 3rem); display: flex; align-items: center; justify-content: space-between;
+            height: 120px; transition: height 0.3s ease; }
 
         .nav.scrolled .nav-inner {
             height: 80px;
@@ -162,24 +162,24 @@
         .nav-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
 
         .nav-logo-img {
-            height: 75px;
+            height: 135px;
             width: auto;
             object-fit: contain;
             transition: height 0.3s ease;
         }
 
         .nav.scrolled .nav-logo-img {
-            height: 75px;
+            height: 80px;
         }
         /* When horizontal logo is active, constrain logo width */
         .nav-logo-img.horizontal-logo {
-            max-width: clamp(160px, 18vw, 220px);
+            max-width: clamp(280px, 28vw, 420px);
             height: auto;
-            max-height: 55px;
+            max-height: 120px;
         }
         .nav.scrolled .nav-logo-img.horizontal-logo {
-            max-width: clamp(160px, 18vw, 220px);
-            max-height: 55px;
+            max-width: clamp(220px, 22vw, 320px);
+            max-height: 75px;
         }
 
 
@@ -211,16 +211,37 @@
             margin-top: 3px;
             border-radius: 1px;
         }
-        .nav-links { display: flex; align-items: center; gap: clamp(1.4rem, 2.8vw, 2.5rem); }
-        .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--warm-gray); transition: color 0.25s; position: relative; letter-spacing: 0.01em; }
+        .nav-links { display: flex; align-items: center; gap: clamp(1.2rem, 2.2vw, 2rem); }
+        .nav-links a { font-size: 0.88rem; font-weight: 500; color: var(--warm-gray); transition: color 0.25s; position: relative; white-space: nowrap; letter-spacing: 0.01em; }
         .nav-links a:hover { color: var(--forest); }
         .nav-links a.active { color: var(--forest); font-weight: 600; }
         .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--terracotta); border-radius: 2px; transition: width 0.3s ease; }
         .nav-links a:hover::after { width: 100%; }
         .nav-links a.active::after { width: 100%; }
-        .nav-cta { background: var(--terracotta) !important; color: white !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; font-size: 0.82rem !important; transition: all 0.25s !important; box-shadow: 0 2px 8px rgba(196, 114, 75, 0.25); }
+        .nav-cta { background: var(--terracotta) !important; color: white !important; padding: 10px 22px; border-radius: 8px; font-weight: 600 !important; font-size: 0.88rem !important; transition: all 0.25s !important; box-shadow: 0 2px 8px rgba(196, 114, 75, 0.25); }
         .nav-cta:hover { background: var(--terracotta-dark) !important; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(196, 114, 75, 0.35); }
         .nav-cta::after { display: none !important; }
+
+        .nav-phone {
+            display: inline-flex !important;
+            align-items: center;
+            gap: 6px;
+            color: var(--terracotta) !important;
+            font-weight: 700 !important;
+            font-size: 0.88rem !important;
+            white-space: nowrap;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background: rgba(255,92,52,0.06);
+            border: 1.5px solid rgba(255,92,52,0.15);
+            transition: all 0.25s;
+        }
+        .nav-phone:hover {
+            background: rgba(255,92,52,0.12) !important;
+            color: var(--terracotta-dark) !important;
+        }
+        .nav-phone::after { display: none !important; }
+        .nav-phone svg { flex-shrink: 0; }
 
         /* Resources Dropdown */
         .nav-dropdown {
@@ -228,7 +249,7 @@
         }
 
         .nav-dropdown-toggle {
-            font-size: 0.82rem;
+            font-size: 0.88rem;
             font-weight: 500;
             color: var(--warm-gray);
             cursor: pointer;
@@ -1944,6 +1965,10 @@
                     </div>
                 </div>
                 <a href="estimate.html" class="active" data-i18n="nav.estimate">Free Estimate</a>
+                <a href="tel:+19158618039" class="nav-phone" aria-label="Call Meraki Roofing">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    (915) 861-8039
+                </a>
                 <a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a>
             </div>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
@@ -2435,9 +2460,9 @@
         ];
 
         const roofComplexities = [
-            { id: 'simple', label: 'Simple', value: 'simple', multiplier: 1.0, description: 'Gable or flat roof, few if any penetrations' },
-            { id: 'moderate', label: 'Moderate', value: 'moderate', multiplier: 1.12, description: 'Hip roof, L-shaped, some valleys' },
-            { id: 'complex', label: 'Complex', value: 'complex', multiplier: 1.25, description: 'Multi-level, dormers, many valleys/angles' }
+            { id: 'simple', label: 'Open Gable', value: 'simple', multiplier: 1.0, description: 'Simple, single ridge' },
+            { id: 'moderate', label: 'Cross Hipped', value: 'moderate', multiplier: 1.12, description: 'Hips + valleys (+8%)' },
+            { id: 'complex', label: 'Hip & Valley', value: 'complex', multiplier: 1.25, description: 'Multi-wing, complex (+15%)' }
         ];
 
         const issues = [
@@ -2532,12 +2557,12 @@
         };
 
         const complexityDiagrams = {
-            // Simple: basic rectangle (gable/flat) - aerial view
-            'simple': '<svg width="90" height="70" viewBox="0 0 90 70" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="10" width="60" height="50" rx="2" fill="rgba(44,74,62,0.08)" stroke="#2C4A3E" stroke-width="2"/><line x1="45" y1="10" x2="45" y2="60" stroke="#2C4A3E" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.4"/></svg>',
-            // Moderate: L-shaped hip roof with valleys - aerial view
-            'moderate': '<svg width="90" height="70" viewBox="0 0 90 70" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 L60 10 L60 35 L80 35 L80 60 L30 60 L30 35 L10 35 Z" fill="rgba(44,74,62,0.08)" stroke="#2C4A3E" stroke-width="2" stroke-linejoin="round"/><line x1="35" y1="10" x2="35" y2="35" stroke="#2C4A3E" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.4"/><line x1="10" y1="22" x2="60" y2="22" stroke="#2C4A3E" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.4"/><line x1="55" y1="35" x2="55" y2="60" stroke="#2C4A3E" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.4"/><line x1="30" y1="47" x2="80" y2="47" stroke="#2C4A3E" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.4"/></svg>',
-            // Complex: multi-section with dormers and angles - aerial view
-            'complex': '<svg width="90" height="70" viewBox="0 0 90 70" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 15 L45 15 L45 5 L75 5 L75 30 L85 30 L85 55 L55 55 L55 65 L25 65 L25 40 L10 40 Z" fill="rgba(44,74,62,0.08)" stroke="#2C4A3E" stroke-width="2" stroke-linejoin="round"/><line x1="27" y1="15" x2="27" y2="40" stroke="#2C4A3E" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.4"/><line x1="60" y1="5" x2="60" y2="30" stroke="#2C4A3E" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.4"/><line x1="70" y1="30" x2="70" y2="55" stroke="#2C4A3E" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.4"/><line x1="40" y1="55" x2="40" y2="65" stroke="#2C4A3E" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.4"/><rect x="32" y="20" width="8" height="8" rx="1" fill="rgba(196,114,75,0.15)" stroke="#C4724B" stroke-width="1.2"/><rect x="62" y="38" width="8" height="8" rx="1" fill="rgba(196,114,75,0.15)" stroke="#C4724B" stroke-width="1.2"/></svg>'
+            // Simple: Open Gable — 45° isometric (viewed from above-front-right)
+            'simple': '<svg width="100" height="80" viewBox="0 0 100 80" fill="none"><path d="M10,58 L50,68 L90,58 L90,42 L10,42 Z" fill="#e8ddd0" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M10,42 L50,22 L90,42 Z" fill="#f0e6d9" stroke="#5a5a5a" stroke-width="1.2" stroke-linejoin="round"/><path d="M10,42 L10,58 L40,66 L40,52 Z" fill="#ddd0c0" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M90,42 L90,58 L60,66 L60,52 Z" fill="#ccc0ae" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M50,18 L6,38 L40,52 L50,46 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="1.2" stroke-linejoin="round"/><path d="M50,18 L94,38 L60,52 L50,46 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1.2" stroke-linejoin="round"/><line x1="50" y1="18" x2="50" y2="46" stroke="#8B4513" stroke-width="1.8" opacity="0.6"/><line x1="6" y1="38" x2="40" y2="52" stroke="#5a5a5a" stroke-width="0.5" opacity="0.2"/><line x1="94" y1="38" x2="60" y2="52" stroke="#5a5a5a" stroke-width="0.5" opacity="0.2"/></svg>',
+            // Moderate: Cross Hipped — 45° isometric
+            'moderate': '<svg width="100" height="80" viewBox="0 0 100 80" fill="none"><path d="M5,40 L5,52 L55,62 L55,50 Z" fill="#e8ddd0" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M55,50 L55,62 L75,55 L75,43 Z" fill="#ccc0ae" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M5,40 L55,50 L48,44 L12,37 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M55,50 L75,43 L48,44 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M5,40 L-5,36 L12,37 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M-5,36 L12,37 L48,44 L75,43 L55,33 L5,23 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round" opacity="0.45"/><line x1="12" y1="37" x2="48" y2="44" stroke="#8B4513" stroke-width="1.3" opacity="0.5"/><path d="M26,50 L26,62 L44,68 L44,56 Z" fill="#e0d4c5" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M44,56 L44,68 L58,63 L58,51 Z" fill="#c5b9a8" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M26,50 L44,56 L40,51 L30,48 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M44,56 L58,51 L40,51 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M26,50 L20,48 L30,48 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M26,62 L30,58 L40,61 L44,68 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round" opacity="0.7"/><line x1="30" y1="48" x2="40" y2="61" stroke="#8B4513" stroke-width="1" opacity="0.4"/><line x1="30" y1="48" x2="26" y2="50" stroke="#c9a961" stroke-width="1.5" stroke-dasharray="2 1.5"/><line x1="40" y1="51" x2="44" y2="56" stroke="#c9a961" stroke-width="1.5" stroke-dasharray="2 1.5"/></svg>',
+            // Complex: Hip & Valley — 45° isometric, multi-wing
+            'complex': '<svg width="100" height="80" viewBox="0 0 100 80" fill="none"><path d="M2,38 L2,50 L58,60 L58,48 Z" fill="#e8ddd0" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M58,48 L58,60 L78,53 L78,41 Z" fill="#ccc0ae" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M2,38 L58,48 L50,42 L10,35 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M58,48 L78,41 L50,42 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M2,38 L-6,34 L10,35 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><line x1="10" y1="35" x2="50" y2="42" stroke="#8B4513" stroke-width="1.3" opacity="0.5"/><path d="M8,50 L8,60 L22,64 L22,54 Z" fill="#e0d4c5" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M22,54 L22,64 L34,60 L34,50 Z" fill="#c5b9a8" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M8,50 L22,54 L19,50 L11,48 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M22,54 L34,50 L19,50 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M8,50 L4,48 L11,48 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M8,60 L11,57 L19,59 L22,64 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round" opacity="0.7"/><line x1="11" y1="48" x2="19" y2="59" stroke="#8B4513" stroke-width="0.8" opacity="0.4"/><line x1="11" y1="48" x2="8" y2="50" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/><line x1="19" y1="50" x2="22" y2="54" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/><path d="M40,54 L40,65 L56,70 L56,59 Z" fill="#e0d4c5" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M56,59 L56,70 L68,66 L68,55 Z" fill="#c5b9a8" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M40,54 L56,59 L52,55 L44,52 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M56,59 L68,55 L52,55 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M40,54 L36,52 L44,52 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M40,65 L44,62 L52,64 L56,70 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round" opacity="0.7"/><line x1="44" y1="52" x2="52" y2="64" stroke="#8B4513" stroke-width="0.8" opacity="0.4"/><line x1="44" y1="52" x2="40" y2="54" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/><line x1="52" y1="55" x2="56" y2="59" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/><path d="M26,36 L30,34 L34,36 Z" fill="#f0e6d9" stroke="#5a5a5a" stroke-width="0.7" stroke-linejoin="round"/><path d="M26,36 L34,36 L33,38 L27,37 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round"/></svg>'
         };
 
         function renderPitchCards() {
