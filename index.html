@@ -863,6 +863,322 @@
             position: relative;
         }
 
+        /* ============ HERO TAB BAR ============ */
+        .hero-tab-bar {
+            display: flex;
+            gap: 0;
+            margin: -2rem -2rem 1.5rem -2rem;
+            border-bottom: 1px solid var(--light-gray);
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+        }
+
+        .hero-tab {
+            flex: 1;
+            padding: 14px 12px;
+            background: var(--cream);
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: var(--font-body);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .hero-tab:hover {
+            color: var(--charcoal);
+            background: rgba(255,255,255,0.8);
+        }
+
+        .hero-tab.active {
+            color: var(--terracotta);
+            border-bottom-color: var(--terracotta);
+            background: white;
+        }
+
+        .hero-tab svg {
+            flex-shrink: 0;
+        }
+
+        .hero-tab-content {
+            display: none;
+        }
+
+        .hero-tab-content.active {
+            display: block;
+            animation: heroTabFadeIn 0.3s ease;
+        }
+
+        @keyframes heroTabFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============ HERO SCANNER ============ */
+
+        /* --- Map background behind address area --- */
+        .hero-scanner-map-bg {
+            position: relative;
+            margin: -2rem -2rem 1rem -2rem;   /* bleed to card edges */
+            overflow: hidden;
+        }
+
+        #heroBgMap {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #1a2332 0%, #2c3e50 50%, #1a2332 100%);
+        }
+
+        /* Hide Google Maps attribution on decorative bg map */
+        #heroBgMap .gmnoprint,
+        #heroBgMap .gm-style-cc,
+        #heroBgMap a[href*="maps.google.com"],
+        #heroBgMap a[href*="google.com/maps"] {
+            display: none !important;
+        }
+
+        .hero-scanner-map-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(26, 35, 50, 0.55) 0%,
+                rgba(26, 35, 50, 0.45) 40%,
+                rgba(26, 35, 50, 0.70) 100%
+            );
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 2rem 1.25rem;
+            z-index: 1;
+        }
+
+        /* Title + subtitle float on overlay */
+        .hero-scanner-header {
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-scanner-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: #fff;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-scanner-title svg { stroke: var(--terracotta); filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3)); }
+
+        .hero-scanner-sub {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.85);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* Address row on top of map */
+        .hero-scanner-row {
+            display: flex;
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .hero-scanner-row input {
+            flex: 1;
+            padding: 12px 14px;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            border-radius: 10px;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            color: var(--charcoal);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(4px);
+            outline: none;
+            transition: all 0.25s;
+            min-width: 0;
+        }
+
+        .hero-scanner-row input:focus {
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(196, 114, 75, 0.25);
+            background: rgba(255,255,255,1);
+        }
+
+        .hero-scanner-row input::placeholder { color: #8a8279; }
+
+        .hero-scanner-btn {
+            padding: 12px 18px;
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.82rem;
+            cursor: pointer;
+            white-space: nowrap;
+            font-family: var(--font-body);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(196, 114, 75, 0.35);
+        }
+
+        .hero-scanner-btn:hover {
+            background: #b8623e;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(196, 114, 75, 0.45);
+        }
+
+        .hero-scanner-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .hero-scanner-status {
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            min-height: 1.2em;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        #heroMapWrap {
+            display: none;
+            margin-bottom: 0.75rem;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid rgba(255,92,52,0.2);
+            position: relative;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        #heroMap {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, #1a2332 0%, #2c3e50 50%, #1a2332 100%);
+        }
+
+        #heroPinVerify {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 14px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            border-top: 1px solid rgba(255,92,52,0.15);
+            z-index: 5;
+        }
+
+        #heroAnalyzing {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 6;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .hero-scanner-results {
+            display: none;
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            border: 1px solid var(--light-gray);
+        }
+
+        .hero-scanner-results.active {
+            display: block;
+            animation: heroTabFadeIn 0.4s ease;
+        }
+
+        .hero-scanner-result-row {
+            display: flex;
+            justify-content: space-around;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-scanner-stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .hero-scanner-stat-value {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            line-height: 1.2;
+        }
+
+        .hero-scanner-stat-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--warm-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-scanner-cta {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-family: var(--font-body);
+        }
+
+        .hero-scanner-cta:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(196, 114, 75, 0.35);
+        }
+
+        .hero-scanner-or {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--warm-gray);
+            margin-top: 1rem;
+        }
+
+        .hero-scanner-or a {
+            color: var(--terracotta);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .hero-scanner-or a:hover { text-decoration: underline; }
+
         .hero-form-header {
             margin-bottom: 1.25rem;
         }
@@ -3625,6 +3941,19 @@
             .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
             .hero h1 .tw-line { margin: 0 auto; }
 
+            /* Hero tabs mobile */
+            .hero-tab-bar { margin: -2rem -2rem 1.25rem -2rem; }
+            .hero-tab { padding: 12px 8px; font-size: 0.78rem; gap: 4px; }
+            .hero-tab svg { width: 14px; height: 14px; }
+            .hero-scanner-map-bg { margin: -2rem -1.5rem 1rem -1.5rem; }
+            #heroBgMap { height: 190px; }
+            .hero-scanner-map-overlay { padding: 1.25rem 1.25rem 1rem; }
+            .hero-scanner-title { font-size: 1rem; }
+            #heroMap { height: 220px; }
+            .hero-scanner-row { flex-wrap: wrap; max-width: 100%; }
+            .hero-scanner-row input { flex: 1 1 100%; }
+            .hero-scanner-btn { flex: 1 1 100%; justify-content: center; }
+
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
             .stat-item:not(:last-child)::after { display: none; }
             .stat-number { font-size: 2.2rem; }
@@ -4066,63 +4395,131 @@
 
                 <div class="hero-visual">
                     <div class="hero-form-card">
-                        <div class="hero-form-header">
-                            <h2 class="hero-form-title" data-i18n="hero.form.title">Get Your Free Estimate</h2>
-                            <p class="hero-form-sub" data-i18n="hero.form.sub">No obligation. No pressure. Takes 30 seconds.</p>
+                        <!-- Tab Bar -->
+                        <div class="hero-tab-bar">
+                            <button class="hero-tab active" data-tab="hero-scanner" onclick="switchHeroTab('hero-scanner')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                Instant Estimate
+                            </button>
+                            <button class="hero-tab" data-tab="hero-contact" onclick="switchHeroTab('hero-contact')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                Request a Call
+                            </button>
                         </div>
 
-                        <form id="heroForm" onsubmit="handleHeroForm(event)" novalidate>
-                            <div class="hero-form-group">
-                                <label for="hero-name" class="sr-only">Full Name</label>
-                                <input type="text" id="hero-name" name="name" placeholder="Full Name" data-i18n="hero.form.name.placeholder" required autocomplete="name" aria-required="true">
+                        <!-- TAB 1: Satellite Roof Scanner -->
+                        <div class="hero-tab-content active" id="hero-scanner">
+                            <!-- Map background of El Paso behind address bar -->
+                            <div class="hero-scanner-map-bg">
+                                <div id="heroBgMap"></div>
+                                <div class="hero-scanner-map-overlay">
+                                    <div class="hero-scanner-header">
+                                        <div class="hero-scanner-title">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                                            Scan Your Roof from Space
+                                        </div>
+                                        <p class="hero-scanner-sub">AI analyzes satellite imagery to measure your roof in seconds</p>
+                                    </div>
+
+                                    <div class="hero-scanner-row">
+                                        <input type="text" id="heroAddressInput" placeholder="Enter your El Paso address..." aria-label="Enter your address" autocomplete="off">
+                                        <button type="button" class="hero-scanner-btn" id="heroLookupBtn" onclick="heroLookupRoof()">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                            Look Up
+                                        </button>
+                                    </div>
+
+                                    <div class="hero-scanner-status" id="heroLookupStatus"></div>
+                                </div>
                             </div>
-                            <div class="hero-form-row">
+
+                            <!-- Map container -->
+                            <div id="heroMapWrap">
+                                <div id="heroMap"></div>
+                                <!-- Pin verify bar -->
+                                <div id="heroPinVerify">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" style="flex-shrink: 0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <div style="flex: 1; line-height: 1.3;">
+                                        <strong style="font-size: 0.82rem; color: var(--forest-deep);">Is this your roof?</strong>
+                                        <span style="font-size: 0.72rem; color: var(--warm-gray); display: block;">Drag pin to adjust</span>
+                                    </div>
+                                    <button type="button" onclick="heroConfirmPin()" style="padding: 8px 16px; background: var(--terracotta); color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 0.8rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: all 0.2s; flex-shrink: 0;">Confirm</button>
+                                </div>
+                                <!-- Analyzing spinner overlay -->
+                                <div id="heroAnalyzing">
+                                    <div style="width: 36px; height: 36px; border: 3px solid rgba(255,255,255,0.3); border-top-color: var(--terracotta); border-radius: 50%; animation: homeSpin 0.8s linear infinite;"></div>
+                                    <p style="color: white; font-weight: 600; font-size: 0.85rem; margin: 0;">Analyzing your roof...</p>
+                                </div>
+                            </div>
+
+                            <!-- Results panel (hidden until scan completes) -->
+                            <div class="hero-scanner-results" id="heroScannerResults"></div>
+
+                            <div class="hero-scanner-or">
+                                Or <a href="#estimate">enter your roof size manually</a>
+                            </div>
+                        </div>
+
+                        <!-- TAB 2: Contact Form -->
+                        <div class="hero-tab-content" id="hero-contact">
+                            <div class="hero-form-header">
+                                <h2 class="hero-form-title" data-i18n="hero.form.title">Get Your Free Estimate</h2>
+                                <p class="hero-form-sub" data-i18n="hero.form.sub">No obligation. No pressure. Takes 30 seconds.</p>
+                            </div>
+
+                            <form id="heroForm" onsubmit="handleHeroForm(event)" novalidate>
                                 <div class="hero-form-group">
-                                    <label for="hero-phone" class="sr-only">Phone Number</label>
-                                    <input type="tel" id="hero-phone" name="phone" placeholder="Phone Number" data-i18n="hero.form.phone.placeholder" required autocomplete="tel" aria-required="true">
+                                    <label for="hero-name" class="sr-only">Full Name</label>
+                                    <input type="text" id="hero-name" name="name" placeholder="Full Name" data-i18n="hero.form.name.placeholder" required autocomplete="name" aria-required="true">
+                                </div>
+                                <div class="hero-form-row">
+                                    <div class="hero-form-group">
+                                        <label for="hero-phone" class="sr-only">Phone Number</label>
+                                        <input type="tel" id="hero-phone" name="phone" placeholder="Phone Number" data-i18n="hero.form.phone.placeholder" required autocomplete="tel" aria-required="true">
+                                    </div>
+                                    <div class="hero-form-group">
+                                        <label for="hero-zip" class="sr-only">ZIP Code</label>
+                                        <input type="text" id="hero-zip" name="zip" placeholder="ZIP Code" data-i18n="hero.form.zip.placeholder" required pattern="[0-9]{5}" maxlength="5" inputmode="numeric" aria-required="true">
+                                    </div>
                                 </div>
                                 <div class="hero-form-group">
-                                    <label for="hero-zip" class="sr-only">ZIP Code</label>
-                                    <input type="text" id="hero-zip" name="zip" placeholder="ZIP Code" data-i18n="hero.form.zip.placeholder" required pattern="[0-9]{5}" maxlength="5" inputmode="numeric" aria-required="true">
+                                    <label for="hero-service" class="sr-only">Service Needed</label>
+                                    <select id="hero-service" name="service_type" data-i18n="hero.form.service.placeholder">
+                                        <option value="">What do you need help with?</option>
+                                        <option value="inspection" data-i18n="hero.form.service.inspection">Free Roof Inspection</option>
+                                        <option value="repair" data-i18n="hero.form.service.repair">Roof Repair</option>
+                                        <option value="replacement" data-i18n="hero.form.service.replacement">Full Roof Replacement</option>
+                                        <option value="storm" data-i18n="hero.form.service.storm">Storm Damage / Insurance</option>
+                                        <option value="gutter" data-i18n="hero.form.service.gutter">Gutter Services</option>
+                                        <option value="other" data-i18n="hero.form.service.other">Other</option>
+                                    </select>
                                 </div>
-                            </div>
-                            <div class="hero-form-group">
-                                <label for="hero-service" class="sr-only">Service Needed</label>
-                                <select id="hero-service" name="service_type" data-i18n="hero.form.service.placeholder">
-                                    <option value="">What do you need help with?</option>
-                                    <option value="inspection" data-i18n="hero.form.service.inspection">Free Roof Inspection</option>
-                                    <option value="repair" data-i18n="hero.form.service.repair">Roof Repair</option>
-                                    <option value="replacement" data-i18n="hero.form.service.replacement">Full Roof Replacement</option>
-                                    <option value="storm" data-i18n="hero.form.service.storm">Storm Damage / Insurance</option>
-                                    <option value="gutter" data-i18n="hero.form.service.gutter">Gutter Services</option>
-                                    <option value="other" data-i18n="hero.form.service.other">Other</option>
-                                </select>
-                            </div>
 
-                            <!-- Honeypot -->
-                            <div style="position: absolute; left: -9999px;" aria-hidden="true">
-                                <input type="text" name="fax" tabindex="-1" autocomplete="off">
+                                <!-- Honeypot -->
+                                <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                                    <input type="text" name="fax" tabindex="-1" autocomplete="off">
+                                </div>
+
+                                <button type="submit" class="hero-form-submit" data-i18n="hero.form.submit">
+                                    Request Free Estimate
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </button>
+                            </form>
+
+                            <div class="hero-form-trust">
+                                <span data-i18n="hero.form.trust.free">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    100% Free
+                                </span>
+                                <span data-i18n="hero.form.trust.response">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    Response in ~2 hrs
+                                </span>
+                                <span data-i18n="hero.form.trust.obligation">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    No obligation
+                                </span>
                             </div>
-
-                            <button type="submit" class="hero-form-submit" data-i18n="hero.form.submit">
-                                Request Free Estimate
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </button>
-                        </form>
-
-                        <div class="hero-form-trust">
-                            <span data-i18n="hero.form.trust.free">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                100% Free
-                            </span>
-                            <span data-i18n="hero.form.trust.response">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Response in ~2 hrs
-                            </span>
-                            <span data-i18n="hero.form.trust.obligation">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                No obligation
-                            </span>
                         </div>
 
                         <div class="hero-form-divider"></div>
@@ -6615,6 +7012,255 @@
             }
         }
 
+        // ========== HERO TAB SWITCHING ==========
+        function switchHeroTab(tabName) {
+            document.querySelectorAll('.hero-tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.hero-tab').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`.hero-tab[data-tab="${tabName}"]`).classList.add('active');
+            // Resize map if switching to scanner and map exists
+            if (tabName === 'hero-scanner' && heroMap && typeof google !== 'undefined') {
+                setTimeout(() => google.maps.event.trigger(heroMap, 'resize'), 150);
+            }
+        }
+
+        // ========== HERO SCANNER (Satellite Roof Lookup) ==========
+        let heroMap = null;
+        let heroMarker = null;
+        let heroPendingLoc = null;
+        let heroPendingAddress = '';
+
+        async function heroLookupRoof() {
+            const input = document.getElementById('heroAddressInput');
+            const address = input.value.trim();
+            const status = document.getElementById('heroLookupStatus');
+            const btn = document.getElementById('heroLookupBtn');
+
+            if (!address) return;
+            heroPendingAddress = address;
+            if (GOOGLE_API_KEY === 'YOUR_API_KEY_HERE') {
+                status.style.display = 'block';
+                status.style.color = '#9a3030';
+                status.textContent = 'API key not configured.';
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-dasharray="28" stroke-dashoffset="56"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.8s" repeatCount="indefinite"/></circle></svg>';
+            status.style.display = 'block';
+            status.style.color = 'var(--warm-gray)';
+            status.textContent = 'Finding your address...';
+
+            // Reset states
+            document.getElementById('heroPinVerify').style.display = 'none';
+            document.getElementById('heroAnalyzing').style.display = 'none';
+            document.getElementById('heroScannerResults').classList.remove('active');
+
+            try {
+                const geoRes = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${GOOGLE_API_KEY}`);
+                const geoData = await geoRes.json();
+                if (!geoData.results?.length) throw new Error('Address not found');
+
+                heroPendingLoc = geoData.results[0].geometry.location;
+                status.style.display = 'none';
+
+                const mapWrap = document.getElementById('heroMapWrap');
+                const mapEl = document.getElementById('heroMap');
+                mapWrap.style.display = 'block';
+
+                if (typeof google !== 'undefined' && google.maps) {
+                    if (!heroMap) {
+                        heroMap = new google.maps.Map(mapEl, {
+                            center: { lat: 31.7619, lng: -106.4850 },
+                            zoom: 12,
+                            mapTypeId: 'satellite',
+                            tilt: 0,
+                            disableDefaultUI: true,
+                            gestureHandling: 'cooperative'
+                        });
+                        await homeWait(400);
+                    }
+
+                    // Animated zoom
+                    heroMap.panTo({ lat: heroPendingLoc.lat, lng: heroPendingLoc.lng });
+                    await homeWait(500);
+                    heroMap.setZoom(16);
+                    await homeWait(600);
+                    heroMap.setZoom(18);
+                    await homeWait(600);
+                    heroMap.setZoom(20);
+                    await homeWait(500);
+
+                    if (heroMarker) heroMarker.setMap(null);
+                    heroMarker = new google.maps.Marker({
+                        position: { lat: heroPendingLoc.lat, lng: heroPendingLoc.lng },
+                        map: heroMap,
+                        draggable: true,
+                        animation: google.maps.Animation.DROP,
+                        icon: {
+                            url: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="36" height="47" viewBox="0 0 40 52"><defs><filter id="s" x="-20%" y="-10%" width="140%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/></filter></defs><path d="M20 0C8.95 0 0 8.95 0 20c0 15 20 32 20 32s20-17 20-32C40 8.95 31.05 0 20 0z" fill="#FF5C34" filter="url(#s)"/><circle cx="20" cy="19" r="8" fill="white" opacity="0.9"/><path d="M16 19L20 12 24 19Z" fill="#FF5C34" opacity="0.8"/><rect x="17" y="19" width="6" height="5" fill="#FF5C34" opacity="0.6" rx="0.5"/></svg>'),
+                            scaledSize: new google.maps.Size(36, 47),
+                            anchor: new google.maps.Point(18, 47)
+                        },
+                        title: 'Drag to adjust pin position'
+                    });
+
+                    document.getElementById('heroPinVerify').style.display = 'flex';
+                }
+
+            } catch (err) {
+                status.style.display = 'block';
+                status.style.color = '#9a3030';
+                status.textContent = err.message + '. Try entering manually below.';
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Look Up';
+            }
+        }
+
+        async function heroConfirmPin() {
+            const status = document.getElementById('heroLookupStatus');
+            const pos = heroMarker ? heroMarker.getPosition() : null;
+            const lat = pos ? pos.lat() : heroPendingLoc.lat;
+            const lng = pos ? pos.lng() : heroPendingLoc.lng;
+
+            document.getElementById('heroPinVerify').style.display = 'none';
+            document.getElementById('heroAnalyzing').style.display = 'flex';
+
+            try {
+                let solarRes = await fetch(`https://solar.googleapis.com/v1/buildingInsights:findClosest?location.latitude=${lat}&location.longitude=${lng}&requiredQuality=HIGH&key=${GOOGLE_API_KEY}`);
+                if (!solarRes.ok) {
+                    solarRes = await fetch(`https://solar.googleapis.com/v1/buildingInsights:findClosest?location.latitude=${lat}&location.longitude=${lng}&requiredQuality=MEDIUM&key=${GOOGLE_API_KEY}`);
+                }
+                if (!solarRes.ok) throw new Error('Roof data not available');
+
+                const data = await solarRes.json();
+                const segments = data.solarPotential?.roofSegmentStats || [];
+                if (!segments.length) throw new Error('No roof data');
+
+                const totalM2 = segments.reduce((s, seg) => s + (seg.stats?.areaMeters2 || 0), 0);
+                const sqft = Math.round(totalM2 * 10.764);
+                const clamped = Math.max(500, Math.min(15000, sqft));
+
+                // Auto-fill the calculator section below
+                document.getElementById('calcSize').value = clamped;
+                let autoComplexity;
+                if (segments.length <= 2) {
+                    autoComplexity = document.querySelector('.calc-complexity[data-complexity="simple"]');
+                } else if (segments.length <= 4) {
+                    autoComplexity = document.querySelector('.calc-complexity[data-complexity="moderate"]');
+                } else {
+                    autoComplexity = document.querySelector('.calc-complexity[data-complexity="complex"]');
+                }
+                if (autoComplexity) autoComplexity.click();
+                updateCalc();
+
+                // Determine complexity label
+                let complexityLabel = 'Simple';
+                if (segments.length > 2 && segments.length <= 4) complexityLabel = 'Moderate';
+                if (segments.length > 4) complexityLabel = 'Complex';
+
+                // Show hero results panel
+                const resultsDiv = document.getElementById('heroScannerResults');
+                resultsDiv.innerHTML = `
+                    <div class="hero-scanner-result-row">
+                        <div class="hero-scanner-stat">
+                            <div class="hero-scanner-stat-value">${sqft.toLocaleString()}</div>
+                            <div class="hero-scanner-stat-label">Sq Ft</div>
+                        </div>
+                        <div class="hero-scanner-stat">
+                            <div class="hero-scanner-stat-value">${segments.length}</div>
+                            <div class="hero-scanner-stat-label">Sections</div>
+                        </div>
+                        <div class="hero-scanner-stat">
+                            <div class="hero-scanner-stat-value">${complexityLabel}</div>
+                            <div class="hero-scanner-stat-label">Complexity</div>
+                        </div>
+                    </div>
+                    <button class="hero-scanner-cta" onclick="document.getElementById('estimate').scrollIntoView({behavior:'smooth'})">
+                        See Your Estimate
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                `;
+                resultsDiv.classList.add('active');
+
+                // Hide map, show results
+                document.getElementById('heroAnalyzing').style.display = 'none';
+                document.getElementById('heroMapWrap').style.display = 'none';
+                status.style.display = 'none';
+
+                if (heroMarker) heroMarker.setDraggable(false);
+
+                // Log lead
+                logLeadToSheet({
+                    address: heroPendingAddress || '',
+                    lat: lat, lng: lng,
+                    roofSize: sqft,
+                    pitch: '',
+                    complexity: segments.length <= 2 ? 'simple' : segments.length <= 4 ? 'moderate' : 'complex',
+                    source: 'Hero Scanner',
+                    estimatedCost: '',
+                    city: '', state: ''
+                });
+
+            } catch (err) {
+                document.getElementById('heroAnalyzing').style.display = 'none';
+                status.style.display = 'block';
+                status.style.color = '#9a3030';
+                status.textContent = err.message + '. Try entering manually below.';
+            }
+        }
+
+        // Also init Places autocomplete for hero address input
+        function initHeroPlaces() {
+            try {
+                if (typeof google === 'undefined' || !google.maps) return;
+                const input = document.getElementById('heroAddressInput');
+                if (!input || !google.maps.places) return;
+
+                if (google.maps.places.Autocomplete) {
+                    const ac = new google.maps.places.Autocomplete(input, {
+                        types: ['address'],
+                        componentRestrictions: { country: 'us' },
+                        fields: ['formatted_address', 'geometry']
+                    });
+                    ac.addListener('place_changed', () => {
+                        const place = ac.getPlace();
+                        if (place?.formatted_address) input.value = place.formatted_address;
+                    });
+                }
+            } catch(e) { console.warn('Hero Places init failed:', e); }
+        }
+
+        // Initialize the decorative El Paso background map in hero scanner tab
+        function initHeroBgMap() {
+            try {
+                if (typeof google === 'undefined' || !google.maps) return;
+                const container = document.getElementById('heroBgMap');
+                if (!container) return;
+                const elPasoCenter = { lat: 31.7619, lng: -106.4850 };
+                const bgMap = new google.maps.Map(container, {
+                    center: elPasoCenter,
+                    zoom: 12,
+                    mapTypeId: 'hybrid',
+                    disableDefaultUI: true,
+                    gestureHandling: 'none',
+                    keyboardShortcuts: false,
+                    draggable: false,
+                    zoomControl: false,
+                    scrollwheel: false,
+                    disableDoubleClickZoom: true
+                });
+                // Hide labels on hybrid view
+                bgMap.setOptions({ styles: [
+                    { featureType: 'all', elementType: 'labels', stylers: [{ visibility: 'off' }] }
+                ]});
+            } catch(e) { console.warn('Hero BG map init failed:', e); }
+        }
+
+        // Hook into Google Maps load callback
+        const _origInitHomePlaces = window.initHomePlaces;
+
         // Load Google Maps Places for address autocomplete
         window.initHomePlaces = async function() {
             try {
@@ -6677,6 +7323,9 @@
                     });
                 }
             } catch(e) { console.warn('Places init failed:', e); }
+            // Also init hero scanner autocomplete + background map
+            initHeroPlaces();
+            initHeroBgMap();
         };
 
         if (GOOGLE_API_KEY !== 'YOUR_API_KEY_HERE') {
@@ -6685,6 +7334,11 @@
             s.async = true; s.defer = true;
             document.head.appendChild(s);
         }
+
+        // Allow Enter key to trigger hero scanner lookup
+        document.getElementById('heroAddressInput')?.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') { e.preventDefault(); heroLookupRoof(); }
+        });
     </script>
 
     <style>
