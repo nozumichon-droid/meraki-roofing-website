@@ -145,7 +145,7 @@
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(253, 252, 250, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(44, 74, 62, 0.08); transition: all 0.3s ease; }
         .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.06); }
         .nav-inner { max-width: 1500px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 3rem); display: flex; align-items: center; justify-content: space-between;
-            height: 120px; transition: height 0.3s ease; }
+            height: 80px; transition: height 0.3s ease; }
 
         .nav.scrolled .nav-inner {
             height: 80px;
@@ -162,7 +162,7 @@
         .nav-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
 
         .nav-logo-img {
-            height: 135px;
+            height: 80px;
             width: auto;
             object-fit: contain;
             transition: height 0.3s ease;
@@ -175,7 +175,7 @@
         .nav-logo-img.horizontal-logo {
             max-width: clamp(280px, 28vw, 420px);
             height: auto;
-            max-height: 120px;
+            max-height: 80px;
         }
         .nav.scrolled .nav-logo-img.horizontal-logo {
             max-width: clamp(220px, 22vw, 320px);
@@ -424,8 +424,8 @@
             transform: translateY(-1px);
         }
 
-        /* Container */
-        .container {
+        /* Calculator Container */
+        .calculator-container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 1.5rem;
@@ -1485,28 +1485,7 @@
         }
 
         /* Footer */
-        footer {
-            background-color: var(--forest);
-            color: var(--warm-white);
-            padding: 3rem 1.5rem;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1rem;
-        }
+        /* Old footer rule removed - use .footer and .container classes instead */
 
         .nav-logo-icon {
             width: 38px;
@@ -1550,46 +1529,6 @@
             background: var(--terracotta);
             margin-top: 3px;
             border-radius: 1px;
-        }
-
-        .footer-section h3 {
-            font-family: 'Lora', serif;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
-        .footer-contact {
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        .footer-divider {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            margin-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
         }
 
         /* Sticky Mobile CTA */
@@ -1706,10 +1645,6 @@
 
             .sticky-mobile-cta {
                 display: block;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
             }
 
             .comparison-table th, .comparison-table td {
@@ -1935,11 +1870,107 @@
             .theme-toggle { bottom: 80px; left: 16px; }
         }
 
-    </style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+        }
+
+        .footer {
+            background: var(--forest-deep);
+            color: white;
+            padding: 3.5rem 0 1.5rem;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 1rem;
+            line-height: 1.7;
+            max-width: 280px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.25rem;
+            color: var(--terracotta);
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.7);
+            padding: 5px 0;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover { color: var(--gold); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            transition: all 0.25s;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255,255,255,0.12);
+            color: white;
+        }
+
+        @media (max-width: 992px) {
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <nav class="nav scrolled" id="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
             <a href="index.html" class="nav-logo">
                 <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
@@ -2392,42 +2423,55 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <img src="images/logos/meraki-stacked.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9;">
+        <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" id="footerLogoImg" style="height: 80px; width: auto; object-fit: contain;">
+                    </a>
+                    <p>Locally owned roofing experts serving the El Paso community with heart, quality, and integrity.</p>
                 </div>
-                <p style="font-weight: 500; margin-bottom: 1rem;">Premium roofing solutions for El Paso, TX</p>
-                <div class="footer-contact">
-                    <p>📞 (915) 861-8039</p>
-                    <p>📧 hello@merakiroofing.com</p>
-                    <p>📍 El Paso, TX</p>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="residential.html">Residential Roofing</a>
+                    <a href="commercial.html">Commercial Roofing</a>
+                    <a href="storm-damage.html">Storm Damage</a>
+                    <a href="estimate.html">Free Estimate</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="storm-damage.html">Storm Damage</a>
+                    <a href="insurance-claims.html">Insurance Claims</a>
+                    <a href="financing.html">Financing</a>
+                    <a href="maintenance.html">Maintenance Plans</a>
+                    <a href="index.html#testimonials">Reviews</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="tel:+19158618039">(915) 861-8039</a>
+                    <a href="mailto:axmartinez22@gmail.com">Email Us</a>
+                    <a href="index.html#contact">Free Inspection</a>
                 </div>
             </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="residential.html">Residential</a></li>
-                    <li><a href="commercial.html">Commercial</a></li>
-                    <li><a href="storm-damage.html">Storm Damage</a></li>
-                    <li><a href="insurance-claims.html">Insurance Claims</a></li>
-                    <li><a href="financing.html">Financing</a></li>
-                </ul>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Meraki Roofing. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="Google">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    </a>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <ul class="footer-links">
-                    <li><a href="maintenance.html">Maintenance Tips</a></li>
-                    <li><a href="estimate.html">Free Estimate</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-divider">
-            <p>&copy; 2025 Meraki Roofing. Licensed & Insured. All rights reserved.</p>
         </div>
     </footer>
 
@@ -2460,9 +2504,9 @@
         ];
 
         const roofComplexities = [
-            { id: 'simple', label: 'Open Gable', value: 'simple', multiplier: 1.0, description: 'Simple, single ridge' },
-            { id: 'moderate', label: 'Cross Hipped', value: 'moderate', multiplier: 1.12, description: 'Hips + valleys (+8%)' },
-            { id: 'complex', label: 'Hip & Valley', value: 'complex', multiplier: 1.25, description: 'Multi-wing, complex (+15%)' }
+            { id: 'simple', label: 'Simple', value: 'simple', multiplier: 1.0, description: '' },
+            { id: 'moderate', label: 'Moderate', value: 'moderate', multiplier: 1.12, description: '' },
+            { id: 'complex', label: 'Complex', value: 'complex', multiplier: 1.25, description: '' }
         ];
 
         const issues = [
@@ -2557,12 +2601,9 @@
         };
 
         const complexityDiagrams = {
-            // Simple: Open Gable — 45° isometric (viewed from above-front-right)
-            'simple': '<svg width="100" height="80" viewBox="0 0 100 80" fill="none"><path d="M10,58 L50,68 L90,58 L90,42 L10,42 Z" fill="#e8ddd0" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M10,42 L50,22 L90,42 Z" fill="#f0e6d9" stroke="#5a5a5a" stroke-width="1.2" stroke-linejoin="round"/><path d="M10,42 L10,58 L40,66 L40,52 Z" fill="#ddd0c0" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M90,42 L90,58 L60,66 L60,52 Z" fill="#ccc0ae" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M50,18 L6,38 L40,52 L50,46 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="1.2" stroke-linejoin="round"/><path d="M50,18 L94,38 L60,52 L50,46 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1.2" stroke-linejoin="round"/><line x1="50" y1="18" x2="50" y2="46" stroke="#8B4513" stroke-width="1.8" opacity="0.6"/><line x1="6" y1="38" x2="40" y2="52" stroke="#5a5a5a" stroke-width="0.5" opacity="0.2"/><line x1="94" y1="38" x2="60" y2="52" stroke="#5a5a5a" stroke-width="0.5" opacity="0.2"/></svg>',
-            // Moderate: Cross Hipped — 45° isometric
-            'moderate': '<svg width="100" height="80" viewBox="0 0 100 80" fill="none"><path d="M5,40 L5,52 L55,62 L55,50 Z" fill="#e8ddd0" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M55,50 L55,62 L75,55 L75,43 Z" fill="#ccc0ae" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M5,40 L55,50 L48,44 L12,37 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M55,50 L75,43 L48,44 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M5,40 L-5,36 L12,37 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M-5,36 L12,37 L48,44 L75,43 L55,33 L5,23 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round" opacity="0.45"/><line x1="12" y1="37" x2="48" y2="44" stroke="#8B4513" stroke-width="1.3" opacity="0.5"/><path d="M26,50 L26,62 L44,68 L44,56 Z" fill="#e0d4c5" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M44,56 L44,68 L58,63 L58,51 Z" fill="#c5b9a8" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M26,50 L44,56 L40,51 L30,48 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M44,56 L58,51 L40,51 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M26,50 L20,48 L30,48 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M26,62 L30,58 L40,61 L44,68 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round" opacity="0.7"/><line x1="30" y1="48" x2="40" y2="61" stroke="#8B4513" stroke-width="1" opacity="0.4"/><line x1="30" y1="48" x2="26" y2="50" stroke="#c9a961" stroke-width="1.5" stroke-dasharray="2 1.5"/><line x1="40" y1="51" x2="44" y2="56" stroke="#c9a961" stroke-width="1.5" stroke-dasharray="2 1.5"/></svg>',
-            // Complex: Hip & Valley — 45° isometric, multi-wing
-            'complex': '<svg width="100" height="80" viewBox="0 0 100 80" fill="none"><path d="M2,38 L2,50 L58,60 L58,48 Z" fill="#e8ddd0" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M58,48 L58,60 L78,53 L78,41 Z" fill="#ccc0ae" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M2,38 L58,48 L50,42 L10,35 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M58,48 L78,41 L50,42 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><path d="M2,38 L-6,34 L10,35 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/><line x1="10" y1="35" x2="50" y2="42" stroke="#8B4513" stroke-width="1.3" opacity="0.5"/><path d="M8,50 L8,60 L22,64 L22,54 Z" fill="#e0d4c5" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M22,54 L22,64 L34,60 L34,50 Z" fill="#c5b9a8" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M8,50 L22,54 L19,50 L11,48 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M22,54 L34,50 L19,50 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M8,50 L4,48 L11,48 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M8,60 L11,57 L19,59 L22,64 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round" opacity="0.7"/><line x1="11" y1="48" x2="19" y2="59" stroke="#8B4513" stroke-width="0.8" opacity="0.4"/><line x1="11" y1="48" x2="8" y2="50" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/><line x1="19" y1="50" x2="22" y2="54" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/><path d="M40,54 L40,65 L56,70 L56,59 Z" fill="#e0d4c5" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M56,59 L56,70 L68,66 L68,55 Z" fill="#c5b9a8" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M40,54 L56,59 L52,55 L44,52 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M56,59 L68,55 L52,55 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M40,54 L36,52 L44,52 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/><path d="M40,65 L44,62 L52,64 L56,70 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round" opacity="0.7"/><line x1="44" y1="52" x2="52" y2="64" stroke="#8B4513" stroke-width="0.8" opacity="0.4"/><line x1="44" y1="52" x2="40" y2="54" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/><line x1="52" y1="55" x2="56" y2="59" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/><path d="M26,36 L30,34 L34,36 Z" fill="#f0e6d9" stroke="#5a5a5a" stroke-width="0.7" stroke-linejoin="round"/><path d="M26,36 L34,36 L33,38 L27,37 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round"/></svg>'
+            'simple': '<img src="images/roof-simple.png" alt="Simple Roof" style="width:100px;height:auto;">',
+            'moderate': '<img src="images/roof-moderate.png" alt="Moderate Roof" style="width:100px;height:auto;">',
+            'complex': '<img src="images/roof-complex.png" alt="Complex Roof" style="width:100px;height:auto;">'
         };
 
         function renderPitchCards() {

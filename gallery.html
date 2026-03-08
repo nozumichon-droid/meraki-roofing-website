@@ -109,16 +109,16 @@
             max-width: 1500px; margin: 0 auto;
             padding: 0 clamp(1.5rem, 4vw, 3rem);
             display: flex; align-items: center; justify-content: space-between;
-            height: 120px; transition: height 0.3s ease;
+            height: 80px; transition: height 0.3s ease;
         }
         .nav.scrolled .nav-inner { height: 80px; }
 
         .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
         .nav-logo-img {
-            height: 135px; width: auto; object-fit: contain; transition: height 0.3s ease;
+            height: 80px; width: auto; object-fit: contain; transition: height 0.3s ease;
         }
         .nav.scrolled .nav-logo-img { height: 80px; }
-        .nav-logo-img.horizontal-logo { max-width: clamp(280px, 28vw, 420px); height: auto; max-height: 120px; }
+        .nav-logo-img.horizontal-logo { max-width: clamp(280px, 28vw, 420px); height: auto; max-height: 80px; }
         .nav.scrolled .nav-logo-img.horizontal-logo { max-width: clamp(220px, 22vw, 320px); max-height: 75px; }
 
         .nav-links { display: flex; align-items: center; gap: clamp(1.2rem, 2.2vw, 2rem); }
@@ -236,7 +236,7 @@
 
         /* ============ GALLERY FILTERS ============ */
         .gallery-section { padding: var(--section-pad) 0; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
 
         .section-label {
             display: inline-flex; align-items: center; gap: 8px;
@@ -466,16 +466,16 @@
 
         /* ============ FOOTER ============ */
         .footer {
-            background: var(--forest-deep); color: rgba(255,255,255,0.6);
-            padding: 3rem 0 1.5rem; font-size: 0.85rem;
+            background: var(--forest-deep); color: white;
+            padding: 3.5rem 0 1.5rem; font-size: 0.85rem;
         }
         .footer-inner {
             display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 2rem; margin-bottom: 2rem;
         }
-        .footer-brand p { margin-top: 0.75rem; line-height: 1.7; font-size: 0.82rem; }
+        .footer-brand p { margin-top: 0.75rem; line-height: 1.7; font-size: 0.82rem; color: rgba(255,255,255,0.5); max-width: 280px; }
         .footer-col h4 {
-            color: white; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem;
+            color: var(--terracotta); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem;
             text-transform: uppercase; letter-spacing: 0.06em;
         }
         .footer-col a {
@@ -546,7 +546,7 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <nav class="nav scrolled" id="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
             <a href="index.html" class="nav-logo">
                 <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
@@ -984,7 +984,7 @@
             <div class="footer-inner">
                 <div class="footer-brand">
                     <a href="index.html" class="nav-logo" style="margin-bottom: 0.5rem;">
-                        <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png" alt="Meraki Roofing" style="height: 50px; width: auto; filter: brightness(0) invert(1); opacity: 0.8;">
+                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain;">
                     </a>
                     <p>Locally owned roofing experts serving the El Paso community with heart, quality, and integrity.</p>
                 </div>

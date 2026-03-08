@@ -138,7 +138,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 120px;
+            height: 80px;
             transition: height 0.3s ease;
         }
 
@@ -163,7 +163,7 @@
         .nav-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
 
         .nav-logo-img {
-            height: 135px;
+            height: 80px;
             width: auto;
             object-fit: contain;
             transition: height 0.3s ease;
@@ -176,7 +176,7 @@
         .nav-logo-img.horizontal-logo {
             max-width: clamp(280px, 28vw, 420px);
             height: auto;
-            max-height: 120px;
+            max-height: 80px;
         }
         .nav.scrolled .nav-logo-img.horizontal-logo {
             max-width: clamp(220px, 22vw, 320px);
@@ -993,11 +993,7 @@
         }
 
         /* ============ FOOTER ============ */
-        footer {
-            background-color: var(--charcoal);
-            color: var(--light-gray);
-            padding: 50px 20px 20px;
-        }
+        /* Old footer rule removed - use .footer and .container classes instead */
 
         .footer-container {
             max-width: 1400px;
@@ -1006,13 +1002,6 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1rem;
         }
 
         .nav-logo-icon {
@@ -1057,44 +1046,6 @@
             background: var(--terracotta);
             margin-top: 3px;
             border-radius: 1px;
-        }
-
-        .footer-section h4 {
-            color: var(--warm-white);
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-section a {
-            color: var(--light-gray);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
         }
 
         .footer-copyright {
@@ -1309,12 +1260,6 @@
                 gap: 30px;
             }
 
-            .footer-bottom {
-                flex-direction: column;
-                align-items: flex-start;
-                text-align: center;
-            }
-
             .social-icons {
                 margin-top: 10px;
             }
@@ -1432,14 +1377,106 @@
             .theme-toggle { bottom: 80px; left: 16px; }
         }
 
-    </style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+        }
+
+        .footer {
+            background: var(--forest-deep);
+            color: white;
+            padding: 3.5rem 0 1.5rem;
+        }
+
+
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 1rem;
+            line-height: 1.7;
+            max-width: 280px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.25rem;
+            color: var(--terracotta);
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.7);
+            padding: 5px 0;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover { color: var(--gold); }
+
+        .footer-bottom p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            transition: all 0.25s;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255,255,255,0.12);
+            color: white;
+        }
+
+        @media (max-width: 992px) {
+
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        </style>
 </head>
 <body>
     <!-- Skip link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- ============ NAVIGATION ============ -->
-    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <nav class="nav scrolled" id="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
             <a href="index.html" class="nav-logo">
                 <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" id="navLogoImg">
@@ -1564,16 +1601,16 @@
                 </div>
 
                 <div class="partner-card animate-on-scroll">
-                    <div class="partner-logo">Mosaic</div>
-                    <h3>Mosaic</h3>
-                    <p>Simple online applications with competitive rates for home improvement and solar projects.</p>
+                    <div class="partner-logo">Regions Bank</div>
+                    <h3>Regions Bank</h3>
+                    <p>Home improvement financing with Same-As-Cash and low monthly payment options through a trusted national bank.</p>
                     <ul class="partner-features">
-                        <li>Competitive fixed rates</li>
-                        <li>Simple online application</li>
-                        <li>Quick funding available</li>
-                        <li>Flexible terms</li>
+                        <li>Same-As-Cash options available</li>
+                        <li>Low monthly payment plans</li>
+                        <li>Simple paperless application</li>
+                        <li>No home equity required</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Learn More</a>
+                    <a href="https://www.regions.com/personal-banking/home-loans/home-improvement-loans/home-improvement-financing" target="_blank" rel="noopener" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
         </section>
@@ -1715,53 +1752,54 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <img src="images/logos/meraki-stacked.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9;">
+        <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" id="footerLogoImg" style="height: 80px; width: auto; object-fit: contain;">
+                    </a>
+                    <p>Locally owned roofing experts serving the El Paso community with heart, quality, and integrity.</p>
                 </div>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="residential.html">Residential Roofing</a>
+                    <a href="commercial.html">Commercial Roofing</a>
+                    <a href="storm-damage.html">Storm Damage</a>
+                    <a href="estimate.html">Free Estimate</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="storm-damage.html">Storm Damage</a>
+                    <a href="insurance-claims.html">Insurance Claims</a>
+                    <a href="financing.html">Financing</a>
+                    <a href="maintenance.html">Maintenance Plans</a>
+                    <a href="index.html#testimonials">Reviews</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="tel:+19158618039">(915) 861-8039</a>
+                    <a href="mailto:axmartinez22@gmail.com">Email Us</a>
+                    <a href="index.html#contact">Free Inspection</a>
+                </div>
             </div>
-            <div class="footer-section">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="index.html#services">Roof Repair</a></li>
-                    <li><a href="index.html#services">Roof Replacement</a></li>
-                    <li><a href="storm-damage.html">Storm Damage</a></li>
-                    <li><a href="maintenance.html">Maintenance</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="financing.html">Financing</a></li>
-                    <li><a href="insurance-claims.html">Insurance Claims</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="tel:(915)555-1234">(915) 861-8039</a></li>
-                    <li><a href="mailto:axmartinez22@gmail.com">axmartinez22@gmail.com</a></li>
-                    <li>El Paso, TX</li>
-                    <li><a href="#">Service Area Map</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p class="footer-copyright">© 2026 Meraki Roofing. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="https://facebook.com" aria-label="Follow on Facebook">f</a>
-                <a href="https://instagram.com" aria-label="Follow on Instagram">📷</a>
-                <a href="https://google.com" aria-label="Find us on Google">G</a>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Meraki Roofing. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="Google">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
@@ -1798,7 +1836,7 @@
         },
         {
           "@type": "Offer",
-          "name": "Mosaic Financing",
+          "name": "Regions Bank Home Improvement Financing",
           "price": "Contact for rates",
           "priceCurrency": "USD",
           "eligibleRegion": "US"

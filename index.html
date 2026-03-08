@@ -528,7 +528,72 @@
         .hero-cert-wrap {
             margin-top: 1.5rem;
             position: relative;
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .hero-sms-qr {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 16px 10px 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .hero-sms-qr:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+        }
+        .hero-sms-qr canvas {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            background: white;
+        }
+        .hero-sms-qr-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .hero-sms-qr-text span:first-child {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--forest-deep);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .hero-sms-qr-text span:last-child {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            color: var(--warm-gray);
+        }
+        .hero-sms-mobile-btn {
+            display: none;
+        }
+        .hero-sms-mobile-btn a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 10px 18px;
+            color: white;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .hero-sms-mobile-btn a:hover {
+            background: rgba(255,255,255,0.2);
         }
         .hero-cert-link {
             display: inline-block;
@@ -666,22 +731,24 @@
 
         .hero-actions {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            gap: 0.75rem;
+            flex-wrap: nowrap;
+            align-items: center;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 15px 30px;
+            padding: 14px 24px;
             border-radius: 10px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-family: var(--font-body);
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .btn-primary {
@@ -2694,7 +2761,7 @@
             text-transform: uppercase;
             letter-spacing: 0.12em;
             margin-bottom: 1.25rem;
-            color: rgba(255,255,255,0.4);
+            color: var(--terracotta);
         }
 
         .footer-col a {
@@ -3400,10 +3467,12 @@
             .hero-inner { grid-template-columns: 1fr; text-align: center; }
             .hero h1 .tw-line { margin: 0 auto; }
             .hero-trust-line { text-align: center; }
-            .hero-cert-wrap { text-align: center; }
+            .hero-cert-wrap { text-align: center; justify-content: center; flex-wrap: wrap; }
             .hero-cert-badge { height: 130px; }
+            .hero-sms-qr { display: none; }
+            .hero-sms-mobile-btn { display: block; }
             .hero-sub { margin: 0 auto 2.25rem; }
-            .hero-actions { justify-content: center; }
+            .hero-actions { justify-content: center; flex-wrap: wrap; }
             .estimate-badge { justify-content: center; }
             .hero-visual { max-width: 500px; margin: 0 auto; }
             .nav-phone { display: none !important; }
@@ -4058,14 +4127,14 @@
                     <h1><span class="tw-line" data-i18n="hero.h1.line1">Protect What</span><span class="tw-line" data-i18n="hero.h1.line2">Matters Most</span><em data-i18n="hero.h1.em">With a Team You Can Trust</em></h1>
                     <p class="hero-sub" data-i18n="hero.sub">We treat every home like our own — honest pricing, clear communication, and a roof you'll love for decades.</p>
                     <div class="hero-actions">
-                        <a href="javascript:void(0)" onclick="document.getElementById('hero-name').focus(); document.querySelector('.hero-form-card').style.boxShadow='0 0 0 3px var(--terracotta), 0 20px 60px rgba(0,0,0,0.2)'; setTimeout(()=>document.querySelector('.hero-form-card').style.boxShadow='',1500);" class="btn btn-estimate" data-i18n="hero.btn.estimate">
+                        <a href="#estimate" class="btn btn-estimate" data-i18n="hero.btn.estimate">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="4" y="2" width="16" height="20" rx="2"/>
                                 <line x1="8" y1="6" x2="16" y2="6"/>
                                 <line x1="8" y1="10" x2="16" y2="10"/>
                                 <line x1="8" y1="14" x2="12" y2="14"/>
                             </svg>
-                            Get Your Free Estimate
+                            Instant Estimate
                         </a>
                         <a href="tel:+19158618039" class="btn btn-primary">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -4083,6 +4152,24 @@
                             <img src="images/logos/certified-plus.png" alt="GAF Certified Plus Residential Roofing Contractor" class="hero-cert-badge">
                             <span class="hero-cert-tooltip">View Our Certification →</span>
                         </a>
+                        <!-- SMS QR - Desktop -->
+                        <div class="hero-sms-qr">
+                            <canvas id="heroSmsQr"></canvas>
+                            <div class="hero-sms-qr-text">
+                                <span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    Text Us
+                                </span>
+                                <span>Scan to text us</span>
+                            </div>
+                        </div>
+                        <!-- SMS Button - Mobile -->
+                        <div class="hero-sms-mobile-btn">
+                            <a href="sms:+19158618039?body=Hi%20Meraki%20Roofing%2C%20I%27m%20interested%20in%20a%20free%20roof%20estimate">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                Text Us — (915) 861-8039
+                            </a>
+                        </div>
                     </div>
                     <!-- Intent Routing Tiles -->
                 </div>
@@ -4654,77 +4741,20 @@
                     <div style="margin-bottom: 1.5rem;">
                         <label style="display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest-deep); margin-bottom: 0.5rem;">Roof Shape / Complexity</label>
                         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem;" class="calc-row-3col">
-                            <!-- Simple: Open Gable — 45° isometric -->
+                            <!-- Simple Roof -->
                             <button type="button" class="calc-complexity active" data-complexity="simple" onclick="selectComplexity(this)" style="padding: 12px 8px; border: 1.5px solid var(--terracotta); border-radius: 10px; background: rgba(196,114,75,0.06); cursor: pointer; text-align: center; font-family: var(--font-body); transition: all 0.2s;">
-                                <svg width="100" height="80" viewBox="0 0 100 80" fill="none" style="margin: 0 auto 6px; display: block;">
-                                    <path d="M10,58 L50,68 L90,58 L90,42 L10,42 Z" fill="#e8ddd0" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <path d="M10,42 L50,22 L90,42 Z" fill="#f0e6d9" stroke="#5a5a5a" stroke-width="1.2" stroke-linejoin="round"/>
-                                    <path d="M10,42 L10,58 L40,66 L40,52 Z" fill="#ddd0c0" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <path d="M90,42 L90,58 L60,66 L60,52 Z" fill="#ccc0ae" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <path d="M50,18 L6,38 L40,52 L50,46 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="1.2" stroke-linejoin="round"/>
-                                    <path d="M50,18 L94,38 L60,52 L50,46 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1.2" stroke-linejoin="round"/>
-                                    <line x1="50" y1="18" x2="50" y2="46" stroke="#8B4513" stroke-width="1.8" opacity="0.6"/>
-                                    <line x1="6" y1="38" x2="40" y2="52" stroke="#5a5a5a" stroke-width="0.5" opacity="0.2"/>
-                                    <line x1="94" y1="38" x2="60" y2="52" stroke="#5a5a5a" stroke-width="0.5" opacity="0.2"/>
-                                </svg>
-                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--forest-deep);">Open Gable</div>
-                                <div style="font-size: 0.65rem; color: var(--warm-gray);">Simple, 1 ridge</div>
+                                <img src="images/roof-simple.png" alt="Simple Roof" style="width: 100px; height: auto; display: block; margin: 0 auto 6px;">
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--forest-deep);">Simple</div>
                             </button>
-                            <!-- Moderate: Cross Hipped — 45° isometric -->
+                            <!-- Moderate Roof -->
                             <button type="button" class="calc-complexity" data-complexity="moderate" onclick="selectComplexity(this)" style="padding: 12px 8px; border: 1.5px solid var(--light-gray); border-radius: 10px; background: white; cursor: pointer; text-align: center; font-family: var(--font-body); transition: all 0.2s;">
-                                <svg width="100" height="80" viewBox="0 0 100 80" fill="none" style="margin: 0 auto 6px; display: block;">
-                                    <path d="M5,40 L5,52 L55,62 L55,50 Z" fill="#e8ddd0" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M55,50 L55,62 L75,55 L75,43 Z" fill="#ccc0ae" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M5,40 L55,50 L48,44 L12,37 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <path d="M55,50 L75,43 L48,44 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <path d="M5,40 L-5,36 L12,37 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <path d="M-5,36 L12,37 L48,44 L75,43 L55,33 L5,23 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round" opacity="0.45"/>
-                                    <line x1="12" y1="37" x2="48" y2="44" stroke="#8B4513" stroke-width="1.3" opacity="0.5"/>
-                                    <path d="M26,50 L26,62 L44,68 L44,56 Z" fill="#e0d4c5" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M44,56 L44,68 L58,63 L58,51 Z" fill="#c5b9a8" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M26,50 L44,56 L40,51 L30,48 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <path d="M44,56 L58,51 L40,51 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <path d="M26,50 L20,48 L30,48 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <path d="M26,62 L30,58 L40,61 L44,68 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round" opacity="0.7"/>
-                                    <line x1="30" y1="48" x2="40" y2="61" stroke="#8B4513" stroke-width="1" opacity="0.4"/>
-                                    <line x1="30" y1="48" x2="26" y2="50" stroke="#c9a961" stroke-width="1.5" stroke-dasharray="2 1.5"/>
-                                    <line x1="40" y1="51" x2="44" y2="56" stroke="#c9a961" stroke-width="1.5" stroke-dasharray="2 1.5"/>
-                                </svg>
-                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--forest-deep);">Cross Hipped</div>
-                                <div style="font-size: 0.65rem; color: var(--warm-gray);">Hips + valleys (+8%)</div>
+                                <img src="images/roof-moderate.png" alt="Moderate Roof" style="width: 100px; height: auto; display: block; margin: 0 auto 6px;">
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--forest-deep);">Moderate</div>
                             </button>
-                            <!-- Complex: Hip & Valley — 45° isometric, multi-wing -->
+                            <!-- Complex Roof -->
                             <button type="button" class="calc-complexity" data-complexity="complex" onclick="selectComplexity(this)" style="padding: 12px 8px; border: 1.5px solid var(--light-gray); border-radius: 10px; background: white; cursor: pointer; text-align: center; font-family: var(--font-body); transition: all 0.2s;">
-                                <svg width="100" height="80" viewBox="0 0 100 80" fill="none" style="margin: 0 auto 6px; display: block;">
-                                    <path d="M2,38 L2,50 L58,60 L58,48 Z" fill="#e8ddd0" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M58,48 L58,60 L78,53 L78,41 Z" fill="#ccc0ae" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M2,38 L58,48 L50,42 L10,35 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <path d="M58,48 L78,41 L50,42 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <path d="M2,38 L-6,34 L10,35 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="1" stroke-linejoin="round"/>
-                                    <line x1="10" y1="35" x2="50" y2="42" stroke="#8B4513" stroke-width="1.3" opacity="0.5"/>
-                                    <path d="M8,50 L8,60 L22,64 L22,54 Z" fill="#e0d4c5" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M22,54 L22,64 L34,60 L34,50 Z" fill="#c5b9a8" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M8,50 L22,54 L19,50 L11,48 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M22,54 L34,50 L19,50 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M8,50 L4,48 L11,48 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M8,60 L11,57 L19,59 L22,64 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round" opacity="0.7"/>
-                                    <line x1="11" y1="48" x2="19" y2="59" stroke="#8B4513" stroke-width="0.8" opacity="0.4"/>
-                                    <line x1="11" y1="48" x2="8" y2="50" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/>
-                                    <line x1="19" y1="50" x2="22" y2="54" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/>
-                                    <path d="M40,54 L40,65 L56,70 L56,59 Z" fill="#e0d4c5" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M56,59 L56,70 L68,66 L68,55 Z" fill="#c5b9a8" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M40,54 L56,59 L52,55 L44,52 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M56,59 L68,55 L52,55 Z" fill="#a85d3a" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M40,54 L36,52 L44,52 Z" fill="#b06040" stroke="#5a5a5a" stroke-width="0.8" stroke-linejoin="round"/>
-                                    <path d="M40,65 L44,62 L52,64 L56,70 Z" fill="#b86542" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round" opacity="0.7"/>
-                                    <line x1="44" y1="52" x2="52" y2="64" stroke="#8B4513" stroke-width="0.8" opacity="0.4"/>
-                                    <line x1="44" y1="52" x2="40" y2="54" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/>
-                                    <line x1="52" y1="55" x2="56" y2="59" stroke="#c9a961" stroke-width="1.2" stroke-dasharray="2 1.5"/>
-                                    <path d="M26,36 L30,34 L34,36 Z" fill="#f0e6d9" stroke="#5a5a5a" stroke-width="0.7" stroke-linejoin="round"/>
-                                    <path d="M26,36 L34,36 L33,38 L27,37 Z" fill="#c4724b" stroke="#5a5a5a" stroke-width="0.6" stroke-linejoin="round"/>
-                                </svg>
-                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--forest-deep);">Hip & Valley</div>
-                                <div style="font-size: 0.65rem; color: var(--warm-gray);">Multi-wing, complex (+15%)</div>
+                                <img src="images/roof-complex.png" alt="Complex Roof" style="width: 100px; height: auto; display: block; margin: 0 auto 6px;">
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--forest-deep);">Complex</div>
                             </button>
                         </div>
                     </div>
@@ -5623,7 +5653,7 @@
             <div class="footer-inner">
                 <div class="footer-brand">
                     <a href="#" class="nav-logo">
-                        <img src="images/logos/meraki-stacked.png" alt="Meraki Roofing" id="footerLogoImg" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9;">
+                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" id="footerLogoImg" style="height: 80px; width: auto; object-fit: contain;">
                     </a>
                     <p data-i18n="footer.brand.desc">Locally owned roofing experts serving the El Paso community with heart, quality, and integrity.</p>
                 </div>
@@ -5962,6 +5992,12 @@
 
             const smsURI = 'sms:+19158618039?body=Hi Meraki Roofing, I\'m interested in a free roof estimate';
             generateQR(smsURI, canvas);
+
+            // Also generate hero QR code
+            const heroCanvas = document.getElementById('heroSmsQr');
+            if (heroCanvas) {
+                generateQR(smsURI, heroCanvas);
+            }
         })();
 
         // ===== CHATBOT =====
