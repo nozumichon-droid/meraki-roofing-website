@@ -7218,6 +7218,59 @@
                 const input = document.getElementById('heroAddressInput');
                 if (!input || !google.maps.places) return;
 
+                // Try new PlaceAutocompleteElement first
+                if (google.maps.places.PlaceAutocompleteElement) {
+                    try {
+                        const heroAC = new google.maps.places.PlaceAutocompleteElement({
+                            types: ['address'],
+                            componentRestrictions: { country: 'us' }
+                        });
+                        heroAC.style.cssText = 'flex:1; min-width:0;';
+                        input.style.display = 'none';
+                        input.parentElement.insertBefore(heroAC, input);
+
+                        // Style the autocomplete element to match hero scanner
+                        const heroAcStyle = document.createElement('style');
+                        heroAcStyle.textContent = `
+                            .hero-scanner-row gmp-place-autocomplete { flex: 1; min-width: 0; }
+                            .hero-scanner-row gmp-place-autocomplete input,
+                            .hero-scanner-map-overlay gmp-place-autocomplete input {
+                                width: 100% !important;
+                                padding: 12px 14px !important;
+                                border: 1.5px solid rgba(255,255,255,0.25) !important;
+                                border-radius: 10px !important;
+                                font-family: var(--font-body) !important;
+                                font-size: 0.88rem !important;
+                                color: var(--charcoal) !important;
+                                background: rgba(255,255,255,0.92) !important;
+                                backdrop-filter: blur(4px) !important;
+                                outline: none !important;
+                                box-sizing: border-box !important;
+                            }
+                            .hero-scanner-row gmp-place-autocomplete input:focus,
+                            .hero-scanner-map-overlay gmp-place-autocomplete input:focus {
+                                border-color: var(--terracotta) !important;
+                                box-shadow: 0 0 0 3px rgba(196, 114, 75, 0.25) !important;
+                                background: rgba(255,255,255,1) !important;
+                            }
+                        `;
+                        document.head.appendChild(heroAcStyle);
+
+                        heroAC.addEventListener('gmp-select', async ({ placePrediction }) => {
+                            const place = placePrediction.toPlace();
+                            await place.fetchFields({ fields: ['formattedAddress', 'location'] });
+                            if (place.formattedAddress) {
+                                input.value = place.formattedAddress;
+                            }
+                        });
+                        return;
+                    } catch(newErr) {
+                        console.warn('Hero PlaceAutocompleteElement failed, trying legacy:', newErr);
+                        input.style.display = '';
+                    }
+                }
+
+                // Fallback to legacy Autocomplete widget
                 if (google.maps.places.Autocomplete) {
                     const ac = new google.maps.places.Autocomplete(input, {
                         types: ['address'],
@@ -7238,23 +7291,22 @@
                 if (typeof google === 'undefined' || !google.maps) return;
                 const container = document.getElementById('heroBgMap');
                 if (!container) return;
+                if (container.childElementCount > 0) return; // already initialized
                 const elPasoCenter = { lat: 31.7619, lng: -106.4850 };
-                const bgMap = new google.maps.Map(container, {
+                new google.maps.Map(container, {
                     center: elPasoCenter,
                     zoom: 12,
-                    mapTypeId: 'hybrid',
+                    mapTypeId: 'satellite',
                     disableDefaultUI: true,
                     gestureHandling: 'none',
                     keyboardShortcuts: false,
                     draggable: false,
                     zoomControl: false,
                     scrollwheel: false,
-                    disableDoubleClickZoom: true
+                    disableDoubleClickZoom: true,
+                    clickableIcons: false
                 });
-                // Hide labels on hybrid view
-                bgMap.setOptions({ styles: [
-                    { featureType: 'all', elementType: 'labels', stylers: [{ visibility: 'off' }] }
-                ]});
+                console.log('Hero BG map initialized successfully');
             } catch(e) { console.warn('Hero BG map init failed:', e); }
         }
 
@@ -7303,27 +7355,39 @@
                                 input.value = place.formattedAddress;
                             }
                         });
-                        return;
+                        // Don't return early — still need to init hero scanner + bg map below
                     } catch(newErr) {
                         console.warn('New PlaceAutocompleteElement failed, trying legacy:', newErr);
                         input.style.display = '';
+                        // Fallback to legacy Autocomplete widget
+                        if (google.maps.places && google.maps.places.Autocomplete) {
+                            const ac = new google.maps.places.Autocomplete(input, {
+                                types: ['address'],
+                                componentRestrictions: { country: 'us' },
+                                fields: ['formatted_address', 'geometry']
+                            });
+                            ac.addListener('place_changed', () => {
+                                const place = ac.getPlace();
+                                if (place?.formatted_address) input.value = place.formatted_address;
+                            });
+                        }
+                    }
+                } else {
+                    // No PlaceAutocompleteElement — use legacy Autocomplete
+                    if (google.maps.places && google.maps.places.Autocomplete) {
+                        const ac = new google.maps.places.Autocomplete(input, {
+                            types: ['address'],
+                            componentRestrictions: { country: 'us' },
+                            fields: ['formatted_address', 'geometry']
+                        });
+                        ac.addListener('place_changed', () => {
+                            const place = ac.getPlace();
+                            if (place?.formatted_address) input.value = place.formatted_address;
+                        });
                     }
                 }
-
-                // Fallback to legacy Autocomplete widget
-                if (google.maps.places && google.maps.places.Autocomplete) {
-                    const ac = new google.maps.places.Autocomplete(input, {
-                        types: ['address'],
-                        componentRestrictions: { country: 'us' },
-                        fields: ['formatted_address', 'geometry']
-                    });
-                    ac.addListener('place_changed', () => {
-                        const place = ac.getPlace();
-                        if (place?.formatted_address) input.value = place.formatted_address;
-                    });
-                }
             } catch(e) { console.warn('Places init failed:', e); }
-            // Also init hero scanner autocomplete + background map
+            // Always init hero scanner autocomplete + background map
             initHeroPlaces();
             initHeroBgMap();
         };
