@@ -22,6 +22,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+    <script>
+        // ⚠️ REPLACE WITH YOUR GOOGLE CLOUD API KEY
+        // Enable: Maps JavaScript API, Places API, Solar API
+        const GOOGLE_API_KEY = 'AIzaSyAE4jxqe0LLsTj2MURRzEX5KSSgjQJs3O0';
+    </script>
     <style>
         /* ============================================
            MERAKI ROOFING — COMPLETE REDESIGN
@@ -1948,16 +1953,20 @@
             font-size: clamp(1.4rem, 2.5vw, 1.8rem);
             margin-bottom: 0.5rem;
             position: relative;
+            text-align: center;
         }
         .warranty-subtext {
             color: rgba(255,255,255,0.7);
             margin-bottom: 2rem;
             max-width: 600px;
             position: relative;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
         }
         .warranty-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.25rem;
             position: relative;
         }
@@ -1966,6 +1975,7 @@
             border: 1px solid rgba(255,255,255,0.12);
             border-radius: 14px;
             padding: 1.5rem;
+            text-align: center;
         }
         .warranty-years {
             font-size: 2rem;
@@ -1981,6 +1991,26 @@
             font-size: 0.8rem;
             color: rgba(255,255,255,0.6);
             line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        .warranty-card-details {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .warranty-card-details li {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            padding: 0.3rem 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+        .warranty-card-details li svg {
+            flex-shrink: 0;
+            color: var(--gold);
         }
 
         /* ============ TESTIMONIALS (Trustindex-style) ============ */
@@ -3675,180 +3705,6 @@
             transform: translateY(0);
         }
 
-        /* ============ THEME PALETTES ============ */
-
-        /* Palette 2: Charcoal & Amber — modern, industrial */
-        [data-theme="charcoal-amber"] {
-            --forest: #3A3A3A;
-            --forest-deep: #2A2A2A;
-            --terracotta: #FF5C34;
-            --terracotta-dark: #E5482A;
-            --terracotta-light: #FFB09A;
-            --cream: #F5F3EF;
-            --cream-dark: #EAE6DF;
-            --warm-white: #FAFAF8;
-            --charcoal: #2D2D2D;
-            --warm-gray: #6B6B6B;
-            --light-gray: #DCDCDC;
-            --gold: #D4A85C;
-            --gold-light: #F0DDB8;
-        }
-
-        /* Palette 3: Navy & Gold — corporate, trustworthy */
-        [data-theme="navy-gold"] {
-            --forest: #1A3A52;
-            --forest-deep: #0F2636;
-            --terracotta: #C9A961;
-            --terracotta-dark: #B08E3F;
-            --terracotta-light: #E5D4A0;
-            --cream: #F4F6F8;
-            --cream-dark: #E4E8EC;
-            --warm-white: #FAFBFC;
-            --charcoal: #1A2A38;
-            --warm-gray: #5A7089;
-            --light-gray: #D0D8E0;
-            --gold: #C9A961;
-            --gold-light: #E8D9AB;
-        }
-
-        /* Palette 4: Slate Blue & Sage — calm, premium */
-        [data-theme="slate-sage"] {
-            --forest: #2D4A5D;
-            --forest-deep: #1C3344;
-            --terracotta: #A8B89E;
-            --terracotta-dark: #8FA385;
-            --terracotta-light: #C8D5C0;
-            --cream: #F5F7F4;
-            --cream-dark: #E6EBE3;
-            --warm-white: #FAFCF9;
-            --charcoal: #2A3A3A;
-            --warm-gray: #6A7E7E;
-            --light-gray: #D4DDD4;
-            --gold: #B8A882;
-            --gold-light: #DDD4BC;
-        }
-
-        /* Palette X: Plum & Persimmon — Horizontal Logo */
-        [data-theme="plum-h"] {
-            --forest: #3A3A3A;
-            --forest-deep: #2A2A2A;
-            --terracotta: #FF5C34;
-            --terracotta-dark: #E5482A;
-            --terracotta-light: #FFB09A;
-            --cream: #F5F3EF;
-            --cream-dark: #EAE6DF;
-            --warm-white: #FAFAF8;
-            --charcoal: #2D2D2D;
-            --warm-gray: #6B6B6B;
-            --light-gray: #DCDCDC;
-            --gold: #D4A85C;
-            --gold-light: #F0DDB8;
-        }
-
-        /* ============ THEME TOGGLE UI ============ */
-        .theme-toggle {
-            position: fixed;
-            bottom: 28px;
-            left: 28px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0;
-        }
-
-        .theme-toggle-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--forest);
-            color: white;
-            border: 2px solid white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .theme-toggle-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .theme-panel {
-            position: absolute;
-            bottom: 54px;
-            left: 0;
-            background: white;
-            border-radius: 14px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.18);
-            padding: 1rem;
-            min-width: 220px;
-            opacity: 0;
-            transform: translateY(10px) scale(0.95);
-            pointer-events: none;
-            transition: all 0.25s ease;
-        }
-
-        .theme-panel.open {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            pointer-events: auto;
-        }
-
-        .theme-panel-title {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--warm-gray);
-            margin-bottom: 0.6rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .theme-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.15s;
-            border: none;
-            background: none;
-            width: 100%;
-            font-family: var(--font-body);
-            font-size: 0.82rem;
-            color: var(--charcoal);
-            font-weight: 500;
-        }
-
-        .theme-option:hover { background: var(--cream); }
-
-        .theme-option.active {
-            background: var(--cream);
-            font-weight: 700;
-        }
-
-        .theme-swatches {
-            display: flex;
-            gap: 3px;
-            flex-shrink: 0;
-        }
-
-        .theme-swatch {
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
-            border: 1.5px solid rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 768px) {
-            .theme-toggle { bottom: 80px; left: 16px; }
-        }
     </style>
     <!-- Schema.org Structured Data for AEO/LLM Optimization -->
     <script type="application/ld+json">
@@ -3857,7 +3713,7 @@
         "@type": "RoofingContractor",
         "name": "Meraki Roofing",
         "legalName": "Meraki Roofing, LLC",
-        "description": "Meraki Roofing is a locally owned roofing company in El Paso, TX offering free inspections, asphalt shingle roofing, natural slate roofing, flat and foam roofing, roof sealant application, storm damage repair, and gutter services. Rated 4.9 stars with 100+ verified reviews.",
+        "description": "Meraki Roofing is a locally owned roofing company in El Paso, TX offering free inspections, asphalt shingle roofing, natural slate roofing, flat and foam roofing, roof sealant application, storm damage repair, and gutter services. Rated 4.9 stars with 50+ verified reviews.",
         "url": "https://merakiroofing.com/",
         "telephone": "+19158618039",
         "email": "axmartinez22@gmail.com",
@@ -4262,7 +4118,7 @@
                                             <svg width="12" height="12" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
                                             Posted on Google
                                         </div>
-                                        <div class="review-slide-rating"><strong>4.9</strong> <svg width="11" height="11" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> (100+ reviews)</div>
+                                        <div class="review-slide-rating"><strong>4.9</strong> <svg width="11" height="11" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> (50+ reviews)</div>
                                     </div>
                                 </div>
 
@@ -4340,7 +4196,7 @@
                                             <svg width="12" height="12" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
                                             Posted on Google
                                         </div>
-                                        <div class="review-slide-rating"><strong>4.9</strong> <svg width="11" height="11" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> (100+ reviews)</div>
+                                        <div class="review-slide-rating"><strong>4.9</strong> <svg width="11" height="11" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> (50+ reviews)</div>
                                     </div>
                                 </div>
 
@@ -4518,8 +4374,8 @@
                     <div class="stat-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
                     </div>
-                    <div class="stat-number"><span data-target="100" class="counter">0</span><span class="stat-suffix">+</span></div>
-                    <div class="stat-label" data-i18n="stats.rating">5-Star Reviews</div>
+                    <div class="stat-number"><span data-target="4.9" data-decimals="1" class="counter">0</span><span class="stat-suffix">★</span></div>
+                    <div class="stat-label" data-i18n="stats.rating">Avg. Customer Rating</div>
                 </div>
                 <div class="stat-item fade-up">
                     <div class="stat-icon">
@@ -4680,12 +4536,32 @@
                     <div class="warranty-card">
                         <div class="warranty-years">10 Yr</div>
                         <h4 class="warranty-card-title" data-i18n="warranty.workmanship">Workmanship Warranty</h4>
-                        <p class="warranty-card-desc" data-i18n="warranty.workmanship.desc">Our standard labor warranty covers any installation-related issues for a full decade.</p>
+                        <p class="warranty-card-desc" data-i18n="warranty.workmanship.desc">Our labor warranty covers any installation-related issues for a full decade — no questions asked.</p>
+                        <ul class="warranty-card-details">
+                            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Leak repairs</li>
+                            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Flashing & sealant</li>
+                            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Ventilation & underlayment</li>
+                        </ul>
                     </div>
                     <div class="warranty-card">
                         <div class="warranty-years">50 Yr</div>
                         <h4 class="warranty-card-title" data-i18n="warranty.lifetime">Lifetime System Warranty</h4>
-                        <p class="warranty-card-desc" data-i18n="warranty.lifetime.desc">As a GAF Certified Plus contractor, select installations qualify for enhanced system warranties with up to 50 years of coverage.</p>
+                        <p class="warranty-card-desc" data-i18n="warranty.lifetime.desc">As a GAF Certified Plus contractor, select installations qualify for enhanced system coverage up to 50 years.</p>
+                        <ul class="warranty-card-details">
+                            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Shingle manufacturing defects</li>
+                            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Wind & algae resistance</li>
+                            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Full system replacement eligible</li>
+                        </ul>
+                    </div>
+                    <div class="warranty-card">
+                        <div class="warranty-years" style="font-size:1.6rem;">$0</div>
+                        <h4 class="warranty-card-title">Hassle-Free Claims</h4>
+                        <p class="warranty-card-desc">If something goes wrong, we handle the claim process for you — no runaround, no hidden fees.</p>
+                        <ul class="warranty-card-details">
+                            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Direct warranty support</li>
+                            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> No out-of-pocket costs</li>
+                            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Local team — same crew</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -4703,15 +4579,45 @@
 
             <div class="fade-up" style="max-width: 720px; margin: 0 auto; background: var(--cream); border-radius: 20px; padding: clamp(1.5rem, 3vw, 2.5rem); border: 1px solid var(--light-gray);">
                 <div id="calcForm">
+                    <!-- Address Lookup (optional) -->
+                    <div style="margin-bottom: 1.25rem;" id="homeAddressSection">
+                        <label style="display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest-deep); margin-bottom: 0.5rem;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            Scan Your Roof from Space
+                        </label>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="text" id="homeAddressInput" placeholder="Enter your address..." style="flex: 1; padding: 11px 14px; border: 1.5px solid var(--light-gray); border-radius: 10px; font-family: var(--font-body); font-size: 0.88rem; color: var(--charcoal); outline: none;" autocomplete="off">
+                            <button type="button" id="homeLookupBtn" onclick="homeLookupRoof()" style="padding: 11px 18px; background: var(--forest); color: white; border: none; border-radius: 10px; font-weight: 600; font-size: 0.82rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: all 0.2s;">Look Up</button>
+                        </div>
+                        <div id="homeLookupStatus" style="font-size: 0.8rem; margin-top: 0.4rem; display: none;"></div>
+                        <div id="homeMapWrap" style="display: none; margin-top: 0.75rem; border-radius: 14px; overflow: hidden; border: 2px solid rgba(255,92,52,0.2); position: relative; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+                            <div id="homeMap" style="width: 100%; height: 280px; background: linear-gradient(135deg, #1a2332 0%, #2c3e50 50%, #1a2332 100%);"></div>
+                            <!-- Pin verify bar (bottom of map) -->
+                            <div id="homePinVerify" style="display: none; position: absolute; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 10px 14px; display: none; align-items: center; gap: 10px; border-top: 1px solid rgba(255,92,52,0.15); z-index: 5;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" style="flex-shrink: 0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <div style="flex: 1; line-height: 1.3;">
+                                    <strong style="font-size: 0.82rem; color: var(--forest-deep);">Is this your roof?</strong>
+                                    <span style="font-size: 0.72rem; color: var(--warm-gray); display: block;">Drag pin to adjust</span>
+                                </div>
+                                <button type="button" id="homeConfirmPinBtn" onclick="homeConfirmPin()" style="padding: 8px 16px; background: var(--terracotta); color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 0.8rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: all 0.2s; flex-shrink: 0;">Confirm</button>
+                            </div>
+                            <!-- Analyzing spinner overlay -->
+                            <div id="homeAnalyzing" style="display: none; position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 6; justify-content: center; align-items: center; flex-direction: column; gap: 0.75rem;">
+                                <div style="width: 36px; height: 36px; border: 3px solid rgba(255,255,255,0.3); border-top-color: var(--terracotta); border-radius: 50%; animation: homeSpin 0.8s linear infinite;"></div>
+                                <p style="color: white; font-size: 0.85rem; text-shadow: 0 1px 3px rgba(0,0,0,0.4);">Analyzing your roof...</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Row 1: Size + Material -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;" class="calc-row-2col">
                         <div>
                             <label style="display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest-deep); margin-bottom: 0.5rem;">Roof Size (sq ft)</label>
-                            <input type="range" id="calcSize" min="500" max="5000" value="1800" step="100" style="width: 100%; accent-color: var(--terracotta); margin-bottom: 0.35rem;">
+                            <input type="range" id="calcSize" min="500" max="15000" value="1800" step="1" style="width: 100%; accent-color: var(--terracotta); margin-bottom: 0.35rem;">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <span style="font-size: 0.75rem; color: var(--warm-gray);">500</span>
                                 <span id="calcSizeVal" style="font-family: var(--font-display); font-size: 1.2rem; color: var(--terracotta); font-weight: 700;">1,800 sq ft</span>
-                                <span style="font-size: 0.75rem; color: var(--warm-gray);">5,000</span>
+                                <span style="font-size: 0.75rem; color: var(--warm-gray);">15,000</span>
                             </div>
                         </div>
                         <div>
@@ -4763,7 +4669,7 @@
                 <!-- Result -->
                 <div id="calcResult" style="background: var(--forest); border-radius: 14px; padding: 1.75rem; text-align: center; color: white; position: relative; overflow: hidden;">
                     <div style="position: absolute; top: -20%; right: -10%; width: 40%; height: 140%; background: radial-gradient(ellipse, rgba(212,168,92,0.1) 0%, transparent 60%); pointer-events: none;"></div>
-                    <p style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-light); margin-bottom: 0.5rem; font-weight: 600; position: relative;">Estimated Cost</p>
+                    <p style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-light); margin-bottom: 0.5rem; font-weight: 600; position: relative;">Estimated Cost (Materials + Labor)</p>
                     <div id="calcPrice" style="font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 0.35rem; position: relative;">$9,900 — $13,500</div>
                     <p id="calcMonthly" style="font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 1rem; position: relative;">or as low as <strong style="color: var(--gold-light);">$192/mo</strong> with financing</p>
                     <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; position: relative;">
@@ -5269,10 +5175,6 @@
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             We meet with your adjuster
                         </div>
-                        <div class="storm-check" data-i18n="storm.check5">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            Deductible assistance
-                        </div>
                     </div>
 
                     <div class="storm-actions">
@@ -5333,11 +5235,11 @@
 
                     <div class="area-stats">
                         <div class="area-stat">
-                            <div class="area-stat-num" data-i18n="area.stat1.num">185+</div>
+                            <div class="area-stat-num" data-i18n="area.stat1.num">587+</div>
                             <div class="area-stat-label" data-i18n="area.stat1.label">Projects Completed</div>
                         </div>
                         <div class="area-stat">
-                            <div class="area-stat-num" data-i18n="area.stat2.num">15+</div>
+                            <div class="area-stat-num" data-i18n="area.stat2.num">16+</div>
                             <div class="area-stat-label" data-i18n="area.stat2.label">Neighborhoods Served</div>
                         </div>
                         <div class="area-stat">
@@ -5355,6 +5257,7 @@
                         <div class="area-tags">
                             <span class="area-tag" data-filter="all">All Areas</span>
                             <span class="area-tag">Westside</span>
+                            <span class="area-tag">Northwest</span>
                             <span class="area-tag">Eastside</span>
                             <span class="area-tag">Northeast</span>
                             <span class="area-tag">Central</span>
@@ -5589,7 +5492,7 @@
                 <details class="faq-item" open>
                     <summary class="faq-question" data-i18n="faq.q1">How much does a roof replacement cost in El Paso?</summary>
                     <div class="faq-answer">
-                        <p data-i18n="faq.a1">The cost of a roof replacement in El Paso typically ranges from $5,000 to $15,000+ depending on the size of your home, roofing material selected, and complexity of the project. Asphalt shingles are the most affordable option, while natural slate runs higher. We provide free, itemized estimates with no hidden fees so you know exactly what to expect before any work begins.</p>
+                        <p data-i18n="faq.a1">The cost of a roof replacement in El Paso typically ranges from $5,000 to $15,000+ depending on the size of your home, roofing material selected, and complexity of the project. Asphalt shingles are the most affordable option, while natural slate runs higher. We provide free, itemized estimates with no hidden fees so you know exactly what to expect before any work begins. <a href="estimate.html" style="color: var(--terracotta); font-weight: 600; text-decoration: underline;">Try our free estimate calculator</a> to get a ballpark price in seconds.</p>
                     </div>
                 </details>
 
@@ -5652,10 +5555,10 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-brand">
-                    <a href="#" class="nav-logo">
-                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" id="footerLogoImg" style="height: 80px; width: auto; object-fit: contain;">
+                    <a href="#" class="nav-logo" aria-label="Meraki Roofing home">
+                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1) brightness(1.1);">
                     </a>
-                    <p data-i18n="footer.brand.desc">Locally owned roofing experts serving the El Paso community with heart, quality, and integrity.</p>
+                    <p data-i18n="footer.brand.desc">Meraki Roofing is El Paso's top-rated roofing contractor. We deliver expert roof replacements, repairs, and storm damage restoration backed by GAF-certified quality and a 10-year workmanship warranty.</p>
                 </div>
 
                 <div class="footer-col">
@@ -5700,57 +5603,6 @@
         </div>
     </footer>
 
-    <!-- Theme Toggle -->
-    <div class="theme-toggle" id="themeToggle">
-        <div class="theme-panel" id="themePanel">
-            <div class="theme-panel-title">Color Palette</div>
-            <button class="theme-option active" data-theme="default">
-                <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3A3A3A"></div>
-                    <div class="theme-swatch" style="background:#FF5C34"></div>
-                    <div class="theme-swatch" style="background:#D4A85C"></div>
-                </div>
-                Charcoal & Amber
-            </button>
-            <button class="theme-option" data-theme="charcoal-amber">
-                <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3A3A3A"></div>
-                    <div class="theme-swatch" style="background:#FF5C34"></div>
-                    <div class="theme-swatch" style="background:#D4A85C"></div>
-                </div>
-                Charcoal & Amber
-            </button>
-            <button class="theme-option" data-theme="navy-gold">
-                <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#1A3A52"></div>
-                    <div class="theme-swatch" style="background:#C9A961"></div>
-                    <div class="theme-swatch" style="background:#5A7089"></div>
-                </div>
-                Navy & Gold
-            </button>
-            <button class="theme-option" data-theme="slate-sage">
-                <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#2D4A5D"></div>
-                    <div class="theme-swatch" style="background:#A8B89E"></div>
-                    <div class="theme-swatch" style="background:#6A7E7E"></div>
-                </div>
-                Slate Blue & Sage
-            </button>
-            <div style="border-top: 1px solid #e0e0e0; margin: 6px 0; padding-top: 2px;"></div>
-            <div style="font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#bbb; padding: 0 10px 4px;">Horizontal Logo</div>
-            <button class="theme-option" data-theme="plum-h">
-                <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3A3A3A"></div>
-                    <div class="theme-swatch" style="background:#FF5C34"></div>
-                    <div class="theme-swatch" style="background:#C9A0A8"></div>
-                </div>
-                Plum & Persimmon (H)
-            </button>
-        </div>
-        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch color theme">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
-    </div>
 
     <!-- Back to Top -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
@@ -5888,7 +5740,8 @@
                 if (entry.isIntersecting && !counterStarted) {
                     counterStarted = true;
                     counters.forEach(counter => {
-                        const target = parseInt(counter.getAttribute('data-target'));
+                        const target = parseFloat(counter.getAttribute('data-target'));
+                        const decimals = parseInt(counter.getAttribute('data-decimals') || '0');
                         const duration = 2000;
                         const startTime = performance.now();
 
@@ -5900,12 +5753,13 @@
                             const elapsed = currentTime - startTime;
                             const progress = Math.min(elapsed / duration, 1);
                             const easedProgress = easeOutQuart(progress);
-                            counter.textContent = Math.floor(easedProgress * target);
+                            const current = easedProgress * target;
+                            counter.textContent = decimals > 0 ? current.toFixed(decimals) : Math.floor(current);
 
                             if (progress < 1) {
                                 requestAnimationFrame(updateCounter);
                             } else {
-                                counter.textContent = target;
+                                counter.textContent = decimals > 0 ? target.toFixed(decimals) : target;
                             }
                         }
 
@@ -6539,6 +6393,248 @@
 
         // Initialize
         updateCalc();
+
+        // ========== SOLAR API LOOKUP (Homepage) ==========
+        let homeMap = null;
+        let homeMarker = null;
+        let homePendingLoc = null;
+
+        function homeWait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+        // Phase 1: Geocode → zoom animation → draggable pin
+        async function homeLookupRoof() {
+            const input = document.getElementById('homeAddressInput');
+            const address = input.value.trim();
+            const status = document.getElementById('homeLookupStatus');
+            const btn = document.getElementById('homeLookupBtn');
+
+            if (!address) return;
+            if (GOOGLE_API_KEY === 'YOUR_API_KEY_HERE') {
+                status.style.display = 'block';
+                status.style.color = '#9a3030';
+                status.textContent = 'API key not configured.';
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '...';
+            status.style.display = 'block';
+            status.style.color = 'var(--warm-gray)';
+            status.textContent = 'Finding your address...';
+
+            // Reset states
+            document.getElementById('homePinVerify').style.display = 'none';
+            document.getElementById('homeAnalyzing').style.display = 'none';
+
+            try {
+                // Geocode
+                const geoRes = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${GOOGLE_API_KEY}`);
+                const geoData = await geoRes.json();
+                if (!geoData.results?.length) throw new Error('Address not found');
+
+                homePendingLoc = geoData.results[0].geometry.location;
+                status.style.display = 'none';
+
+                // Show the map and do zoom animation
+                const mapWrap = document.getElementById('homeMapWrap');
+                const mapEl = document.getElementById('homeMap');
+                mapWrap.style.display = 'block';
+
+                if (typeof google !== 'undefined' && google.maps) {
+                    // Create map at city level if not yet created
+                    if (!homeMap) {
+                        homeMap = new google.maps.Map(mapEl, {
+                            center: { lat: 31.7619, lng: -106.4850 },
+                            zoom: 12,
+                            mapTypeId: 'satellite',
+                            tilt: 0,
+                            disableDefaultUI: true,
+                            gestureHandling: 'cooperative'
+                        });
+                        await homeWait(400);
+                    }
+
+                    // Animated zoom: pan → neighborhood → street → rooftop
+                    homeMap.panTo({ lat: homePendingLoc.lat, lng: homePendingLoc.lng });
+                    await homeWait(500);
+                    homeMap.setZoom(16);
+                    await homeWait(600);
+                    homeMap.setZoom(18);
+                    await homeWait(600);
+                    homeMap.setZoom(20);
+                    await homeWait(500);
+
+                    // Remove old marker
+                    if (homeMarker) homeMarker.setMap(null);
+
+                    // Drop draggable pin
+                    homeMarker = new google.maps.Marker({
+                        position: { lat: homePendingLoc.lat, lng: homePendingLoc.lng },
+                        map: homeMap,
+                        draggable: true,
+                        animation: google.maps.Animation.DROP,
+                        icon: {
+                            url: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="36" height="47" viewBox="0 0 40 52"><defs><filter id="s" x="-20%" y="-10%" width="140%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/></filter></defs><path d="M20 0C8.95 0 0 8.95 0 20c0 15 20 32 20 32s20-17 20-32C40 8.95 31.05 0 20 0z" fill="#FF5C34" filter="url(#s)"/><circle cx="20" cy="19" r="8" fill="white" opacity="0.9"/><path d="M16 19L20 12 24 19Z" fill="#FF5C34" opacity="0.8"/><rect x="17" y="19" width="6" height="5" fill="#FF5C34" opacity="0.6" rx="0.5"/></svg>'),
+                            scaledSize: new google.maps.Size(36, 47),
+                            anchor: new google.maps.Point(18, 47)
+                        },
+                        title: 'Drag to adjust pin position'
+                    });
+
+                    // Show pin verify bar
+                    document.getElementById('homePinVerify').style.display = 'flex';
+                }
+
+            } catch (err) {
+                status.style.display = 'block';
+                status.style.color = '#9a3030';
+                status.textContent = err.message + '. Enter your roof size manually below.';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Look Up';
+            }
+        }
+
+        // Phase 2: User confirms pin → run Solar API → auto-fill form
+        async function homeConfirmPin() {
+            const status = document.getElementById('homeLookupStatus');
+            const pos = homeMarker ? homeMarker.getPosition() : null;
+            const lat = pos ? pos.lat() : homePendingLoc.lat;
+            const lng = pos ? pos.lng() : homePendingLoc.lng;
+
+            // Show analyzing overlay on map
+            document.getElementById('homePinVerify').style.display = 'none';
+            document.getElementById('homeAnalyzing').style.display = 'flex';
+
+            try {
+                // Solar API
+                let solarRes = await fetch(`https://solar.googleapis.com/v1/buildingInsights:findClosest?location.latitude=${lat}&location.longitude=${lng}&requiredQuality=HIGH&key=${GOOGLE_API_KEY}`);
+                if (!solarRes.ok) {
+                    solarRes = await fetch(`https://solar.googleapis.com/v1/buildingInsights:findClosest?location.latitude=${lat}&location.longitude=${lng}&requiredQuality=MEDIUM&key=${GOOGLE_API_KEY}`);
+                }
+                if (!solarRes.ok) throw new Error('Roof data not available');
+
+                const data = await solarRes.json();
+                const segments = data.solarPotential?.roofSegmentStats || [];
+                if (!segments.length) throw new Error('No roof data');
+
+                const totalM2 = segments.reduce((s, seg) => s + (seg.stats?.areaMeters2 || 0), 0);
+                const sqft = Math.round(totalM2 * 10.764);
+                const clamped = Math.max(500, Math.min(15000, sqft));
+
+                // Auto-fill slider
+                document.getElementById('calcSize').value = clamped;
+
+                // Auto-select complexity
+                let autoComplexity;
+                if (segments.length <= 2) {
+                    autoComplexity = document.querySelector('.calc-complexity[data-complexity="simple"]');
+                } else if (segments.length <= 4) {
+                    autoComplexity = document.querySelector('.calc-complexity[data-complexity="moderate"]');
+                } else {
+                    autoComplexity = document.querySelector('.calc-complexity[data-complexity="complex"]');
+                }
+                if (autoComplexity) {
+                    autoComplexity.click();
+                    // Add glow animation + auto-detected badge
+                    autoComplexity.style.animation = 'homeSatPulse 1.5s ease';
+                    if (!autoComplexity.querySelector('.home-auto-badge')) {
+                        const badge = document.createElement('div');
+                        badge.className = 'home-auto-badge';
+                        badge.textContent = 'Auto-detected';
+                        autoComplexity.appendChild(badge);
+                    }
+                }
+
+                updateCalc();
+
+                // Make marker non-draggable
+                if (homeMarker) homeMarker.setDraggable(false);
+
+                // Show success status
+                document.getElementById('homeAnalyzing').style.display = 'none';
+                status.style.display = 'block';
+                status.style.color = 'var(--terracotta)';
+                status.innerHTML = '<strong>Found!</strong> ~' + sqft.toLocaleString() + ' sq ft roof (' + segments.length + ' sections). Estimate updated below.';
+
+            } catch (err) {
+                document.getElementById('homeAnalyzing').style.display = 'none';
+                status.style.display = 'block';
+                status.style.color = '#9a3030';
+                status.textContent = err.message + '. Enter your roof size manually below.';
+            }
+        }
+
+        // Load Google Maps Places for address autocomplete
+        window.initHomePlaces = async function() {
+            try {
+                if (typeof google === 'undefined' || !google.maps) return;
+                const input = document.getElementById('homeAddressInput');
+                if (!input) return;
+
+                // Try new PlaceAutocompleteElement first
+                if (google.maps.places && google.maps.places.PlaceAutocompleteElement) {
+                    try {
+                        const placeAC = new google.maps.places.PlaceAutocompleteElement({
+                            types: ['address'],
+                            componentRestrictions: { country: 'us' }
+                        });
+                        placeAC.style.cssText = 'flex:1;';
+                        input.style.display = 'none';
+                        input.parentElement.insertBefore(placeAC, input);
+
+                        const acStyle = document.createElement('style');
+                        acStyle.textContent = `
+                            gmp-place-autocomplete { flex: 1; }
+                            gmp-place-autocomplete input {
+                                width: 100% !important;
+                                padding: 11px 14px !important;
+                                border: 1.5px solid var(--light-gray) !important;
+                                border-radius: 10px !important;
+                                font-family: var(--font-body) !important;
+                                font-size: 0.88rem !important;
+                                color: var(--charcoal) !important;
+                                outline: none !important;
+                                box-sizing: border-box !important;
+                            }
+                        `;
+                        document.head.appendChild(acStyle);
+
+                        placeAC.addEventListener('gmp-select', async ({ placePrediction }) => {
+                            const place = placePrediction.toPlace();
+                            await place.fetchFields({ fields: ['formattedAddress', 'location'] });
+                            if (place.formattedAddress) {
+                                input.value = place.formattedAddress;
+                            }
+                        });
+                        return;
+                    } catch(newErr) {
+                        console.warn('New PlaceAutocompleteElement failed, trying legacy:', newErr);
+                        input.style.display = '';
+                    }
+                }
+
+                // Fallback to legacy Autocomplete widget
+                if (google.maps.places && google.maps.places.Autocomplete) {
+                    const ac = new google.maps.places.Autocomplete(input, {
+                        types: ['address'],
+                        componentRestrictions: { country: 'us' },
+                        fields: ['formatted_address', 'geometry']
+                    });
+                    ac.addListener('place_changed', () => {
+                        const place = ac.getPlace();
+                        if (place?.formatted_address) input.value = place.formatted_address;
+                    });
+                }
+            } catch(e) { console.warn('Places init failed:', e); }
+        };
+
+        if (GOOGLE_API_KEY !== 'YOUR_API_KEY_HERE') {
+            const s = document.createElement('script');
+            s.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places&loading=async&callback=initHomePlaces`;
+            s.async = true; s.defer = true;
+            document.head.appendChild(s);
+        }
     </script>
 
     <style>
@@ -6548,6 +6644,32 @@
             40% { transform: translateX(6px); }
             60% { transform: translateX(-4px); }
             80% { transform: translateX(4px); }
+        }
+        @keyframes homeSpin {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes homeSatPulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 92, 52, 0.5); }
+            30% { box-shadow: 0 0 0 8px rgba(255, 92, 52, 0.25); }
+            60% { box-shadow: 0 0 0 12px rgba(255, 92, 52, 0); }
+            100% { box-shadow: none; }
+        }
+        .home-auto-badge {
+            display: inline-block;
+            background: var(--terracotta);
+            color: white;
+            font-size: 0.58rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 20px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            margin-top: 5px;
+            animation: homeBadgeFade 0.5s ease 0.3s both;
+        }
+        @keyframes homeBadgeFade {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
 
@@ -6598,7 +6720,7 @@
                 'hero.form.trust.free': '100% Gratis',
                 'hero.form.trust.response': 'Respuesta en ~2 hrs',
                 'hero.form.trust.obligation': 'Sin obligación',
-                'hero.form.rating': '/ 5.0 · 100+ reseñas',
+                'hero.form.rating': '/ 5.0 · 50+ reseñas',
                 'hero.form.quote': 'Meraki Roofing reemplazó todo nuestro techo después de una tormenta de granizo. Manejaron nuestra reclamación de seguros e hicieron todo el proceso completamente sin problemas. No podría estar más satisfecho con el resultado.',
                 'hero.form.quote.author': 'Maria R.',
 
@@ -6683,7 +6805,7 @@
 
                 // Testimonials (old keys kept for compat)
                 'testimonials.desc': 'Calificado 4.9/5.0 en el servicio al cliente',
-                'testimonials.rating.count': 'de 100+ reseñas',
+                'testimonials.rating.count': 'de 50+ reseñas',
                 'testimonials.rating.label': 'Excelente',
 
                 // Process section
@@ -6743,7 +6865,7 @@
                 'faq.title': 'Preguntas Frecuentes',
 
                 // Footer
-                'footer.brand.desc': 'Meraki Roofing es su proveedor de confianza para todos los servicios de techumbre en El Paso, TX.',
+                'footer.brand.desc': 'Meraki Roofing es el contratista de techos mejor calificado en El Paso. Ofrecemos reemplazos, reparaciones y restauración por daños de tormenta con calidad certificada por GAF y garantía de mano de obra de 10 años.',
                 'footer.services': 'Servicios',
                 'footer.company': 'Compañía',
                 'footer.resources': 'Recursos',
@@ -7053,110 +7175,6 @@
             }
         })();
 
-        // ============ THEME SWITCHER ============
-        (function() {
-            const toggleBtn = document.getElementById('themeToggleBtn');
-            const panel = document.getElementById('themePanel');
-            if (!toggleBtn || !panel) return;
-
-            // Toggle panel open/close
-            toggleBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                panel.classList.toggle('open');
-            });
-
-            // Close panel on outside click
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('#themeToggle')) {
-                    panel.classList.remove('open');
-                }
-            });
-
-            // Logo mapping per theme
-            /* All themes use the same real logo — horizontal for nav */
-            const logoMap = {
-                'default': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-                'charcoal-amber': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-                'navy-gold': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-                'slate-sage': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-                'plum-h': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-            };
-
-            const footerLogoMap = {};
-
-            const horizontalThemes = ['default', 'charcoal-amber', 'navy-gold', 'slate-sage', 'plum-h'];
-
-            function applyLogo(theme) {
-                const navImg = document.getElementById('navLogoImg');
-                if (navImg && logoMap[theme]) {
-                    navImg.src = logoMap[theme];
-                    if (horizontalThemes.includes(theme)) {
-                        navImg.classList.add('horizontal-logo');
-                    } else {
-                        navImg.classList.remove('horizontal-logo');
-                    }
-                }
-                // Footer logo swap for plum-persimmon
-                const footerImg = document.getElementById('footerLogoImg');
-                if (footerImg) {
-                    if (footerLogoMap[theme]) {
-                        footerImg.src = footerLogoMap[theme];
-                        footerImg.style.display = 'block';
-                        // Hide SVG footer logo
-                        const svgLogo = footerImg.closest('.footer-brand').querySelector('.nav-logo-icon');
-                        const textLogo = footerImg.closest('.footer-brand').querySelector('.nav-logo-text');
-                        if (svgLogo) svgLogo.style.display = 'none';
-                        if (textLogo) textLogo.style.display = 'none';
-                    } else {
-                        footerImg.style.display = 'none';
-                        // Show SVG footer logo
-                        const svgLogo = footerImg.closest('.footer-brand').querySelector('.nav-logo-icon');
-                        const textLogo = footerImg.closest('.footer-brand').querySelector('.nav-logo-text');
-                        if (svgLogo) svgLogo.style.display = '';
-                        if (textLogo) textLogo.style.display = '';
-                    }
-                }
-            }
-
-            // Theme switch
-            panel.querySelectorAll('.theme-option').forEach(opt => {
-                opt.addEventListener('click', function() {
-                    const theme = this.dataset.theme;
-
-                    // Update active state
-                    panel.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Apply theme
-                    if (theme === 'default') {
-                        document.documentElement.removeAttribute('data-theme');
-                    } else {
-                        document.documentElement.setAttribute('data-theme', theme);
-                    }
-
-                    // Swap logo
-                    applyLogo(theme);
-
-                    // Store preference
-                    localStorage.setItem('meraki-theme', theme);
-
-                    // Close panel
-                    panel.classList.remove('open');
-                });
-            });
-
-            // Restore saved theme on load
-            let saved = localStorage.getItem('meraki-theme');
-            // Migrate old theme names
-            if (['plum-persimmon', 'forest-terracotta', 'forest-h', 'navy-gold', 'slate-sage', 'olive-copper', 'olive-h'].includes(saved)) { saved = 'default'; localStorage.setItem('meraki-theme', 'default'); }
-            if (saved && saved !== 'default') {
-                document.documentElement.setAttribute('data-theme', saved);
-                panel.querySelectorAll('.theme-option').forEach(o => {
-                    o.classList.toggle('active', o.dataset.theme === saved);
-                });
-                applyLogo(saved);
-            }
-        })();
 
         // ============ REVIEW SLIDESHOW ============
         (function() {
@@ -7251,8 +7269,8 @@
 
             function initMap() {
                 const map = L.map('serviceMap', {
-                    center: [31.78, -106.44],
-                    zoom: 11,
+                    center: [32.00, -106.45],
+                    zoom: 10,
                     scrollWheelZoom: false,
                     zoomControl: true
                 });
@@ -7265,8 +7283,8 @@
                 }).addTo(map);
 
                 // Draw 50-mile service radius (subtle)
-                L.circle([31.78, -106.44], {
-                    radius: 80000, // ~50 miles in meters
+                L.circle([31.85, -106.44], {
+                    radius: 95000, // ~60 miles in meters to cover Las Cruces
                     color: 'rgba(44,74,62,0.2)',
                     fillColor: 'rgba(44,74,62,0.05)',
                     fillOpacity: 1,
@@ -7275,7 +7293,7 @@
                 }).addTo(map);
 
                 // Pin data: [lat, lng, type, neighborhood, label]
-                // 185 real completed jobs (2017–2026), categorized by service type
+                // 587 completed jobs (2017–2026), categorized by service type
                 const projects = [
                     [31.78065,-106.31346,'replacement','Eastside','2017 — Roof Replacement'],
                     [31.76451,-106.28888,'replacement','Eastside','2017 — Roof Replacement'],
@@ -7462,6 +7480,306 @@
                     [31.76899,-106.28848,'replacement','Eastside','2026 — Roof Replacement'],
                     [31.75627,-106.29811,'replacement','Eastside','2026 — Roof Replacement'],
                     [31.75555,-106.30403,'replacement','Eastside','2026 — Roof Replacement'],
+                    [31.87232,-106.59999,'replacement','Northwest','2023 — Roof Replacement'],
+                    [31.85987,-106.54401,'replacement','Northwest','2025 — Roof Replacement'],
+                    [31.88247,-106.54995,'replacement','Northwest','2026 — Roof Replacement'],
+                    [31.85596,-106.54778,'repair','Northwest','2023 — Roof Repair'],
+                    [31.90341,-106.54117,'commercial','Northwest','2025 — Commercial'],
+                    [31.90892,-106.59874,'replacement','Northwest','2022 — Roof Replacement'],
+                    [31.908,-106.58612,'repair','Northwest','2026 — Roof Repair'],
+                    [31.89419,-106.61122,'replacement','Northwest','2025 — Roof Replacement'],
+                    [31.84341,-106.5642,'replacement','Northwest','2023 — Roof Replacement'],
+                    [31.869,-106.52669,'replacement','Northwest','2025 — Roof Replacement'],
+                    [31.88149,-106.60019,'replacement','Northwest','2020 — Roof Replacement'],
+                    [31.8686,-106.59842,'repair','Northwest','2022 — Roof Repair'],
+                    [31.8998,-106.57583,'replacement','Northwest','2026 — Roof Replacement'],
+                    [31.89282,-106.61629,'replacement','Northwest','2022 — Roof Replacement'],
+                    [31.8779,-106.53803,'replacement','Northwest','2025 — Roof Replacement'],
+                    [31.89056,-106.60571,'repair','Northwest','2019 — Roof Repair'],
+                    [31.87048,-106.60642,'replacement','Northwest','2023 — Roof Replacement'],
+                    [31.912,-106.52262,'repair','Northwest','2023 — Roof Repair'],
+                    [31.87544,-106.56545,'commercial','Northwest','2022 — Commercial'],
+                    [31.8683,-106.5505,'replacement','Northwest','2022 — Roof Replacement'],
+                    [31.89908,-106.54816,'commercial','Northwest','2022 — Commercial'],
+                    [31.88864,-106.57917,'replacement','Northwest','2021 — Roof Replacement'],
+                    [31.85149,-106.60259,'replacement','Northwest','2025 — Roof Replacement'],
+                    [31.85164,-106.59924,'repair','Northwest','2024 — Roof Repair'],
+                    [31.90165,-106.5402,'commercial','Northwest','2023 — Commercial'],
+                    [31.84938,-106.53777,'replacement','Northwest','2021 — Roof Replacement'],
+                    [31.8801,-106.61889,'commercial','Northwest','2020 — Commercial'],
+                    [31.86699,-106.5823,'replacement','Northwest','2025 — Roof Replacement'],
+                    [31.87088,-106.53863,'repair','Northwest','2021 — Roof Repair'],
+                    [31.8545,-106.61624,'replacement','Northwest','2025 — Roof Replacement'],
+                    [31.90167,-106.59698,'commercial','Northwest','2023 — Commercial'],
+                    [31.89227,-106.58893,'commercial','Northwest','2024 — Commercial'],
+                    [31.85749,-106.53907,'repair','Northwest','2023 — Roof Repair'],
+                    [31.87068,-106.57619,'replacement','Northwest','2025 — Roof Replacement'],
+                    [31.87369,-106.52923,'replacement','Northwest','2026 — Roof Replacement'],
+                    [31.86344,-106.55152,'replacement','Northwest','2026 — Roof Replacement'],
+                    [31.88266,-106.52702,'replacement','Northwest','2025 — Roof Replacement'],
+                    [31.91053,-106.57907,'repair','Northwest','2022 — Roof Repair'],
+                    [31.88834,-106.52127,'repair','Northwest','2025 — Roof Repair'],
+                    [31.85556,-106.58632,'replacement','Northwest','2024 — Roof Replacement'],
+                    [31.84034,-106.58447,'replacement','Northwest','2023 — Roof Replacement'],
+                    [31.91131,-106.55322,'commercial','Northwest','2023 — Commercial'],
+                    [31.89257,-106.5457,'commercial','Northwest','2023 — Commercial'],
+                    [31.87266,-106.53382,'repair','Northwest','2025 — Roof Repair'],
+                    [31.84029,-106.56983,'replacement','Northwest','2019 — Roof Replacement'],
+                    [31.88177,-106.52501,'repair','Northwest','2022 — Roof Repair'],
+                    [31.88089,-106.53942,'replacement','Northwest','2023 — Roof Replacement'],
+                    [31.89989,-106.54611,'replacement','Northwest','2026 — Roof Replacement'],
+                    [31.89008,-106.54321,'commercial','Northwest','2024 — Commercial'],
+                    [31.85602,-106.61794,'replacement','Northwest','2024 — Roof Replacement'],
+                    [31.84605,-106.6168,'replacement','Northwest','2025 — Roof Replacement'],
+                    [31.86398,-106.52292,'repair','Northwest','2024 — Roof Repair'],
+                    [31.85552,-106.60999,'commercial','Northwest','2025 — Commercial'],
+                    [31.87188,-106.60277,'replacement','Northwest','2024 — Roof Replacement'],
+                    [31.85028,-106.60693,'replacement','Northwest','2025 — Roof Replacement'],
+                    [31.87345,-106.52457,'replacement','Northwest','2024 — Roof Replacement'],
+                    [31.86001,-106.59264,'repair','Northwest','2025 — Roof Repair'],
+                    [31.85469,-106.52873,'replacement','Northwest','2026 — Roof Replacement'],
+                    [31.8932,-106.52196,'repair','Northwest','2023 — Roof Repair'],
+                    [31.91977,-106.56768,'replacement','Northwest','2024 — Roof Replacement'],
+                    [31.72963,-106.25134,'repair','Horizon City','2019 — Roof Repair'],
+                    [31.70696,-106.19604,'repair','Horizon City','2019 — Roof Repair'],
+                    [31.70829,-106.21033,'replacement','Horizon City','2022 — Roof Replacement'],
+                    [31.70881,-106.2543,'replacement','Horizon City','2020 — Roof Replacement'],
+                    [31.68424,-106.23241,'commercial','Horizon City','2024 — Commercial'],
+                    [31.66585,-106.20731,'repair','Horizon City','2025 — Roof Repair'],
+                    [31.67296,-106.23738,'replacement','Horizon City','2022 — Roof Replacement'],
+                    [31.67728,-106.18118,'replacement','Horizon City','2023 — Roof Replacement'],
+                    [31.72756,-106.23916,'replacement','Horizon City','2021 — Roof Replacement'],
+                    [31.72434,-106.24637,'replacement','Horizon City','2022 — Roof Replacement'],
+                    [31.66502,-106.24962,'commercial','Horizon City','2026 — Commercial'],
+                    [31.71466,-106.24001,'commercial','Horizon City','2023 — Commercial'],
+                    [31.7115,-106.16873,'repair','Horizon City','2022 — Roof Repair'],
+                    [31.68401,-106.25366,'replacement','Horizon City','2025 — Roof Replacement'],
+                    [31.6688,-106.23845,'replacement','Horizon City','2022 — Roof Replacement'],
+                    [31.69966,-106.144,'repair','Horizon City','2019 — Roof Repair'],
+                    [31.67311,-106.14998,'commercial','Horizon City','2021 — Commercial'],
+                    [31.72828,-106.14121,'repair','Horizon City','2025 — Roof Repair'],
+                    [31.7233,-106.18771,'replacement','Horizon City','2022 — Roof Replacement'],
+                    [31.73754,-106.15937,'commercial','Horizon City','2025 — Commercial'],
+                    [31.68731,-106.22239,'replacement','Horizon City','2025 — Roof Replacement'],
+                    [31.65204,-106.14617,'replacement','Horizon City','2019 — Roof Replacement'],
+                    [31.7381,-106.16284,'replacement','Horizon City','2024 — Roof Replacement'],
+                    [31.66236,-106.2087,'replacement','Horizon City','2020 — Roof Replacement'],
+                    [31.68537,-106.18722,'replacement','Horizon City','2024 — Roof Replacement'],
+                    [31.7164,-106.16334,'replacement','Horizon City','2025 — Roof Replacement'],
+                    [31.73139,-106.18677,'repair','Horizon City','2022 — Roof Repair'],
+                    [31.71936,-106.25778,'commercial','Horizon City','2024 — Commercial'],
+                    [31.72389,-106.20971,'repair','Horizon City','2023 — Roof Repair'],
+                    [31.66742,-106.21125,'replacement','Horizon City','2023 — Roof Replacement'],
+                    [31.67418,-106.22882,'commercial','Horizon City','2021 — Commercial'],
+                    [31.69347,-106.19213,'replacement','Horizon City','2023 — Roof Replacement'],
+                    [31.66318,-106.1456,'repair','Horizon City','2024 — Roof Repair'],
+                    [31.65613,-106.15438,'replacement','Horizon City','2025 — Roof Replacement'],
+                    [31.66488,-106.14808,'replacement','Horizon City','2026 — Roof Replacement'],
+                    [31.68958,-106.14099,'replacement','Horizon City','2021 — Roof Replacement'],
+                    [31.66656,-106.232,'replacement','Horizon City','2022 — Roof Replacement'],
+                    [31.69782,-106.18653,'replacement','Horizon City','2026 — Roof Replacement'],
+                    [31.66599,-106.17196,'replacement','Horizon City','2023 — Roof Replacement'],
+                    [31.72155,-106.24795,'repair','Horizon City','2023 — Roof Repair'],
+                    [31.74062,-106.23917,'replacement','Horizon City','2023 — Roof Replacement'],
+                    [31.66724,-106.17762,'replacement','Horizon City','2026 — Roof Replacement'],
+                    [31.71723,-106.19946,'commercial','Horizon City','2021 — Commercial'],
+                    [31.67347,-106.19706,'repair','Horizon City','2025 — Roof Repair'],
+                    [31.68954,-106.19263,'replacement','Horizon City','2023 — Roof Replacement'],
+                    [31.6824,-106.19225,'replacement','Horizon City','2023 — Roof Replacement'],
+                    [31.6597,-106.18466,'replacement','Horizon City','2025 — Roof Replacement'],
+                    [31.65622,-106.23725,'replacement','Horizon City','2024 — Roof Replacement'],
+                    [31.66851,-106.15197,'repair','Horizon City','2023 — Roof Repair'],
+                    [31.65101,-106.19636,'replacement','Horizon City','2024 — Roof Replacement'],
+                    [31.66141,-106.21865,'replacement','Horizon City','2024 — Roof Replacement'],
+                    [31.70309,-106.23623,'replacement','Horizon City','2019 — Roof Replacement'],
+                    [31.68549,-106.24306,'replacement','Horizon City','2025 — Roof Replacement'],
+                    [31.65181,-106.14704,'replacement','Horizon City','2023 — Roof Replacement'],
+                    [31.70383,-106.16642,'replacement','Horizon City','2019 — Roof Replacement'],
+                    [31.66759,-106.23335,'repair','Horizon City','2023 — Roof Repair'],
+                    [31.72605,-106.25154,'replacement','Horizon City','2025 — Roof Replacement'],
+                    [31.6614,-106.2077,'repair','Horizon City','2024 — Roof Repair'],
+                    [31.69972,-106.193,'replacement','Horizon City','2023 — Roof Replacement'],
+                    [31.68271,-106.21862,'replacement','Horizon City','2023 — Roof Replacement'],
+                    [31.65249,-106.34356,'replacement','Socorro','2023 — Roof Replacement'],
+                    [31.63136,-106.28791,'replacement','Socorro','2024 — Roof Replacement'],
+                    [31.65971,-106.32569,'replacement','Socorro','2025 — Roof Replacement'],
+                    [31.65176,-106.28981,'replacement','Socorro','2021 — Roof Replacement'],
+                    [31.67214,-106.33781,'replacement','Socorro','2024 — Roof Replacement'],
+                    [31.64953,-106.25582,'commercial','Socorro','2025 — Commercial'],
+                    [31.64407,-106.25705,'replacement','Socorro','2026 — Roof Replacement'],
+                    [31.68971,-106.2895,'repair','Socorro','2021 — Roof Repair'],
+                    [31.68329,-106.31016,'replacement','Socorro','2021 — Roof Replacement'],
+                    [31.65728,-106.32202,'repair','Socorro','2026 — Roof Repair'],
+                    [31.63708,-106.29046,'repair','Socorro','2019 — Roof Repair'],
+                    [31.6138,-106.34164,'replacement','Socorro','2025 — Roof Replacement'],
+                    [31.62539,-106.26168,'repair','Socorro','2019 — Roof Repair'],
+                    [31.61157,-106.27007,'replacement','Socorro','2023 — Roof Replacement'],
+                    [31.66342,-106.25067,'replacement','Socorro','2025 — Roof Replacement'],
+                    [31.67643,-106.26212,'replacement','Socorro','2022 — Roof Replacement'],
+                    [31.67552,-106.28093,'replacement','Socorro','2025 — Roof Replacement'],
+                    [31.61837,-106.26581,'commercial','Socorro','2025 — Commercial'],
+                    [31.64089,-106.34037,'replacement','Socorro','2026 — Roof Replacement'],
+                    [31.63431,-106.26511,'repair','Socorro','2022 — Roof Repair'],
+                    [31.67023,-106.27724,'replacement','Socorro','2021 — Roof Replacement'],
+                    [31.63007,-106.31088,'replacement','Socorro','2026 — Roof Replacement'],
+                    [31.6274,-106.25032,'commercial','Socorro','2026 — Commercial'],
+                    [31.63453,-106.30521,'repair','Socorro','2023 — Roof Repair'],
+                    [31.66076,-106.30406,'replacement','Socorro','2023 — Roof Replacement'],
+                    [31.63633,-106.33712,'repair','Socorro','2023 — Roof Repair'],
+                    [31.65909,-106.28981,'replacement','Socorro','2023 — Roof Replacement'],
+                    [31.65446,-106.27186,'repair','Socorro','2019 — Roof Repair'],
+                    [31.63702,-106.27146,'replacement','Socorro','2021 — Roof Replacement'],
+                    [31.61084,-106.34116,'replacement','Socorro','2021 — Roof Replacement'],
+                    [31.61669,-106.33049,'replacement','Socorro','2023 — Roof Replacement'],
+                    [31.6339,-106.33855,'repair','Socorro','2023 — Roof Repair'],
+                    [31.66665,-106.33268,'repair','Socorro','2023 — Roof Repair'],
+                    [31.61712,-106.33884,'replacement','Socorro','2023 — Roof Replacement'],
+                    [31.63382,-106.31652,'replacement','Socorro','2025 — Roof Replacement'],
+                    [31.6619,-106.32499,'repair','Socorro','2024 — Roof Repair'],
+                    [31.62746,-106.33693,'repair','Socorro','2024 — Roof Repair'],
+                    [31.66566,-106.29467,'repair','Socorro','2023 — Roof Repair'],
+                    [31.67807,-106.2689,'repair','Socorro','2026 — Roof Repair'],
+                    [31.65839,-106.27816,'replacement','Socorro','2024 — Roof Replacement'],
+                    [31.65459,-106.27715,'commercial','Socorro','2024 — Commercial'],
+                    [31.61164,-106.28941,'replacement','Socorro','2022 — Roof Replacement'],
+                    [31.62026,-106.34542,'repair','Socorro','2024 — Roof Repair'],
+                    [31.6864,-106.29419,'commercial','Socorro','2024 — Commercial'],
+                    [31.62384,-106.31711,'commercial','Socorro','2021 — Commercial'],
+                    [31.66814,-106.32044,'repair','Socorro','2024 — Roof Repair'],
+                    [31.64389,-106.28643,'replacement','Socorro','2022 — Roof Replacement'],
+                    [31.6603,-106.30252,'replacement','Socorro','2025 — Roof Replacement'],
+                    [31.63981,-106.28585,'replacement','Socorro','2023 — Roof Replacement'],
+                    [31.61841,-106.32962,'commercial','Socorro','2024 — Commercial'],
+                    [31.62077,-106.32383,'replacement','Socorro','2019 — Roof Replacement'],
+                    [31.63942,-106.31866,'replacement','Socorro','2021 — Roof Replacement'],
+                    [31.65835,-106.25233,'replacement','Socorro','2025 — Roof Replacement'],
+                    [31.68161,-106.33651,'commercial','Socorro','2022 — Commercial'],
+                    [31.63297,-106.27985,'commercial','Socorro','2019 — Commercial'],
+                    [31.65385,-106.2965,'replacement','Socorro','2023 — Roof Replacement'],
+                    [31.6429,-106.29476,'replacement','Socorro','2024 — Roof Replacement'],
+                    [31.64474,-106.31161,'commercial','Socorro','2024 — Commercial'],
+                    [31.61235,-106.3008,'replacement','Socorro','2021 — Roof Replacement'],
+                    [31.64998,-106.31985,'commercial','Socorro','2026 — Commercial'],
+                    [31.94933,-106.62985,'commercial','Canutillo','2021 — Commercial'],
+                    [31.9454,-106.59508,'replacement','Canutillo','2024 — Roof Replacement'],
+                    [31.93655,-106.59715,'replacement','Canutillo','2021 — Roof Replacement'],
+                    [31.8909,-106.62271,'repair','Canutillo','2019 — Roof Repair'],
+                    [31.91706,-106.58854,'commercial','Canutillo','2025 — Commercial'],
+                    [31.9198,-106.58254,'replacement','Canutillo','2020 — Roof Replacement'],
+                    [31.92643,-106.62755,'repair','Canutillo','2025 — Roof Repair'],
+                    [31.90107,-106.62995,'commercial','Canutillo','2025 — Commercial'],
+                    [31.90731,-106.5913,'commercial','Canutillo','2020 — Commercial'],
+                    [31.9081,-106.58998,'repair','Canutillo','2023 — Roof Repair'],
+                    [31.92417,-106.57212,'commercial','Canutillo','2026 — Commercial'],
+                    [31.93586,-106.61726,'replacement','Canutillo','2022 — Roof Replacement'],
+                    [31.93148,-106.63745,'replacement','Canutillo','2024 — Roof Replacement'],
+                    [31.92218,-106.62393,'replacement','Canutillo','2023 — Roof Replacement'],
+                    [31.90065,-106.61968,'commercial','Canutillo','2021 — Commercial'],
+                    [31.91335,-106.607,'replacement','Canutillo','2024 — Roof Replacement'],
+                    [31.91877,-106.59546,'commercial','Canutillo','2019 — Commercial'],
+                    [31.93214,-106.62146,'repair','Canutillo','2019 — Roof Repair'],
+                    [31.89957,-106.57107,'replacement','Canutillo','2023 — Roof Replacement'],
+                    [31.90931,-106.61132,'replacement','Canutillo','2023 — Roof Replacement'],
+                    [31.91247,-106.62673,'replacement','Canutillo','2025 — Roof Replacement'],
+                    [31.91788,-106.58113,'replacement','Canutillo','2024 — Roof Replacement'],
+                    [31.93389,-106.62581,'repair','Canutillo','2022 — Roof Repair'],
+                    [31.93144,-106.63614,'replacement','Canutillo','2022 — Roof Replacement'],
+                    [31.93773,-106.60263,'repair','Canutillo','2021 — Roof Repair'],
+                    [31.9376,-106.60826,'replacement','Canutillo','2025 — Roof Replacement'],
+                    [31.92192,-106.61372,'replacement','Canutillo','2021 — Roof Replacement'],
+                    [31.89537,-106.56206,'commercial','Canutillo','2023 — Commercial'],
+                    [31.93768,-106.60907,'replacement','Canutillo','2025 — Roof Replacement'],
+                    [31.94756,-106.62159,'replacement','Canutillo','2022 — Roof Replacement'],
+                    [31.89357,-106.63548,'repair','Canutillo','2026 — Roof Repair'],
+                    [31.91279,-106.58167,'replacement','Canutillo','2025 — Roof Replacement'],
+                    [31.91035,-106.63945,'replacement','Canutillo','2025 — Roof Replacement'],
+                    [31.92579,-106.58847,'replacement','Canutillo','2023 — Roof Replacement'],
+                    [31.9342,-106.62651,'replacement','Canutillo','2026 — Roof Replacement'],
+                    [31.92412,-106.58471,'replacement','Canutillo','2026 — Roof Replacement'],
+                    [31.94949,-106.60287,'replacement','Canutillo','2026 — Roof Replacement'],
+                    [31.91923,-106.59234,'repair','Canutillo','2025 — Roof Repair'],
+                    [31.92688,-106.57768,'replacement','Canutillo','2020 — Roof Replacement'],
+                    [31.9479,-106.56781,'replacement','Canutillo','2023 — Roof Replacement'],
+                    [31.89728,-106.60081,'replacement','Canutillo','2025 — Roof Replacement'],
+                    [31.94332,-106.61485,'replacement','Canutillo','2023 — Roof Replacement'],
+                    [31.89758,-106.57733,'repair','Canutillo','2025 — Roof Repair'],
+                    [31.9471,-106.56558,'commercial','Canutillo','2019 — Commercial'],
+                    [31.89678,-106.5929,'replacement','Canutillo','2022 — Roof Replacement'],
+                    [31.94728,-106.57829,'replacement','Canutillo','2019 — Roof Replacement'],
+                    [31.91076,-106.56193,'replacement','Canutillo','2023 — Roof Replacement'],
+                    [31.89234,-106.62242,'repair','Canutillo','2023 — Roof Repair'],
+                    [31.9028,-106.57973,'replacement','Canutillo','2025 — Roof Replacement'],
+                    [31.90586,-106.6118,'replacement','Canutillo','2024 — Roof Replacement'],
+                    [31.94487,-106.61299,'replacement','Canutillo','2019 — Roof Replacement'],
+                    [31.92874,-106.63163,'repair','Canutillo','2020 — Roof Repair'],
+                    [31.93932,-106.56512,'replacement','Canutillo','2025 — Roof Replacement'],
+                    [31.94485,-106.61741,'commercial','Canutillo','2024 — Commercial'],
+                    [31.91041,-106.58339,'replacement','Canutillo','2024 — Roof Replacement'],
+                    [31.92924,-106.57702,'replacement','Canutillo','2026 — Roof Replacement'],
+                    [31.89087,-106.63771,'repair','Canutillo','2021 — Roof Repair'],
+                    [31.90992,-106.56152,'replacement','Canutillo','2025 — Roof Replacement'],
+                    [31.9327,-106.56611,'repair','Canutillo','2019 — Roof Repair'],
+                    [31.90049,-106.61128,'repair','Canutillo','2024 — Roof Repair'],
+                    [32.35741,-106.70485,'repair','Las Cruces','2023 — Roof Repair'],
+                    [32.32901,-106.74763,'replacement','Las Cruces','2024 — Roof Replacement'],
+                    [32.37352,-106.70463,'replacement','Las Cruces','2021 — Roof Replacement'],
+                    [32.35683,-106.81135,'replacement','Las Cruces','2023 — Roof Replacement'],
+                    [32.30115,-106.77335,'replacement','Las Cruces','2023 — Roof Replacement'],
+                    [32.37582,-106.81355,'replacement','Las Cruces','2023 — Roof Replacement'],
+                    [32.3703,-106.77241,'commercial','Las Cruces','2019 — Commercial'],
+                    [32.37701,-106.78227,'replacement','Las Cruces','2023 — Roof Replacement'],
+                    [32.33976,-106.7248,'replacement','Las Cruces','2019 — Roof Replacement'],
+                    [32.35564,-106.80137,'replacement','Las Cruces','2024 — Roof Replacement'],
+                    [32.33693,-106.81283,'replacement','Las Cruces','2024 — Roof Replacement'],
+                    [32.34783,-106.79033,'replacement','Las Cruces','2020 — Roof Replacement'],
+                    [32.31484,-106.76821,'replacement','Las Cruces','2021 — Roof Replacement'],
+                    [32.37072,-106.79888,'repair','Las Cruces','2023 — Roof Repair'],
+                    [32.32167,-106.77386,'replacement','Las Cruces','2023 — Roof Replacement'],
+                    [32.31147,-106.76863,'repair','Las Cruces','2025 — Roof Repair'],
+                    [32.31808,-106.70441,'replacement','Las Cruces','2025 — Roof Replacement'],
+                    [32.38417,-106.71336,'replacement','Las Cruces','2026 — Roof Replacement'],
+                    [32.29374,-106.79376,'replacement','Las Cruces','2025 — Roof Replacement'],
+                    [32.36849,-106.79537,'repair','Las Cruces','2020 — Roof Repair'],
+                    [32.30747,-106.7013,'replacement','Las Cruces','2025 — Roof Replacement'],
+                    [32.29148,-106.80955,'replacement','Las Cruces','2023 — Roof Replacement'],
+                    [32.29876,-106.81106,'replacement','Las Cruces','2019 — Roof Replacement'],
+                    [32.36233,-106.70954,'commercial','Las Cruces','2024 — Commercial'],
+                    [32.36792,-106.79911,'replacement','Las Cruces','2020 — Roof Replacement'],
+                    [32.33284,-106.7637,'repair','Las Cruces','2025 — Roof Repair'],
+                    [32.32206,-106.81086,'replacement','Las Cruces','2024 — Roof Replacement'],
+                    [32.35594,-106.78313,'replacement','Las Cruces','2023 — Roof Replacement'],
+                    [32.35717,-106.81466,'repair','Las Cruces','2024 — Roof Repair'],
+                    [32.36488,-106.79175,'replacement','Las Cruces','2021 — Roof Replacement'],
+                    [32.31699,-106.75357,'repair','Las Cruces','2023 — Roof Repair'],
+                    [32.30238,-106.80039,'commercial','Las Cruces','2021 — Commercial'],
+                    [32.36921,-106.79807,'replacement','Las Cruces','2022 — Roof Replacement'],
+                    [32.35262,-106.71882,'repair','Las Cruces','2023 — Roof Repair'],
+                    [32.29803,-106.79094,'commercial','Las Cruces','2026 — Commercial'],
+                    [32.36679,-106.75571,'repair','Las Cruces','2025 — Roof Repair'],
+                    [32.35783,-106.76555,'replacement','Las Cruces','2023 — Roof Replacement'],
+                    [32.3419,-106.80441,'commercial','Las Cruces','2025 — Commercial'],
+                    [32.34373,-106.70794,'commercial','Las Cruces','2026 — Commercial'],
+                    [32.36507,-106.72485,'repair','Las Cruces','2021 — Roof Repair'],
+                    [32.37788,-106.8118,'repair','Las Cruces','2021 — Roof Repair'],
+                    [32.30714,-106.79174,'commercial','Las Cruces','2026 — Commercial'],
+                    [32.30254,-106.74973,'commercial','Las Cruces','2024 — Commercial'],
+                    [32.3699,-106.78615,'replacement','Las Cruces','2024 — Roof Replacement'],
+                    [32.37782,-106.74819,'replacement','Las Cruces','2023 — Roof Replacement'],
+                    [32.36536,-106.7304,'replacement','Las Cruces','2022 — Roof Replacement'],
+                    [32.38492,-106.74438,'replacement','Las Cruces','2024 — Roof Replacement'],
+                    [32.34688,-106.76442,'replacement','Las Cruces','2024 — Roof Replacement'],
+                    [32.32726,-106.7909,'repair','Las Cruces','2023 — Roof Repair'],
+                    [32.3178,-106.74666,'repair','Las Cruces','2021 — Roof Repair'],
+                    [32.36316,-106.76211,'repair','Las Cruces','2022 — Roof Repair'],
+                    [32.33758,-106.74224,'replacement','Las Cruces','2022 — Roof Replacement'],
+                    [32.3115,-106.74531,'commercial','Las Cruces','2019 — Commercial'],
+                    [32.34218,-106.78635,'commercial','Las Cruces','2024 — Commercial'],
+                    [32.29143,-106.7076,'commercial','Las Cruces','2022 — Commercial'],
+                    [32.35218,-106.78734,'replacement','Las Cruces','2022 — Roof Replacement'],
+                    [32.32891,-106.75843,'repair','Las Cruces','2022 — Roof Repair'],
+                    [32.34371,-106.79664,'commercial','Las Cruces','2019 — Commercial'],
+                    [32.3694,-106.80765,'replacement','Las Cruces','2025 — Roof Replacement'],
+                    [32.3205,-106.75932,'replacement','Las Cruces','2026 — Roof Replacement'],
                 ];
 
                 const counter = document.getElementById('pinCounter');

@@ -37,38 +37,8 @@
         }
 
         /* Palette 5: Charcoal & Amber */
-        [data-theme="charcoal-amber"] {
-            --forest: #3A3A3A;
-            --forest-deep: #2A2A2A;
-            --terracotta: #FF5C34;
-            --terracotta-dark: #E5482A;
-            --terracotta-light: #FFB09A;
-            --cream: #F5F3EF;
-            --cream-dark: #EAE6DF;
-            --warm-white: #FAFAF8;
-            --charcoal: #2D2D2D;
-            --warm-gray: #6B6B6B;
-            --light-gray: #DCDCDC;
-            --gold: #D4A85C;
-            --gold-light: #F0DDB8;
-        }
 
         /* Palette X: Plum & Persimmon — Horizontal Logo */
-        [data-theme="plum-h"] {
-            --forest: #3A3A3A;
-            --forest-deep: #2A2A2A;
-            --terracotta: #FF5C34;
-            --terracotta-dark: #E5482A;
-            --terracotta-light: #FFB09A;
-            --cream: #F5F3EF;
-            --cream-dark: #EAE6DF;
-            --warm-white: #FAFAF8;
-            --charcoal: #2D2D2D;
-            --warm-gray: #6B6B6B;
-            --light-gray: #DCDCDC;
-            --gold: #D4A85C;
-            --gold-light: #F0DDB8;
-        }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -905,82 +875,9 @@
             z-index: 999;
         }
 
-        .theme-toggle-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--terracotta);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-        }
-
-        .theme-toggle-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        .theme-panel {
-            display: none;
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-            padding: 1rem;
-            z-index: 998;
-            border: 1px solid var(--light-gray);
-        }
-
-        .theme-panel.open {
-            display: block;
-            animation: themeFadeIn 0.2s ease;
-        }
-
         @keyframes themeFadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .theme-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 0.8rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            background: var(--cream);
-            border: 2px solid transparent;
-            transition: all 0.2s;
-            margin-bottom: 0.5rem;
-        }
-
-        .theme-option:hover {
-            background: var(--cream-dark);
-        }
-
-        .theme-option.active {
-            border-color: var(--terracotta);
-            background: rgba(255, 92, 52, 0.08);
-        }
-
-        .theme-swatches {
-            display: flex;
-            gap: 4px;
-            margin-right: 8px;
-        }
-
-        .theme-swatch {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
         }
 
         .footer-inner {
@@ -1608,9 +1505,9 @@
             <div class="footer-inner">
                 <div class="footer-brand">
                     <a href="#" class="nav-logo">
-                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" id="footerLogoImg" style="height: 80px; width: auto; object-fit: contain;">
+                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1) brightness(1.1);">
                     </a>
-                    <p>Locally owned roofing experts serving the El Paso community with heart, quality, and integrity.</p>
+                    <p>Step-by-step guide to filing a roofing insurance claim in El Paso. Understand your policy, document damage properly, and get the most from your claim.</p>
                 </div>
 
                 <div class="footer-col">
@@ -1655,38 +1552,6 @@
         </div>
     </footer>
 
-    <!-- Language Toggle and Theme Toggle -->
-    <div id="themeToggle">
-        <div class="theme-panel" id="themePanel">
-            <button class="theme-option" data-theme="default" onclick="this.parentElement.querySelector('.active')?.classList.remove('active'); this.classList.add('active'); setTheme('default');">
-                <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3A3A3A"></div>
-                    <div class="theme-swatch" style="background:#FF5C34"></div>
-                    <div class="theme-swatch" style="background:#F5F3EF"></div>
-                </div>
-                Charcoal & Amber
-            </button>
-            <button class="theme-option" data-theme="charcoal-amber" onclick="this.parentElement.querySelector('.active')?.classList.remove('active'); this.classList.add('active'); setTheme('charcoal-amber');">
-                <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3A3A3A"></div>
-                    <div class="theme-swatch" style="background:#FF5C34"></div>
-                    <div class="theme-swatch" style="background:#F5F3EF"></div>
-                </div>
-                Charcoal & Amber (Alt)
-            </button>
-            <button class="theme-option" data-theme="plum-h" onclick="this.parentElement.querySelector('.active')?.classList.remove('active'); this.classList.add('active'); setTheme('plum-h');">
-                <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3A3A3A"></div>
-                    <div class="theme-swatch" style="background:#FF5C34"></div>
-                    <div class="theme-swatch" style="background:#C9A0A8"></div>
-                </div>
-                Plum & Persimmon (H)
-            </button>
-        </div>
-        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch color theme">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
-    </div>
 
     <script>
         // ========== NAVIGATION SCROLL & MOBILE TOGGLE =====
@@ -1765,100 +1630,7 @@
     </script>
 
     <!-- Theme Switcher -->
-    <script>
-    (function() {
-        let saved = localStorage.getItem('meraki-theme') || 'default';
-        if (['plum-persimmon', 'forest-terracotta', 'forest-h', 'navy-gold', 'slate-sage', 'olive-copper', 'olive-h'].includes(saved)) { saved = 'default'; localStorage.setItem('meraki-theme', 'default'); }
-        if (saved !== 'default') {
-            document.documentElement.setAttribute('data-theme', saved);
-        }
-
-        const logoMap = {
-            'default': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-            'charcoal-amber': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-            'plum-h': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-        };
-
-        const footerLogoMap = {
-            'charcoal-amber': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-            'plum-h': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-        };
-
-        const horizontalThemes = ['charcoal-amber', 'plum-h'];
-
-        function applyLogo(theme) {
-            const navImg = document.getElementById('navLogoImg');
-            if (navImg && logoMap[theme]) {
-                navImg.src = logoMap[theme];
-                if (horizontalThemes.includes(theme)) {
-                    navImg.classList.add('horizontal-logo');
-                } else {
-                    navImg.classList.remove('horizontal-logo');
-                }
-            }
-            const footerImg = document.getElementById('footerLogoImg');
-            if (footerImg) {
-                if (footerLogoMap[theme]) {
-                    footerImg.src = footerLogoMap[theme];
-                    footerImg.style.display = 'block';
-                } else {
-                    footerImg.style.display = 'none';
-                }
-            }
-        }
-
-        function setTheme(theme) {
-            if (theme === 'default') {
-                document.documentElement.removeAttribute('data-theme');
-            } else {
-                document.documentElement.setAttribute('data-theme', theme);
-            }
-            localStorage.setItem('meraki-theme', theme);
-            applyLogo(theme);
-        }
-
-        applyLogo(saved);
-
-        document.addEventListener('DOMContentLoaded', function() {
-            applyLogo(saved);
-
-            const panel = document.getElementById('themePanel');
-            const toggleBtn = document.getElementById('themeToggleBtn');
-            if (!panel || !toggleBtn) return;
-
-            panel.querySelectorAll('.theme-option').forEach(opt => {
-                if (opt.dataset.theme === saved) {
-                    opt.classList.add('active');
-                } else {
-                    opt.classList.remove('active');
-                }
-            });
-
-            toggleBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                panel.classList.toggle('open');
-            });
-
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('#themeToggle')) {
-                    panel.classList.remove('open');
-                }
-            });
-
-            panel.querySelectorAll('.theme-option').forEach(opt => {
-                opt.addEventListener('click', function() {
-                    const theme = this.dataset.theme;
-                    setTheme(theme);
-                    panel.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
-                    this.classList.add('active');
-                    panel.classList.remove('open');
-                });
-            });
-
-            window.setTheme = setTheme;
-        });
-    })();
-    </script>
+    
 
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">

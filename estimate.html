@@ -22,7 +22,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Google Analytics 4 -->
+    <!-- Google Maps + Places + Solar API -->
+    <script>
+        // ⚠️ REPLACE WITH YOUR GOOGLE CLOUD API KEY
+        // Enable these APIs in Google Cloud Console: Maps JavaScript API, Places API, Solar API
+        // Restrict key to your domain: merakiroofing.com
+        const GOOGLE_API_KEY = 'AIzaSyAE4jxqe0LLsTj2MURRzEX5KSSgjQJs3O0';
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -92,40 +98,8 @@
         }
 
         /* Palette 5: Charcoal & Amber */
-        [data-theme="charcoal-amber"] {
-            --forest: #3A3A3A;
-            --forest-deep: #2A2A2A;
-            --terracotta: #FF5C34;
-            --terracotta-dark: #E5482A;
-            --terracotta-light: #FFB09A;
-            --cream: #F5F3EF;
-            --cream-dark: #EAE6DF;
-            --warm-white: #FAFAF8;
-            --charcoal: #2D2D2D;
-            --warm-gray: #6B6B6B;
-            --light-gray: #DCDCDC;
-            --gold: #D4A85C;
-            --gold-light: #F0DDB8;
-        }
-
 
         /* Palette X: Plum & Persimmon — Horizontal Logo */
-        [data-theme="plum-h"] {
-            --forest: #3A3A3A;
-            --forest-deep: #2A2A2A;
-            --terracotta: #FF5C34;
-            --terracotta-dark: #E5482A;
-            --terracotta-light: #FFB09A;
-            --cream: #F5F3EF;
-            --cream-dark: #EAE6DF;
-            --warm-white: #FAFAF8;
-            --charcoal: #2D2D2D;
-            --warm-gray: #6B6B6B;
-            --light-gray: #DCDCDC;
-            --gold: #D4A85C;
-            --gold-light: #F0DDB8;
-        }
-
 
         html {
             scroll-behavior: smooth;
@@ -181,7 +155,6 @@
             max-width: clamp(220px, 22vw, 320px);
             max-height: 75px;
         }
-
 
         .nav-logo-text {
             font-family: var(--font-display);
@@ -635,6 +608,493 @@
             color: var(--warm-gray);
             margin-top: 1rem;
             font-style: italic;
+        }
+
+        /* ===== ADDRESS LOOKUP (Step 0) — Full Map Background ===== */
+
+        /* Step 0 is a special full-bleed map step */
+        #step0 {
+            position: relative;
+            min-height: 520px;
+        }
+
+        /* Full-bleed satellite map background */
+        .map-background {
+            position: absolute;
+            inset: -3rem -2rem;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .map-background .satellite-map {
+            width: 100%;
+            height: 100%;
+            min-height: 580px;
+            background: linear-gradient(135deg, #1a2332 0%, #2c3e50 50%, #1a2332 100%);
+        }
+        /* Dark overlay for readability before lookup */
+        .map-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(30,30,30,0.55) 0%, rgba(30,30,30,0.45) 60%, rgba(30,30,30,0.6) 100%);
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+            z-index: 1;
+        }
+        .map-background.map-active::after {
+            background: linear-gradient(180deg, rgba(30,30,30,0.35) 0%, rgba(30,30,30,0.2) 40%, rgba(30,30,30,0.45) 100%);
+        }
+
+        /* Floating form card on top of the map */
+        .map-overlay-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 1.5rem;
+        }
+
+        .map-overlay-content h2 {
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            text-align: center;
+            font-size: 1.6rem;
+        }
+
+        .map-overlay-content .step-subtitle {
+            color: rgba(255,255,255,0.85);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Floating address search card */
+        .address-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.1);
+            transition: opacity 0.3s ease;
+        }
+
+        .address-input-wrap {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .address-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--warm-gray);
+            pointer-events: none;
+        }
+
+        .address-field {
+            width: 100%;
+            padding: 14px 16px 14px 44px;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            color: var(--forest-deep);
+            background: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .address-field:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(255, 92, 52, 0.12);
+        }
+
+        .btn-lookup {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-lookup:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255,92,52,0.3);
+        }
+
+        .btn-lookup:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Loading spinner */
+        .lookup-loading {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .lookup-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: var(--terracotta);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .lookup-loading p {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* Floating results card */
+        .lookup-results {
+            margin: 1rem 0 0;
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .lookup-result-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255,255,255,0.4);
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .result-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: rgba(255,92,52,0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-details {
+            flex: 1;
+        }
+
+        .result-address {
+            font-weight: 600;
+            color: var(--forest-deep);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .result-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .result-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            font-family: var(--font-display);
+        }
+
+        .stat-label {
+            font-size: 0.72rem;
+            color: var(--warm-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .result-note {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 0.75rem;
+            font-style: italic;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* Map zoom controls */
+        #step0 .map-controls {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 5;
+        }
+
+        .map-zoom-btn {
+            width: 34px;
+            height: 34px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.15);
+            border-radius: 6px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--forest-deep);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+            transition: background 0.15s;
+            line-height: 1;
+        }
+
+        .map-zoom-btn:hover {
+            background: var(--cream);
+        }
+
+        /* Pin verification card */
+        .pin-verify-card {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 14px;
+            padding: 1rem 1.5rem;
+            width: calc(100% - 2rem);
+            max-width: 420px;
+            box-shadow: 0 -4px 25px rgba(0,0,0,0.2), 0 10px 35px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.75rem;
+            text-align: left;
+            animation: slideUpFromBottom 0.5s ease;
+        }
+
+        @keyframes slideUpFromBottom {
+            from { opacity: 0; transform: translate(-50%, 30px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pin-verify-icon {
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+            background: rgba(255,92,52,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pin-verify-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            flex: 1;
+        }
+
+        .pin-verify-text strong {
+            font-size: 0.92rem;
+            color: var(--forest-deep);
+        }
+
+        .pin-verify-text span {
+            font-size: 0.78rem;
+            color: var(--warm-gray);
+        }
+
+        .btn-confirm-pin {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .btn-confirm-pin:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255,92,52,0.3);
+        }
+
+        /* Mobile: stack pin card vertically */
+        @media (max-width: 480px) {
+            .pin-verify-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            .btn-confirm-pin {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Error state */
+        .lookup-error {
+            background: rgba(220, 53, 69, 0.1);
+            border: 1.5px solid rgba(220, 53, 69, 0.3);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            width: 100%;
+            max-width: 520px;
+            backdrop-filter: blur(8px);
+        }
+
+        .lookup-error p {
+            color: #ffbdbd;
+            font-size: 0.9rem;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* Skip link - on map */
+        button.skip-link {
+            display: block;
+            margin: 1rem auto 0;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.75);
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: underline;
+            font-family: var(--font-body);
+            padding: 8px;
+            transition: color 0.2s;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        button.skip-link:hover {
+            color: white;
+        }
+
+        /* Step 0 buttons */
+        #step0 .button-group {
+            width: 100%;
+            max-width: 520px;
+        }
+
+        #step0 .btn-next {
+            width: 100%;
+        }
+
+        /* Satellite banner in Step 1 */
+        .satellite-banner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,92,52,0.06);
+            border-left: 3px solid var(--terracotta);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--forest-deep);
+            font-weight: 500;
+        }
+
+        /* Satellite auto-detected glow animation for cards */
+        .satellite-auto-selected {
+            animation: satellitePulse 1.5s ease;
+            position: relative;
+        }
+
+        @keyframes satellitePulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 92, 52, 0.5); }
+            30% { box-shadow: 0 0 0 8px rgba(255, 92, 52, 0.25); }
+            60% { box-shadow: 0 0 0 12px rgba(255, 92, 52, 0); }
+            100% { box-shadow: none; }
+        }
+
+        .satellite-auto-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--terracotta);
+            color: white;
+            font-size: 0.62rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            margin-top: 6px;
+            animation: badgeFadeIn 0.5s ease 0.3s both;
+        }
+
+        @keyframes badgeFadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Google Places dropdown styling */
+        .pac-container {
+            border-radius: 10px;
+            border: 1px solid var(--light-gray);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            margin-top: 4px;
+            font-family: var(--font-body);
+            z-index: 10000 !important;
+        }
+
+        .pac-item {
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .pac-item:hover {
+            background: var(--cream);
         }
 
         .size-input-field {
@@ -1616,6 +2076,23 @@
                 min-height: auto;
             }
 
+            /* Map background responsive */
+            .map-background {
+                inset: -2rem -1.5rem;
+            }
+            .map-background .satellite-map {
+                min-height: 520px;
+            }
+            #step0 {
+                min-height: 460px;
+            }
+            .address-card {
+                padding: 1.5rem;
+            }
+            .map-overlay-content h2 {
+                font-size: 1.3rem;
+            }
+
             .step h2 {
                 font-size: 1.5rem;
             }
@@ -1786,88 +2263,8 @@
             content: '⚠';
         }
 
-        /* ============ THEME TOGGLE UI ============ */
-        .theme-toggle {
-            position: fixed;
-            bottom: 28px;
-            left: 28px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0;
-        }
-        .theme-toggle-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--forest);
-            color: white;
-            border: 2px solid white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-            transition: all 0.3s;
-        }
-        .theme-toggle-btn:hover { transform: scale(1.1); }
-        .theme-panel {
-            position: absolute;
-            bottom: 54px;
-            left: 0;
-            background: white;
-            border-radius: 14px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.18);
-            padding: 1rem;
-            min-width: 220px;
-            opacity: 0;
-            transform: translateY(10px) scale(0.95);
-            pointer-events: none;
-            transition: all 0.25s ease;
-        }
-        .theme-panel.open {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            pointer-events: auto;
-        }
-        .theme-panel-title {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--warm-gray);
-            margin-bottom: 0.6rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid var(--light-gray);
-        }
-        .theme-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.15s;
-            border: none;
-            background: none;
-            width: 100%;
-            font-family: var(--font-body);
-            font-size: 0.82rem;
-            color: var(--charcoal);
-            font-weight: 500;
-        }
-        .theme-option:hover { background: var(--cream); }
-        .theme-option.active { background: var(--cream); font-weight: 700; }
-        .theme-swatches { display: flex; gap: 3px; flex-shrink: 0; }
-        .theme-swatch {
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
-            border: 1.5px solid rgba(0,0,0,0.1);
-        }
         @media (max-width: 768px) {
-            .theme-toggle { bottom: 80px; left: 16px; }
+            
         }
 
         .container {
@@ -2026,20 +2423,122 @@
             <!-- Progress Bar -->
             <div class="progress-container">
                 <div class="progress-bar">
-                    <div class="progress-step active" id="step1Indicator"></div>
+                    <div class="progress-step active" id="step0Indicator"></div>
+                    <div class="progress-step" id="step1Indicator"></div>
                     <div class="progress-step" id="step2Indicator"></div>
                     <div class="progress-step" id="step3Indicator"></div>
                     <div class="progress-step" id="step4Indicator"></div>
                 </div>
-                <div class="progress-text" id="progressText" data-i18n="est.progress.step1">Step 1 of 4: Roof Size</div>
+                <div class="progress-text" id="progressText">Step 1 of 5: Satellite Scan</div>
             </div>
 
             <!-- Calculator Steps -->
             <div class="step-container">
+                <!-- Step 0: Address Lookup — Full Map Background -->
+                <div class="step active" id="step0" data-step="0">
+                    <!-- Full-bleed satellite map background -->
+                    <div class="map-background" id="mapBackground">
+                        <div id="satelliteMap" class="satellite-map"></div>
+                    </div>
+
+                    <!-- Content floating on top of the map -->
+                    <div class="map-overlay-content">
+                        <!-- Map zoom controls (shown after lookup) -->
+                        <div class="map-controls" id="mapControls" style="display: none;">
+                            <button type="button" class="map-zoom-btn" onclick="adjustMapZoom(1)" title="Zoom in">+</button>
+                            <button type="button" class="map-zoom-btn" onclick="adjustMapZoom(-1)" title="Zoom out">−</button>
+                        </div>
+                        <h2>Scan Your Roof from Space</h2>
+                        <p class="step-subtitle">Our AI analyzes satellite imagery to measure your roof in seconds</p>
+
+                        <!-- Address search card -->
+                        <div class="address-card" id="addressCard">
+                            <div class="address-input-wrap">
+                                <svg class="address-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <input type="text" id="addressInput" class="address-field" placeholder="Enter your address (e.g. 123 Main St, El Paso, TX)" autocomplete="off">
+                            </div>
+                            <button class="btn-lookup" id="lookupBtn" onclick="lookupRoof()">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                                Look Up My Roof
+                            </button>
+                        </div>
+
+                        <!-- Loading State (geocoding) -->
+                        <div class="lookup-loading" id="lookupLoading" style="display:none;">
+                            <div class="lookup-spinner"></div>
+                            <p>Finding your address...</p>
+                        </div>
+
+                        <!-- Pin Verification State -->
+                        <div class="pin-verify-card" id="pinVerifyCard" style="display:none;">
+                            <div class="pin-verify-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div class="pin-verify-text">
+                                <strong>Is this your roof?</strong>
+                                <span>Drag the pin to adjust if needed</span>
+                            </div>
+                            <button class="btn-confirm-pin" id="confirmPinBtn" onclick="confirmPin()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Confirm My Roof
+                            </button>
+                        </div>
+
+                        <!-- Analyzing State (Solar API) -->
+                        <div class="lookup-loading" id="analyzingLoading" style="display:none;">
+                            <div class="lookup-spinner"></div>
+                            <p>Analyzing your roof from satellite imagery...</p>
+                        </div>
+
+                        <!-- Results Display -->
+                        <div class="lookup-results" id="lookupResults" style="display:none;">
+                            <div class="lookup-result-card">
+                                <div class="result-icon">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                                </div>
+                                <div class="result-details">
+                                    <div class="result-address" id="resultAddress"></div>
+                                    <div class="result-stats">
+                                        <div class="result-stat">
+                                            <span class="stat-value" id="resultSqft">—</span>
+                                            <span class="stat-label">Est. Roof Area</span>
+                                        </div>
+                                        <div class="result-stat">
+                                            <span class="stat-value" id="resultPitch">—</span>
+                                            <span class="stat-label">Avg. Pitch</span>
+                                        </div>
+                                        <div class="result-stat">
+                                            <span class="stat-value" id="resultSegments">—</span>
+                                            <span class="stat-label">Roof Sections</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="result-note">Measurements based on Google satellite imagery. You can adjust in the next step.</p>
+                        </div>
+
+                        <!-- Error State -->
+                        <div class="lookup-error" id="lookupError" style="display:none;">
+                            <p id="lookupErrorMsg">We couldn't find roof data for this address. You can still enter your roof size manually.</p>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn-next" id="step0NextBtn" onclick="nextStep()" style="display:none;">Continue with These Measurements</button>
+                        </div>
+                        <button class="skip-link" onclick="skipLookup()">Skip — I know my roof size</button>
+                    </div>
+                </div>
+
                 <!-- Step 1: Roof Size -->
-                <div class="step active" id="step1" data-step="1">
+                <div class="step" id="step1" data-step="1">
                     <h2 data-i18n="est.step1.title">How large is your roof?</h2>
                     <p class="step-subtitle" data-i18n="est.step1.subtitle">We'll use this to calculate your estimate</p>
+
+                    <!-- Satellite data banner (shown when address was looked up) -->
+                    <div class="satellite-banner" id="satelliteBanner" style="display:none;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <span id="satelliteBannerText">Based on satellite data — adjust if needed</span>
+                    </div>
 
                     <div class="roof-icon">
                         <svg class="roof-svg" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
@@ -2135,7 +2634,7 @@
 
                     <div class="result-screen">
                         <div class="result-header">
-                            <div class="result-label" data-i18n="est.step4.cost.label">Estimated Total Cost</div>
+                            <div class="result-label" data-i18n="est.step4.cost.label">Estimated Cost (Materials + Labor)</div>
                             <div class="price-range">
                                 <span class="price-range-number" id="priceRange">$0 — $0</span>
                             </div>
@@ -2427,10 +2926,10 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-brand">
-                    <a href="#" class="nav-logo">
-                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" id="footerLogoImg" style="height: 80px; width: auto; object-fit: contain;">
+                    <a href="#" class="nav-logo" aria-label="Meraki Roofing home">
+                        <img src="images/logos/primary_light_HQ.png" alt="Meraki Roofing" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1) brightness(1.1);">
                     </a>
-                    <p>Locally owned roofing experts serving the El Paso community with heart, quality, and integrity.</p>
+                    <p>Get an instant roofing estimate for your El Paso home. Our satellite-powered calculator provides accurate pricing for roof replacement, repairs, and storm damage restoration.</p>
                 </div>
 
                 <div class="footer-col">
@@ -2518,7 +3017,8 @@
         ];
 
         // State
-        let currentStep = 1;
+        let currentStep = 0;
+        let solarData = null; // holds Solar API response
         let formData = {
             roofSize: 1800,
             material: 'asphalt-arch',
@@ -2528,7 +3028,359 @@
             issues: [],
             layers: 1,
             decking: 'good',
-            addons: []
+            addons: [],
+            address: ''
+        };
+
+        // ========== GOOGLE SOLAR API ==========
+        let pendingLocation = null;   // lat/lng from geocode, before pin confirm
+        let pendingAddress = null;    // formatted address string
+
+        // Phase 1: Geocode → animated zoom → drop draggable pin
+        async function lookupRoof() {
+            const addressInput = document.getElementById('addressInput');
+            const address = addressInput.value.trim();
+            if (!address) { showError('Please enter an address'); return; }
+            if (GOOGLE_API_KEY === 'YOUR_API_KEY_HERE') {
+                showError('Google API key not configured. Please contact site admin.');
+                return;
+            }
+
+            // Reset states
+            document.getElementById('lookupLoading').style.display = 'block';
+            document.getElementById('lookupResults').style.display = 'none';
+            document.getElementById('lookupError').style.display = 'none';
+            document.getElementById('pinVerifyCard').style.display = 'none';
+            document.getElementById('analyzingLoading').style.display = 'none';
+            document.getElementById('step0NextBtn').style.display = 'none';
+            document.getElementById('lookupBtn').disabled = true;
+            document.getElementById('addressCard').style.opacity = '0.3';
+            document.getElementById('addressCard').style.pointerEvents = 'none';
+
+            try {
+                // Geocode the address
+                const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${GOOGLE_API_KEY}`;
+                const geoRes = await fetch(geocodeUrl);
+                const geoData = await geoRes.json();
+
+                if (!geoData.results || geoData.results.length === 0) {
+                    throw new Error('Address not found. Please check and try again.');
+                }
+
+                pendingLocation = geoData.results[0].geometry.location;
+                pendingAddress = geoData.results[0].formatted_address;
+
+                // Hide loading, hide address card and headings for full map view
+                document.getElementById('lookupLoading').style.display = 'none';
+                document.getElementById('addressCard').style.display = 'none';
+                // Hide the h2 and subtitle so the map is fully visible
+                const overlayContent = document.querySelector('#step0 .map-overlay-content');
+                overlayContent.querySelector('h2').style.display = 'none';
+                overlayContent.querySelector('.step-subtitle').style.display = 'none';
+                // Also hide skip link during pin phase
+                const skipLink = overlayContent.querySelector('.skip-link');
+                if (skipLink) skipLink.style.display = 'none';
+
+                // Animated zoom to the roof + drop draggable pin
+                await animateZoomToRoof(pendingLocation.lat, pendingLocation.lng);
+
+                // Show pin verification card at the bottom
+                document.getElementById('pinVerifyCard').style.display = 'flex';
+                document.getElementById('mapControls').style.display = 'flex';
+
+                trackEvent('solar_zoom_complete', { address: pendingAddress });
+
+            } catch (err) {
+                document.getElementById('lookupLoading').style.display = 'none';
+                document.getElementById('lookupErrorMsg').textContent = err.message || 'Unable to find this address. Please try again.';
+                document.getElementById('lookupError').style.display = 'block';
+                document.getElementById('step0NextBtn').style.display = 'block';
+                document.getElementById('step0NextBtn').textContent = 'Continue Manually';
+                document.getElementById('addressCard').style.opacity = '1';
+                document.getElementById('addressCard').style.pointerEvents = 'auto';
+                document.getElementById('lookupBtn').disabled = false;
+                trackEvent('solar_geocode_error', { error: err.message });
+            }
+        }
+
+        // Phase 2: User confirms pin → run Solar API
+        async function confirmPin() {
+            // Use the marker's current position (user may have dragged it)
+            const pos = satMarker ? satMarker.getPosition() : null;
+            const lat = pos ? pos.lat() : pendingLocation.lat;
+            const lng = pos ? pos.lng() : pendingLocation.lng;
+
+            // Show analyzing state
+            document.getElementById('pinVerifyCard').style.display = 'none';
+            document.getElementById('analyzingLoading').style.display = 'block';
+
+            try {
+                // Call Solar API buildingInsights
+                const solarUrl = `https://solar.googleapis.com/v1/buildingInsights:findClosest?location.latitude=${lat}&location.longitude=${lng}&requiredQuality=HIGH&key=${GOOGLE_API_KEY}`;
+                const solarRes = await fetch(solarUrl);
+
+                if (!solarRes.ok) {
+                    // Try MEDIUM quality fallback
+                    const solarUrl2 = `https://solar.googleapis.com/v1/buildingInsights:findClosest?location.latitude=${lat}&location.longitude=${lng}&requiredQuality=MEDIUM&key=${GOOGLE_API_KEY}`;
+                    const solarRes2 = await fetch(solarUrl2);
+                    if (!solarRes2.ok) throw new Error('Roof data not available for this location.');
+                    solarData = await solarRes2.json();
+                } else {
+                    solarData = await solarRes.json();
+                }
+
+                // Extract roof measurements
+                const segments = solarData.solarPotential?.roofSegmentStats || [];
+                if (segments.length === 0) throw new Error('No roof segment data available for this address.');
+
+                const totalAreaM2 = segments.reduce((sum, seg) => sum + (seg.stats?.areaMeters2 || 0), 0);
+                const totalSqFt = Math.round(totalAreaM2 * 10.764);
+
+                const weightedPitch = segments.reduce((sum, seg) => {
+                    return sum + (seg.pitchDegrees || 0) * (seg.stats?.areaMeters2 || 0);
+                }, 0) / totalAreaM2;
+
+                let pitchCategory, pitchLabel;
+                if (weightedPitch < 18.43) {
+                    pitchCategory = 'pitch-low'; pitchLabel = 'Low';
+                } else if (weightedPitch < 26.57) {
+                    pitchCategory = 'pitch-standard'; pitchLabel = 'Standard';
+                } else {
+                    pitchCategory = 'pitch-steep'; pitchLabel = 'Steep';
+                }
+
+                let complexityId;
+                if (segments.length <= 2) complexityId = 'simple';
+                else if (segments.length <= 4) complexityId = 'moderate';
+                else complexityId = 'complex';
+
+                // Display results
+                document.getElementById('resultAddress').textContent = pendingAddress;
+                document.getElementById('resultSqft').textContent = totalSqFt.toLocaleString() + ' sq ft';
+                document.getElementById('resultPitch').textContent = pitchLabel + ' (' + Math.round(weightedPitch) + '°)';
+                document.getElementById('resultSegments').textContent = segments.length;
+
+                document.getElementById('analyzingLoading').style.display = 'none';
+                document.getElementById('lookupResults').style.display = 'block';
+                document.getElementById('step0NextBtn').style.display = 'block';
+                document.getElementById('step0NextBtn').textContent = 'Continue with These Measurements';
+
+                // Make the marker non-draggable now
+                if (satMarker) satMarker.setDraggable(false);
+
+                // Store for auto-fill
+                formData.address = pendingAddress;
+                formData.roofSize = Math.max(500, Math.min(15000, totalSqFt));
+                formData.pitch = pitchCategory;
+                formData.roofComplexity = complexityId;
+
+                trackEvent('solar_lookup_success', { sqft: totalSqFt, segments: segments.length });
+
+            } catch (err) {
+                document.getElementById('analyzingLoading').style.display = 'none';
+                document.getElementById('lookupErrorMsg').textContent = err.message || 'Unable to retrieve roof data. You can enter your roof size manually.';
+                document.getElementById('lookupError').style.display = 'block';
+                document.getElementById('step0NextBtn').style.display = 'block';
+                document.getElementById('step0NextBtn').textContent = 'Continue Manually';
+                trackEvent('solar_lookup_error', { error: err.message });
+            }
+        }
+
+        function skipLookup() {
+            solarData = null;
+            goToStep(1);
+            trackEvent('solar_lookup_skipped');
+        }
+
+        // ========== SATELLITE MAP ==========
+        let satMap = null;
+        let satMarker = null;
+
+        // Initialize the background map (default: El Paso overview)
+        function initDefaultMap() {
+            try {
+                if (typeof google === 'undefined' || !google.maps) return;
+                const mapEl = document.getElementById('satelliteMap');
+                if (!mapEl) return;
+
+                satMap = new google.maps.Map(mapEl, {
+                    center: { lat: 31.7619, lng: -106.4850 }, // El Paso, TX
+                    zoom: 13,
+                    mapTypeId: 'satellite',
+                    tilt: 0,
+                    disableDefaultUI: true,
+                    gestureHandling: 'none',
+                    keyboardShortcuts: false,
+                    draggable: false
+                });
+            } catch(e) {
+                console.warn('Default map init failed:', e);
+            }
+        }
+
+        // Helper: wait for a duration
+        function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+        // Animate zoom from city overview → neighborhood → rooftop, then drop draggable pin
+        async function animateZoomToRoof(lat, lng) {
+            try {
+                if (!satMap) {
+                    const mapEl = document.getElementById('satelliteMap');
+                    if (!mapEl) return;
+                    satMap = new google.maps.Map(mapEl, {
+                        center: { lat, lng },
+                        zoom: 13,
+                        mapTypeId: 'satellite',
+                        tilt: 0,
+                        disableDefaultUI: true,
+                        gestureHandling: 'none',
+                        keyboardShortcuts: false
+                    });
+                    await wait(400); // let map tiles load
+                }
+
+                // Enable smooth transitions
+                satMap.setOptions({ gestureHandling: 'cooperative', draggable: true });
+
+                // Lighten the overlay
+                document.getElementById('mapBackground').classList.add('map-active');
+
+                // Step 1: Pan to the address at current zoom (city level)
+                satMap.panTo({ lat, lng });
+                await wait(600);
+
+                // Step 2: Zoom to neighborhood level (16)
+                satMap.setZoom(16);
+                await wait(700);
+
+                // Step 3: Zoom to street level (18)
+                satMap.setZoom(18);
+                await wait(700);
+
+                // Step 4: Zoom to rooftop (20)
+                satMap.setZoom(20);
+                await wait(600);
+
+                // Remove old marker if any
+                if (satMarker) satMarker.setMap(null);
+
+                // Drop a draggable pin with bounce animation
+                satMarker = new google.maps.Marker({
+                    position: { lat, lng },
+                    map: satMap,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    icon: {
+                        url: 'data:image/svg+xml,' + encodeURIComponent(`
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="52" viewBox="0 0 40 52">
+                                <defs>
+                                    <filter id="shadow" x="-20%" y="-10%" width="140%" height="130%">
+                                        <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
+                                    </filter>
+                                </defs>
+                                <path d="M20 0 C8.95 0 0 8.95 0 20 C0 35 20 52 20 52 C20 52 40 35 40 20 C40 8.95 31.05 0 20 0Z" fill="#FF5C34" filter="url(#shadow)"/>
+                                <circle cx="20" cy="19" r="8" fill="white" opacity="0.9"/>
+                                <path d="M16 19 L20 12 L24 19 Z" fill="#FF5C34" opacity="0.8"/>
+                                <rect x="17" y="19" width="6" height="5" fill="#FF5C34" opacity="0.6" rx="0.5"/>
+                            </svg>
+                        `),
+                        scaledSize: new google.maps.Size(40, 52),
+                        anchor: new google.maps.Point(20, 52)
+                    },
+                    title: 'Drag to adjust pin position'
+                });
+
+            } catch(e) {
+                console.warn('Map zoom animation failed:', e);
+            }
+        }
+
+        function adjustMapZoom(delta) {
+            if (!satMap) return;
+            satMap.setZoom(satMap.getZoom() + delta);
+        }
+
+        window.initPlacesAutocomplete = async function() {
+            try {
+                if (typeof google === 'undefined' || !google.maps) return;
+
+                // Initialize the default background map right away
+                initDefaultMap();
+
+                const input = document.getElementById('addressInput');
+
+                // Try the new PlaceAutocompleteElement first (recommended by Google as of March 2025)
+                if (google.maps.places && google.maps.places.PlaceAutocompleteElement) {
+                    try {
+                        const placeAC = new google.maps.places.PlaceAutocompleteElement({
+                            types: ['address'],
+                            componentRestrictions: { country: 'us' }
+                        });
+
+                        // Style the new element to match our input
+                        placeAC.style.cssText = 'width:100%;';
+                        // Replace our input with the PlaceAutocompleteElement
+                        const wrap = input.parentElement;
+                        input.style.display = 'none';
+                        wrap.appendChild(placeAC);
+
+                        // Style the inner input of the web component
+                        const styleInner = document.createElement('style');
+                        styleInner.textContent = `
+                            gmp-place-autocomplete { width: 100%; }
+                            gmp-place-autocomplete input {
+                                width: 100%;
+                                padding: 14px 16px 14px 44px !important;
+                                border: 2px solid var(--light-gray) !important;
+                                border-radius: 10px !important;
+                                font-size: 1rem !important;
+                                font-family: var(--font-body) !important;
+                                color: var(--forest-deep) !important;
+                                background: white !important;
+                                box-sizing: border-box !important;
+                            }
+                            gmp-place-autocomplete input:focus {
+                                border-color: var(--terracotta) !important;
+                                box-shadow: 0 0 0 3px rgba(255, 92, 52, 0.12) !important;
+                                outline: none !important;
+                            }
+                        `;
+                        document.head.appendChild(styleInner);
+
+                        placeAC.addEventListener('gmp-select', async ({ placePrediction }) => {
+                            const place = placePrediction.toPlace();
+                            await place.fetchFields({ fields: ['formattedAddress', 'location'] });
+                            if (place.formattedAddress) {
+                                input.value = place.formattedAddress;
+                                input.style.display = 'none'; // keep hidden, value stored for lookupRoof
+                            }
+                        });
+                        console.log('Using new PlaceAutocompleteElement');
+                        return;
+                    } catch(newErr) {
+                        console.warn('New PlaceAutocompleteElement failed, trying legacy:', newErr);
+                        input.style.display = ''; // restore input
+                    }
+                }
+
+                // Fallback to legacy Autocomplete widget
+                if (google.maps.places && google.maps.places.Autocomplete) {
+                    const autocomplete = new google.maps.places.Autocomplete(input, {
+                        types: ['address'],
+                        componentRestrictions: { country: 'us' },
+                        fields: ['formatted_address', 'geometry']
+                    });
+                    autocomplete.addListener('place_changed', () => {
+                        const place = autocomplete.getPlace();
+                        if (place && place.formatted_address) {
+                            input.value = place.formatted_address;
+                        }
+                    });
+                    console.log('Using legacy Autocomplete widget');
+                }
+            } catch(e) {
+                console.warn('Places autocomplete init failed:', e);
+            }
         };
 
         // ========== INITIALIZATION ==========
@@ -2540,6 +3392,17 @@
             renderIssuesCheckboxes();
             setupEventListeners();
             setupMobileNav();
+            // Load Google Maps Places library (async loading per best practices)
+            if (GOOGLE_API_KEY !== 'YOUR_API_KEY_HERE') {
+                const script = document.createElement('script');
+                script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places&loading=async&callback=initPlacesAutocomplete`;
+                script.async = true;
+                script.defer = true;
+                script.onerror = function() {
+                    console.warn('Google Maps failed to load — address autocomplete disabled');
+                };
+                document.head.appendChild(script);
+            }
         }
 
         function setupMobileNav() {
@@ -2719,7 +3582,7 @@
         }
 
         // ========== SLIDER & INPUT SYNC ==========
-        document.addEventListener('DOMContentLoaded', () => {
+        function setupEventListeners() {
             const roofSize = document.getElementById('roofSize');
             const sizeInput = document.getElementById('sizeInput');
 
@@ -2752,7 +3615,9 @@
                     updateRoofIcon();
                 });
             }
+        }
 
+        document.addEventListener('DOMContentLoaded', () => {
             // Scroll CTA
             const scrollCTA = document.querySelector('.scroll-cta');
             if (scrollCTA) {
@@ -2773,6 +3638,25 @@
 
         // ========== STEP NAVIGATION ==========
         function nextStep() {
+            if (currentStep === 0) {
+                // Moving from address lookup to roof size — apply solar data if available
+                if (solarData) {
+                    // Auto-fill the slider and input
+                    const slider = document.getElementById('roofSize');
+                    const input = document.getElementById('sizeInput');
+                    if (slider) slider.value = formData.roofSize;
+                    if (input) input.value = formData.roofSize;
+                    updateRoofIcon();
+                    // Show satellite banner
+                    const banner = document.getElementById('satelliteBanner');
+                    if (banner) {
+                        banner.style.display = 'flex';
+                        document.getElementById('satelliteBannerText').textContent =
+                            `Satellite estimate: ~${formData.roofSize.toLocaleString()} sq ft for ${formData.address} — adjust if needed`;
+                    }
+                }
+            }
+
             if (currentStep === 1) {
                 if (formData.roofSize < 500 || formData.roofSize > 15000) {
                     showError('Please enter a roof size between 500 and 15,000 sq ft');
@@ -2796,6 +3680,11 @@
                     showError('Please select your roof pitch');
                     return;
                 }
+                // Auto-select pitch and complexity from solar data
+                if (solarData) {
+                    renderPitchCards();
+                    renderComplexityCards();
+                }
             }
 
             if (currentStep < 4) {
@@ -2807,7 +3696,7 @@
         }
 
         function prevStep() {
-            if (currentStep > 1) {
+            if (currentStep > 0) {
                 goToStep(currentStep - 1);
             }
         }
@@ -2835,13 +3724,43 @@
                 document.querySelector('.calculator').scrollIntoView({ behavior: 'smooth' });
 
                 currentStep = stepNumber;
+
+                // Highlight auto-selected cards when arriving at Step 3 (Home Details) with satellite data
+                if (stepNumber === 3 && solarData) {
+                    setTimeout(() => highlightAutoSelected(), 300);
+                }
+
                 trackEvent('step_view', { step: stepNumber });
             }, 200);
         }
 
+        // Highlight satellite-auto-selected pitch & complexity cards with glow + badge
+        function highlightAutoSelected() {
+            // Find the selected pitch card
+            const pitchCard = document.querySelector('#pitchGrid .pitch-card.selected');
+            if (pitchCard && !pitchCard.querySelector('.satellite-auto-badge')) {
+                pitchCard.classList.add('satellite-auto-selected');
+                const badge = document.createElement('div');
+                badge.className = 'satellite-auto-badge';
+                badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Auto-detected';
+                pitchCard.appendChild(badge);
+            }
+
+            // Find the selected complexity card
+            const complexityCard = document.querySelector('#complexityGrid .pitch-card.selected');
+            if (complexityCard && !complexityCard.querySelector('.satellite-auto-badge')) {
+                complexityCard.classList.add('satellite-auto-selected');
+                const badge = document.createElement('div');
+                badge.className = 'satellite-auto-badge';
+                badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Auto-detected';
+                complexityCard.appendChild(badge);
+            }
+        }
+
         function updateProgressBar(stepNumber) {
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 0; i <= 4; i++) {
                 const indicator = document.getElementById(`step${i}Indicator`);
+                if (!indicator) continue;
                 if (i < stepNumber) {
                     indicator.classList.remove('active');
                     indicator.classList.add('completed');
@@ -2853,8 +3772,8 @@
                 }
             }
 
-            const labels = ['Step 1 of 4: Roof Size', 'Step 2 of 4: Material', 'Step 3 of 4: Home Details', 'Step 4 of 4: Your Estimate'];
-            document.getElementById('progressText').textContent = labels[stepNumber - 1];
+            const labels = ['Step 1 of 5: Satellite Scan', 'Step 2 of 5: Roof Size', 'Step 3 of 5: Material', 'Step 4 of 5: Home Details', 'Step 5 of 5: Your Estimate'];
+            document.getElementById('progressText').textContent = labels[stepNumber];
         }
 
         // ========== CALCULATIONS ==========
@@ -3149,7 +4068,7 @@
 
                 // Step 5 Results
                 'est.step4.title': 'Su Cotización de Techo',
-                'est.step4.cost.label': 'Costo Total Estimado',
+                'est.step4.cost.label': 'Costo Estimado (Materiales + Mano de Obra)',
                 'est.step4.breakdown.title': 'Desglose de Costos',
                 'est.step4.refine.toggle': '¿Desea una cotización más precisa? Ajuste sus detalles',
                 'est.step4.refine.layers.title': 'Capas de Techo Existentes',
@@ -3207,144 +4126,6 @@
         };
 
 </script>
-
-    <!-- Theme Toggle -->
-    <div class="theme-toggle" id="themeToggle">
-        <div class="theme-panel" id="themePanel">
-            <div class="theme-panel-title">Color Palette</div>
-            <button class="theme-option active" data-theme="default">
-                <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3A3A3A"></div>
-                    <div class="theme-swatch" style="background:#FF5C34"></div>
-                    <div class="theme-swatch" style="background:#D4A85C"></div>
-                </div>
-                Charcoal & Amber
-            </button>
-            <button class="theme-option" data-theme="charcoal-amber">
-                <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3A3A3A"></div>
-                    <div class="theme-swatch" style="background:#FF5C34"></div>
-                    <div class="theme-swatch" style="background:#D4A85C"></div>
-                </div>
-                Charcoal & Amber
-            </button>
-                    <div style="border-top: 1px solid #e0e0e0; margin: 6px 0; padding-top: 2px;"></div>
-            <div style="font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#bbb; padding: 0 10px 4px;">Horizontal Logo</div>
-            <button class="theme-option" data-theme="plum-h">
-                <div class="theme-swatches">
-                    <div class="theme-swatch" style="background:#3A3A3A"></div>
-                    <div class="theme-swatch" style="background:#FF5C34"></div>
-                    <div class="theme-swatch" style="background:#C9A0A8"></div>
-                </div>
-                Plum & Persimmon (H)
-            </button>
-        </div>
-        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch color theme">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
-    </div>
-
-
-    <script>
-    // Theme switcher
-    (function() {
-        let saved = localStorage.getItem('meraki-theme') || 'default';
-        if (['plum-persimmon', 'forest-terracotta', 'forest-h', 'navy-gold', 'slate-sage', 'olive-copper', 'olive-h'].includes(saved)) { saved = 'default'; localStorage.setItem('meraki-theme', 'default'); }
-        if (saved !== 'default') {
-            document.documentElement.setAttribute('data-theme', saved);
-        }
-
-        const logoMap = {
-            'default': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-            'charcoal-amber': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-                'plum-h': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-        };
-
-        const footerLogoMap = {
-            'charcoal-amber': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-                'plum-h': 'images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.png',
-        };
-
-        const horizontalThemes = ['charcoal-amber', 'plum-h'];
-
-        function applyLogo(theme) {
-            const navImg = document.getElementById('navLogoImg');
-            if (navImg && logoMap[theme]) {
-                navImg.src = logoMap[theme];
-                if (horizontalThemes.includes(theme)) {
-                    navImg.classList.add('horizontal-logo');
-                } else {
-                    navImg.classList.remove('horizontal-logo');
-                }
-            }
-            const footerImg = document.getElementById('footerLogoImg');
-            if (footerImg) {
-                if (footerLogoMap[theme]) {
-                    footerImg.src = footerLogoMap[theme];
-                    footerImg.style.display = 'block';
-                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
-                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
-                    if (svgLogo) svgLogo.style.display = 'none';
-                    if (textLogo) textLogo.style.display = 'none';
-                } else {
-                    footerImg.style.display = 'none';
-                    const svgLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-icon') : null;
-                    const textLogo = footerImg.closest('.footer-logo') ? footerImg.closest('.footer-logo').querySelector('.nav-logo-text') : null;
-                    if (svgLogo) svgLogo.style.display = '';
-                    if (textLogo) textLogo.style.display = '';
-                }
-            }
-        }
-
-        // Apply logo for saved theme on load
-        applyLogo(saved);
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Re-apply after DOM ready
-            applyLogo(saved);
-
-            const panel = document.getElementById('themePanel');
-            const toggleBtn = document.getElementById('themeToggleBtn');
-            if (!panel || !toggleBtn) return;
-
-            // Mark active button
-            panel.querySelectorAll('.theme-option').forEach(opt => {
-                if (opt.dataset.theme === saved) {
-                    opt.classList.add('active');
-                } else {
-                    opt.classList.remove('active');
-                }
-            });
-
-            toggleBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                panel.classList.toggle('open');
-            });
-
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('#themeToggle')) {
-                    panel.classList.remove('open');
-                }
-            });
-
-            panel.querySelectorAll('.theme-option').forEach(opt => {
-                opt.addEventListener('click', function() {
-                    const theme = this.dataset.theme;
-                    if (theme === 'default') {
-                        document.documentElement.removeAttribute('data-theme');
-                    } else {
-                        document.documentElement.setAttribute('data-theme', theme);
-                    }
-                    localStorage.setItem('meraki-theme', theme);
-                    panel.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
-                    this.classList.add('active');
-                    applyLogo(theme);
-                    panel.classList.remove('open');
-                });
-            });
-        });
-    })();
-    </script>
 
 </body>
 </html>
