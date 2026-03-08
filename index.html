@@ -7252,17 +7252,20 @@
             const addr = heroPendingAddress || document.getElementById('heroAddressInput')?.value || '';
             if (!addr) return;
 
-            // Set the hidden original input (used by homeLookupRoof)
+            // Set the original input value (used by homeLookupRoof)
             const homeInput = document.getElementById('homeAddressInput');
-            if (homeInput) homeInput.value = addr;
+            if (!homeInput) return;
+            homeInput.value = addr;
 
-            // Also set the PlaceAutocompleteElement's visible input if it replaced the original
+            // The PlaceAutocompleteElement uses a closed shadow DOM so we can't set its input.
+            // Instead: hide the autocomplete element, show the original input with the address.
             const homeSection = document.getElementById('homeAddressSection');
             if (homeSection) {
                 const placeAC = homeSection.querySelector('gmp-place-autocomplete');
                 if (placeAC) {
-                    const acInput = placeAC.shadowRoot?.querySelector('input') || placeAC.querySelector('input');
-                    if (acInput) acInput.value = addr;
+                    placeAC.style.display = 'none';
+                    homeInput.style.display = '';
+                    homeInput.style.flex = '1';
                 }
             }
         }
