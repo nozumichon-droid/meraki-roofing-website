@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meraki Roofing — Drone Inspection SWOT Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #3A3A3A;
+    --terracotta: #FF5C34;
+    --cream: #F5F3EF;
+    --dark: #1a1a2e;
+    --strength: #22c55e;
+    --weakness: #ef4444;
+    --opportunity: #3b82f6;
+    --threat: #f59e0b;
+    --strength-bg: #f0fdf4;
+    --weakness-bg: #fef2f2;
+    --opportunity-bg: #eff6ff;
+    --threat-bg: #fffbeb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--forest); line-height: 1.6; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+    color: white;
+    padding: 60px 40px 50px;
+    text-align: center;
+  }
+  .header h1 { font-family: 'Lora', serif; font-size: 2.6rem; margin-bottom: 8px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.7; font-weight: 300; }
+  .header .meta { margin-top: 20px; display: flex; justify-content: center; gap: 30px; font-size: 0.85rem; opacity: 0.5; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* Executive Summary */
+  .exec-summary {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    margin: -30px auto 40px;
+    max-width: 1000px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 2;
+  }
+  .exec-summary h2 { font-family: 'Lora', serif; font-size: 1.5rem; margin-bottom: 16px; color: var(--forest); }
+  .exec-summary p { color: #555; font-size: 0.95rem; }
+
+  /* SWOT Grid */
+  .swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 40px auto;
+    max-width: 1200px;
+  }
+  .swot-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    border-top: 5px solid;
+  }
+  .swot-card.strengths { border-color: var(--strength); }
+  .swot-card.weaknesses { border-color: var(--weakness); }
+  .swot-card.opportunities { border-color: var(--opportunity); }
+  .swot-card.threats { border-color: var(--threat); }
+
+  .swot-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.35rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .swot-card.strengths h3 { color: var(--strength); }
+  .swot-card.weaknesses h3 { color: var(--weakness); }
+  .swot-card.opportunities h3 { color: var(--opportunity); }
+  .swot-card.threats h3 { color: var(--threat); }
+
+  .swot-item {
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+  .swot-card.strengths .swot-item { background: var(--strength-bg); }
+  .swot-card.weaknesses .swot-item { background: var(--weakness-bg); }
+  .swot-card.opportunities .swot-item { background: var(--opportunity-bg); }
+  .swot-card.threats .swot-item { background: var(--threat-bg); }
+
+  .swot-item strong { display: block; margin-bottom: 4px; font-size: 0.92rem; }
+  .swot-item p { color: #666; font-size: 0.83rem; margin: 0; }
+
+  /* Competitor Section */
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    text-align: center;
+    margin: 60px 0 12px;
+    color: var(--forest);
+  }
+  .section-subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+  }
+
+  .competitor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+    margin: 0 auto 60px;
+    max-width: 1200px;
+  }
+  .competitor-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+  }
+  .competitor-card:hover { transform: translateY(-4px); }
+  .competitor-card .comp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .competitor-card h4 { font-size: 1.1rem; color: var(--forest); }
+  .competitor-card .comp-type {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .comp-type.direct { background: #fee2e2; color: #dc2626; }
+  .comp-type.indirect { background: #fef3c7; color: #d97706; }
+  .comp-type.regional { background: #dbeafe; color: #2563eb; }
+
+  .comp-detail { font-size: 0.83rem; color: #666; margin-bottom: 16px; line-height: 1.55; }
+
+  .comp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .comp-tag {
+    font-size: 0.72rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    background: #f3f4f6;
+    color: #555;
+    font-weight: 500;
+  }
+
+  .comp-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.82rem; }
+  .comp-row:last-child { border-bottom: none; }
+  .comp-label { color: #999; }
+  .comp-value { font-weight: 600; color: var(--forest); }
+
+  /* Threat Meter */
+  .threat-meter {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .threat-bar {
+    flex: 1;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .threat-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.6s ease;
+  }
+  .threat-low .threat-fill { background: var(--strength); width: 25%; }
+  .threat-med .threat-fill { background: var(--threat); width: 55%; }
+  .threat-high .threat-fill { background: var(--weakness); width: 80%; }
+  .threat-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .threat-low .threat-label { color: var(--strength); }
+  .threat-med .threat-label { color: var(--threat); }
+  .threat-high .threat-label { color: var(--weakness); }
+
+  /* Market Data Section */
+  .market-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 0 auto 60px;
+    max-width: 1200px;
+  }
+  .stat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .stat-number {
+    font-family: 'Lora', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.8rem; color: #888; margin-top: 8px; }
+
+  /* Strategy Section */
+  .strategy-section {
+    background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+    padding: 60px 0;
+    margin-top: 60px;
+    color: white;
+  }
+  .strategy-section .section-title { color: white; margin-top: 0; }
+  .strategy-section .section-subtitle { color: rgba(255,255,255,0.5); }
+
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .strategy-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .strategy-card h4 { font-size: 1rem; margin-bottom: 10px; color: var(--terracotta); }
+  .strategy-card p { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+  .strategy-number {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.15);
+    margin-bottom: 8px;
+  }
+
+  /* Footer */
+  .footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #aaa; }
+
+  @media (max-width: 768px) {
+    .swot-grid { grid-template-columns: 1fr; }
+    .market-stats { grid-template-columns: 1fr 1fr; }
+    .header h1 { font-size: 1.8rem; }
+    .competitor-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Drone Inspection Services — SWOT Analysis</h1>
+  <p class="subtitle">Meraki Roofing &bull; El Paso, TX Market Assessment</p>
+  <div class="meta">
+    <span>Prepared: March 2026</span>
+    <span>Market: El Paso Metro Area</span>
+    <span>Service: DJI M30T Drone Inspections</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Executive Summary -->
+  <div class="exec-summary">
+    <h2>Executive Summary</h2>
+    <p>The drone roof inspection market is projected to grow at a 12.9–14.6% CAGR through 2033, reaching up to $3.5 billion globally. In El Paso, the competitive landscape is fragmented — only a handful of companies currently offer dedicated drone inspection services, and most are either generalist drone operators or roofing companies that use drones as a supplementary tool. Meraki Roofing's plan to deploy a DJI M30T with thermal imaging positions it as the first local roofer with enterprise-grade, survey-quality drone capabilities — a significant first-mover advantage in the residential and commercial segments. The primary risks are the $20K+ equipment investment and the learning curve for thermal analysis, but the ROI potential through insurance partnerships, faster inspections, and premium service tiers is substantial.</p>
+  </div>
+
+  <!-- Market Stats -->
+  <h2 class="section-title">Market Snapshot</h2>
+  <p class="section-subtitle">Drone roof inspection industry at a glance</p>
+
+  <div class="market-stats">
+    <div class="stat-card">
+      <div class="stat-number">$1.2B</div>
+      <div class="stat-label">Global Market Size (2024)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">14.4%</div>
+      <div class="stat-label">Projected CAGR (2025–2035)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">86%</div>
+      <div class="stat-label">U.S. Share of Global Market</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">1,123</div>
+      <div class="stat-label">TX Hail Events in 2023</div>
+    </div>
+  </div>
+
+  <!-- SWOT Grid -->
+  <h2 class="section-title">SWOT Analysis</h2>
+  <p class="section-subtitle">Internal capabilities and external factors shaping Meraki's drone business</p>
+
+  <div class="swot-grid">
+
+    <!-- Strengths -->
+    <div class="swot-card strengths">
+      <h3><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Strengths</h3>
+
+      <div class="swot-item">
+        <strong>Roofing Expertise + Drone Tech</strong>
+        <p>Unlike pure drone operators, Meraki understands roofing — can interpret thermal data with real trade knowledge, catch issues generic pilots miss, and immediately quote repairs.</p>
+      </div>
+      <div class="swot-item">
+        <strong>DJI M30T Enterprise Platform</strong>
+        <p>48MP zoom + 640×512 thermal + laser rangefinder. IP55 rated for El Paso dust storms. Far superior to consumer drones used by most local competitors.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Existing Customer Base</strong>
+        <p>587+ completed projects provide a built-in upsell pipeline. Every past customer is a potential drone inspection client for annual maintenance checks.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Full-Service Revenue Model</strong>
+        <p>Drone inspection leads directly to repair/replacement contracts. Competitors who only inspect can't capture downstream revenue — Meraki gets the full lifecycle.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Digital-Forward Brand</strong>
+        <p>Website already features AI-powered instant estimates, satellite roof scanning, and interactive tools. Adding drone services reinforces Meraki's tech leadership positioning.</p>
+      </div>
+    </div>
+
+    <!-- Weaknesses -->
+    <div class="swot-card weaknesses">
+      <h3><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Weaknesses</h3>
+
+      <div class="swot-item">
+        <strong>High Capital Investment</strong>
+        <p>DJI M30T runs $20K–$25K+ with accessories. Additional costs for insurance, FAA Part 107 certification, backup batteries, and software subscriptions.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Thermal Analysis Learning Curve</strong>
+        <p>Interpreting radiometric thermal data requires specialized training. Misreading thermal signatures could lead to false findings and credibility damage.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Pilot Certification & Liability</strong>
+        <p>Requires FAA Part 107 licensed pilot(s). Drone insurance adds ~$1,000–$1,500/year. Flying near Fort Bliss airspace requires special authorization.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Weather Dependency</strong>
+        <p>El Paso's high winds (especially spring) and dust storms can ground flights. Thermal scans are most effective early morning or evening, limiting daily capacity.</p>
+      </div>
+      <div class="swot-item">
+        <strong>No Track Record Yet</strong>
+        <p>Competitors like From Above Droneworks and All Star Roofing already have published drone inspection portfolios and reviews. Meraki will need to build proof quickly.</p>
+      </div>
+    </div>
+
+    <!-- Opportunities -->
+    <div class="swot-card opportunities">
+      <h3><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Opportunities</h3>
+
+      <div class="swot-item">
+        <strong>Fragmented Local Market</strong>
+        <p>Only ~4-5 companies serve El Paso with drone inspections, and most are generalists. No local roofer currently offers enterprise-grade thermal + visual drone reports.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Insurance Adjuster Partnerships</strong>
+        <p>Insurance companies increasingly accept drone reports for claims. Becoming a preferred vendor for adjusters could generate high-volume, recurring business.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Commercial Property Management</strong>
+        <p>El Paso's growing industrial corridor and military-adjacent commercial properties need regular roof inspections. Volume contracts ($299/property) at scale are highly profitable.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Hail Season Revenue Spikes</strong>
+        <p>Texas averages 500–1,100+ major hail events annually. Post-storm demand for fast, safe roof assessments creates natural urgency for drone services.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Cross-Border (Juárez) Market</strong>
+        <p>El Paso's proximity to Juárez's industrial manufacturing zone (maquiladoras) opens potential for cross-border commercial inspections — a market no current competitor serves.</p>
+      </div>
+    </div>
+
+    <!-- Threats -->
+    <div class="swot-card threats">
+      <h3><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18.36 5.64a9 9 0 11-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg> Threats</h3>
+
+      <div class="swot-item">
+        <strong>THE FUTURE 3D (National Player)</strong>
+        <p>FAA-certified, already uses DJI Matrice 4T, 1-hour response time, and 48–72 hour report delivery. Serves Fort Bliss and cross-border facilities. Most capable competitor.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Rapidly Falling Equipment Costs</strong>
+        <p>As enterprise drones get cheaper, the barrier to entry drops. More roofers and inspection companies will add drone services within 2–3 years.</p>
+      </div>
+      <div class="swot-item">
+        <strong>FAA Regulation Changes</strong>
+        <p>New Remote ID requirements, potential flight restrictions near Fort Bliss expansion, or additional commercial licensing burdens could increase operating costs.</p>
+      </div>
+      <div class="swot-item">
+        <strong>Customer Price Sensitivity</strong>
+        <p>El Paso's median household income (~$52K) is below national average. Residential customers may balk at $199–$599 inspection fees if they can get free estimates from traditional roofers.</p>
+      </div>
+      <div class="swot-item">
+        <strong>AI/Satellite Alternatives</strong>
+        <p>Companies like EagleView and Hover already offer satellite-based roof measurements. As satellite resolution improves, some customers may skip drone inspections entirely.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Competitor Landscape -->
+  <h2 class="section-title">Competitor Landscape</h2>
+  <p class="section-subtitle">Companies currently offering drone roof inspection services in the El Paso market</p>
+
+  <div class="competitor-grid">
+
+    <!-- THE FUTURE 3D -->
+    <div class="competitor-card">
+      <div class="comp-header">
+        <h4>THE FUTURE 3D</h4>
+        <span class="comp-type direct">Direct Threat</span>
+      </div>
+      <p class="comp-detail">National drone inspection company with a dedicated El Paso presence. FAA-certified pilots using DJI Matrice 4T with thermal imaging. Serves industrial, military (Fort Bliss), and commercial clients across the El Paso-Juárez border region.</p>
+      <div class="comp-tags">
+        <span class="comp-tag">Thermal Imaging</span>
+        <span class="comp-tag">3D Scanning</span>
+        <span class="comp-tag">FAA Certified</span>
+        <span class="comp-tag">48-72hr Reports</span>
+      </div>
+      <div class="comp-row"><span class="comp-label">Equipment</span><span class="comp-value">DJI Matrice 4T</span></div>
+      <div class="comp-row"><span class="comp-label">Response Time</span><span class="comp-value">1 Hour</span></div>
+      <div class="comp-row"><span class="comp-label">Focus</span><span class="comp-value">Commercial / Industrial</span></div>
+      <div class="comp-row"><span class="comp-label">Pricing</span><span class="comp-value">Quote-based (unlisted)</span></div>
+      <div class="threat-meter threat-high">
+        <div class="threat-bar"><div class="threat-fill"></div></div>
+        <span class="threat-label">High</span>
+      </div>
+    </div>
+
+    <!-- From Above Droneworks -->
+    <div class="competitor-card">
+      <div class="comp-header">
+        <h4>From Above Droneworks</h4>
+        <span class="comp-type direct">Direct Threat</span>
+      </div>
+      <p class="comp-detail">Veteran-owned El Paso drone company founded by Jeremy Schofield. Offers aerial photography, videography, construction monitoring, and structural inspections. Covers El Paso, Las Cruces, and Juárez. Positive Yelp reviews and Alignable presence.</p>
+      <div class="comp-tags">
+        <span class="comp-tag">Veteran-Owned</span>
+        <span class="comp-tag">Construction</span>
+        <span class="comp-tag">Real Estate</span>
+        <span class="comp-tag">Pilot Training</span>
+      </div>
+      <div class="comp-row"><span class="comp-label">Equipment</span><span class="comp-value">Not specified</span></div>
+      <div class="comp-row"><span class="comp-label">Pricing</span><span class="comp-value">$200–$800/session</span></div>
+      <div class="comp-row"><span class="comp-label">Focus</span><span class="comp-value">Generalist Drone Services</span></div>
+      <div class="comp-row"><span class="comp-label">Weakness</span><span class="comp-value">No roofing expertise</span></div>
+      <div class="threat-meter threat-med">
+        <div class="threat-bar"><div class="threat-fill"></div></div>
+        <span class="threat-label">Medium</span>
+      </div>
+    </div>
+
+    <!-- All Star Roofing -->
+    <div class="competitor-card">
+      <div class="comp-header">
+        <h4>All Star Roofing & Construction</h4>
+        <span class="comp-type direct">Direct Threat</span>
+      </div>
+      <p class="comp-detail">Established El Paso roofing company (30 years combined experience) that has added drone inspections to their service offering. Strong BBB presence and positive Yelp reviews (17 reviews). Offers free estimates and same-day roof replacements.</p>
+      <div class="comp-tags">
+        <span class="comp-tag">Roofing Company</span>
+        <span class="comp-tag">BBB Listed</span>
+        <span class="comp-tag">Free Estimates</span>
+        <span class="comp-tag">Storm Damage</span>
+      </div>
+      <div class="comp-row"><span class="comp-label">Equipment</span><span class="comp-value">Consumer-grade (unspecified)</span></div>
+      <div class="comp-row"><span class="comp-label">Pricing</span><span class="comp-value">Free (bundled with roofing)</span></div>
+      <div class="comp-row"><span class="comp-label">Focus</span><span class="comp-value">Residential Roofing</span></div>
+      <div class="comp-row"><span class="comp-label">Weakness</span><span class="comp-value">No thermal / no standalone service</span></div>
+      <div class="threat-meter threat-med">
+        <div class="threat-bar"><div class="threat-fill"></div></div>
+        <span class="threat-label">Medium</span>
+      </div>
+    </div>
+
+    <!-- Nadar Drone -->
+    <div class="competitor-card">
+      <div class="comp-header">
+        <h4>Nadar Drone (Statewide)</h4>
+        <span class="comp-type regional">Regional</span>
+      </div>
+      <p class="comp-detail">Texas-wide drone service company offering building and roof inspections including high-rises and multi-unit residential. Optional infrared imaging and 3D roof measurement reports. Not El Paso-based but serves the area.</p>
+      <div class="comp-tags">
+        <span class="comp-tag">Statewide</span>
+        <span class="comp-tag">Infrared Optional</span>
+        <span class="comp-tag">3D Measurements</span>
+        <span class="comp-tag">High-Rise</span>
+      </div>
+      <div class="comp-row"><span class="comp-label">Base</span><span class="comp-value">Texas (various cities)</span></div>
+      <div class="comp-row"><span class="comp-label">Pricing</span><span class="comp-value">Quote-based</span></div>
+      <div class="comp-row"><span class="comp-label">Focus</span><span class="comp-value">Commercial / Multi-unit</span></div>
+      <div class="comp-row"><span class="comp-label">Weakness</span><span class="comp-value">Not local — slower response</span></div>
+      <div class="threat-meter threat-low">
+        <div class="threat-bar"><div class="threat-fill"></div></div>
+        <span class="threat-label">Low</span>
+      </div>
+    </div>
+
+    <!-- TXCREI -->
+    <div class="competitor-card">
+      <div class="comp-header">
+        <h4>TXCREI</h4>
+        <span class="comp-type indirect">Indirect</span>
+      </div>
+      <p class="comp-detail">Texas Commercial Real Estate Inspections — focuses on commercial property condition assessments (PCA) and Phase I ESA environmental assessments. Uses drone thermal imaging as part of broader building inspections. Serves El Paso market.</p>
+      <div class="comp-tags">
+        <span class="comp-tag">Commercial Only</span>
+        <span class="comp-tag">Property Condition</span>
+        <span class="comp-tag">Environmental</span>
+        <span class="comp-tag">Thermal</span>
+      </div>
+      <div class="comp-row"><span class="comp-label">Focus</span><span class="comp-value">CRE Due Diligence</span></div>
+      <div class="comp-row"><span class="comp-label">Pricing</span><span class="comp-value">Quote-based (premium)</span></div>
+      <div class="comp-row"><span class="comp-label">Target</span><span class="comp-value">Investors / Lenders</span></div>
+      <div class="comp-row"><span class="comp-label">Weakness</span><span class="comp-value">No residential, not roofing-focused</span></div>
+      <div class="threat-meter threat-low">
+        <div class="threat-bar"><div class="threat-fill"></div></div>
+        <span class="threat-label">Low</span>
+      </div>
+    </div>
+
+    <!-- Total Cladding -->
+    <div class="competitor-card">
+      <div class="comp-header">
+        <h4>Total Cladding & Roofing</h4>
+        <span class="comp-type regional">Regional</span>
+      </div>
+      <p class="comp-detail">Statewide roofing company offering 4K drone roof surveys across Texas including El Paso. Claims to identify leaks, corrosion, and structural issues via high-resolution imaging. Not El Paso-based.</p>
+      <div class="comp-tags">
+        <span class="comp-tag">4K Imaging</span>
+        <span class="comp-tag">Leak Detection</span>
+        <span class="comp-tag">Statewide</span>
+      </div>
+      <div class="comp-row"><span class="comp-label">Equipment</span><span class="comp-value">4K drone (unspecified)</span></div>
+      <div class="comp-row"><span class="comp-label">Focus</span><span class="comp-value">Roofing + Cladding</span></div>
+      <div class="comp-row"><span class="comp-label">Pricing</span><span class="comp-value">Not listed</span></div>
+      <div class="comp-row"><span class="comp-label">Weakness</span><span class="comp-value">Not local, no thermal imaging listed</span></div>
+      <div class="threat-meter threat-low">
+        <div class="threat-bar"><div class="threat-fill"></div></div>
+        <span class="threat-label">Low</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Strategic Recommendations -->
+<div class="strategy-section">
+  <h2 class="section-title">Strategic Recommendations</h2>
+  <p class="section-subtitle">How Meraki can leverage strengths and neutralize threats</p>
+
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="strategy-number">01</div>
+      <h4>Lead with Thermal Differentiation</h4>
+      <p>Position Meraki as the only El Paso roofer with enterprise-grade thermal imaging. THE FUTURE 3D has the tech but lacks roofing trade knowledge. All Star has roofing knowledge but lacks thermal capability. Meraki can own the overlap.</p>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-number">02</div>
+      <h4>Insurance Adjuster Program</h4>
+      <p>Build relationships with State Farm, USAA, and Allstate adjusters in El Paso. Offer standardized drone reports that meet insurer documentation requirements. This creates a recurring, high-volume revenue channel that competitors haven't captured.</p>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-number">03</div>
+      <h4>Hail Season Blitz Campaign</h4>
+      <p>El Paso's hail season (March–August) is the perfect launch window. Pre-position marketing for "48-hour post-storm drone assessments." First-responder speed after hail events builds reputation and captures leads when demand peaks.</p>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-number">04</div>
+      <h4>Property Manager Contracts</h4>
+      <p>Target El Paso's commercial property managers with annual inspection contracts at volume pricing ($299/property). A portfolio of 20 properties = $6K recurring annually per manager, with minimal marketing cost after initial acquisition.</p>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-number">05</div>
+      <h4>Build Proof Fast — 30-Day Sprint</h4>
+      <p>Offer 10–15 free or deeply discounted drone inspections in the first month to build a portfolio of before/after reports, case studies, and video testimonials. This neutralizes the "no track record" weakness immediately.</p>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-number">06</div>
+      <h4>Upsell the Existing 587 Customers</h4>
+      <p>Email and SMS campaign to past Meraki customers offering annual thermal checkups. Frame it as protecting their roofing investment. Even a 10% conversion rate yields ~59 inspections at $199–$399 each.</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Meraki Roofing — Drone Inspection SWOT Analysis &bull; Confidential &bull; March 2026</p>
+</div>
+
+</body>
+</html>

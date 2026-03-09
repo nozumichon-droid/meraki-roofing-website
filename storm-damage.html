@@ -619,29 +619,33 @@
         }
 
         .damage-image {
-            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
             border-radius: 12px;
-            padding: 2.5rem;
-            text-align: center;
-            color: var(--warm-gray);
+            overflow: hidden;
             min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-            border: 1px solid var(--light-gray);
+            position: relative;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
         }
-        .damage-image svg {
-            width: 120px;
-            height: 120px;
-            opacity: 0.85;
+        .damage-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            min-height: 300px;
+            transition: transform 0.5s ease;
+        }
+        .damage-image:hover img {
+            transform: scale(1.03);
         }
         .damage-image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 16px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.65));
             font-size: 0.82rem;
-            color: var(--warm-gray);
-            font-weight: 500;
+            color: white;
+            font-weight: 600;
             letter-spacing: 0.02em;
         }
 
@@ -1283,24 +1287,8 @@
                 </div>
 
                 <div class="damage-image">
-                    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Roof shape -->
-                        <path d="M10 70 L60 25 L110 70" stroke="var(--forest)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                        <rect x="10" y="70" width="100" height="30" rx="2" fill="var(--cream-dark)" stroke="var(--forest)" stroke-width="3"/>
-                        <!-- Shingle lines -->
-                        <line x1="10" y1="80" x2="110" y2="80" stroke="var(--forest)" stroke-width="1.5" opacity="0.3"/>
-                        <line x1="10" y1="90" x2="110" y2="90" stroke="var(--forest)" stroke-width="1.5" opacity="0.3"/>
-                        <!-- Hail circles -->
-                        <circle cx="35" cy="15" r="5" fill="var(--gold)" opacity="0.7"/>
-                        <circle cx="75" cy="10" r="4" fill="var(--gold)" opacity="0.6"/>
-                        <circle cx="55" cy="20" r="6" fill="var(--gold)" opacity="0.8"/>
-                        <circle cx="90" cy="18" r="3.5" fill="var(--gold)" opacity="0.5"/>
-                        <!-- Impact marks on roof -->
-                        <circle cx="40" cy="55" r="3" fill="none" stroke="var(--terracotta)" stroke-width="2" opacity="0.6"/>
-                        <circle cx="70" cy="50" r="3" fill="none" stroke="var(--terracotta)" stroke-width="2" opacity="0.6"/>
-                        <circle cx="55" cy="60" r="2.5" fill="none" stroke="var(--terracotta)" stroke-width="2" opacity="0.5"/>
-                    </svg>
-                    <span class="damage-image-caption">Photo coming soon</span>
+                    <img src="images/storm-hail-damage.webp" alt="Hail damage on El Paso roof — dented and dimpled shingles with granule loss" loading="lazy">
+                    <span class="damage-image-caption">Hail damage on residential roof — El Paso, TX</span>
                 </div>
             </div>
 
@@ -1348,22 +1336,8 @@
                 </div>
 
                 <div class="damage-image">
-                    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- House outline -->
-                        <path d="M15 75 L60 30 L105 75" stroke="var(--forest)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                        <rect x="15" y="75" width="90" height="30" rx="2" fill="var(--cream-dark)" stroke="var(--forest)" stroke-width="3"/>
-                        <!-- Lifted shingles -->
-                        <path d="M35 55 L42 50 L42 45" stroke="var(--terracotta)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                        <path d="M70 48 L77 42 L79 36" stroke="var(--terracotta)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                        <!-- Wind lines -->
-                        <path d="M0 35 Q15 32 30 35" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-                        <path d="M5 45 Q25 40 45 44" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-                        <path d="M0 55 Q20 50 40 53" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-                        <!-- Debris -->
-                        <rect x="88" y="40" width="8" height="4" rx="1" fill="var(--warm-gray)" opacity="0.5" transform="rotate(-20 92 42)"/>
-                        <rect x="95" y="55" width="6" height="3" rx="1" fill="var(--warm-gray)" opacity="0.4" transform="rotate(-30 98 56)"/>
-                    </svg>
-                    <span class="damage-image-caption">Photo coming soon</span>
+                    <img src="images/storm-wind-damage.webp" alt="Wind damage lifting roof shingles exposing decking — El Paso storm repair" loading="lazy">
+                    <span class="damage-image-caption">Wind damage — lifted and missing shingles</span>
                 </div>
             </div>
 
@@ -1411,27 +1385,8 @@
                 </div>
 
                 <div class="damage-image">
-                    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- House cross-section -->
-                        <path d="M15 55 L60 15 L105 55" stroke="var(--forest)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                        <rect x="15" y="55" width="90" height="50" rx="2" fill="var(--cream-dark)" stroke="var(--forest)" stroke-width="3"/>
-                        <!-- Ceiling -->
-                        <line x1="25" y1="70" x2="95" y2="70" stroke="var(--forest)" stroke-width="2" opacity="0.3"/>
-                        <!-- Water drips -->
-                        <path d="M50 55 L50 67" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3"/>
-                        <path d="M65 55 L65 64" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3"/>
-                        <!-- Water stain on ceiling -->
-                        <ellipse cx="57" cy="72" rx="14" ry="3" fill="var(--gold)" opacity="0.4"/>
-                        <!-- Droplets -->
-                        <path d="M50 70 Q51 74 50 76 Q49 74 50 70Z" fill="var(--terracotta)" opacity="0.6"/>
-                        <path d="M65 67 Q66 71 65 73 Q64 71 65 67Z" fill="var(--terracotta)" opacity="0.5"/>
-                        <!-- Rain above roof -->
-                        <line x1="30" y1="2" x2="28" y2="10" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-                        <line x1="55" y1="0" x2="53" y2="8" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-                        <line x1="80" y1="3" x2="78" y2="11" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-                        <line x1="45" y1="5" x2="43" y2="13" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
-                    </svg>
-                    <span class="damage-image-caption">Photo coming soon</span>
+                    <img src="images/storm-water-damage.webp" alt="Water damage on roof from rain and flash flooding — El Paso" loading="lazy">
+                    <span class="damage-image-caption">Water damage — rain infiltration and leaks</span>
                 </div>
             </div>
 

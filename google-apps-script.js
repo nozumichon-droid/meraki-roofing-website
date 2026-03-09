@@ -1,48 +1,86 @@
 // ============================================================
-// MERAKI ROOFING — Google Apps Script (Free Lead Tracker)
+// MERAKI ROOFING — Google Apps Script (Lead Tracker)
 // ============================================================
 //
 // SETUP INSTRUCTIONS:
-// 1. Go to https://sheets.google.com and create a new spreadsheet
-// 2. Name it "Meraki Roofing — Address Leads"
-// 3. In Row 1, add these headers:
-//    A1: Timestamp | B1: Address | C1: Latitude | D1: Longitude
-//    E1: Roof Size (sqft) | F1: Pitch | G1: Complexity | H1: Source Page
-//    I1: Estimated Cost | J1: City | K1: State | L1: Name | M1: Phone | N1: Email
+// ───────────────────
+// 1. Go to https://sheets.google.com → create a new spreadsheet
+// 2. Name it "Meraki Roofing — Leads"
+// 3. Rename the first sheet tab to "Leads"
+// 4. In Row 1, add these headers exactly:
 //
-// 4. Click Extensions → Apps Script
-// 5. Delete the default code and paste EVERYTHING below
-// 6. Click Deploy → New deployment
-// 7. Select type: "Web app"
-// 8. Set "Execute as": Me
-// 9. Set "Who has access": Anyone
-// 10. Click Deploy and copy the Web App URL
-// 11. Paste that URL into your website code where it says GOOGLE_SHEET_WEBHOOK_URL
+//    A1: Timestamp
+//    B1: Source
+//    C1: Name
+//    D1: Phone
+//    E1: Email
+//    F1: Address
+//    G1: ZIP
+//    H1: Roof Size (sqft)
+//    I1: Pitch
+//    J1: Complexity
+//    K1: Material
+//    L1: Estimated Cost
+//    M1: Service Type
+//    N1: Urgency
+//    O1: Contact Pref
+//    P1: Message
+//    Q1: Latitude
+//    R1: Longitude
 //
-// That's it! Every address entry will auto-append as a new row.
+// 5. (Optional) Bold Row 1 and freeze it: View → Freeze → 1 row
+// 6. (Optional) Format column A as Date/Time
+// 7. Click Extensions → Apps Script
+// 8. Delete the default code and paste EVERYTHING below
+// 9. Click 💾 Save (Ctrl+S)
+// 10. Click Deploy → New deployment
+//     • Type: "Web app"
+//     • Execute as: Me
+//     • Who has access: Anyone
+// 11. Click Deploy → Authorize when prompted → Copy the Web App URL
+// 12. Paste that URL into BOTH files:
+//     • index.html  → line ~32: const GOOGLE_SHEET_WEBHOOK_URL = 'YOUR_URL';
+//     • estimate.html → line ~33: const GOOGLE_SHEET_WEBHOOK_URL = 'YOUR_URL';
+//
+// LEAD SOURCES THAT LOG HERE:
+// • Hero Scanner gate (name/phone/email + roof data)
+// • Homepage Calculator gate (name/phone/email + calculator inputs)
+// • Homepage Satellite Scanner gate (name/phone/email + roof data)
+// • Hero Contact Form ("Request a Call" tab)
+// • Main Contact Form (bottom of page)
+// • Estimate Page Scanner gate (name/phone/email + roof data)
+// • Estimate Page Final Results (full estimate details)
+//
+// UPDATING THE SCRIPT:
+// If you change the script later, redeploy:
+//   Deploy → Manage deployments → ✏️ Edit → Version: New version → Deploy
 // ============================================================
 
 function doPost(e) {
   try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName('Leads') || ss.getActiveSheet();
     var data = JSON.parse(e.postData.contents);
 
-    // Append a new row with the lead data
     sheet.appendRow([
-      new Date().toLocaleString('en-US', { timeZone: 'America/Denver' }), // Timestamp (Mountain Time)
-      data.address || '',
-      data.lat || '',
-      data.lng || '',
-      data.roofSize || '',
-      data.pitch || '',
-      data.complexity || '',
-      data.source || '',
-      data.estimatedCost || '',
-      data.city || '',
-      data.state || '',
-      data.name || '',
-      data.phone || '',
-      data.email || ''
+      new Date().toLocaleString('en-US', { timeZone: 'America/Denver' }),  // A: Timestamp
+      data.source         || '',   // B: Source
+      data.name           || '',   // C: Name
+      data.phone          || '',   // D: Phone
+      data.email          || '',   // E: Email
+      data.address        || '',   // F: Address
+      data.zip            || '',   // G: ZIP
+      data.roofSize       || '',   // H: Roof Size
+      data.pitch          || '',   // I: Pitch
+      data.complexity     || '',   // J: Complexity
+      data.material       || '',   // K: Material
+      data.estimatedCost  || '',   // L: Estimated Cost
+      data.serviceType    || '',   // M: Service Type
+      data.urgency        || '',   // N: Urgency
+      data.contactPref    || '',   // O: Contact Pref
+      data.message        || '',   // P: Message
+      data.lat            || '',   // Q: Latitude
+      data.lng            || ''    // R: Longitude
     ]);
 
     return ContentService
@@ -56,9 +94,13 @@ function doPost(e) {
   }
 }
 
-// Handle GET requests (for testing — visit the URL in your browser to verify it's live)
+// Handle GET requests (visit the URL in a browser to verify the script is live)
 function doGet(e) {
   return ContentService
-    .createTextOutput(JSON.stringify({ status: 'ok', message: 'Meraki Roofing lead tracker is running.' }))
+    .createTextOutput(JSON.stringify({
+      status: 'ok',
+      message: 'Meraki Roofing lead tracker is running.',
+      version: '2.0'
+    }))
     .setMimeType(ContentService.MimeType.JSON);
 }

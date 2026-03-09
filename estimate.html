@@ -1013,6 +1013,79 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
+        /* ===== SCANNER GATE FORM ===== */
+        .scanner-gate-form {
+            text-align: center;
+            padding: 1.25rem;
+            background: rgba(255,255,255,0.08);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 520px;
+            margin: 1rem auto 0;
+        }
+        .scanner-gate-icon {
+            width: 48px; height: 48px; margin: 0 auto 0.6rem;
+            background: linear-gradient(135deg, var(--terracotta), #d4845a);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(196,114,75,0.3);
+        }
+        .scanner-gate-title {
+            font-family: var(--font-display); font-size: 1.05rem;
+            color: white; margin-bottom: 0.15rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .scanner-gate-sub {
+            font-size: 0.78rem; color: rgba(255,255,255,0.7);
+            margin-bottom: 1rem;
+        }
+        .scanner-gate-fields {
+            display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;
+        }
+        .scanner-gate-fields input {
+            width: 100%; padding: 11px 14px;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            border-radius: 10px;
+            font-family: var(--font-body); font-size: 0.88rem;
+            color: white; background: rgba(255,255,255,0.1);
+            outline: none; transition: all 0.25s; box-sizing: border-box;
+        }
+        .scanner-gate-fields input::placeholder { color: rgba(255,255,255,0.45); }
+        .scanner-gate-fields input:focus {
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(196,114,75,0.2);
+            background: rgba(255,255,255,0.15);
+        }
+        .scanner-gate-fields input.gate-error {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 3px rgba(255,107,107,0.2);
+        }
+        .scanner-gate-cta {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 12px 24px;
+            background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+            color: white; border: none; border-radius: 10px;
+            font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+            cursor: pointer; transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255,92,52,0.3);
+        }
+        .scanner-gate-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(255,92,52,0.4);
+        }
+        .scanner-gate-privacy {
+            font-size: 0.68rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem;
+        }
+        .scanner-gate-form.shake { animation: gateShake 0.4s ease; }
+        @keyframes gateShake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-6px); }
+            40% { transform: translateX(6px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
+        }
+
         /* Skip link - on map */
         button.skip-link {
             display: block;
@@ -3187,19 +3260,21 @@
                 else if (segments.length <= 4) complexityId = 'moderate';
                 else complexityId = 'complex';
 
-                // Display results
-                document.getElementById('resultAddress').textContent = pendingAddress;
-                document.getElementById('resultSqft').textContent = totalSqFt.toLocaleString() + ' sq ft';
-                document.getElementById('resultPitch').textContent = pitchLabel + ' (' + Math.round(weightedPitch) + '°)';
-                document.getElementById('resultSegments').textContent = segments.length;
-
-                document.getElementById('analyzingLoading').style.display = 'none';
-                document.getElementById('lookupResults').style.display = 'block';
-                document.getElementById('step0NextBtn').style.display = 'block';
-                document.getElementById('step0NextBtn').textContent = 'Continue with These Measurements';
-
                 // Make the marker non-draggable now
                 if (satMarker) satMarker.setDraggable(false);
+
+                // Store scan data globally for after gate unlock
+                window._estimateScanData = {
+                    address: pendingAddress,
+                    sqft: totalSqFt,
+                    pitchLabel: pitchLabel,
+                    pitchDeg: Math.round(weightedPitch),
+                    pitchCategory: pitchCategory,
+                    segmentCount: segments.length,
+                    complexityId: complexityId,
+                    lat: lat,
+                    lng: lng
+                };
 
                 // Store for auto-fill
                 formData.address = pendingAddress;
@@ -3209,19 +3284,9 @@
 
                 trackEvent('solar_lookup_success', { sqft: totalSqFt, segments: segments.length });
 
-                // Log lead to Google Sheet
-                logLeadToSheet({
-                    address: pendingAddress,
-                    lat: lat,
-                    lng: lng,
-                    roofSize: totalSqFt,
-                    pitch: pitchLabel,
-                    complexity: complexityId,
-                    source: 'Estimate Calculator',
-                    estimatedCost: '',
-                    city: '',
-                    state: ''
-                });
+                // Show gate form instead of results
+                document.getElementById('analyzingLoading').style.display = 'none';
+                showEstimateGate();
 
             } catch (err) {
                 document.getElementById('analyzingLoading').style.display = 'none';
@@ -3237,6 +3302,187 @@
             solarData = null;
             goToStep(1);
             trackEvent('solar_lookup_skipped');
+        }
+
+        // ========== PHONE NUMBER AUTO-FORMATTER ==========
+        function formatPhoneDigits(digits) {
+            let f = '';
+            if (digits.length > 0) f = '(' + digits.slice(0, 3);
+            if (digits.length >= 3) f += ') ';
+            if (digits.length > 3) f += digits.slice(3, 6);
+            if (digits.length >= 6) f += '-';
+            if (digits.length > 6) f += digits.slice(6, 10);
+            return f;
+        }
+
+        function formatPhoneInput(input) {
+            if (!input) return;
+            let prevDigitCount = 0;
+            input.addEventListener('keydown', function() {
+                prevDigitCount = this.value.replace(/\D/g, '').length;
+            });
+            input.addEventListener('input', function(e) {
+                const isDelete = e.inputType && e.inputType.indexOf('delete') !== -1;
+                let digits = this.value.replace(/\D/g, '');
+                if (digits.length > 10) digits = digits.slice(0, 10);
+                if (isDelete && digits.length >= prevDigitCount && prevDigitCount > 0) {
+                    digits = digits.slice(0, prevDigitCount - 1);
+                }
+                if (digits.length === 0) { this.value = ''; prevDigitCount = 0; return; }
+                const formatted = formatPhoneDigits(digits);
+                this.value = formatted;
+                prevDigitCount = digits.length;
+                if (isDelete) {
+                    const pos = formatted.length;
+                    this.setSelectionRange(pos, pos);
+                }
+            });
+            input.addEventListener('paste', function(e) {
+                e.preventDefault();
+                const pasted = (e.clipboardData || window.clipboardData).getData('text');
+                let digits = pasted.replace(/\D/g, '');
+                if (digits.length === 11 && digits[0] === '1') digits = digits.slice(1);
+                if (digits.length > 10) digits = digits.slice(0, 10);
+                this.value = digits.length > 0 ? formatPhoneDigits(digits) : '';
+                prevDigitCount = digits.length;
+            });
+        }
+
+        // ========== ESTIMATE SCANNER GATE ==========
+        function showEstimateGate() {
+            // Build and show gate form in the lookupResults container
+            const resultsDiv = document.getElementById('lookupResults');
+            resultsDiv.innerHTML = `
+                <div class="scanner-gate-form" id="estimateGateForm">
+                    <div class="scanner-gate-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="scanner-gate-title">Your roof scan is ready!</div>
+                    <p class="scanner-gate-sub">Enter your info to see your measurements</p>
+                    <div class="scanner-gate-fields">
+                        <input type="text" id="estGateName" placeholder="Full Name" autocomplete="name">
+                        <input type="tel" id="estGatePhone" placeholder="(915) 555-0123" autocomplete="tel">
+                        <input type="email" id="estGateEmail" placeholder="Email Address" autocomplete="email">
+                        <input type="text" name="fax" style="display:none" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button class="scanner-gate-cta" onclick="unlockEstimateResults()">
+                        See My Results
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                    <p class="scanner-gate-privacy">We'll never spam you. Your info stays private.</p>
+                </div>
+            `;
+            resultsDiv.style.display = 'block';
+
+            // Attach phone formatter
+            formatPhoneInput(document.getElementById('estGatePhone'));
+        }
+
+        function validateEstimateGate() {
+            const nameEl = document.getElementById('estGateName');
+            const phoneEl = document.getElementById('estGatePhone');
+            const emailEl = document.getElementById('estGateEmail');
+            const name = nameEl?.value.trim();
+            const phone = phoneEl?.value.replace(/\D/g, '');
+            const email = emailEl?.value.trim();
+            let valid = true;
+
+            [nameEl, phoneEl, emailEl].forEach(el => el?.classList.remove('gate-error'));
+
+            if (!name) { nameEl?.classList.add('gate-error'); valid = false; }
+            if (!phone || phone.length < 10) { phoneEl?.classList.add('gate-error'); valid = false; }
+            if (!email || !email.includes('@') || !email.includes('.')) { emailEl?.classList.add('gate-error'); valid = false; }
+
+            if (!valid) {
+                const form = document.getElementById('estimateGateForm');
+                if (form) {
+                    form.classList.remove('shake');
+                    void form.offsetWidth;
+                    form.classList.add('shake');
+                }
+            }
+
+            return valid ? { name, phone, email } : null;
+        }
+
+        function unlockEstimateResults() {
+            // Honeypot check
+            const honey = document.querySelector('#estimateGateForm input[name="fax"]');
+            if (honey && honey.value) return;
+
+            const contact = validateEstimateGate();
+            if (!contact) return;
+
+            const scan = window._estimateScanData;
+            if (!scan) return;
+
+            // Send lead via Web3Forms
+            try {
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: '9996427a-e610-43eb-a8d8-f2896b9529fc',
+                        subject: '🏠 Estimate Scanner Lead — ' + contact.name,
+                        from_name: 'Meraki Roofing Website',
+                        name: contact.name,
+                        phone: contact.phone,
+                        email: contact.email,
+                        address: scan.address,
+                        roof_size: scan.sqft + ' sq ft',
+                        complexity: scan.complexityId,
+                        pitch: scan.pitchLabel,
+                        source: 'Estimate Page Scanner'
+                    })
+                });
+            } catch(e) { /* silent */ }
+
+            // Log to Google Sheet
+            logLeadToSheet({
+                source: 'Estimate Page Scanner',
+                name: contact.name,
+                phone: contact.phone,
+                email: contact.email,
+                address: scan.address,
+                roofSize: scan.sqft,
+                pitch: scan.pitchLabel,
+                complexity: scan.complexityId,
+                lat: scan.lat,
+                lng: scan.lng
+            });
+
+            // Now show the actual results
+            const resultsDiv = document.getElementById('lookupResults');
+            resultsDiv.innerHTML = `
+                <div class="lookup-result-card">
+                    <div class="result-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div class="result-details">
+                        <div class="result-address" id="resultAddress">${scan.address}</div>
+                        <div class="result-stats">
+                            <div class="result-stat">
+                                <span class="stat-value" id="resultSqft">${scan.sqft.toLocaleString()} sq ft</span>
+                                <span class="stat-label">Est. Roof Area</span>
+                            </div>
+                            <div class="result-stat">
+                                <span class="stat-value" id="resultPitch">${scan.pitchLabel} (${scan.pitchDeg}°)</span>
+                                <span class="stat-label">Avg. Pitch</span>
+                            </div>
+                            <div class="result-stat">
+                                <span class="stat-value" id="resultSegments">${scan.segmentCount}</span>
+                                <span class="stat-label">Roof Sections</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="result-note">Measurements based on Google satellite imagery. You can adjust in the next step.</p>
+            `;
+
+            document.getElementById('step0NextBtn').style.display = 'block';
+            document.getElementById('step0NextBtn').textContent = 'Continue with These Measurements';
+
+            trackEvent('scanner_lead_captured', { source: 'estimate_page' });
         }
 
         // ========== SATELLITE MAP ==========
@@ -4005,18 +4251,15 @@
                 total_high: Math.round(calc.totalHigh)
             });
 
-            // Log final estimate to Google Sheet (update row with cost)
+            // Log final estimate to Google Sheet
             logLeadToSheet({
+                source: 'Estimate Calculator — Final',
                 address: pendingAddress || '',
-                lat: '',
-                lng: '',
                 roofSize: formData.roofSize,
                 pitch: formData.pitch,
                 complexity: formData.roofComplexity,
-                source: 'Estimate Calculator — Final',
-                estimatedCost: '$' + Math.round(calc.totalLow).toLocaleString() + ' — $' + Math.round(calc.totalHigh).toLocaleString(),
-                city: '',
-                state: ''
+                material: formData.material || '',
+                estimatedCost: '$' + Math.round(calc.totalLow).toLocaleString() + ' — $' + Math.round(calc.totalHigh).toLocaleString()
             });
         }
 

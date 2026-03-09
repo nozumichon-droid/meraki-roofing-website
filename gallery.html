@@ -607,14 +607,11 @@
                 <!-- Project 2 -->
                 <div class="project-card" data-category="storm" data-project="1" onclick="openLightbox(1)">
                     <div class="project-thumb">
-                        <div class="project-thumb-placeholder" style="background: linear-gradient(135deg, #4A6741, #6B8F62);">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"/><polyline points="13 11 9 17 15 17 11 23"/></svg>
-                            <span>Photo placeholder</span>
-                        </div>
+                        <img src="images/gallery/hail-1-overview-damage.webp" alt="Hail damage full restoration — overview of damaged roof" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
                         <div class="project-badge project-badge--storm">Storm Repair</div>
                         <div class="project-photo-count">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                            5 photos
+                            4 photos
                         </div>
                     </div>
                     <div class="project-info">
@@ -1016,7 +1013,12 @@
                 location: 'Westside',
                 year: '2023',
                 description: 'Major hail damage assessment and full replacement. Insurance claim handled start to finish — we documented all damage, met with the adjuster on-site, and coordinated the entire replacement. Homeowner paid only their deductible.',
-                photos: ['Hail impact damage on existing shingles', 'Close-up of granule loss and bruising', 'New underlayment being installed', 'Adjuster documentation photos', 'Completed roof — homeowner paid only deductible'],
+                photos: [
+                    { src: 'images/gallery/hail-1-overview-damage.webp', label: 'Overview of hail-damaged roof' },
+                    { src: 'images/gallery/hail-2-closeup-damage.webp', label: 'Close-up of granule loss and shingle bruising' },
+                    { src: 'images/gallery/hail-3-underlayment.webp', label: 'New GAF underlayment being installed' },
+                    { src: 'images/gallery/hail-4-completed.webp', label: 'Completed restoration — homeowner paid only deductible' }
+                ],
                 specs: { material: 'Impact-Resistant Shingles', duration: '3 days', sqft: '2,800', warranty: '10 yr' }
             },
             {
