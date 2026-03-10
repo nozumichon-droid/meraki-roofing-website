@@ -7100,13 +7100,15 @@
             } catch(e) { /* silent */ }
 
             // Log to Google Sheet
+            const calcPriceText = document.getElementById('calcPrice')?.textContent || '';
             logLeadToSheet({
                 source: 'Homepage Instant Estimate',
                 name: name,
                 phone: phoneEl.value.trim(),
                 email: email,
                 roofSize: parseInt(document.getElementById('calcSize').value),
-                material: document.getElementById('calcMaterial').value
+                material: document.getElementById('calcMaterial').value,
+                estimatedCost: calcPriceText
             });
 
             // Reveal results
@@ -7670,6 +7672,10 @@
                 });
             } catch(e) { console.warn('Web3Forms send failed:', e); }
 
+            // Grab current cost estimate from calculator display (if available)
+            const calcPriceEl = document.getElementById('calcPrice');
+            const estimatedCost = calcPriceEl ? calcPriceEl.textContent : '';
+
             // Also log to Google Sheet
             logLeadToSheet({
                 source: source,
@@ -7679,6 +7685,7 @@
                 address: scanData.address,
                 roofSize: scanData.sqft,
                 complexity: scanData.complexityLabel || scanData.complexity,
+                estimatedCost: estimatedCost,
                 lat: scanData.lat,
                 lng: scanData.lng
             });
