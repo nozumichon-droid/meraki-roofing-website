@@ -20,11 +20,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
-        // Google Sheets Lead Tracking
-        const GOOGLE_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyyta1y8z_lfxdNJPWbnzcKl82a9pbpcuQliBvpcqtv7eR49-rOdOVOoE5s34oixLqM/exec';
+        // ⚠️ GOOGLE SHEETS LEAD TRACKING
+        const GOOGLE_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz2BrwYHwMQBBSYXp105zgVgrbbjy8vjWMVqmqVDUvQImlL8_fj1elVx4iMy7dt5ZD64A/exec';
+
+        // ⚠️ SECRET TOKEN — must match WEBHOOK_SECRET in google-apps-script.js
+        const WEBHOOK_SECRET = 'meraki-2026-secure-lead-token';
+
         function logLeadToSheet(data) {
             if (!GOOGLE_SHEET_WEBHOOK_URL) return;
             try {
+                data._token = WEBHOOK_SECRET;
                 fetch(GOOGLE_SHEET_WEBHOOK_URL, {
                     method: 'POST',
                     mode: 'no-cors',

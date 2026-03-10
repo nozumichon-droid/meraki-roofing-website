@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meraki Roofing Website Audit Report — March 2026</title>
+<style>
+  :root {
+    --red: #DC2626;
+    --orange: #EA580C;
+    --yellow: #CA8A04;
+    --green: #16A34A;
+    --blue: #2563EB;
+    --gray: #6B7280;
+    --dark: #1F2937;
+    --light: #F9FAFB;
+    --border: #E5E7EB;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--dark); background: var(--light); line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.4rem; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+  h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
+  p, li { margin-bottom: 0.5rem; }
+  .subtitle { color: var(--gray); font-size: 1rem; margin-bottom: 2rem; }
+  .scorecard { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .score-card { background: white; border-radius: 12px; padding: 1.25rem; border: 1px solid var(--border); text-align: center; }
+  .score-card .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray); font-weight: 600; }
+  .score-card .grade { font-size: 2rem; font-weight: 800; margin: 0.25rem 0; }
+  .score-card .detail { font-size: 0.8rem; color: var(--gray); }
+  .critical { color: var(--red); }
+  .warning { color: var(--orange); }
+  .good { color: var(--green); }
+  .info { color: var(--blue); }
+  .badge { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.03em; vertical-align: middle; }
+  .badge-critical { background: #FEE2E2; color: var(--red); }
+  .badge-high { background: #FFEDD5; color: var(--orange); }
+  .badge-medium { background: #FEF9C3; color: var(--yellow); }
+  .badge-low { background: #DCFCE7; color: var(--green); }
+  .issue-list { list-style: none; }
+  .issue-list li { padding: 0.75rem 1rem; background: white; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 0.5rem; }
+  .issue-list li strong { display: block; margin-bottom: 0.25rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: white; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  th, td { padding: 0.6rem 1rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  th { background: #F3F4F6; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  .check { color: var(--green); }
+  .cross { color: var(--red); }
+  .warn-icon { color: var(--orange); }
+  code { background: #F3F4F6; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; }
+  .summary-box { background: white; border-left: 4px solid var(--blue); padding: 1.25rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
+  .summary-box.danger { border-left-color: var(--red); }
+  .summary-box.success { border-left-color: var(--green); }
+  .file-ref { font-family: monospace; font-size: 0.85em; color: var(--gray); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Meraki Roofing — Website Audit Report</h1>
+<p class="subtitle">Full audit of website redesign v2 &middot; March 9, 2026 &middot; 18 HTML pages reviewed</p>
+
+<!-- OVERALL SCORECARD -->
+<div class="scorecard">
+  <div class="score-card">
+    <div class="label">Security</div>
+    <div class="grade critical">D</div>
+    <div class="detail">Exposed API keys</div>
+  </div>
+  <div class="score-card">
+    <div class="label">SEO</div>
+    <div class="grade good">B+</div>
+    <div class="detail">Strong meta, needs schema on inner pages</div>
+  </div>
+  <div class="score-card">
+    <div class="label">Performance</div>
+    <div class="grade warning">C+</div>
+    <div class="detail">Large images &amp; inline code</div>
+  </div>
+  <div class="score-card">
+    <div class="label">Accessibility</div>
+    <div class="grade good">B</div>
+    <div class="detail">Good ARIA, minor gaps</div>
+  </div>
+  <div class="score-card">
+    <div class="label">Content</div>
+    <div class="grade good">A-</div>
+    <div class="detail">Strong trust signals &amp; CTAs</div>
+  </div>
+  <div class="score-card">
+    <div class="label">Mobile</div>
+    <div class="grade good">A-</div>
+    <div class="detail">Responsive, sticky CTAs</div>
+  </div>
+  <div class="score-card">
+    <div class="label">Images</div>
+    <div class="grade warning">C</div>
+    <div class="detail">189 MB total, many unoptimized</div>
+  </div>
+  <div class="score-card">
+    <div class="label">Consistency</div>
+    <div class="grade warning">C+</div>
+    <div class="detail">Nav differs on 2 pages</div>
+  </div>
+</div>
+
+<!-- CRITICAL ISSUES -->
+<h2><span class="critical">&#9888;</span> Critical Issues (Fix Immediately)</h2>
+
+<div class="summary-box danger">
+  <strong>Exposed API Keys &amp; Webhook URLs</strong><br>
+  Your Google Cloud API key and Google Sheets webhook URL are hardcoded in the HTML source of multiple pages. Anyone can view source and abuse these credentials — running up your Google Cloud bill, spamming your lead sheet, or hijacking form submissions.
+</div>
+
+<ul class="issue-list">
+  <li>
+    <strong><span class="badge badge-critical">CRITICAL</span> Google API Key exposed in plain text</strong>
+    Found in: <code>index.html</code>, <code>estimate.html</code><br>
+    The key <code>AIzaSyAE4...</code> is visible to anyone viewing page source. It enables Maps, Places, and Solar API calls billed to your account.<br>
+    <em>Fix: Restrict the API key in Google Cloud Console to your domain only, or move to a server-side proxy.</em>
+  </li>
+  <li>
+    <strong><span class="badge badge-critical">CRITICAL</span> Google Sheets Webhook URL exposed</strong>
+    Found in: <code>index.html</code>, <code>estimate.html</code>, <code>partners.html</code><br>
+    Anyone can POST fake leads to your spreadsheet.<br>
+    <em>Fix: Add validation/secret token in your Apps Script, or move to a backend handler.</em>
+  </li>
+  <li>
+    <strong><span class="badge badge-critical">CRITICAL</span> Email address exposed in schema markup</strong>
+    Found in: <code>index.html</code> (line ~4243) — <code>axmartinez22@gmail.com</code><br>
+    <em>Fix: Use a business email (e.g., info@merakiroofing.com) or remove from schema.</em>
+  </li>
+</ul>
+
+<!-- SEO AUDIT -->
+<h2>SEO Audit</h2>
+
+<h3>What's Working Well</h3>
+<div class="summary-box success">
+  The homepage has excellent structured data — RoofingContractor schema, FAQPage schema, AggregateRating, and multiple Review objects. Meta descriptions are well-written with proper length. Canonical URLs are present on most pages.
+</div>
+
+<h3>Page-by-Page SEO Status</h3>
+<table>
+  <tr><th>Page</th><th>Title</th><th>Meta Desc</th><th>OG Tags</th><th>OG Image</th><th>Canonical</th><th>Schema</th></tr>
+  <tr><td>index.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="check">&#10003;</td><td class="check">&#10003; Excellent</td></tr>
+  <tr><td>residential.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td></tr>
+  <tr><td>commercial.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td></tr>
+  <tr><td>storm-damage.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+  <tr><td>insurance-claims.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td></tr>
+  <tr><td>financing.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="warn-icon">&#9888;</td><td class="cross">&#10007;</td></tr>
+  <tr><td>estimate.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+  <tr><td>maintenance.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td></tr>
+  <tr><td>gallery.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td></tr>
+  <tr><td>blog.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td></tr>
+  <tr><td>partners.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="cross">&#10007;</td><td class="cross">&#10007;</td></tr>
+  <tr><td>gaf.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td></tr>
+  <tr><td>drone-inspections.html</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="warn-icon">&#9888;</td><td class="cross">&#10007;</td></tr>
+  <tr><td>Blog posts (4)</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td></tr>
+</table>
+<p style="font-size:0.85rem;color:var(--gray);">&#9888; = Present but uses non-standard format (meta name instead of link rel)</p>
+
+<h3>SEO Recommendations</h3>
+<ul class="issue-list">
+  <li><strong><span class="badge badge-high">HIGH</span> Add LocalBusiness schema to all inner pages</strong>Only 3 of 18 pages have JSON-LD structured data. Adding RoofingContractor/LocalBusiness schema to every page improves search visibility and rich snippet eligibility.</li>
+  <li><strong><span class="badge badge-high">HIGH</span> Add OG images to 6 pages missing them</strong>Pages without og:image won't generate visual previews when shared on social media — a missed opportunity for residential, gallery, blog, partners, and drone pages.</li>
+  <li><strong><span class="badge badge-medium">MEDIUM</span> Add Twitter Card meta tags</strong>Only 2 pages have Twitter-specific meta. Add <code>twitter:card</code>, <code>twitter:title</code>, and <code>twitter:description</code> site-wide.</li>
+  <li><strong><span class="badge badge-medium">MEDIUM</span> Fix canonical URL on financing.html and drone-inspections.html</strong>Use standard <code>&lt;link rel="canonical"&gt;</code> format. Drone page includes .html extension in canonical which may cause issues.</li>
+  <li><strong><span class="badge badge-low">LOW</span> Add canonical URL to partners.html</strong>Currently the only page missing a canonical tag entirely.</li>
+</ul>
+
+<!-- PERFORMANCE -->
+<h2>Performance Audit</h2>
+
+<h3>Image Optimization — Biggest Opportunity</h3>
+<div class="summary-box danger">
+  <strong>Total images directory: 189 MB across 106 files.</strong> 39 files exceed 500KB. The top 10 largest images alone total 140+ MB. Many source JPGs are 10-19 MB each — far too large for web use. Estimated savings with proper optimization: 100-150 MB.
+</div>
+
+<table>
+  <tr><th>Issue</th><th>Count</th><th>Impact</th></tr>
+  <tr><td>Images over 5 MB (need immediate compression)</td><td>11 files</td><td class="critical">~140 MB wasted</td></tr>
+  <tr><td>Images 500KB–5MB (should optimize)</td><td>28 files</td><td class="warning">~35 MB reducible</td></tr>
+  <tr><td>Missing WebP versions for large files</td><td>6 files</td><td class="warning">Slower load times</td></tr>
+  <tr><td>PNG logos without WebP alternatives</td><td>33 files</td><td class="info">~12 MB reducible</td></tr>
+  <tr><td>Empty/corrupt file (hail-2-granule-loss.webp)</td><td>1 file</td><td class="critical">Broken image</td></tr>
+  <tr><td>Redundant backup logos (*-plum-backup.png)</td><td>5 files</td><td class="info">Unnecessary bloat</td></tr>
+</table>
+
+<h3>Code Performance</h3>
+<ul class="issue-list">
+  <li><strong><span class="badge badge-high">HIGH</span> Massive inline CSS/JS in homepage</strong>index.html is 9,348 lines with ~200KB of inline CSS and 8,500+ lines of JavaScript. Extract to external files for caching and parallel loading.</li>
+  <li><strong><span class="badge badge-medium">MEDIUM</span> No lazy loading on images</strong>Below-fold images don't use <code>loading="lazy"</code>. Adding this attribute would significantly improve initial page load.</li>
+  <li><strong><span class="badge badge-medium">MEDIUM</span> External API calls on every page load</strong>Weather API (Open-Meteo) and QR code generation (qrserver.com) run on page load. Consider caching weather data and generating QR codes at build time.</li>
+  <li><strong><span class="badge badge-low">LOW</span> Three Google Fonts loaded (12 weights total)</strong>Lora, Inter, and Playfair Display with 4 weights each. Consider reducing to 2-3 weights per font.</li>
+</ul>
+
+<!-- ACCESSIBILITY -->
+<h2>Accessibility Audit</h2>
+
+<h3>What's Working Well</h3>
+<div class="summary-box success">
+  Good semantic HTML structure with proper <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>, and <code>&lt;section&gt;</code> tags. Forms have proper labels and ARIA attributes. Skip navigation link is present. Mobile toggle has <code>aria-expanded</code>. Error messages use <code>role="alert"</code>.
+</div>
+
+<h3>Issues to Address</h3>
+<ul class="issue-list">
+  <li><strong><span class="badge badge-medium">MEDIUM</span> Color contrast concern</strong>Terracotta (#FF5C34) on light backgrounds may fail WCAG AA for normal-size text. Test with a contrast checker and consider darkening to #E5482A for body text.</li>
+  <li><strong><span class="badge badge-medium">MEDIUM</span> SVG icons missing ARIA labels</strong>Decorative SVGs in nav and content sections lack <code>aria-hidden="true"</code> or descriptive <code>aria-label</code> attributes.</li>
+  <li><strong><span class="badge badge-low">LOW</span> Typewriter animation accessibility</strong>The hero heading uses a typewriter effect that may not convey content to screen readers properly. Ensure the full text is available in the DOM.</li>
+  <li><strong><span class="badge badge-low">LOW</span> Map markers lack ARIA labels</strong>Leaflet map pins use custom divs without accessible text alternatives.</li>
+</ul>
+
+<!-- CONSISTENCY -->
+<h2>Cross-Page Consistency</h2>
+
+<ul class="issue-list">
+  <li><strong><span class="badge badge-high">HIGH</span> drone-inspections.html has different navigation</strong>Uses a simplified nav (Home | Residential | Commercial | Free Estimate | Contact Us) instead of the full nav with dropdown menu, Storm Damage, Maintenance, and phone number. This creates a broken user flow.</li>
+  <li><strong><span class="badge badge-medium">MEDIUM</span> partners.html dropdown menu order differs</strong>Items in the resources dropdown appear in a different sequence than other pages. Should match site-wide order.</li>
+  <li><strong><span class="badge badge-medium">MEDIUM</span> Broken image reference</strong><code>blog-insurance-claims-guide.html</code> references <code>images/logos/meraki-icon.svg</code> which doesn't exist.</li>
+  <li><strong><span class="badge badge-low">LOW</span> Inconsistent GA tracking</strong>Some pages have <code>GA_MEASUREMENT_ID</code> placeholder while others don't include Google Analytics at all. Standardize tracking across all pages.</li>
+</ul>
+
+<!-- CONTENT & CONVERSION -->
+<h2>Content &amp; Conversion</h2>
+
+<h3>Strengths</h3>
+<div class="summary-box success">
+  Excellent conversion optimization: multiple CTAs per page ("Free Inspection," "Get Started," phone, SMS, chat), strong trust signals (4.9 stars, GAF certification, 10-year warranty), specific pricing ranges, urgency triggers ("Response within 2 hours"), and a sticky mobile CTA bar. The chatbot and weather-triggered messaging are smart touches.
+</div>
+
+<h3>Content Gaps</h3>
+<ul class="issue-list">
+  <li><strong><span class="badge badge-medium">MEDIUM</span> No About Us / team content</strong>No founder story, team photos, or crew bios visible. Personal stories build trust with homeowners making a big purchase.</li>
+  <li><strong><span class="badge badge-low">LOW</span> Blog only has 4 posts</strong>More content = more organic search traffic. Consider adding seasonal/local content (El Paso weather patterns, neighborhood guides, etc.).</li>
+</ul>
+
+<!-- PRIORITIZED ACTION PLAN -->
+<h2>Prioritized Action Plan</h2>
+
+<table>
+  <tr><th>#</th><th>Priority</th><th>Action</th><th>Impact</th></tr>
+  <tr><td>1</td><td><span class="badge badge-critical">CRITICAL</span></td><td>Restrict Google API key to your domain in Cloud Console</td><td>Prevents billing abuse</td></tr>
+  <tr><td>2</td><td><span class="badge badge-critical">CRITICAL</span></td><td>Add secret token validation to Google Sheets webhook</td><td>Prevents fake leads</td></tr>
+  <tr><td>3</td><td><span class="badge badge-critical">CRITICAL</span></td><td>Replace personal email with business email in schema</td><td>Prevents spam</td></tr>
+  <tr><td>4</td><td><span class="badge badge-high">HIGH</span></td><td>Compress all images over 1 MB to WebP (target &lt;300KB each)</td><td>~150 MB saved, faster loads</td></tr>
+  <tr><td>5</td><td><span class="badge badge-high">HIGH</span></td><td>Fix drone-inspections.html navigation to match site</td><td>Consistent user experience</td></tr>
+  <tr><td>6</td><td><span class="badge badge-high">HIGH</span></td><td>Add JSON-LD schema to all inner pages</td><td>Better search rankings</td></tr>
+  <tr><td>7</td><td><span class="badge badge-high">HIGH</span></td><td>Add OG images to 6 pages missing them</td><td>Better social sharing</td></tr>
+  <tr><td>8</td><td><span class="badge badge-medium">MEDIUM</span></td><td>Add <code>loading="lazy"</code> to below-fold images</td><td>Faster initial paint</td></tr>
+  <tr><td>9</td><td><span class="badge badge-medium">MEDIUM</span></td><td>Fix broken image reference (meraki-icon.svg)</td><td>No broken images</td></tr>
+  <tr><td>10</td><td><span class="badge badge-medium">MEDIUM</span></td><td>Standardize nav dropdown order on partners.html</td><td>Consistency</td></tr>
+  <tr><td>11</td><td><span class="badge badge-medium">MEDIUM</span></td><td>Add Twitter Card meta tags site-wide</td><td>Better social previews</td></tr>
+  <tr><td>12</td><td><span class="badge badge-medium">MEDIUM</span></td><td>Extract inline CSS/JS to external files</td><td>Better caching &amp; load times</td></tr>
+  <tr><td>13</td><td><span class="badge badge-low">LOW</span></td><td>Fix canonical URL format on financing &amp; drone pages</td><td>SEO cleanup</td></tr>
+  <tr><td>14</td><td><span class="badge badge-low">LOW</span></td><td>Add canonical to partners.html</td><td>SEO cleanup</td></tr>
+  <tr><td>15</td><td><span class="badge badge-low">LOW</span></td><td>Remove redundant backup logo files</td><td>Cleaner repo</td></tr>
+</table>
+
+<p style="margin-top:2rem; color:var(--gray); font-size:0.85rem; text-align:center;">Audit generated March 9, 2026</p>
+
+</div>
+</body>
+</html>

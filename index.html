@@ -23,17 +23,22 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
     <script>
-        // ⚠️ REPLACE WITH YOUR GOOGLE CLOUD API KEY
-        // Enable: Maps JavaScript API, Places API, Solar API
+        // ⚠️ GOOGLE CLOUD API KEY
+        // IMPORTANT: Restrict this key in Google Cloud Console → APIs & Services → Credentials:
+        //   1. Application restrictions → HTTP referrers → add: merakiroofing.com/*, www.merakiroofing.com/*
+        //   2. API restrictions → Restrict to: Maps JavaScript API, Geocoding API, Solar API, Places API
         const GOOGLE_API_KEY = 'AIzaSyAE4jxqe0LLsTj2MURRzEX5KSSgjQJs3O0';
 
         // ⚠️ GOOGLE SHEETS LEAD TRACKING
-        // Paste your Apps Script Web App URL here (see google-apps-script.js for setup)
-        const GOOGLE_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyyta1y8z_lfxdNJPWbnzcKl82a9pbpcuQliBvpcqtv7eR49-rOdOVOoE5s34oixLqM/exec';
+        const GOOGLE_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz2BrwYHwMQBBSYXp105zgVgrbbjy8vjWMVqmqVDUvQImlL8_fj1elVx4iMy7dt5ZD64A/exec';
+
+        // ⚠️ SECRET TOKEN — must match WEBHOOK_SECRET in google-apps-script.js
+        const WEBHOOK_SECRET = 'meraki-2026-secure-lead-token';
 
         function logLeadToSheet(data) {
             if (!GOOGLE_SHEET_WEBHOOK_URL) return;
             try {
+                data._token = WEBHOOK_SECRET;
                 fetch(GOOGLE_SHEET_WEBHOOK_URL, {
                     method: 'POST',
                     mode: 'no-cors',

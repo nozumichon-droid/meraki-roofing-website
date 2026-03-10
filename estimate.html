@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roof Cost Estimate Calculator - Meraki Roofing | El Paso, TX</title>
-    <meta name="description" content="Get an instant roof estimate for your El Paso home. Answer a few questions and receive a ballpark price range in seconds. No email required, no obligations.">
+    <title>Book Your Free Roof Inspection - Meraki Roofing | El Paso, TX</title>
+    <meta name="description" content="Schedule a free professional roof inspection in El Paso. Our licensed inspectors provide a detailed report and exact quote within 24 hours. No obligations.">
     <meta name="theme-color" content="#2C4A3E">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Roof Cost Estimate Calculator - Meraki Roofing">
-    <meta property="og:description" content="Get your instant roof estimate in seconds. Professional pricing for El Paso roofing projects.">
+    <meta property="og:title" content="Book Your Free Roof Inspection - Meraki Roofing">
+    <meta property="og:description" content="Schedule a free professional roof inspection in El Paso. Detailed report and exact quote within 24 hours.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://merakiroofing.com/estimate">
     <meta property="og:image" content="https://merakiroofing.com/og-image.jpg">
@@ -24,17 +24,22 @@
 
     <!-- Google Maps + Places + Solar API -->
     <script>
-        // ⚠️ REPLACE WITH YOUR GOOGLE CLOUD API KEY
-        // Enable these APIs in Google Cloud Console: Maps JavaScript API, Places API, Solar API
-        // Restrict key to your domain: merakiroofing.com
+        // ⚠️ GOOGLE CLOUD API KEY
+        // IMPORTANT: Restrict this key in Google Cloud Console → APIs & Services → Credentials:
+        //   1. Application restrictions → HTTP referrers → add: merakiroofing.com/*, www.merakiroofing.com/*
+        //   2. API restrictions → Restrict to: Maps JavaScript API, Geocoding API, Solar API, Places API
         const GOOGLE_API_KEY = 'AIzaSyAE4jxqe0LLsTj2MURRzEX5KSSgjQJs3O0';
 
-        // Google Sheets lead tracker — paste your Web App URL here after setup
-        const GOOGLE_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyyta1y8z_lfxdNJPWbnzcKl82a9pbpcuQliBvpcqtv7eR49-rOdOVOoE5s34oixLqM/exec';
+        // ⚠️ GOOGLE SHEETS LEAD TRACKING
+        const GOOGLE_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz2BrwYHwMQBBSYXp105zgVgrbbjy8vjWMVqmqVDUvQImlL8_fj1elVx4iMy7dt5ZD64A/exec';
+
+        // ⚠️ SECRET TOKEN — must match WEBHOOK_SECRET in google-apps-script.js
+        const WEBHOOK_SECRET = 'meraki-2026-secure-lead-token';
 
         function logLeadToSheet(data) {
-            if (!GOOGLE_SHEET_WEBHOOK_URL) return; // skip if not configured yet
+            if (!GOOGLE_SHEET_WEBHOOK_URL) return;
             try {
+                data._token = WEBHOOK_SECRET;
                 fetch(GOOGLE_SHEET_WEBHOOK_URL, {
                     method: 'POST',
                     mode: 'no-cors',
@@ -57,15 +62,15 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Meraki Roofing Estimate Calculator",
-        "description": "Interactive roof cost estimate calculator for El Paso roofing projects",
+        "name": "Meraki Roofing — Book Free Inspection",
+        "description": "Schedule a free professional roof inspection in El Paso, TX",
         "url": "https://merakiroofing.com/estimate",
         "applicationCategory": "UtilityApplication",
         "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
             "price": "0",
-            "description": "Free roof estimate calculator"
+            "description": "Free roof inspection scheduling"
         },
         "provider": {
             "@type": "LocalBusiness",
@@ -1203,541 +1208,8 @@
             background-color: var(--gold-light);
         }
 
-        /* Material Cards */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
 
-        .material-card, .project-card, .story-card, .pitch-card {
-            padding: 1.5rem;
-            border: 2px solid var(--light-gray);
-            border-radius: 6px;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            background-color: white;
-            text-align: center;
-        }
-
-        .material-card:hover, .project-card:hover, .story-card:hover, .pitch-card:hover {
-            border-color: var(--gold);
-            box-shadow: 0 4px 16px rgba(212, 168, 92, 0.15);
-            transform: translateY(-3px);
-        }
-
-        .material-card.selected, .project-card.selected, .story-card.selected, .pitch-card.selected {
-            border-color: var(--forest);
-            background: linear-gradient(135deg, rgba(44, 74, 62, 0.05) 0%, rgba(212, 168, 92, 0.05) 100%);
-            box-shadow: 0 6px 20px rgba(44, 74, 62, 0.15);
-        }
-
-        .material-card.selected::before {
-            content: '✓';
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 28px;
-            height: 28px;
-            background-color: var(--forest);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .card-input {
-            display: none;
-        }
-
-        .material-badge {
-            display: inline-block;
-            background-color: var(--gold);
-            color: var(--charcoal);
-            padding: 0.35rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .material-badge.popular {
-            background-color: var(--terracotta);
-            color: white;
-        }
-
-        .material-badge.value {
-            background-color: var(--success);
-            color: white;
-        }
-
-        .material-badge.premium {
-            background-color: var(--forest);
-            color: white;
-        }
-
-        .material-name {
-            font-family: 'Lora', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            margin-bottom: 0.5rem;
-        }
-
-        .material-price {
-            font-size: 0.95rem;
-            color: var(--warm-gray);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .material-description {
-            font-size: 0.8rem;
-            color: var(--warm-gray);
-            line-height: 1.5;
-        }
-
-        /* Project Type Cards */
-        .project-card {
-            text-align: left;
-            padding: 1.75rem;
-        }
-
-        .project-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-title {
-            font-weight: 600;
-            color: var(--charcoal);
-            margin-bottom: 0.5rem;
-            font-size: 1.05rem;
-        }
-
-        .project-details {
-            font-size: 0.85rem;
-            color: var(--warm-gray);
-            line-height: 1.5;
-        }
-
-        /* Story & Pitch Cards */
-        .story-card, .pitch-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 1.25rem;
-        }
-
-        .story-label, .pitch-label {
-            font-weight: 600;
-            color: var(--charcoal);
-            font-size: 0.95rem;
-        }
-
-        .story-value, .pitch-value {
-            font-size: 0.85rem;
-            color: var(--warm-gray);
-            margin-top: 0.25rem;
-        }
-
-        .pitch-diagram {
-            width: 100%;
-            max-width: 120px;
-            height: auto;
-            margin: 0.5rem auto;
-            opacity: 0.7;
-        }
-
-        /* Issues Checkboxes */
-        .issues-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem;
-            border: 1px solid var(--light-gray);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .checkbox-item:hover {
-            border-color: var(--gold);
-            background-color: var(--cream);
-        }
-
-        .checkbox-item input {
-            cursor: pointer;
-            width: 18px;
-            height: 18px;
-            accent-color: var(--forest);
-        }
-
-        .checkbox-label {
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--charcoal);
-            user-select: none;
-        }
-
-        /* Result Screen */
-        .result-screen {
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(44, 74, 62, 0.03) 0%, rgba(212, 168, 92, 0.03) 100%);
-            border-radius: 6px;
-            margin-bottom: 2rem;
-        }
-
-        .result-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .result-label {
-            font-size: 0.85rem;
-            color: var(--warm-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
-
-        .price-range {
-            font-family: 'Lora', serif;
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            color: var(--forest);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.1;
-        }
-
-        .price-range-number {
-            display: inline-block;
-            min-width: 180px;
-            animation: priceCountUp 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        @keyframes priceCountUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .result-subtext {
-            color: var(--warm-gray);
-            font-size: 0.95rem;
-            margin-top: 1rem;
-        }
-
-        .breakdown-panel {
-            background-color: white;
-            border: 1px solid var(--light-gray);
-            border-radius: 6px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .breakdown-title {
-            font-family: 'Lora', serif;
-            font-size: 1.3rem;
-            color: var(--forest);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .breakdown-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--cream-dark);
-        }
-
-        .breakdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .breakdown-label {
-            color: var(--warm-gray);
-            font-weight: 500;
-        }
-
-        .breakdown-value {
-            color: var(--charcoal);
-            font-weight: 600;
-        }
-
-        .breakdown-item.total {
-            padding-top: 1.5rem;
-            margin-top: 1rem;
-            border-top: 2px solid var(--gold);
-        }
-
-        .breakdown-item.total .breakdown-label {
-            font-weight: 700;
-            color: var(--forest);
-            font-size: 1.1rem;
-        }
-
-        .breakdown-item.total .breakdown-value {
-            color: var(--forest);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        /* Refine Estimate Section */
-        .refine-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-            background: var(--forest);
-            border: 2px solid var(--forest);
-            border-radius: 10px;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1.5rem;
-            cursor: pointer;
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .refine-toggle:hover {
-            background: var(--forest-deep);
-            border-color: var(--forest-deep);
-            box-shadow: 0 4px 16px rgba(44,74,62,0.3);
-        }
-
-        .refine-toggle svg {
-            transition: transform 0.3s ease;
-        }
-
-        .refine-toggle.open svg {
-            transform: rotate(180deg);
-        }
-
-        .refine-panel {
-            display: none;
-            background: var(--warm-white);
-            border: 1px solid var(--light-gray);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            animation: refineFadeIn 0.3s ease;
-        }
-
-        .refine-panel.open {
-            display: block;
-        }
-
-        @keyframes refineFadeIn {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .refine-section {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .refine-section:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .refine-section-title {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            color: var(--forest-deep);
-            margin-bottom: 0.35rem;
-            font-weight: 700;
-        }
-
-        .refine-section-desc {
-            font-size: 0.8rem;
-            color: var(--warm-gray);
-            margin-bottom: 0.75rem;
-        }
-
-        .refine-options {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .refine-option {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--light-gray);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--charcoal);
-            transition: all 0.2s ease;
-            background: white;
-        }
-
-        .refine-option:hover {
-            border-color: var(--forest);
-        }
-
-        .refine-option.selected {
-            border-color: var(--forest);
-            background: rgba(44,74,62,0.06);
-            color: var(--forest);
-            font-weight: 600;
-        }
-
-        .refine-option input {
-            display: none;
-        }
-
-        .addon-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
-        }
-
-        .addon-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 0.75rem;
-            border: 2px solid var(--light-gray);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            color: var(--charcoal);
-            transition: all 0.2s ease;
-            background: white;
-        }
-
-        .addon-item:hover {
-            border-color: var(--forest);
-        }
-
-        .addon-item.selected {
-            border-color: var(--forest);
-            background: rgba(44,74,62,0.06);
-        }
-
-        .addon-item input[type="checkbox"] {
-            accent-color: var(--forest);
-            width: 16px;
-            height: 16px;
-        }
-
-        .addon-price {
-            margin-left: auto;
-            font-size: 0.72rem;
-            color: var(--warm-gray);
-            white-space: nowrap;
-        }
-
-        .refine-note {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding: 0.75rem 1rem;
-            background: rgba(212,168,92,0.08);
-            border-radius: 8px;
-            font-size: 0.78rem;
-            color: var(--warm-gray);
-        }
-
-        .financing-box {
-            background-color: var(--gold-light);
-            border-left: 4px solid var(--gold);
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin-bottom: 2rem;
-        }
-
-        .financing-label {
-            font-size: 0.85rem;
-            color: var(--warm-gray);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .financing-amount {
-            font-family: 'Lora', serif;
-            font-size: 1.75rem;
-            color: var(--forest);
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .financing-details {
-            font-size: 0.8rem;
-            color: var(--warm-gray);
-        }
-
-        .trust-elements {
-            background-color: var(--cream);
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--forest);
-        }
-
-        .trust-disclaimer {
-            font-size: 0.85rem;
-            color: var(--warm-gray);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .trust-badges {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            font-size: 0.85rem;
-            color: var(--charcoal);
-            font-weight: 500;
-        }
-
-        .badge-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .badge-item::before {
-            content: '★';
-            color: var(--gold);
-            font-size: 1rem;
-        }
-
-        /* Buttons */
+                /* Buttons */
         .button-group {
             display: flex;
             gap: 1rem;
@@ -1816,145 +1288,7 @@
             color: white;
         }
 
-        .btn-recalculate {
-            background-color: var(--warm-gray);
-            color: white;
-            margin-top: 1.5rem;
-        }
-
-        .btn-recalculate:hover {
-            background-color: var(--charcoal);
-        }
-
-        /* How We Calculate Section */
-        .how-section {
-            background-color: var(--cream);
-            padding: 4rem 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .how-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .how-section h2 {
-            font-family: 'Lora', serif;
-            font-size: 2rem;
-            color: var(--forest);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .how-text {
-            color: var(--charcoal);
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .factor-list {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .factor-item {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 4px solid var(--gold);
-            text-align: center;
-        }
-
-        .factor-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .factor-name {
-            font-weight: 600;
-            color: var(--charcoal);
-            margin-bottom: 0.5rem;
-        }
-
-        .how-cta {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .how-cta a {
-            color: var(--forest);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            display: inline-block;
-        }
-
-        .how-cta a:hover {
-            color: var(--terracotta);
-            opacity: 0.85;
-        }
-
-        /* Comparison Table */
-        .comparison-section {
-            padding: 4rem 1.5rem;
-            background-color: var(--warm-white);
-        }
-
-        .comparison-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .comparison-section h2 {
-            font-family: 'Lora', serif;
-            font-size: 2rem;
-            color: var(--forest);
-            margin-bottom: 2rem;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .comparison-table th {
-            background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
-            color: white;
-            padding: 1.25rem;
-            text-align: left;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .comparison-table td {
-            padding: 1.25rem;
-            border-bottom: 1px solid var(--light-gray);
-            font-size: 0.95rem;
-        }
-
-        .comparison-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .comparison-table tr:hover {
-            background-color: var(--cream);
-        }
-
-        .comparison-table tr:hover td {
-            color: var(--forest);
-        }
-
+        
         /* FAQ Section */
         .faq-section {
             padding: 4rem 1.5rem;
@@ -2469,6 +1803,470 @@
                 gap: 2rem;
             }
         }
+
+        /* ===== INSPECTION BOOKING FORM ===== */
+        .inspection-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-field {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .form-field:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(255, 92, 52, 0.12);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        select.form-field {
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6B6B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        /* Urgency Radio Buttons */
+        .urgency-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .urgency-option {
+            cursor: pointer;
+        }
+
+        .urgency-option input {
+            display: none;
+        }
+
+        .urgency-label {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .urgency-option input:checked + .urgency-label {
+            border-color: var(--forest);
+            background: rgba(44,74,62,0.06);
+            color: var(--forest);
+            font-weight: 600;
+        }
+
+        .urgency-label:hover {
+            border-color: var(--gold);
+        }
+
+        /* Photo Upload */
+        .photo-upload-zone {
+            border: 2px dashed var(--light-gray);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s;
+            background: var(--cream);
+        }
+
+        .photo-upload-zone:hover,
+        .photo-upload-zone.drag-over {
+            border-color: var(--terracotta);
+            background: rgba(255,92,52,0.04);
+        }
+
+        .photo-upload-zone p {
+            margin: 0.5rem 0 0;
+            font-size: 0.88rem;
+            color: var(--warm-gray);
+        }
+
+        .upload-link {
+            color: var(--terracotta);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .upload-hint {
+            font-size: 0.78rem !important;
+            color: var(--warm-gray);
+        }
+
+        .photo-preview-grid {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+        }
+
+        .photo-preview {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--light-gray);
+        }
+
+        .photo-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-remove {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 20px;
+            height: 20px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        /* ===== CONFIRMATION SCREEN ===== */
+        .confirmation-screen {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .confirmation-icon {
+            margin-bottom: 1.5rem;
+            animation: confirmBounce 0.6s ease;
+        }
+
+        @keyframes confirmBounce {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .confirmation-screen h2 {
+            color: var(--forest);
+        }
+
+        .next-steps-card {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .next-steps-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--forest);
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        .next-step-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+
+        .next-step-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .next-step-number {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            background: var(--terracotta);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .next-step-item strong {
+            display: block;
+            color: var(--forest-deep);
+            margin-bottom: 0.2rem;
+        }
+
+        .next-step-item p {
+            font-size: 0.88rem;
+            color: var(--warm-gray);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ===== BENEFITS SECTION ===== */
+        .benefits-section {
+            background: var(--warm-white);
+            padding: 5rem 1.5rem;
+        }
+
+        .benefits-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .benefits-section h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--forest);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--warm-gray);
+            font-size: 1rem;
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .benefit-icon {
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .benefit-card p {
+            font-size: 0.88rem;
+            color: var(--warm-gray);
+            line-height: 1.6;
+        }
+
+        /* ===== PROCESS SECTION ===== */
+        .process-section {
+            background: var(--cream);
+            padding: 5rem 1.5rem;
+        }
+
+        .process-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-section h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--forest);
+            margin-bottom: 3rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .process-steps {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            flex: 1;
+            max-width: 260px;
+            padding: 0 1rem;
+        }
+
+        .process-number {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 auto 1rem;
+            box-shadow: 0 4px 12px rgba(255,92,52,0.3);
+        }
+
+        .process-step h3 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .process-step p {
+            font-size: 0.88rem;
+            color: var(--warm-gray);
+            line-height: 1.6;
+        }
+
+        .process-connector {
+            display: flex;
+            align-items: center;
+            padding-top: 1.5rem;
+        }
+
+        /* ===== TRUST SECTION ===== */
+        .trust-section {
+            background: var(--forest-deep);
+            padding: 3rem 1.5rem;
+        }
+
+        .trust-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .trust-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-stat {
+            text-align: center;
+        }
+
+        .trust-number {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .trust-label {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        /* ===== RESPONSIVE: NEW SECTIONS ===== */
+        @media (max-width: 900px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .urgency-options {
+                flex-direction: column;
+            }
+
+            .urgency-label {
+                display: block;
+                text-align: center;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .process-connector {
+                transform: rotate(90deg);
+                padding-top: 0;
+            }
+
+            .trust-stats {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
         </style>
 </head>
 <body>
@@ -2498,7 +2296,7 @@
                         <a href="index.html#faq" role="menuitem"><span class="dropdown-icon">❓</span><span data-i18n="nav.faq">FAQs</span></a>
                     </div>
                 </div>
-                <a href="estimate.html" class="active" data-i18n="nav.estimate">Free Estimate</a>
+                <a href="estimate.html" class="active" data-i18n="nav.estimate">Free Inspection</a>
                 <a href="tel:+19158618039" class="nav-phone" aria-label="Call Meraki Roofing">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     (915) 861-8039
@@ -2515,11 +2313,11 @@
             <nav class="hero-breadcrumb" aria-label="Breadcrumb">
                 <a href="index.html">Home</a>
                 <span class="sep">›</span>
-                <span>Free Estimate</span>
+                <span>Free Inspection</span>
             </nav>
-            <h1 data-i18n="est.hero.title">Get Your Instant Roof Estimate</h1>
-            <p data-i18n="est.hero.desc">Answer a few questions and get a ballpark price range in seconds. No email required, no obligations.</p>
-            <button class="scroll-cta" aria-label="Start calculator" data-i18n="est.hero.btn">Start Calculator</button>
+            <h1>Book Your Free Roof Inspection</h1>
+            <p>Scan your roof with satellite imagery, then schedule a free in-person inspection. Get a detailed report and exact quote within 24 hours.</p>
+            <button class="scroll-cta" aria-label="Get started">Get Started</button>
         </div>
     </section>
 
@@ -2532,10 +2330,8 @@
                     <div class="progress-step active" id="step0Indicator"></div>
                     <div class="progress-step" id="step1Indicator"></div>
                     <div class="progress-step" id="step2Indicator"></div>
-                    <div class="progress-step" id="step3Indicator"></div>
-                    <div class="progress-step" id="step4Indicator"></div>
                 </div>
-                <div class="progress-text" id="progressText">Step 1 of 5: Satellite Scan</div>
+                <div class="progress-text" id="progressText">Step 1 of 3: Roof Scan</div>
             </div>
 
             <!-- Calculator Steps -->
@@ -2631,403 +2427,298 @@
                         <div class="button-group">
                             <button class="btn-next" id="step0NextBtn" onclick="nextStep()" style="display:none;">Continue with These Measurements</button>
                         </div>
-                        <button class="skip-link" onclick="skipLookup()">Skip — I know my roof size</button>
+                        <button class="skip-link" onclick="skipLookup()">Skip scan — go straight to booking</button>
                     </div>
                 </div>
 
-                <!-- Step 1: Roof Size -->
+                <!-- Step 1: Inspection Booking Form -->
                 <div class="step" id="step1" data-step="1">
-                    <h2 data-i18n="est.step1.title">How large is your roof?</h2>
-                    <p class="step-subtitle" data-i18n="est.step1.subtitle">We'll use this to calculate your estimate</p>
+                    <h2>Schedule Your Free Inspection</h2>
+                    <p class="step-subtitle">Pick a date and time that works for you. Our licensed inspector will visit your property for a thorough 20-30 minute assessment.</p>
 
-                    <!-- Satellite data banner (shown when address was looked up) -->
+                    <!-- Satellite data banner (shown when scanner was used) -->
                     <div class="satellite-banner" id="satelliteBanner" style="display:none;">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-                        <span id="satelliteBannerText">Based on satellite data — adjust if needed</span>
+                        <span id="satelliteBannerText">Roof data captured from satellite scan</span>
                     </div>
 
-                    <div class="roof-icon">
-                        <svg class="roof-svg" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 60 L60 20 L100 60 Z" stroke="#2C4A3E" stroke-width="2" fill="none"/>
-                            <line x1="60" y1="20" x2="60" y2="60" stroke="#2C4A3E" stroke-width="1" stroke-dasharray="2,2"/>
-                            <rect x="25" y="60" width="70" height="10" stroke="#2C4A3E" stroke-width="2" fill="none"/>
-                        </svg>
-                    </div>
-
-                    <div class="size-input-group">
-                        <label for="roofSize" class="input-label" data-i18n="est.step1.label">Roof Size (Square Feet)</label>
-                        <div class="slider-container">
-                            <input type="range" id="roofSize" min="500" max="15000" value="1800" aria-label="Roof size in square feet">
-                        </div>
-                        <div class="slider-value-display">
-                            <span class="value-label" data-i18n="est.step1.sqft">Square Feet:</span>
-                            <div>
-                                <input type="number" id="sizeInput" class="size-input-field" min="500" max="15000" value="1800" aria-label="Roof size input">
+                    <form id="inspectionForm" class="inspection-form" onsubmit="return false;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="inspectDate" class="input-label">Preferred Date *</label>
+                                <input type="date" id="inspectDate" class="form-field" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inspectTime" class="input-label">Preferred Time *</label>
+                                <select id="inspectTime" class="form-field" required>
+                                    <option value="">Select a time window</option>
+                                    <option value="morning">Morning (8am — 12pm)</option>
+                                    <option value="afternoon">Afternoon (12pm — 5pm)</option>
+                                    <option value="evening">Evening (5pm — 8pm)</option>
+                                </select>
                             </div>
                         </div>
-                        <p class="helper-text" data-i18n="est.step1.helper">Not sure? Average home: 1,500-2,200 sq ft · Commercial: 5,000-15,000 sq ft</p>
-                    </div>
+
+                        <div class="form-group">
+                            <label for="serviceType" class="input-label">Service Type *</label>
+                            <select id="serviceType" class="form-field" required>
+                                <option value="">What do you need?</option>
+                                <option value="inspection">Free Roof Inspection</option>
+                                <option value="repair">Repair Assessment</option>
+                                <option value="replacement">Replacement Consultation</option>
+                                <option value="storm">Storm Damage Inspection</option>
+                                <option value="maintenance">Maintenance Review</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="input-label">Urgency</label>
+                            <div class="urgency-options">
+                                <label class="urgency-option">
+                                    <input type="radio" name="urgency" value="flexible" checked>
+                                    <span class="urgency-label">Flexible</span>
+                                </label>
+                                <label class="urgency-option">
+                                    <input type="radio" name="urgency" value="2weeks">
+                                    <span class="urgency-label">Within 2 Weeks</span>
+                                </label>
+                                <label class="urgency-option">
+                                    <input type="radio" name="urgency" value="asap">
+                                    <span class="urgency-label">ASAP (3 days)</span>
+                                </label>
+                                <label class="urgency-option">
+                                    <input type="radio" name="urgency" value="emergency">
+                                    <span class="urgency-label">Emergency</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="input-label">Photos (optional — max 5)</label>
+                            <div class="photo-upload-zone" id="photoUploadZone">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--warm-gray)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                <p>Drag & drop photos here, or <span class="upload-link">browse</span></p>
+                                <p class="upload-hint">JPG, PNG, or WebP — up to 5MB each</p>
+                                <input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp" multiple style="display:none;">
+                            </div>
+                            <div class="photo-preview-grid" id="photoPreviewGrid"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inspectNotes" class="input-label">Additional Notes (optional)</label>
+                            <textarea id="inspectNotes" class="form-field form-textarea" rows="3" placeholder="Anything else we should know? Specific concerns, access instructions, etc."></textarea>
+                        </div>
+                    </form>
 
                     <div class="button-group">
-                        <button class="btn-next" onclick="nextStep()" data-i18n="est.btn.next">Next Step</button>
+                        <button class="btn-back" onclick="prevStep()">Back</button>
+                        <button class="btn-next" onclick="submitInspectionForm()">Schedule My Free Inspection</button>
                     </div>
                 </div>
 
-                <!-- Step 2: Material Selection -->
+                <!-- Step 2: Confirmation Screen -->
                 <div class="step" id="step2" data-step="2">
-                    <h2 data-i18n="est.step2.title">Choose your roofing material</h2>
-                    <p class="step-subtitle" data-i18n="est.step2.subtitle">Select the option that best fits your needs</p>
-
-                    <div class="card-grid" id="materialGrid">
-                        <!-- Generated by JavaScript -->
-                    </div>
-
-                    <div class="button-group">
-                        <button class="btn-back" onclick="prevStep()" data-i18n="est.btn.back">Back</button>
-                        <button class="btn-next" onclick="nextStep()" data-i18n="est.btn.next">Next Step</button>
-                    </div>
-                </div>
-
-                <!-- Step 3: Home Details -->
-                <div class="step" id="step3" data-step="3">
-                    <h2 data-i18n="est.step3.title">Tell us about your home</h2>
-                    <p class="step-subtitle" data-i18n="est.step3.subtitle">A few more details to refine your estimate</p>
-
-                    <!-- Stories -->
-                    <div style="margin-bottom: 2rem;">
-                        <label class="input-label" data-i18n="est.step3.stories.label">How many stories is your home?</label>
-                        <div class="card-grid" style="max-width: 300px; margin-top: 1rem;" id="storyGrid">
-                            <!-- Generated by JavaScript -->
+                    <div class="confirmation-screen">
+                        <div class="confirmation-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                         </div>
-                    </div>
+                        <h2>Inspection Requested!</h2>
+                        <p class="step-subtitle">We've received your request and will reach out shortly to confirm your appointment.</p>
 
-                    <!-- Pitch -->
-                    <div style="margin-bottom: 2rem;">
-                        <label class="input-label" data-i18n="est.step3.pitch.label">What's your roof pitch?</label>
-                        <p class="step-subtitle" style="margin-top: 0.5rem;" data-i18n="est.step3.pitch.helper">Not sure? Most El Paso homes are standard (4:12-6:12)</p>
-                        <div class="card-grid" id="pitchGrid">
-                            <!-- Generated by JavaScript -->
-                        </div>
-                    </div>
-
-                    <!-- Roof Complexity -->
-                    <div style="margin-bottom: 2rem;">
-                        <label class="input-label" data-i18n="est.step3.complexity.label">Roof shape/complexity</label>
-                        <p class="step-subtitle" style="margin-top: 0.5rem;" data-i18n="est.step3.complexity.helper">More complex layouts require additional labor and materials</p>
-                        <div class="card-grid" id="complexityGrid">
-                            <!-- Generated by JavaScript -->
-                        </div>
-                    </div>
-
-                    <!-- Issues -->
-                    <div>
-                        <label class="input-label" data-i18n="est.step3.issues.label">Any known issues? (optional)</label>
-                        <p class="step-subtitle" style="margin-top: 0.5rem;" data-i18n="est.step3.issues.helper">This helps us personalize your follow-up recommendations</p>
-                        <div class="issues-grid" id="issuesGrid">
-                            <!-- Generated by JavaScript -->
-                        </div>
-                    </div>
-
-                    <div class="button-group">
-                        <button class="btn-back" onclick="prevStep()" data-i18n="est.btn.back">Back</button>
-                        <button class="btn-next" onclick="nextStep()" data-i18n="est.btn.see">See Your Estimate</button>
-                    </div>
-                </div>
-
-                <!-- Step 4: Results -->
-                <div class="step" id="step4" data-step="4">
-                    <h2 data-i18n="est.step4.title">Your Roof Estimate</h2>
-
-                    <div class="result-screen">
-                        <div class="result-header">
-                            <div class="result-label" data-i18n="est.step4.cost.label">Estimated Cost (Materials + Labor)</div>
-                            <div class="price-range">
-                                <span class="price-range-number" id="priceRange">$0 — $0</span>
+                        <div class="next-steps-card">
+                            <h3>What's Next</h3>
+                            <div class="next-step-item">
+                                <div class="next-step-number">1</div>
+                                <div>
+                                    <strong>Confirmation Call</strong>
+                                    <p>We'll call within 1 business day to confirm your preferred date and time.</p>
+                                </div>
                             </div>
-                            <p class="result-subtext" id="resultSummary"></p>
-                        </div>
-                    </div>
-
-                    <div class="breakdown-panel">
-                        <h3 class="breakdown-title" data-i18n="est.step4.breakdown.title">Cost Breakdown</h3>
-                        <div id="breakdownItems">
-                            <!-- Generated by JavaScript -->
-                        </div>
-                    </div>
-
-                    <!-- Refine Your Estimate -->
-                    <button class="refine-toggle" id="refineToggle" onclick="toggleRefine()" data-i18n="est.step4.refine.toggle">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                        Want a more accurate estimate? Fine-tune your details
-                    </button>
-
-                    <div class="refine-panel" id="refinePanel">
-                        <!-- Existing Layers -->
-                        <div class="refine-section">
-                            <div class="refine-section-title" data-i18n="est.step4.refine.layers.title">Existing Roof Layers</div>
-                            <div class="refine-section-desc" data-i18n="est.step4.refine.layers.desc">More layers = higher tear-off and disposal costs</div>
-                            <div class="refine-options" id="layerOptions">
-                                <label class="refine-option selected" data-value="1">
-                                    <input type="radio" name="layers" value="1" checked onchange="selectLayer(1)">
-                                    1 Layer (Standard)
-                                </label>
-                                <label class="refine-option" data-value="2">
-                                    <input type="radio" name="layers" value="2" onchange="selectLayer(2)">
-                                    2 Layers (+$0.50/sqft)
-                                </label>
-                                <label class="refine-option" data-value="3">
-                                    <input type="radio" name="layers" value="3" onchange="selectLayer(3)">
-                                    3+ Layers (+$1.25/sqft)
-                                </label>
+                            <div class="next-step-item">
+                                <div class="next-step-number">2</div>
+                                <div>
+                                    <strong>Expert Inspection</strong>
+                                    <p>A licensed inspector visits your property for a thorough 20-30 minute assessment.</p>
+                                </div>
+                            </div>
+                            <div class="next-step-item">
+                                <div class="next-step-number">3</div>
+                                <div>
+                                    <strong>Detailed Report & Quote</strong>
+                                    <p>Receive photos, findings, and an exact quote within 24 hours of the inspection.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Decking Condition -->
-                        <div class="refine-section">
-                            <div class="refine-section-title" data-i18n="est.step4.refine.decking.title">Decking / Sheathing Condition</div>
-                            <div class="refine-section-desc" data-i18n="est.step4.refine.decking.desc">Damaged plywood underneath may need replacing before new roof goes on</div>
-                            <div class="refine-options" id="deckingOptions">
-                                <label class="refine-option selected" data-value="good">
-                                    <input type="radio" name="decking" value="good" checked onchange="selectDecking('good')">
-                                    Good (No repairs)
-                                </label>
-                                <label class="refine-option" data-value="minor">
-                                    <input type="radio" name="decking" value="minor" onchange="selectDecking('minor')">
-                                    Minor Repairs (~10%)
-                                </label>
-                                <label class="refine-option" data-value="major">
-                                    <input type="radio" name="decking" value="major" onchange="selectDecking('major')">
-                                    Significant Repairs (~25%+)
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Common Add-ons -->
-                        <div class="refine-section">
-                            <div class="refine-section-title" data-i18n="est.step4.refine.addons.title">Common Add-ons</div>
-                            <div class="refine-section-desc" data-i18n="est.step4.refine.addons.desc">Select any extras you'd like included</div>
-                            <div class="addon-grid" id="addonGrid">
-                                <label class="addon-item" data-addon="ridge-vent">
-                                    <input type="checkbox" onchange="toggleAddon('ridge-vent')">
-                                    Ridge Vent
-                                    <span class="addon-price">+$300–$600</span>
-                                </label>
-                                <label class="addon-item" data-addon="drip-edge">
-                                    <input type="checkbox" onchange="toggleAddon('drip-edge')">
-                                    Drip Edge
-                                    <span class="addon-price">+$200–$500</span>
-                                </label>
-                                <label class="addon-item" data-addon="gutters">
-                                    <input type="checkbox" onchange="toggleAddon('gutters')">
-                                    Gutter Replacement
-                                    <span class="addon-price">+$800–$2,000</span>
-                                </label>
-                                <label class="addon-item" data-addon="skylight">
-                                    <input type="checkbox" onchange="toggleAddon('skylight')">
-                                    Skylight Flashing
-                                    <span class="addon-price">+$200–$500</span>
-                                </label>
-                                <label class="addon-item" data-addon="chimney">
-                                    <input type="checkbox" onchange="toggleAddon('chimney')">
-                                    Chimney Flashing
-                                    <span class="addon-price">+$250–$600</span>
-                                </label>
-                                <label class="addon-item" data-addon="soffit-fascia">
-                                    <input type="checkbox" onchange="toggleAddon('soffit-fascia')">
-                                    Soffit & Fascia Repair
-                                    <span class="addon-price">+$500–$1,500</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="refine-note" data-i18n="est.step4.refine.note">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                            Your estimate updates automatically as you adjust these options.
+                        <div class="button-group" style="justify-content: center;">
+                            <a href="index.html" class="btn-primary" style="text-decoration:none; max-width:300px;">Back to Home</a>
                         </div>
                     </div>
-
-                    <div class="financing-box">
-                        <div class="financing-label" data-i18n="est.step4.financing.label">Monthly Payment Option</div>
-                        <div class="financing-amount" id="monthlyPayment">$0/mo</div>
-                        <div class="financing-details" data-i18n="est.step4.financing.details">60-month financing at 5.99% APR (estimate)</div>
-                    </div>
-
-                    <div class="trust-elements">
-                        <p class="trust-disclaimer" data-i18n="est.step4.disclaimer">This is an estimate only. Actual costs may vary based on roof complexity, material availability, and current labor rates.</p>
-                        <div class="trust-badges">
-                            <div class="badge-item" data-i18n="est.step4.badge.rating">4.9★ rated</div>
-                            <div class="badge-item" data-i18n="est.step4.badge.completed">500+ roofs completed</div>
-                            <div class="badge-item" data-i18n="est.step4.badge.licensed">Licensed & Insured</div>
-                        </div>
-                    </div>
-
-                    <div class="button-group" style="flex-direction: column; gap: 1rem;">
-                        <button class="btn-primary" onclick="contactForQuote()" data-i18n="est.step4.btn.quote">Get Your Exact Quote — Free Inspection</button>
-                        <button class="btn-secondary" onclick="window.location.href='financing.html'" data-i18n="est.step4.btn.financing">Explore Financing Options</button>
-                        <button class="btn-tertiary" onclick="window.location.href='tel:(915) 861-8039'" data-i18n="est.step4.btn.call">Call (915) 861-8039</button>
-                    </div>
-
-                    <button class="btn-recalculate" onclick="recalculate()" data-i18n="est.step4.btn.recalculate">← Adjust & Recalculate</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How We Calculate -->
-    <section class="how-section">
-        <div class="how-content">
-            <h2 data-i18n="est.how.title">How We Calculate Your Estimate</h2>
-            <p class="how-text" data-i18n="est.how.desc">Our estimates are based on current El Paso market rates, updated regularly to reflect material costs and labor availability.</p>
-
-            <div class="factor-list">
-                <div class="factor-item">
-                    <div class="factor-icon">📐</div>
-                    <div class="factor-name" data-i18n="est.how.factor1">Roof Size</div>
-                    <p style="font-size: 0.85rem; color: var(--warm-gray);" data-i18n="est.how.factor1.desc">Square footage of coverage</p>
+    <!-- Why Get a Free Inspection -->
+    <section class="benefits-section">
+        <div class="benefits-content">
+            <h2>Why Get a Free Inspection?</h2>
+            <p class="section-desc">Skip the guesswork. A professional inspection gives you the facts you need to make confident decisions about your roof.</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    </div>
+                    <h3>100% Free</h3>
+                    <p>No hidden fees, no obligations. Our inspections are completely free with zero pressure to commit.</p>
                 </div>
-                <div class="factor-item">
-                    <div class="factor-icon">🏠</div>
-                    <div class="factor-name" data-i18n="est.how.factor2">Material Type</div>
-                    <p style="font-size: 0.85rem; color: var(--warm-gray);" data-i18n="est.how.factor2.desc">Premium to budget options</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <h3>Detailed Report</h3>
+                    <p>Receive a professional assessment with photos documenting every finding on your roof.</p>
                 </div>
-                <div class="factor-item">
-                    <div class="factor-icon">🔨</div>
-                    <div class="factor-name" data-i18n="est.how.factor3">Labor & Removal</div>
-                    <p style="font-size: 0.85rem; color: var(--warm-gray);" data-i18n="est.how.factor3.desc">Installation and tear-off costs</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <h3>Exact Pricing</h3>
+                    <p>Get an accurate, itemized quote based on in-person evaluation — no more guessing.</p>
                 </div>
-                <div class="factor-item">
-                    <div class="factor-icon">📊</div>
-                    <div class="factor-name" data-i18n="est.how.factor4">Home Details</div>
-                    <p style="font-size: 0.85rem; color: var(--warm-gray);" data-i18n="est.how.factor4.desc">Stories, pitch, complexity</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Peace of Mind</h3>
+                    <p>Know exactly what your roof needs — whether it is a small repair or a full replacement.</p>
                 </div>
-            </div>
-
-            <div class="how-cta">
-                <p data-i18n="est.how.cta.text">Want exact pricing based on a site inspection?</p>
-                <a href="#contact-modal" data-i18n="est.how.cta.link">Schedule a free inspection →</a>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Table -->
-    <section class="comparison-section">
-        <div class="comparison-content">
-            <h2 data-i18n="est.comparison.title">Material Comparison Guide</h2>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th data-i18n="est.comparison.material">Material</th>
-                        <th data-i18n="est.comparison.cost">Cost/sqft</th>
-                        <th data-i18n="est.comparison.lifespan">Lifespan</th>
-                        <th data-i18n="est.comparison.best">Best For</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Architectural Shingles</strong></td>
-                        <td>$4.00-$7.00</td>
-                        <td>25-30 years</td>
-                        <td>Most homes, popular & reliable</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Standing Seam Metal</strong></td>
-                        <td>$9.00-$14.00</td>
-                        <td>40-60 years</td>
-                        <td>Long-term value, durability</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Metal Shingle-Style</strong></td>
-                        <td>$7.00-$10.00</td>
-                        <td>30-50 years</td>
-                        <td>Metal look with easier install</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Clay/Concrete Tile</strong></td>
-                        <td>$8.00-$14.00</td>
-                        <td>50+ years</td>
-                        <td>Southwest charm & durability</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Flat/Foam (TPO/EPDM)</strong></td>
-                        <td>$4.50-$7.00</td>
-                        <td>15-25 years</td>
-                        <td>Flat roofs, commercial</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Natural Slate</strong></td>
-                        <td>$15.00-$30.00</td>
-                        <td>75-100 years</td>
-                        <td>Luxury, historic properties</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Synthetic Slate</strong></td>
-                        <td>$7.00-$12.00</td>
-                        <td>30-50 years</td>
-                        <td>Slate look, lighter weight</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- What to Expect -->
+    <section class="process-section">
+        <div class="process-content">
+            <h2>What to Expect</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h3>Schedule Online</h3>
+                    <p>Pick a date and time that works for you. We will call to confirm within 1 business day.</p>
+                </div>
+                <div class="process-connector">
+                    <svg width="40" height="24" viewBox="0 0 40 24" fill="none" stroke="var(--light-gray)" stroke-width="2"><path d="M0 12h36m-6-6l6 6-6 6"/></svg>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h3>Expert Inspection</h3>
+                    <p>A licensed inspector visits your property for a thorough 20-30 minute assessment.</p>
+                </div>
+                <div class="process-connector">
+                    <svg width="40" height="24" viewBox="0 0 40 24" fill="none" stroke="var(--light-gray)" stroke-width="2"><path d="M0 12h36m-6-6l6 6-6 6"/></svg>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h3>Get Your Report</h3>
+                    <p>Receive photos, findings, and an exact quote within 24 hours of your inspection.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="trust-content">
+            <div class="trust-stats">
+                <div class="trust-stat">
+                    <span class="trust-number">587+</span>
+                    <span class="trust-label">Projects Completed</span>
+                </div>
+                <div class="trust-stat">
+                    <span class="trust-number">4.9</span>
+                    <span class="trust-label">Google Rating</span>
+                </div>
+                <div class="trust-stat">
+                    <span class="trust-number">GAF</span>
+                    <span class="trust-label">Certified Contractor</span>
+                </div>
+                <div class="trust-stat">
+                    <span class="trust-number">100%</span>
+                    <span class="trust-label">Licensed & Insured</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (Inspection-focused) -->
     <section class="faq-section">
         <div class="faq-content">
-            <h2 data-i18n="est.faq.title">Frequently Asked Questions</h2>
+            <h2>Frequently Asked Questions</h2>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span data-i18n="est.faq.q1">How accurate is this estimate?</span>
-                    <span class="faq-icon">▼</span>
+                    <span>How long does an inspection take?</span>
+                    <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p class="faq-text" data-i18n="est.faq.a1">Our calculator uses current El Paso market data and provides a solid ballpark range. For exact pricing, we recommend a free on-site inspection where we can evaluate roof complexity, existing damage, and material availability.</p>
+                    <p class="faq-text">A typical roof inspection takes 20-30 minutes depending on the size and complexity of your roof. Our inspector will examine all accessible areas including the roof surface, flashing, gutters, vents, and attic ventilation.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span data-i18n="est.faq.q2">Does this estimate include labor costs?</span>
-                    <span class="faq-icon">▼</span>
+                    <span>Will the inspector go on the roof?</span>
+                    <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p class="faq-text" data-i18n="est.faq.a2">Yes! Our pricing is fully installed and includes labor, materials, permits, and basic cleanup. Tear-off of existing roofing is an additional charge (shown in the breakdown).</p>
+                    <p class="faq-text">Yes, whenever it is safe to do so. Our inspectors are trained and equipped to walk on roofs. If conditions are unsafe (extreme weather, very steep pitch), we use drones and high-resolution cameras to get a detailed view.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span data-i18n="est.faq.q3">What if my roof is under warranty or insurance covers the damage?</span>
-                    <span class="faq-icon">▼</span>
+                    <span>What if you find major damage?</span>
+                    <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p class="faq-text" data-i18n="est.faq.a3">Great question! Many insurance policies and warranties cover roofing work. We can help you navigate the claims process and work directly with your insurance company. Call us at (915) 861-8039 to discuss.</p>
+                    <p class="faq-text">We will document everything with photos and provide you with a detailed report and repair or replacement options. If the damage may be covered by insurance, we can help you navigate the claims process. There is never any pressure to commit.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span data-i18n="est.faq.q4">Do you offer financing?</span>
-                    <span class="faq-icon">▼</span>
+                    <span>How long until I get a quote?</span>
+                    <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p class="faq-text" data-i18n="est.faq.a4">Absolutely. We work with several lending partners to offer flexible financing options. Visit our <a href="financing.html">financing page</a> for more details and current offers.</p>
+                    <p class="faq-text">You will receive your detailed report and exact quote within 24 hours of the inspection. For straightforward projects, we often have it ready the same day. The report includes photos, findings, material options, and itemized pricing.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span data-i18n="est.faq.q5">How long does installation take?</span>
-                    <span class="faq-icon">▼</span>
+                    <span>Do you offer financing?</span>
+                    <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p class="faq-text" data-i18n="est.faq.a5">Most residential roof installations take 1-3 days depending on size and complexity. Weather can affect the timeline. We'll provide a specific schedule when you book your free inspection.</p>
+                    <p class="faq-text">Absolutely. We partner with multiple lenders to offer flexible financing options starting at 5.99% APR. Visit our <a href="financing.html" style="color:var(--terracotta); font-weight:600;">financing page</a> for details and current offers.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What areas do you service?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p class="faq-text">We serve all of El Paso and surrounding communities including Horizon City, Socorro, San Elizario, Canutillo, Anthony, and Sunland Park. If you are unsure whether we cover your area, give us a call at (915) 861-8039.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+<!-- Footer -->
         <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-inner">
@@ -3035,7 +2726,7 @@
                     <a href="#" class="nav-logo" aria-label="Meraki Roofing home">
                         <img src="images/logos/primary_light_HQ.webp" alt="Meraki Roofing" width="400" height="301" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1) brightness(1.1);">
                     </a>
-                    <p>Get an instant roofing estimate for your El Paso home. Our satellite-powered calculator provides accurate pricing for roof replacement, repairs, and storm damage restoration.</p>
+                    <p>Book a free professional roof inspection for your El Paso home. Our satellite-powered scanner measures your roof, then a licensed inspector provides an exact quote.</p>
                 </div>
 
                 <div class="footer-col">
@@ -3082,59 +2773,19 @@
 
     <!-- Sticky Mobile CTA -->
     <div class="sticky-mobile-cta" id="stickyCTA">
-        <button onclick="contactForQuote()" style="background-color: var(--gold); color: var(--charcoal);">Get Free Inspection</button>
+        <button onclick="document.querySelector('.calculator').scrollIntoView({behavior:'smooth'})" style="background-color: var(--gold); color: var(--charcoal);">Book Free Inspection</button>
     </div>
 
     <script>
         // ========== DATA & STATE ==========
-        const materials = [
-            { id: 'asphalt-arch', name: 'Architectural Shingles', low: 4.00, high: 7.00, badge: 'popular', label: 'Most Popular', description: 'Best all-around choice for most homes' },
-            { id: 'metal-standing', name: 'Metal (Standing Seam)', low: 9.00, high: 14.00, badge: 'premium', label: 'Premium', description: 'Durable, 40-60 year lifespan' },
-            { id: 'metal-shingle', name: 'Metal (Shingle-Style)', low: 7.00, high: 10.00, badge: '', label: '', description: 'Metal look, easier installation' },
-            { id: 'tile', name: 'Clay/Concrete Tile', low: 8.00, high: 14.00, badge: '', label: '', description: 'Southwest style, 50+ year lifespan' },
-            { id: 'flat-foam', name: 'Flat/Foam (TPO/EPDM)', low: 4.50, high: 7.00, badge: '', label: '', description: 'Ideal for flat roofs' },
-            { id: 'slate-natural', name: 'Natural Slate', low: 15.00, high: 30.00, badge: 'premium', label: 'Luxury', description: 'Premium, 75-100 year lifespan' },
-            { id: 'slate-synthetic', name: 'Synthetic Slate', low: 7.00, high: 12.00, badge: '', label: '', description: 'Slate look, lighter weight' }
-        ];
-
-        const stories = [
-            { id: 'one-story', label: '1 Story', value: 1, multiplier: 1.0 },
-            { id: 'two-plus', label: '2+ Stories', value: 2, multiplier: 1.15 }
-        ];
-
-        const pitches = [
-            { id: 'pitch-low', label: 'Low (<4:12)', value: 'low', multiplier: 1.0, description: 'Gentle slope' },
-            { id: 'pitch-standard', label: 'Standard (4:12-6:12)', value: 'standard', multiplier: 1.0, description: 'Most common' },
-            { id: 'pitch-steep', label: 'Steep (>6:12)', value: 'steep', multiplier: 1.10, description: 'High angle' }
-        ];
-
-        const roofComplexities = [
-            { id: 'simple', label: 'Simple', value: 'simple', multiplier: 1.0, description: '' },
-            { id: 'moderate', label: 'Moderate', value: 'moderate', multiplier: 1.12, description: '' },
-            { id: 'complex', label: 'Complex', value: 'complex', multiplier: 1.25, description: '' }
-        ];
-
-        const issues = [
-            { id: 'leaks', label: 'Leaks' },
-            { id: 'sagging', label: 'Sagging' },
-            { id: 'storm-damage', label: 'Storm Damage' },
-            { id: 'skylight', label: 'Skylight' },
-            { id: 'chimney', label: 'Chimney Flashing' }
-        ];
-
-        // State
+        const TOTAL_STEPS = 3; // 0: Scanner, 1: Booking, 2: Confirmation
         let currentStep = 0;
-        let solarData = null; // holds Solar API response
+        let solarData = null;
+        let uploadedPhotos = []; // array of File objects
         let formData = {
-            roofSize: 1800,
-            material: 'asphalt-arch',
-            stories: 'one-story',
-            pitch: 'pitch-standard',
-            roofComplexity: 'simple',
-            issues: [],
-            layers: 1,
-            decking: 'good',
-            addons: [],
+            roofSize: 0,
+            pitch: '',
+            roofComplexity: '',
             address: ''
         };
 
@@ -3476,11 +3127,11 @@
                         </div>
                     </div>
                 </div>
-                <p class="result-note">Measurements based on Google satellite imagery. You can adjust in the next step.</p>
+                <p class="result-note">Measurements based on Google satellite imagery. Your inspector will verify on-site.</p>
             `;
 
             document.getElementById('step0NextBtn').style.display = 'block';
-            document.getElementById('step0NextBtn').textContent = 'Continue with These Measurements';
+            document.getElementById('step0NextBtn').textContent = 'Schedule My Free Inspection';
 
             trackEvent('scanner_lead_captured', { source: 'estimate_page' });
         }
@@ -3678,21 +3329,17 @@
 
         // ========== INITIALIZATION ==========
         function initCalculator() {
-            renderMaterialCards();
-            renderStoryCards();
-            renderPitchCards();
-            renderComplexityCards();
-            renderIssuesCheckboxes();
-            setupEventListeners();
             setupMobileNav();
-            // Load Google Maps Places library (async loading per best practices)
+            setupPhotoUpload();
+            setupDateValidation();
+            // Load Google Maps Places library
             if (GOOGLE_API_KEY !== 'YOUR_API_KEY_HERE') {
                 const script = document.createElement('script');
-                script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places&loading=async&callback=initPlacesAutocomplete`;
+                script.src = \`https://maps.googleapis.com/maps/api/js?key=\${GOOGLE_API_KEY}&libraries=places&loading=async&callback=initPlacesAutocomplete\`;
                 script.async = true;
                 script.defer = true;
                 script.onerror = function() {
-                    console.warn('Google Maps failed to load — address autocomplete disabled');
+                    console.warn('Google Maps failed to load');
                 };
                 document.head.appendChild(script);
             }
@@ -3725,266 +3372,10 @@
             });
         }
 
-        // ========== RENDER FUNCTIONS ==========
-        function renderMaterialCards() {
-            const grid = document.getElementById('materialGrid');
-            grid.innerHTML = materials.map(material => `
-                <label class="material-card ${material.id === formData.material ? 'selected' : ''}" style="cursor: pointer;">
-                    <input type="radio" name="material" value="${material.id}" class="card-input" ${material.id === formData.material ? 'checked' : ''} onchange="selectMaterial('${material.id}')">
-                    ${material.badge ? `<span class="material-badge ${material.badge}">${material.label}</span>` : ''}
-                    <div class="material-name">${material.name}</div>
-                    <div class="material-price">$${material.low.toFixed(2)} — $${material.high.toFixed(2)}/sqft</div>
-                    <div class="material-description">${material.description}</div>
-                </label>
-            `).join('');
-        }
-
-        function renderStoryCards() {
-            const grid = document.getElementById('storyGrid');
-            grid.innerHTML = stories.map(story => `
-                <label class="story-card ${story.id === formData.stories ? 'selected' : ''}" style="cursor: pointer;">
-                    <input type="radio" name="stories" value="${story.id}" class="card-input" ${story.id === formData.stories ? 'checked' : ''} onchange="selectStory('${story.id}')">
-                    <div class="story-label">${story.label}</div>
-                    <div class="story-value">${story.value === 1 ? 'Single level' : 'Multiple levels'}</div>
-                </label>
-            `).join('');
-        }
-
-        const pitchDiagrams = {
-            'pitch-low': '<svg width="80" height="44" viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="32" width="72" height="10" rx="1.5" fill="#F0EAE2" stroke="#E8E3DD" stroke-width="1"/><path d="M8 32 L40 22 L72 32" stroke="#C4724B" stroke-width="2.5" fill="rgba(196,114,75,0.06)" stroke-linecap="round" stroke-linejoin="round"/><text x="40" y="15" text-anchor="middle" font-size="9" fill="#6B6560" font-family="Inter,sans-serif">~15°</text></svg>',
-            'pitch-standard': '<svg width="80" height="44" viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="34" width="72" height="8" rx="1.5" fill="#F0EAE2" stroke="#E8E3DD" stroke-width="1"/><path d="M8 34 L40 12 L72 34" stroke="#C4724B" stroke-width="2.5" fill="rgba(196,114,75,0.06)" stroke-linecap="round" stroke-linejoin="round"/><text x="40" y="7" text-anchor="middle" font-size="9" fill="#6B6560" font-family="Inter,sans-serif">~30°</text></svg>',
-            'pitch-steep': '<svg width="80" height="44" viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="38" width="72" height="4" rx="1" fill="#F0EAE2" stroke="#E8E3DD" stroke-width="1"/><path d="M16 38 L40 4 L64 38" stroke="#C4724B" stroke-width="2.5" fill="rgba(196,114,75,0.06)" stroke-linecap="round" stroke-linejoin="round"/><text x="40" y="22" text-anchor="middle" font-size="9" fill="#6B6560" font-family="Inter,sans-serif">~45°+</text></svg>'
-        };
-
-        const complexityDiagrams = {
-            'simple': '<img src="images/roof-simple.webp" alt="Simple Roof" style="width:100px;height:auto;">',
-            'moderate': '<img src="images/roof-moderate.webp" alt="Moderate Roof" style="width:100px;height:auto;">',
-            'complex': '<img src="images/roof-complex.webp" alt="Complex Roof" style="width:100px;height:auto;">'
-        };
-
-        function renderPitchCards() {
-            const grid = document.getElementById('pitchGrid');
-            grid.innerHTML = pitches.map(pitch => `
-                <label class="pitch-card ${pitch.id === formData.pitch ? 'selected' : ''}" style="cursor: pointer; text-align: center;">
-                    <input type="radio" name="pitch" value="${pitch.id}" class="card-input" ${pitch.id === formData.pitch ? 'checked' : ''} onchange="selectPitch('${pitch.id}')">
-                    <div style="margin-bottom: 6px;">${pitchDiagrams[pitch.id]}</div>
-                    <div class="pitch-label">${pitch.label}</div>
-                    <div class="pitch-value">${pitch.description}</div>
-                </label>
-            `).join('');
-        }
-
-        function renderComplexityCards() {
-            const grid = document.getElementById('complexityGrid');
-            grid.innerHTML = roofComplexities.map(c => `
-                <label class="pitch-card ${c.id === formData.roofComplexity ? 'selected' : ''}" style="cursor: pointer; text-align: center;">
-                    <input type="radio" name="complexity" value="${c.id}" class="card-input" ${c.id === formData.roofComplexity ? 'checked' : ''} onchange="selectComplexity('${c.id}')">
-                    <div style="margin-bottom: 6px;">${complexityDiagrams[c.id]}</div>
-                    <div class="pitch-label">${c.label}</div>
-                    <div class="pitch-value">${c.description}</div>
-                </label>
-            `).join('');
-        }
-
-        function renderIssuesCheckboxes() {
-            const grid = document.getElementById('issuesGrid');
-            grid.innerHTML = issues.map(issue => `
-                <label class="checkbox-item" style="cursor: pointer;">
-                    <input type="checkbox" name="issue-${issue.id}" value="${issue.id}" class="issue-checkbox" ${formData.issues.includes(issue.id) ? 'checked' : ''} onchange="toggleIssue('${issue.id}')">
-                    <span class="checkbox-label">${issue.label}</span>
-                </label>
-            `).join('');
-        }
-
-        // ========== SELECTION HANDLERS ==========
-        function selectMaterial(materialId) {
-            formData.material = materialId;
-            renderMaterialCards();
-            trackEvent('select_material', { material: materialId });
-        }
-
-        function selectStory(storyId) {
-            formData.stories = storyId;
-            renderStoryCards();
-        }
-
-        function selectPitch(pitchId) {
-            formData.pitch = pitchId;
-            renderPitchCards();
-        }
-
-        function selectComplexity(complexityId) {
-            formData.roofComplexity = complexityId;
-            renderComplexityCards();
-        }
-
-        function toggleIssue(issueId) {
-            if (formData.issues.includes(issueId)) {
-                formData.issues = formData.issues.filter(i => i !== issueId);
-            } else {
-                formData.issues.push(issueId);
-            }
-        }
-
-        // ========== REFINE ESTIMATE HANDLERS ==========
-        const addonPrices = {
-            'ridge-vent': { low: 300, high: 600 },
-            'drip-edge': { low: 200, high: 500 },
-            'gutters': { low: 800, high: 2000 },
-            'skylight': { low: 200, high: 500 },
-            'chimney': { low: 250, high: 600 },
-            'soffit-fascia': { low: 500, high: 1500 }
-        };
-
-        function toggleRefine() {
-            const toggle = document.getElementById('refineToggle');
-            const panel = document.getElementById('refinePanel');
-            toggle.classList.toggle('open');
-            panel.classList.toggle('open');
-        }
-
-        function selectLayer(value) {
-            formData.layers = value;
-            document.querySelectorAll('#layerOptions .refine-option').forEach(opt => {
-                opt.classList.toggle('selected', parseInt(opt.dataset.value) === value);
-            });
-            recalculateRefine();
-        }
-
-        function selectDecking(value) {
-            formData.decking = value;
-            document.querySelectorAll('#deckingOptions .refine-option').forEach(opt => {
-                opt.classList.toggle('selected', opt.dataset.value === value);
-            });
-            recalculateRefine();
-        }
-
-        function toggleAddon(addonId) {
-            const idx = formData.addons.indexOf(addonId);
-            if (idx > -1) {
-                formData.addons.splice(idx, 1);
-            } else {
-                formData.addons.push(addonId);
-            }
-            document.querySelector(`.addon-item[data-addon="${addonId}"]`).classList.toggle('selected');
-            recalculateRefine();
-        }
-
-        function recalculateRefine() {
-            calculateAndDisplayResults();
-        }
-
-        // ========== SLIDER & INPUT SYNC ==========
-        function setupEventListeners() {
-            const roofSize = document.getElementById('roofSize');
-            const sizeInput = document.getElementById('sizeInput');
-
-            if (roofSize) {
-                roofSize.addEventListener('input', (e) => {
-                    formData.roofSize = parseInt(e.target.value);
-                    sizeInput.value = formData.roofSize;
-                    updateRoofIcon();
-                });
-            }
-
-            if (sizeInput) {
-                // Update slider live as user types, but don't clamp
-                sizeInput.addEventListener('input', (e) => {
-                    let value = parseInt(e.target.value);
-                    if (!isNaN(value) && value > 0) {
-                        formData.roofSize = Math.min(15000, value);
-                        roofSize.value = formData.roofSize;
-                        updateRoofIcon();
-                    }
-                });
-
-                // Clamp to valid range only when user leaves the field
-                sizeInput.addEventListener('blur', (e) => {
-                    let value = parseInt(e.target.value) || 500;
-                    value = Math.max(500, Math.min(15000, value));
-                    formData.roofSize = value;
-                    roofSize.value = value;
-                    sizeInput.value = value;
-                    updateRoofIcon();
-                });
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Scroll CTA
-            const scrollCTA = document.querySelector('.scroll-cta');
-            if (scrollCTA) {
-                scrollCTA.addEventListener('click', () => {
-                    document.querySelector('.calculator').scrollIntoView({ behavior: 'smooth' });
-                });
-            }
-
-            initCalculator();
-        });
-
-        function updateRoofIcon() {
-            const roofSvg = document.querySelector('.roof-svg');
-            if (!roofSvg) return;
-            const scale = Math.min(1.5, 0.8 + (formData.roofSize - 500) / 4500 * 0.7);
-            roofSvg.style.transform = `scale(${scale})`;
-        }
-
         // ========== STEP NAVIGATION ==========
         function nextStep() {
-            if (currentStep === 0) {
-                // Moving from address lookup to roof size — apply solar data if available
-                if (solarData) {
-                    // Auto-fill the slider and input
-                    const slider = document.getElementById('roofSize');
-                    const input = document.getElementById('sizeInput');
-                    if (slider) slider.value = formData.roofSize;
-                    if (input) input.value = formData.roofSize;
-                    updateRoofIcon();
-                    // Show satellite banner
-                    const banner = document.getElementById('satelliteBanner');
-                    if (banner) {
-                        banner.style.display = 'flex';
-                        document.getElementById('satelliteBannerText').textContent =
-                            `Satellite estimate: ~${formData.roofSize.toLocaleString()} sq ft for ${formData.address} — adjust if needed`;
-                    }
-                }
-            }
-
-            if (currentStep === 1) {
-                if (formData.roofSize < 500 || formData.roofSize > 15000) {
-                    showError('Please enter a roof size between 500 and 15,000 sq ft');
-                    return;
-                }
-            }
-
-            if (currentStep === 2) {
-                if (!formData.material) {
-                    showError('Please select a roofing material');
-                    return;
-                }
-            }
-
-            if (currentStep === 3) {
-                if (!formData.stories) {
-                    showError('Please select your home story count');
-                    return;
-                }
-                if (!formData.pitch) {
-                    showError('Please select your roof pitch');
-                    return;
-                }
-                // Auto-select pitch and complexity from solar data
-                if (solarData) {
-                    renderPitchCards();
-                    renderComplexityCards();
-                }
-            }
-
-            if (currentStep < 4) {
+            if (currentStep < TOTAL_STEPS - 1) {
                 goToStep(currentStep + 1);
-                if (currentStep === 3) {
-                    calculateAndDisplayResults();
-                }
             }
         }
 
@@ -3995,8 +3386,8 @@
         }
 
         function goToStep(stepNumber) {
-            const currentStepEl = document.getElementById(`step${currentStep}`);
-            const nextStepEl = document.getElementById(`step${stepNumber}`);
+            const currentStepEl = document.getElementById('step' + currentStep);
+            const nextStepEl = document.getElementById('step' + stepNumber);
 
             if (currentStepEl) {
                 currentStepEl.classList.remove('active');
@@ -4004,55 +3395,18 @@
             }
 
             setTimeout(() => {
-                if (currentStepEl) {
-                    currentStepEl.classList.remove('exit-left');
-                }
-
-                if (nextStepEl) {
-                    nextStepEl.classList.add('active');
-                }
-
-                // Update progress bar
+                if (currentStepEl) currentStepEl.classList.remove('exit-left');
+                if (nextStepEl) nextStepEl.classList.add('active');
                 updateProgressBar(stepNumber);
                 document.querySelector('.calculator').scrollIntoView({ behavior: 'smooth' });
-
                 currentStep = stepNumber;
-
-                // Highlight auto-selected cards when arriving at Step 3 (Home Details) with satellite data
-                if (stepNumber === 3 && solarData) {
-                    setTimeout(() => highlightAutoSelected(), 300);
-                }
-
                 trackEvent('step_view', { step: stepNumber });
             }, 200);
         }
 
-        // Highlight satellite-auto-selected pitch & complexity cards with glow + badge
-        function highlightAutoSelected() {
-            // Find the selected pitch card
-            const pitchCard = document.querySelector('#pitchGrid .pitch-card.selected');
-            if (pitchCard && !pitchCard.querySelector('.satellite-auto-badge')) {
-                pitchCard.classList.add('satellite-auto-selected');
-                const badge = document.createElement('div');
-                badge.className = 'satellite-auto-badge';
-                badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Auto-detected';
-                pitchCard.appendChild(badge);
-            }
-
-            // Find the selected complexity card
-            const complexityCard = document.querySelector('#complexityGrid .pitch-card.selected');
-            if (complexityCard && !complexityCard.querySelector('.satellite-auto-badge')) {
-                complexityCard.classList.add('satellite-auto-selected');
-                const badge = document.createElement('div');
-                badge.className = 'satellite-auto-badge';
-                badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Auto-detected';
-                complexityCard.appendChild(badge);
-            }
-        }
-
         function updateProgressBar(stepNumber) {
-            for (let i = 0; i <= 4; i++) {
-                const indicator = document.getElementById(`step${i}Indicator`);
+            for (let i = 0; i < TOTAL_STEPS; i++) {
+                const indicator = document.getElementById('step' + i + 'Indicator');
                 if (!indicator) continue;
                 if (i < stepNumber) {
                     indicator.classList.remove('active');
@@ -4064,214 +3418,173 @@
                     indicator.classList.remove('active', 'completed');
                 }
             }
-
-            const labels = ['Step 1 of 5: Satellite Scan', 'Step 2 of 5: Roof Size', 'Step 3 of 5: Material', 'Step 4 of 5: Home Details', 'Step 5 of 5: Your Estimate'];
-            document.getElementById('progressText').textContent = labels[stepNumber];
+            const labels = ['Step 1 of 3: Roof Scan', 'Step 2 of 3: Schedule Inspection', 'Step 3 of 3: Confirmed'];
+            const progressText = document.getElementById('progressText');
+            if (progressText) progressText.textContent = labels[stepNumber] || '';
         }
 
-        // ========== CALCULATIONS ==========
-        function calculateEstimate() {
-            const material = materials.find(m => m.id === formData.material);
-            const story = stories.find(s => s.id === formData.stories);
-            const pitch = pitches.find(p => p.id === formData.pitch);
-            const complexity = roofComplexities.find(c => c.id === formData.roofComplexity);
+        // ========== PHOTO UPLOAD ==========
+        function setupPhotoUpload() {
+            const zone = document.getElementById('photoUploadZone');
+            const input = document.getElementById('photoInput');
+            if (!zone || !input) return;
 
-            let baseLow = material.low * formData.roofSize;
-            let baseHigh = material.high * formData.roofSize;
+            zone.addEventListener('click', () => input.click());
+            zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('drag-over'); });
+            zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('drag-over');
+                handlePhotoFiles(e.dataTransfer.files);
+            });
+            input.addEventListener('change', (e) => handlePhotoFiles(e.target.files));
+        }
 
-            // Tear-off baked into material pricing
-            let tearOffLow = 0;
-            let tearOffHigh = 0;
+        function handlePhotoFiles(files) {
+            const maxFiles = 5;
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            const allowed = ['image/jpeg', 'image/png', 'image/webp'];
 
-            // Extra layer costs
-            let layerCostLow = 0, layerCostHigh = 0;
-            if (formData.layers > 1) {
-                const layerRate = formData.layers === 2 ? 0.50 : 1.25;
-                layerCostLow = layerRate * formData.roofSize;
-                layerCostHigh = layerRate * formData.roofSize;
-            }
-
-            // Decking repair costs
-            let deckingCostLow = 0, deckingCostHigh = 0;
-            if (formData.decking === 'minor') {
-                deckingCostLow = 0.75 * formData.roofSize * 0.10;
-                deckingCostHigh = 1.50 * formData.roofSize * 0.10;
-            } else if (formData.decking === 'major') {
-                deckingCostLow = 0.75 * formData.roofSize * 0.25;
-                deckingCostHigh = 1.50 * formData.roofSize * 0.25;
-            }
-
-            // Add-on costs
-            let addonCostLow = 0, addonCostHigh = 0;
-            formData.addons.forEach(id => {
-                if (addonPrices[id]) {
-                    addonCostLow += addonPrices[id].low;
-                    addonCostHigh += addonPrices[id].high;
+            for (const file of files) {
+                if (uploadedPhotos.length >= maxFiles) {
+                    showError('Maximum 5 photos allowed');
+                    break;
                 }
+                if (!allowed.includes(file.type)) {
+                    showError('Only JPG, PNG, and WebP files are accepted');
+                    continue;
+                }
+                if (file.size > maxSize) {
+                    showError('Each photo must be under 5MB');
+                    continue;
+                }
+                uploadedPhotos.push(file);
+            }
+            renderPhotoPreview();
+        }
+
+        function renderPhotoPreview() {
+            const grid = document.getElementById('photoPreviewGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            uploadedPhotos.forEach((file, index) => {
+                const div = document.createElement('div');
+                div.className = 'photo-preview';
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.alt = file.name;
+                const btn = document.createElement('button');
+                btn.className = 'photo-remove';
+                btn.innerHTML = '&times;';
+                btn.onclick = (e) => { e.stopPropagation(); removePhoto(index); };
+                div.appendChild(img);
+                div.appendChild(btn);
+                grid.appendChild(div);
             });
+        }
 
-            let storyMultiplier = story.multiplier;
-            let pitchMultiplier = pitch.multiplier;
-            let complexityMultiplier = complexity.multiplier;
-            let combinedMultiplier = storyMultiplier * pitchMultiplier * complexityMultiplier;
+        function removePhoto(index) {
+            uploadedPhotos.splice(index, 1);
+            renderPhotoPreview();
+        }
 
-            let totalLow = (baseLow + tearOffLow + layerCostLow + deckingCostLow) * combinedMultiplier + addonCostLow;
-            let totalHigh = (baseHigh + tearOffHigh + layerCostHigh + deckingCostHigh) * combinedMultiplier + addonCostHigh;
+        // ========== DATE VALIDATION ==========
+        function setupDateValidation() {
+            const dateInput = document.getElementById('inspectDate');
+            if (!dateInput) return;
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            dateInput.min = tomorrow.toISOString().split('T')[0];
+        }
 
-            return {
-                baseLow, baseHigh,
-                tearOffLow, tearOffHigh,
-                layerCostLow, layerCostHigh,
-                deckingCostLow, deckingCostHigh,
-                addonCostLow, addonCostHigh,
-                storyMultiplier, pitchMultiplier, complexityMultiplier,
-                totalLow, totalHigh
+        // ========== INSPECTION FORM SUBMISSION ==========
+        async function submitInspectionForm() {
+            const date = document.getElementById('inspectDate').value;
+            const time = document.getElementById('inspectTime').value;
+            const service = document.getElementById('serviceType').value;
+            const urgency = document.querySelector('input[name="urgency"]:checked')?.value || 'flexible';
+            const notes = document.getElementById('inspectNotes').value.trim();
+
+            // Validation
+            if (!date) { showError('Please select a preferred date'); return; }
+            if (!time) { showError('Please select a preferred time'); return; }
+            if (!service) { showError('Please select a service type'); return; }
+
+            // Get gate data (name, phone, email) that was captured during scanner
+            const gateName = document.getElementById('estimateGateName')?.value || '';
+            const gatePhone = document.getElementById('estimateGatePhone')?.value || '';
+            const gateEmail = document.getElementById('estimateGateEmail')?.value || '';
+
+            const serviceLabels = {
+                'inspection': 'Free Roof Inspection',
+                'repair': 'Repair Assessment',
+                'replacement': 'Replacement Consultation',
+                'storm': 'Storm Damage Inspection',
+                'maintenance': 'Maintenance Review'
             };
-        }
 
-        function calculateAndDisplayResults() {
-            const calc = calculateEstimate();
-            const material = materials.find(m => m.id === formData.material);
-            const story = stories.find(s => s.id === formData.stories);
-            const pitch = pitches.find(p => p.id === formData.pitch);
-            const complexity = roofComplexities.find(c => c.id === formData.roofComplexity);
+            const timeLabels = {
+                'morning': 'Morning (8am-12pm)',
+                'afternoon': 'Afternoon (12-5pm)',
+                'evening': 'Evening (5-8pm)'
+            };
 
-            // Show layers option
-            const layerSection = document.getElementById('layerOptions');
-            if (layerSection) {
-                layerSection.closest('.refine-section').style.display = 'block';
-            }
+            // Build message
+            const message = [
+                'Preferred Date: ' + date,
+                'Preferred Time: ' + timeLabels[time],
+                'Service: ' + serviceLabels[service],
+                'Urgency: ' + urgency,
+                notes ? 'Notes: ' + notes : '',
+                uploadedPhotos.length > 0 ? 'Photos uploaded: ' + uploadedPhotos.length : '',
+                formData.address ? 'Address: ' + formData.address : '',
+                formData.roofSize ? 'Roof Size: ~' + formData.roofSize + ' sq ft' : '',
+                formData.pitch ? 'Pitch: ' + formData.pitch : ''
+            ].filter(Boolean).join('\n');
 
-            // Format price range
-            const priceRange = document.getElementById('priceRange');
-            const low = Math.round(calc.totalLow);
-            const high = Math.round(calc.totalHigh);
-            priceRange.textContent = `$${low.toLocaleString()} — $${high.toLocaleString()}`;
+            // Submit to Web3Forms
+            try {
+                const web3Data = new FormData();
+                web3Data.append('access_key', '9996427a-e610-43eb-a8d8-f2896b9529fc');
+                web3Data.append('subject', 'Inspection Booking - ' + (gateName || 'New Lead'));
+                web3Data.append('name', gateName);
+                web3Data.append('phone', gatePhone);
+                web3Data.append('email', gateEmail);
+                web3Data.append('message', message);
 
-            // Summary text
-            const stories_label = story.value === 1 ? '1-story' : '2+ story';
-            const pitch_label = pitch.label;
-            const complexity_label = complexity.label.toLowerCase();
-            document.getElementById('resultSummary').textContent = `Your estimate is based on ${material.name} for ${formData.roofSize.toLocaleString()} sq ft, ${stories_label}, ${pitch_label}, ${complexity_label} layout roof`;
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: web3Data
+                }).catch(e => console.warn('Web3Forms error:', e));
+            } catch(e) { console.warn('Web3Forms error:', e); }
 
-            // Breakdown
-            const breakdownItems = document.getElementById('breakdownItems');
-            let html = `
-                <div class="breakdown-item">
-                    <div class="breakdown-label">Base Material Cost</div>
-                    <div class="breakdown-value">$${Math.round(calc.baseLow).toLocaleString()} — $${Math.round(calc.baseHigh).toLocaleString()}</div>
-                </div>
-            `;
-
-            // Tear-off baked into material pricing, no separate line item
-
-            if (story.value > 1) {
-                const surcharge = Math.round((calc.baseLow + calc.tearOffLow) * (story.multiplier - 1));
-                html += `
-                    <div class="breakdown-item">
-                        <div class="breakdown-label">2+ Story Surcharge (+15%)</div>
-                        <div class="breakdown-value">$${surcharge.toLocaleString()}</div>
-                    </div>
-                `;
-            }
-
-            if (pitch.multiplier > 1.0) {
-                const surcharge = Math.round((calc.baseLow + calc.tearOffLow) * (pitch.multiplier - 1));
-                html += `
-                    <div class="breakdown-item">
-                        <div class="breakdown-label">Steep Pitch Surcharge (+10%)</div>
-                        <div class="breakdown-value">$${surcharge.toLocaleString()}</div>
-                    </div>
-                `;
-            }
-
-            if (calc.complexityMultiplier > 1.0) {
-                const pct = Math.round((calc.complexityMultiplier - 1) * 100);
-                const surcharge = Math.round((calc.baseLow + calc.tearOffLow) * (calc.complexityMultiplier - 1));
-                const complexity = roofComplexities.find(c => c.id === formData.roofComplexity);
-                html += `
-                    <div class="breakdown-item">
-                        <div class="breakdown-label">${complexity.label} Roof Layout (+${pct}%)</div>
-                        <div class="breakdown-value">$${surcharge.toLocaleString()}</div>
-                    </div>
-                `;
-            }
-
-            // Refine extras
-            if (calc.layerCostLow > 0) {
-                const layerLabel = formData.layers === 2 ? '2-Layer' : '3+ Layer';
-                html += `
-                    <div class="breakdown-item">
-                        <div class="breakdown-label">${layerLabel} Tear-off (+$${formData.layers === 2 ? '0.50' : '1.25'}/sqft)</div>
-                        <div class="breakdown-value">$${Math.round(calc.layerCostLow).toLocaleString()}</div>
-                    </div>
-                `;
-            }
-
-            if (calc.deckingCostLow > 0) {
-                const deckLabel = formData.decking === 'minor' ? 'Minor Decking Repair (~10%)' : 'Significant Decking Repair (~25%)';
-                html += `
-                    <div class="breakdown-item">
-                        <div class="breakdown-label">${deckLabel}</div>
-                        <div class="breakdown-value">$${Math.round(calc.deckingCostLow).toLocaleString()} — $${Math.round(calc.deckingCostHigh).toLocaleString()}</div>
-                    </div>
-                `;
-            }
-
-            if (calc.addonCostLow > 0) {
-                html += `
-                    <div class="breakdown-item">
-                        <div class="breakdown-label">Add-ons (${formData.addons.length} selected)</div>
-                        <div class="breakdown-value">$${Math.round(calc.addonCostLow).toLocaleString()} — $${Math.round(calc.addonCostHigh).toLocaleString()}</div>
-                    </div>
-                `;
-            }
-
-            html += `
-                <div class="breakdown-item total">
-                    <div class="breakdown-label">Total Estimate</div>
-                    <div class="breakdown-value">$${Math.round(calc.totalLow).toLocaleString()} — $${Math.round(calc.totalHigh).toLocaleString()}</div>
-                </div>
-            `;
-
-            breakdownItems.innerHTML = html;
-
-            // Monthly payment
-            const midpoint = (calc.totalLow + calc.totalHigh) / 2;
-            const monthlyRate = 0.0599 / 12;
-            const months = 60;
-            const monthlyPayment = midpoint * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
-            document.getElementById('monthlyPayment').textContent = `$${Math.round(monthlyPayment)}/mo`;
-
-            trackEvent('view_estimate', {
-                material: formData.material,
-                size: formData.roofSize,
-                type: 'replacement',
-                total_low: Math.round(calc.totalLow),
-                total_high: Math.round(calc.totalHigh)
-            });
-
-            // Log final estimate to Google Sheet
+            // Submit to Google Sheets
             logLeadToSheet({
-                source: 'Estimate Calculator — Final',
-                address: pendingAddress || '',
-                roofSize: formData.roofSize,
-                pitch: formData.pitch,
-                complexity: formData.roofComplexity,
-                material: formData.material || '',
-                estimatedCost: '$' + Math.round(calc.totalLow).toLocaleString() + ' — $' + Math.round(calc.totalHigh).toLocaleString()
+                source: 'Inspection Booking',
+                name: gateName,
+                phone: gatePhone,
+                email: gateEmail,
+                address: formData.address || pendingAddress || '',
+                roofSize: formData.roofSize || '',
+                pitch: formData.pitch || '',
+                complexity: formData.roofComplexity || '',
+                serviceType: serviceLabels[service] || service,
+                urgency: urgency,
+                contactPref: time,
+                message: 'Date: ' + date + ' | ' + notes,
+                lat: pendingLocation?.lat || '',
+                lng: pendingLocation?.lng || ''
             });
-        }
 
-        // ========== CTA HANDLERS ==========
-        function contactForQuote() {
-            trackEvent('contact_click', { step: currentStep });
-            window.location.href = 'index.html#contact';
-        }
+            trackEvent('inspection_booked', {
+                service: service,
+                urgency: urgency,
+                has_scan: !!solarData,
+                photo_count: uploadedPhotos.length
+            });
 
-        function recalculate() {
-            goToStep(1);
-            document.getElementById('roofSize').focus();
+            // Go to confirmation
+            goToStep(2);
         }
 
         // ========== FAQ TOGGLE ==========
@@ -4315,117 +3628,35 @@
             console.log('Event:', eventName, eventData);
         }
 
-        // ========== INTERNATIONALIZATION (i18n) ==========
-        // Store original English text for fallback
-        const originalTexts = {};
+        // ========== INITIALIZATION ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollCTA = document.querySelector('.scroll-cta');
+            if (scrollCTA) {
+                scrollCTA.addEventListener('click', () => {
+                    document.querySelector('.calculator').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+            initCalculator();
+        });
 
-        // Spanish translations for all translatable elements
+        // ========== INTERNATIONALIZATION (i18n) ==========
+        // Translations trimmed for page redesign — nav-only kept
+        const originalTexts = {};
         const translations = {
             es: {
-                // Navigation
                 'nav.residential': 'Residencial',
                 'nav.commercial': 'Comercial',
-                'nav.storm': 'Daño por Tormenta',
+                'nav.storm': 'Dano por Tormenta',
                 'nav.maintenance': 'Mantenimiento',
                 'nav.resources': 'Recursos',
                 'nav.financing': 'Opciones de Financiamiento',
                 'nav.insurance': 'Reclamaciones de Seguros',
-                'nav.gallery': 'Galería',
+                'nav.gallery': 'Galeria',
                 'nav.about': 'Acerca de Nosotros',
                 'nav.blog': 'Blog',
                 'nav.faq': 'Preguntas Frecuentes',
-                'nav.estimate': 'Cotización Gratis',
-                'nav.cta': 'Comience Aquí',
-
-                // Hero section
-                'est.hero.title': 'Obtenga Su Cotización Instantánea de Techo',
-                'est.hero.desc': 'Responda algunas preguntas y obtenga un rango de precio estimado en segundos. Sin correo electrónico requerido, sin obligaciones.',
-                'est.hero.btn': 'Iniciar Calculadora',
-
-                // Progress and steps
-                'est.progress.step1': 'Paso 1 de 5: Tamaño del Techo',
-                'est.step1.title': '¿Qué tan grande es su techo?',
-                'est.step1.subtitle': 'Usaremos esto para calcular su cotización',
-                'est.step1.label': 'Tamaño del Techo (Pies Cuadrados)',
-                'est.step1.sqft': 'Pies Cuadrados:',
-                'est.step1.helper': '¿No está seguro? Hogar promedio: 1,500-2,200 pies cuadrados · Comercial: 5,000-15,000 pies cuadrados',
-
-                // Step 2
-                'est.step2.title': 'Elija su material de techumbre',
-                'est.step2.subtitle': 'Seleccione la opción que mejor se adapte a sus necesidades',
-
-                // Step 3 (Home Details)
-                'est.step3.title': 'Cuéntenos sobre su hogar',
-                'est.step3.subtitle': 'Algunos detalles más para refinar su cotización',
-                'est.step3.stories.label': '¿Cuántos pisos tiene su hogar?',
-                'est.step3.pitch.label': '¿Cuál es la inclinación de su techo?',
-                'est.step3.pitch.helper': '¿No está seguro? La mayoría de los hogares de El Paso son estándar (4:12-6:12)',
-                'est.step3.complexity.label': 'Forma/complejidad del techo',
-                'est.step3.complexity.helper': 'Los diseños más complejos requieren mano de obra y materiales adicionales',
-                'est.step4.issues.label': '¿Algún problema conocido? (opcional)',
-                'est.step4.issues.helper': 'Esto nos ayuda a personalizar nuestras recomendaciones de seguimiento',
-
-                // Buttons
-                'est.btn.next': 'Siguiente Paso',
-                'est.btn.back': 'Atrás',
-                'est.btn.see': 'Ver Su Cotización',
-
-                // Step 5 Results
-                'est.step4.title': 'Su Cotización de Techo',
-                'est.step4.cost.label': 'Costo Estimado (Materiales + Mano de Obra)',
-                'est.step4.breakdown.title': 'Desglose de Costos',
-                'est.step4.refine.toggle': '¿Desea una cotización más precisa? Ajuste sus detalles',
-                'est.step4.refine.layers.title': 'Capas de Techo Existentes',
-                'est.step4.refine.layers.desc': 'Más capas = costos más altos de demolición y disposición',
-                'est.step4.refine.decking.title': 'Condición del Revestimiento / Tablero',
-                'est.step4.refine.decking.desc': 'Es posible que la madera contrachapada dañada debajo necesite ser reemplazada antes de que el techo nuevo se coloque',
-                'est.step4.refine.addons.title': 'Complementos Comunes',
-                'est.step4.refine.addons.desc': 'Seleccione los extras que desea incluir',
-                'est.step4.refine.note': 'Su cotización se actualiza automáticamente a medida que ajusta estas opciones.',
-                'est.step4.financing.label': 'Opción de Pago Mensual',
-                'est.step4.financing.details': 'Financiamiento de 60 meses al 5.99% APR (estimado)',
-                'est.step4.disclaimer': 'Esta es solo una cotización. Los costos reales pueden variar según la complejidad del techo, disponibilidad de materiales y tasas laborales actuales.',
-                'est.step4.badge.rating': 'Calificado 4.9★',
-                'est.step4.badge.completed': 'Más de 500 techos completados',
-                'est.step4.badge.licensed': 'Licenciado y Asegurado',
-                'est.step4.btn.quote': 'Obtenga Su Cotización Exacta — Inspección Gratuita',
-                'est.step4.btn.financing': 'Explorar Opciones de Financiamiento',
-                'est.step4.btn.call': 'Llamar (915) 861-8039',
-                'est.step4.btn.recalculate': '← Ajustar y Recalcular',
-
-                // How We Calculate
-                'est.how.title': 'Cómo Calculamos Su Cotización',
-                'est.how.desc': 'Nuestras cotizaciones se basan en tasas de mercado actuales de El Paso, actualizadas regularmente para reflejar costos de materiales y disponibilidad de mano de obra.',
-                'est.how.factor1': 'Tamaño del Techo',
-                'est.how.factor1.desc': 'Metraje cuadrado de cobertura',
-                'est.how.factor2': 'Tipo de Material',
-                'est.how.factor2.desc': 'Opciones premium a presupuesto',
-                'est.how.factor3': 'Mano de Obra y Demolición',
-                'est.how.factor3.desc': 'Costos de instalación y demolición',
-                'est.how.factor4': 'Detalles del Hogar',
-                'est.how.factor4.desc': 'Pisos, inclinación, complejidad',
-                'est.how.cta.text': '¿Desea precios exactos basados en una inspección del sitio?',
-                'est.how.cta.link': 'Programar inspección gratuita →',
-
-                // Comparison Table
-                'est.comparison.title': 'Guía de Comparación de Materiales',
-                'est.comparison.material': 'Material',
-                'est.comparison.cost': 'Costo/pies cuadrados',
-                'est.comparison.lifespan': 'Vida Útil',
-                'est.comparison.best': 'Mejor Para',
-
-                // FAQ
-                'est.faq.title': 'Preguntas Frecuentes',
-                'est.faq.q1': '¿Qué tan precisa es esta cotización?',
-                'est.faq.a1': 'Nuestra calculadora utiliza datos de mercado actual de El Paso y proporciona un rango sólido. Para precios exactos, recomendamos una inspección gratuita en el sitio donde podemos evaluar la complejidad del techo, daños existentes y disponibilidad de materiales.',
-                'est.faq.q2': '¿Esta cotización incluye costos laborales?',
-                'est.faq.a2': '¡Sí! Nuestros precios están completamente instalados e incluyen mano de obra, materiales, permisos y limpieza básica. La demolición del techo existente es un cargo adicional (mostrado en el desglose).',
-                'est.faq.q3': '¿Y si mi techo está bajo garantía o el seguro cubre el daño?',
-                'est.faq.a3': '¡Buena pregunta! Muchas pólizas de seguros y garantías cubren trabajos de techumbre. Podemos ayudarle a navegar el proceso de reclamación y trabajar directamente con su compañía de seguros. Llámenos al (915) 861-8039 para discutir.',
-                'est.faq.q4': '¿Ofrecen financiamiento?',
-                'est.faq.a4': 'Por supuesto. Trabajamos con varios socios de préstamos para ofrecer opciones de financiamiento flexible. Visite nuestra página de financiamiento para más detalles y ofertas actuales.',
-                'est.faq.q5': '¿Cuánto tarda la instalación?',
-                'est.faq.a5': 'La mayoría de las instalaciones de techos residenciales toman 1-3 días dependiendo del tamaño y la complejidad. El clima puede afectar el cronograma. Le proporcionaremos un horario específico cuando reserve su inspección gratuita.',
+                'nav.estimate': 'Inspeccion Gratis',
+                'nav.cta': 'Comience Aqui'
             }
         };
 

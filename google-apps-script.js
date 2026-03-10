@@ -56,11 +56,23 @@
 //   Deploy → Manage deployments → ✏️ Edit → Version: New version → Deploy
 // ============================================================
 
+// ⚠️ SECRET TOKEN — must match the token in your HTML files
+// Change this to any random string, then update WEBHOOK_SECRET in index.html, estimate.html, and partners.html
+var WEBHOOK_SECRET = 'meraki-2026-secure-lead-token';
+
 function doPost(e) {
   try {
+    var data = JSON.parse(e.postData.contents);
+
+    // Validate secret token — reject requests without it
+    if (data._token !== WEBHOOK_SECRET) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ status: 'error', message: 'Unauthorized' }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     var ss = SpreadsheetApp.openById('104eRKTGyx58zzWKwrQpoq-98VDaac5cq8LMc_mbzXEo');
     var sheet = ss.getSheetByName('Leads') || ss.getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
 
     sheet.appendRow([
       new Date().toLocaleString('en-US', { timeZone: 'America/Denver' }),  // A: Timestamp
