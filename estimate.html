@@ -1021,14 +1021,15 @@
         /* ===== SCANNER GATE FORM ===== */
         .scanner-gate-form {
             text-align: center;
-            padding: 1.25rem;
-            background: rgba(255,255,255,0.08);
-            border: 1.5px solid rgba(255,255,255,0.2);
+            padding: 1.5rem;
+            background: rgba(30, 30, 30, 0.85);
+            border: 1.5px solid rgba(255,255,255,0.3);
             border-radius: 12px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(16px);
             width: 100%;
             max-width: 520px;
             margin: 1rem auto 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
         }
         .scanner-gate-icon {
             width: 48px; height: 48px; margin: 0 auto 0.6rem;
@@ -1042,7 +1043,7 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
         .scanner-gate-sub {
-            font-size: 0.78rem; color: rgba(255,255,255,0.7);
+            font-size: 0.78rem; color: rgba(255,255,255,0.85);
             margin-bottom: 1rem;
         }
         .scanner-gate-fields {
@@ -1050,17 +1051,17 @@
         }
         .scanner-gate-fields input {
             width: 100%; padding: 11px 14px;
-            border: 1.5px solid rgba(255,255,255,0.25);
+            border: 1.5px solid rgba(255,255,255,0.35);
             border-radius: 10px;
             font-family: var(--font-body); font-size: 0.88rem;
-            color: white; background: rgba(255,255,255,0.1);
+            color: white; background: rgba(255,255,255,0.18);
             outline: none; transition: all 0.25s; box-sizing: border-box;
         }
-        .scanner-gate-fields input::placeholder { color: rgba(255,255,255,0.45); }
+        .scanner-gate-fields input::placeholder { color: rgba(255,255,255,0.6); }
         .scanner-gate-fields input:focus {
             border-color: var(--terracotta);
-            box-shadow: 0 0 0 3px rgba(196,114,75,0.2);
-            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 0 3px rgba(196,114,75,0.3);
+            background: rgba(255,255,255,0.25);
         }
         .scanner-gate-fields input.gate-error {
             border-color: #ff6b6b;
@@ -1080,7 +1081,7 @@
             box-shadow: 0 6px 20px rgba(255,92,52,0.4);
         }
         .scanner-gate-privacy {
-            font-size: 0.68rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem;
+            font-size: 0.68rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem;
         }
         .scanner-gate-form.shake { animation: gateShake 0.4s ease; }
         @keyframes gateShake {
@@ -3263,8 +3264,10 @@
 
                         // Style the new element to match our input
                         placeAC.style.cssText = 'width:100%;';
-                        // Hide Google's built-in pin icon
+                        // Hide Google's built-in pin icon (multiple approaches for compatibility)
                         try { placeAC.iconDisplay = 'none'; } catch(e) {}
+                        try { placeAC.setAttribute('icon-display', 'none'); } catch(e) {}
+                        try { placeAC.setAttribute('icondisplay', 'none'); } catch(e) {}
                         // Replace our input with the PlaceAutocompleteElement
                         const wrap = input.parentElement;
                         input.style.display = 'none';
@@ -3274,9 +3277,15 @@
                         const styleInner = document.createElement('style');
                         styleInner.textContent = `
                             gmp-place-autocomplete { width: 100%; }
+                            gmp-place-autocomplete svg,
+                            gmp-place-autocomplete .icon,
+                            gmp-place-autocomplete [class*="icon"],
+                            gmp-place-autocomplete img {
+                                display: none !important;
+                            }
                             gmp-place-autocomplete input {
                                 width: 100%;
-                                padding: 14px 16px 14px 44px !important;
+                                padding: 14px 16px 14px 16px !important;
                                 border: 2px solid var(--light-gray) !important;
                                 border-radius: 10px !important;
                                 font-size: 1rem !important;
@@ -3291,6 +3300,20 @@
                                 outline: none !important;
                             }
                         `;
+                        // Also try to hide the icon inside shadow DOM after render
+                        setTimeout(() => {
+                            try {
+                                const shadow = placeAC.shadowRoot;
+                                if (shadow) {
+                                    const icons = shadow.querySelectorAll('svg, .icon, [class*="icon"], img');
+                                    icons.forEach(el => el.style.display = 'none');
+                                    // Inject style into shadow DOM
+                                    const shadowStyle = document.createElement('style');
+                                    shadowStyle.textContent = 'svg, .icon, [class*="icon"], img { display: none !important; }';
+                                    shadow.appendChild(shadowStyle);
+                                }
+                            } catch(e) {}
+                        }, 500);
                         document.head.appendChild(styleInner);
 
                         placeAC.addEventListener('gmp-select', async ({ placePrediction }) => {
@@ -3532,33 +3555,55 @@
                 'evening': 'Evening (5-8pm)'
             };
 
-            // Build message
+            // ========== UPLOAD PHOTOS TO CLOUDINARY ==========
+            let photoUrls = [];
+            if (uploadedPhotos.length > 0) {
+                const CLOUDINARY_CLOUD = 'dpmqcehvo';
+                const CLOUDINARY_PRESET = 'meraki-leads';
+                const uploadUrl = 'https://api.cloudinary.com/v1_1/' + CLOUDINARY_CLOUD + '/image/upload';
+
+                const uploadPromises = uploadedPhotos.map((file, i) => {
+                    const fd = new FormData();
+                    fd.append('file', file);
+                    fd.append('upload_preset', CLOUDINARY_PRESET);
+                    fd.append('folder', 'meraki-leads');
+                    return fetch(uploadUrl, { method: 'POST', body: fd })
+                        .then(r => r.json())
+                        .then(data => {
+                            if (data.secure_url) photoUrls.push(data.secure_url);
+                        })
+                        .catch(err => console.warn('Photo upload failed:', err));
+                });
+
+                // Wait for all uploads to finish before sending email
+                await Promise.all(uploadPromises);
+            }
+
+            // Build message with photo links
+            const photoSection = photoUrls.length > 0
+                ? '\n\nCustomer Photos (' + photoUrls.length + '):\n' + photoUrls.map((url, i) => (i + 1) + '. ' + url).join('\n')
+                : '';
+
             const message = [
                 'Preferred Date: ' + date,
                 'Preferred Time: ' + timeLabels[time],
                 'Service: ' + serviceLabels[service],
                 'Urgency: ' + urgency,
                 notes ? 'Notes: ' + notes : '',
-                uploadedPhotos.length > 0 ? 'Photos uploaded: ' + uploadedPhotos.length : '',
                 formData.address ? 'Address: ' + formData.address : '',
                 formData.roofSize ? 'Roof Size: ~' + formData.roofSize + ' sq ft' : '',
                 formData.pitch ? 'Pitch: ' + formData.pitch : ''
-            ].filter(Boolean).join('\n');
+            ].filter(Boolean).join('\n') + photoSection;
 
-            // Submit to Web3Forms
+            // Submit to Web3Forms (text only — photos are Cloudinary links in the message)
             try {
                 const web3Data = new FormData();
                 web3Data.append('access_key', '9996427a-e610-43eb-a8d8-f2896b9529fc');
-                web3Data.append('subject', 'Inspection Booking - ' + (gateName || 'New Lead'));
+                web3Data.append('subject', 'Inspection Booking - ' + (gateName || 'New Lead') + (photoUrls.length ? ' [' + photoUrls.length + ' photos]' : ''));
                 web3Data.append('name', gateName);
                 web3Data.append('phone', gatePhone);
                 web3Data.append('email', gateEmail);
                 web3Data.append('message', message);
-
-                // Attach customer photos (Web3Forms supports up to 5 file attachments)
-                uploadedPhotos.forEach((file, i) => {
-                    web3Data.append('attachment', file);
-                });
 
                 fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
@@ -3579,7 +3624,7 @@
                 serviceType: serviceLabels[service] || service,
                 urgency: urgency,
                 contactPref: time,
-                message: 'Date: ' + date + ' | ' + notes,
+                message: 'Date: ' + date + ' | ' + notes + (photoUrls.length ? ' | Photos: ' + photoUrls.join(' , ') : ''),
                 lat: pendingLocation?.lat || '',
                 lng: pendingLocation?.lng || ''
             });

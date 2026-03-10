@@ -7848,8 +7848,11 @@
                             locationBias: { north: 32.0, south: 31.5, east: -106.2, west: -106.7 }
                         });
                         heroAC.style.cssText = 'flex:1; min-width:0;';
-                        // Hide Google's built-in pin icon
+                        // Hide Google's built-in pin icon (multiple approaches)
                         try { heroAC.iconDisplay = 'none'; } catch(e) {}
+                        try { heroAC.setAttribute('icon-display', 'none'); } catch(e) {}
+                        try { heroAC.setAttribute('icondisplay', 'none'); } catch(e) {}
+                        setTimeout(() => { try { const s = heroAC.shadowRoot; if(s){ const st = document.createElement('style'); st.textContent = 'svg, .icon, [class*="icon"], img { display: none !important; }'; s.appendChild(st); s.querySelectorAll('svg, .icon, [class*="icon"], img').forEach(el => el.style.display = 'none'); } } catch(e){} }, 500);
                         input.style.display = 'none';
                         input.parentElement.insertBefore(heroAC, input);
 
@@ -7857,6 +7860,16 @@
                         const heroAcStyle = document.createElement('style');
                         heroAcStyle.textContent = `
                             .hero-scanner-row gmp-place-autocomplete { flex: 1; min-width: 0; }
+                            .hero-scanner-row gmp-place-autocomplete svg,
+                            .hero-scanner-row gmp-place-autocomplete .icon,
+                            .hero-scanner-row gmp-place-autocomplete [class*="icon"],
+                            .hero-scanner-row gmp-place-autocomplete img,
+                            .hero-scanner-map-overlay gmp-place-autocomplete svg,
+                            .hero-scanner-map-overlay gmp-place-autocomplete .icon,
+                            .hero-scanner-map-overlay gmp-place-autocomplete [class*="icon"],
+                            .hero-scanner-map-overlay gmp-place-autocomplete img {
+                                display: none !important;
+                            }
                             .hero-scanner-row gmp-place-autocomplete input,
                             .hero-scanner-map-overlay gmp-place-autocomplete input {
                                 width: 100% !important;
@@ -7952,13 +7965,22 @@
                             componentRestrictions: { country: 'us' }
                         });
                         placeAC.style.cssText = 'flex:1;';
-                        // Hide Google's built-in pin icon
+                        // Hide Google's built-in pin icon (multiple approaches)
                         try { placeAC.iconDisplay = 'none'; } catch(e) {}
+                        try { placeAC.setAttribute('icon-display', 'none'); } catch(e) {}
+                        try { placeAC.setAttribute('icondisplay', 'none'); } catch(e) {}
+                        setTimeout(() => { try { const s = placeAC.shadowRoot; if(s){ const st = document.createElement('style'); st.textContent = 'svg, .icon, [class*="icon"], img { display: none !important; }'; s.appendChild(st); s.querySelectorAll('svg, .icon, [class*="icon"], img').forEach(el => el.style.display = 'none'); } } catch(e){} }, 500);
                         input.style.display = 'none';
                         input.parentElement.insertBefore(placeAC, input);
 
                         const acStyle = document.createElement('style');
                         acStyle.textContent = `
+                            gmp-place-autocomplete svg,
+                            gmp-place-autocomplete .icon,
+                            gmp-place-autocomplete [class*="icon"],
+                            gmp-place-autocomplete img {
+                                display: none !important;
+                            }
                             gmp-place-autocomplete { flex: 1; }
                             gmp-place-autocomplete input {
                                 width: 100% !important;
