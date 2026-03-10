@@ -3512,10 +3512,11 @@
             if (!time) { showError('Please select a preferred time'); return; }
             if (!service) { showError('Please select a service type'); return; }
 
-            // Get gate data (name, phone, email) that was captured during scanner
-            const gateName = document.getElementById('estimateGateName')?.value || '';
-            const gatePhone = document.getElementById('estimateGatePhone')?.value || '';
-            const gateEmail = document.getElementById('estimateGateEmail')?.value || '';
+            // Get gate data (name, phone, email) that was captured during scanner or passed via URL
+            const prefill = window._prefillContact || {};
+            const gateName = document.getElementById('estimateGateName')?.value || prefill.name || '';
+            const gatePhone = document.getElementById('estimateGatePhone')?.value || prefill.phone || '';
+            const gateEmail = document.getElementById('estimateGateEmail')?.value || prefill.email || '';
 
             const serviceLabels = {
                 'inspection': 'Free Roof Inspection',
@@ -3590,6 +3591,9 @@
                 photo_count: uploadedPhotos.length
             });
 
+            // Clear deep-link data now that booking is complete
+            try { sessionStorage.removeItem('merakiDeepLink'); } catch(e) {}
+
             // Go to confirmation
             goToStep(2);
         }
@@ -3644,6 +3648,81 @@
                 });
             }
             initCalculator();
+
+            // ========== DEEP-LINK: Skip to Step 1 if coming from homepage scanner ==========
+            // Check URL params first, then sessionStorage as fallback (survives refresh)
+            const urlParams = new URLSearchParams(window.location.search);
+            let deepLink = null;
+
+            if (urlParams.get('step') === '1') {
+                // Arriving from homepage — save data to sessionStorage for persistence
+                deepLink = {
+                    address: urlParams.get('address') || '',
+                    roofSize: urlParams.get('roofSize') || '',
+                    pitch: urlParams.get('pitch') || '',
+                    complexity: urlParams.get('complexity') || '',
+                    segments: urlParams.get('segments') || '',
+                    estimate: urlParams.get('estimate') || '',
+                    name: urlParams.get('name') || '',
+                    phone: urlParams.get('phone') || '',
+                    email: urlParams.get('email') || ''
+                };
+                try { sessionStorage.setItem('merakiDeepLink', JSON.stringify(deepLink)); } catch(e) {}
+                // Clean URL so it looks nice
+                window.history.replaceState({}, '', window.location.pathname);
+            } else {
+                // Check if we have saved deep-link data (page was refreshed)
+                try {
+                    const saved = sessionStorage.getItem('merakiDeepLink');
+                    if (saved) deepLink = JSON.parse(saved);
+                } catch(e) {}
+            }
+
+            if (deepLink && deepLink.address) {
+                const addr = deepLink.address;
+                const roofSize = parseInt(deepLink.roofSize) || 0;
+                const pitch = deepLink.pitch || '';
+                const complexity = deepLink.complexity || '';
+                const estimate = deepLink.estimate || '';
+
+                // Pre-fill formData so the submission includes roof info
+                formData.address = addr;
+                pendingAddress = addr;
+                if (roofSize) formData.roofSize = roofSize;
+                if (pitch) formData.pitch = pitch;
+                if (complexity) formData.roofComplexity = complexity;
+
+                // Show satellite data banner on step 1
+                const banner = document.getElementById('satelliteBanner');
+                if (banner) {
+                    let bannerText = 'Roof data captured from satellite scan';
+                    if (roofSize) bannerText += ' — ~' + roofSize.toLocaleString() + ' sq ft';
+                    if (complexity) bannerText += ', ' + complexity;
+                    if (estimate) bannerText += ' | Est: ' + estimate;
+                    document.getElementById('satelliteBannerText').textContent = bannerText;
+                    banner.style.display = 'flex';
+                }
+
+                // Store contact info for submission
+                window._prefillContact = {
+                    name: deepLink.name || '',
+                    phone: deepLink.phone || '',
+                    email: deepLink.email || ''
+                };
+
+                // Jump directly to step 1 (booking form), skipping step 0 (scanner)
+                const step0 = document.getElementById('step0');
+                const step1 = document.getElementById('step1');
+                if (step0) step0.classList.remove('active');
+                if (step1) step1.classList.add('active');
+                currentStep = 1;
+                updateProgressBar(1);
+
+                // Scroll to the calculator/form area
+                setTimeout(() => {
+                    document.querySelector('.calculator')?.scrollIntoView({ behavior: 'smooth' });
+                }, 300);
+            }
         });
 
         // ========== INTERNATIONALIZATION (i18n) ==========

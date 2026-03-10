@@ -5302,7 +5302,7 @@
                         <div id="calcPrice" style="font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 0.35rem; position: relative;">$9,900 — $13,500</div>
                         <p id="calcMonthly" style="font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 1rem; position: relative;">or as low as <strong style="color: var(--gold-light);">$192/mo</strong> with financing</p>
                         <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; position: relative;">
-                            <a href="estimate.html" style="display: inline-flex; align-items: center; gap: 6px; padding: 11px 22px; background: var(--terracotta); color: white; border-radius: 8px; font-weight: 600; font-size: 0.88rem; transition: all 0.25s;">
+                            <a href="#" onclick="goToEstimateStep1(); return false;" style="display: inline-flex; align-items: center; gap: 6px; padding: 11px 22px; background: var(--terracotta); color: white; border-radius: 8px; font-weight: 600; font-size: 0.88rem; transition: all 0.25s;">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                                 Book Inspection
                             </a>
@@ -7532,6 +7532,39 @@
                 status.style.color = '#9a3030';
                 status.textContent = err.message + '. Try entering manually below.';
             }
+        }
+
+        // Navigate to estimate.html step 1 with address/scan data pre-filled
+        function goToEstimateStep1() {
+            const params = new URLSearchParams();
+            params.set('step', '1');
+
+            // Grab address from whichever scanner was used
+            const addr = homePendingAddress || heroPendingAddress || '';
+            if (addr) params.set('address', addr);
+
+            // Grab roof data from whichever scan ran
+            const scanData = window._homeScanData || window._heroScanData;
+            if (scanData) {
+                if (scanData.sqft) params.set('roofSize', scanData.sqft);
+                if (scanData.pitchLabel || scanData.complexity) params.set('pitch', scanData.pitchLabel || '');
+                if (scanData.complexity) params.set('complexity', scanData.complexity);
+                if (scanData.segmentCount) params.set('segments', scanData.segmentCount);
+            }
+
+            // Grab contact info already captured from gate
+            const name = document.getElementById('calcGateName')?.value || document.getElementById('heroGateName')?.value || '';
+            const phone = document.getElementById('calcGatePhone')?.value || document.getElementById('heroGatePhone')?.value || '';
+            const email = document.getElementById('calcGateEmail')?.value || document.getElementById('heroGateEmail')?.value || '';
+            if (name) params.set('name', name);
+            if (phone) params.set('phone', phone);
+            if (email) params.set('email', email);
+
+            // Grab estimated cost
+            const cost = document.getElementById('calcPrice')?.textContent || '';
+            if (cost) params.set('estimate', cost);
+
+            window.location.href = 'estimate.html?' + params.toString();
         }
 
         // Pre-fill the homepage estimator address bar with the hero scanner address
