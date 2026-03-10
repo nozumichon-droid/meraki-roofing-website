@@ -7152,12 +7152,16 @@
             document.getElementById('homeAnalyzing').style.display = 'none';
 
             try {
-                // Geocode
-                const geoRes = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${GOOGLE_API_KEY}`);
-                const geoData = await geoRes.json();
-                if (!geoData.results?.length) throw new Error('Address not found');
+                // Geocode using JS API (works with referrer-restricted keys)
+                const geocoder = new google.maps.Geocoder();
+                const geoData = await new Promise((resolve, reject) => {
+                    geocoder.geocode({ address }, (results, geoStatus) => {
+                        if (geoStatus === 'OK' && results?.length) resolve(results);
+                        else reject(new Error('Address not found'));
+                    });
+                });
 
-                homePendingLoc = geoData.results[0].geometry.location;
+                homePendingLoc = { lat: geoData[0].geometry.location.lat(), lng: geoData[0].geometry.location.lng() };
                 status.style.display = 'none';
 
                 // Show the map and do zoom animation
@@ -7373,11 +7377,16 @@
             document.getElementById('heroScannerResults').classList.remove('active');
 
             try {
-                const geoRes = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${GOOGLE_API_KEY}`);
-                const geoData = await geoRes.json();
-                if (!geoData.results?.length) throw new Error('Address not found');
+                // Geocode using JS API (works with referrer-restricted keys)
+                const geocoder = new google.maps.Geocoder();
+                const geoData = await new Promise((resolve, reject) => {
+                    geocoder.geocode({ address }, (results, geoStatus) => {
+                        if (geoStatus === 'OK' && results?.length) resolve(results);
+                        else reject(new Error('Address not found'));
+                    });
+                });
 
-                heroPendingLoc = geoData.results[0].geometry.location;
+                heroPendingLoc = { lat: geoData[0].geometry.location.lat(), lng: geoData[0].geometry.location.lng() };
                 status.style.display = 'none';
 
                 const mapWrap = document.getElementById('heroMapWrap');

@@ -2815,17 +2815,17 @@
             document.getElementById('addressCard').style.pointerEvents = 'none';
 
             try {
-                // Geocode the address
-                const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${GOOGLE_API_KEY}`;
-                const geoRes = await fetch(geocodeUrl);
-                const geoData = await geoRes.json();
+                // Geocode using JS API (works with referrer-restricted keys)
+                const geocoder = new google.maps.Geocoder();
+                const geoResults = await new Promise((resolve, reject) => {
+                    geocoder.geocode({ address }, (results, geoStatus) => {
+                        if (geoStatus === 'OK' && results?.length) resolve(results);
+                        else reject(new Error('Address not found. Please check and try again.'));
+                    });
+                });
 
-                if (!geoData.results || geoData.results.length === 0) {
-                    throw new Error('Address not found. Please check and try again.');
-                }
-
-                pendingLocation = geoData.results[0].geometry.location;
-                pendingAddress = geoData.results[0].formatted_address;
+                pendingLocation = { lat: geoResults[0].geometry.location.lat(), lng: geoResults[0].geometry.location.lng() };
+                pendingAddress = geoResults[0].formatted_address;
 
                 // Hide loading, hide address card and headings for full map view
                 document.getElementById('lookupLoading').style.display = 'none';
