@@ -3552,6 +3552,11 @@
                 web3Data.append('email', gateEmail);
                 web3Data.append('message', message);
 
+                // Attach customer photos (Web3Forms supports up to 5 file attachments)
+                uploadedPhotos.forEach((file, i) => {
+                    web3Data.append('attachment', file);
+                });
+
                 fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     body: web3Data
