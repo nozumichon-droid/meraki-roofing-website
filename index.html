@@ -7811,9 +7811,12 @@
                     try {
                         const heroAC = new google.maps.places.PlaceAutocompleteElement({
                             types: ['address'],
-                            componentRestrictions: { country: 'us' }
+                            componentRestrictions: { country: 'us' },
+                            locationBias: { north: 32.0, south: 31.5, east: -106.2, west: -106.7 }
                         });
                         heroAC.style.cssText = 'flex:1; min-width:0;';
+                        // Hide Google's built-in pin icon
+                        try { heroAC.iconDisplay = 'none'; } catch(e) {}
                         input.style.display = 'none';
                         input.parentElement.insertBefore(heroAC, input);
 
@@ -7916,6 +7919,8 @@
                             componentRestrictions: { country: 'us' }
                         });
                         placeAC.style.cssText = 'flex:1;';
+                        // Hide Google's built-in pin icon
+                        try { placeAC.iconDisplay = 'none'; } catch(e) {}
                         input.style.display = 'none';
                         input.parentElement.insertBefore(placeAC, input);
 

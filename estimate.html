@@ -3263,6 +3263,8 @@
 
                         // Style the new element to match our input
                         placeAC.style.cssText = 'width:100%;';
+                        // Hide Google's built-in pin icon
+                        try { placeAC.iconDisplay = 'none'; } catch(e) {}
                         // Replace our input with the PlaceAutocompleteElement
                         const wrap = input.parentElement;
                         input.style.display = 'none';
