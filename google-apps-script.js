@@ -58,7 +58,7 @@
 
 function doPost(e) {
   try {
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var ss = SpreadsheetApp.openById('104eRKTGyx58zzWKwrQpoq-98VDaac5cq8LMc_mbzXEo');
     var sheet = ss.getSheetByName('Leads') || ss.getActiveSheet();
     var data = JSON.parse(e.postData.contents);
 

@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Partner with Meraki Roofing in El Paso, TX. Earn referral commissions as a real estate agent, property manager, insurance adjuster, or general contractor. Priority scheduling, co-branded reports, dedicated partner line.">
+    <meta name="keywords" content="roofing referral program El Paso, partner with roofer, real estate agent roofing referral, property manager roofing, insurance adjuster roofing partner">
+    <meta name="theme-color" content="#2C4A3E">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Partner With Meraki Roofing | Referral Program El Paso">
+    <meta property="og:description" content="Earn $250–$500 per closed referral. Priority scheduling, co-branded reports, and a dedicated partner line.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://merakiroofing.com/partners">
+
+    <title>Partner With Us | Meraki Roofing El Paso | Referral Program</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        // Google Sheets Lead Tracking
+        const GOOGLE_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwPuQMkMfSVQIDBRJuyzH0WUla21QdDBwzh00PlfOiap9d_MBr2OIBSGmY7i2Q7Ma6F/exec';
+        function logLeadToSheet(data) {
+            if (!GOOGLE_SHEET_WEBHOOK_URL) return;
+            try {
+                fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+            } catch(e) {}
+        }
+    </script>
+
+    <style>
+        :root {
+            --forest: #3A3A3A;
+            --forest-deep: #2A2A2A;
+            --terracotta: #FF5C34;
+            --terracotta-dark: #E5482A;
+            --terracotta-light: #FFB09A;
+            --cream: #F5F3EF;
+            --cream-dark: #EAE6DF;
+            --warm-white: #FAFAF8;
+            --charcoal: #2D2D2D;
+            --warm-gray: #6B6B6B;
+            --light-gray: #DCDCDC;
+            --gold: #D4A85C;
+            --gold-light: #F0DDB8;
+            --font-display: 'Lora', Georgia, serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background: var(--warm-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 40px);
+        }
+
+        /* ============ WEATHER BAR ============ */
+        .weather-bar {
+            background: var(--forest-deep);
+            color: rgba(255,255,255,0.9);
+            font-size: 0.78rem;
+            padding: 6px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1001;
+        }
+        .weather-bar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .weather-location {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 600;
+        }
+        .weather-divider {
+            opacity: 0.3;
+        }
+        .weather-uv {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .uv-badge {
+            background: rgba(255,255,255,0.15);
+            padding: 1px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        .weather-cta {
+            color: var(--terracotta-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .weather-cta:hover {
+            text-decoration: underline;
+        }
+
+        /* ============ NAVIGATION ============ */
+        .nav {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 40px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .nav-logo-img {
+            height: 42px;
+            width: auto;
+        }
+        .horizontal-logo { height: 42px; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(12px, 2vw, 24px);
+        }
+        .nav-links > a, .nav-dropdown-toggle {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            text-decoration: none;
+            padding: 8px 0;
+            transition: color 0.2s;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-links > a:hover, .nav-dropdown-toggle:hover {
+            color: var(--terracotta);
+        }
+        .nav-dropdown-toggle svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.2s;
+        }
+        .nav-dropdown {
+            position: relative;
+        }
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 220px;
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            padding: 8px 0;
+            z-index: 100;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu,
+        .nav-dropdown.open .nav-dropdown-menu {
+            display: block;
+        }
+        .nav-dropdown:hover .nav-dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+        .nav-dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: background 0.15s;
+        }
+        .nav-dropdown-menu a:hover {
+            background: var(--cream);
+            color: var(--terracotta);
+        }
+        .dropdown-icon {
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        .nav-phone {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600 !important;
+            color: var(--terracotta) !important;
+            white-space: nowrap;
+        }
+        .nav-cta {
+            background: var(--terracotta) !important;
+            color: white !important;
+            padding: 10px 22px !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            white-space: nowrap;
+            transition: background 0.2s, transform 0.15s !important;
+        }
+        .nav-cta:hover {
+            background: var(--terracotta-dark) !important;
+            transform: translateY(-1px);
+        }
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: var(--charcoal);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 0;
+            z-index: 9999;
+            background: var(--terracotta);
+            color: white;
+            padding: 8px 16px;
+            font-weight: 600;
+        }
+        .skip-link:focus { left: 0; }
+
+        /* ============ HERO ============ */
+        .partner-hero {
+            background: var(--forest-deep);
+            color: white;
+            padding: clamp(80px, 10vw, 120px) 0 clamp(60px, 8vw, 100px);
+            position: relative;
+            overflow: hidden;
+        }
+        .partner-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(255,92,52,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .partner-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        .partner-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            margin-bottom: 24px;
+            color: var(--gold-light);
+        }
+        .partner-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        .partner-hero h1 em {
+            display: block;
+            font-style: normal;
+            color: var(--terracotta-light);
+            font-size: 0.55em;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+        .partner-hero-sub {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            color: rgba(255,255,255,0.75);
+            max-width: 560px;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-family: var(--font-body);
+        }
+        .btn-primary {
+            background: var(--terracotta);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,92,52,0.3);
+        }
+        .btn-outline-light {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .btn-outline-light:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.05);
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ============ SECTION DEFAULTS ============ */
+        section {
+            padding: clamp(60px, 8vw, 100px) 0;
+        }
+        .section-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .section-sub {
+            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+            color: var(--warm-gray);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .text-center { text-align: center; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+
+        /* ============ WHY PARTNER — BENEFITS ============ */
+        .benefits-section {
+            background: var(--cream);
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .benefit-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        .benefit-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--cream);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+        .benefit-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+        .benefit-card p {
+            font-size: 0.88rem;
+            color: var(--warm-gray);
+            line-height: 1.6;
+        }
+
+        /* ============ STATS ROW ============ */
+        .stats-section {
+            background: var(--forest-deep);
+            padding: 48px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+            color: white;
+        }
+        .stat-item strong {
+            display: block;
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+        .stat-item span {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 500;
+        }
+
+        /* ============ PARTNER TYPES ============ */
+        .partner-types-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .partner-type-card {
+            background: white;
+            border-radius: 16px;
+            padding: 36px 32px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .partner-type-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        .partner-type-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--cream);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+        .partner-type-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+        .partner-type-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .partner-type-card li {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            padding: 6px 0;
+            padding-left: 22px;
+            position: relative;
+            line-height: 1.5;
+        }
+        .partner-type-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--terracotta);
+            font-weight: 700;
+        }
+
+        /* ============ HOW IT WORKS ============ */
+        .how-section {
+            background: var(--cream);
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .step-card {
+            text-align: center;
+            position: relative;
+        }
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: var(--terracotta);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        .step-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+        .step-card p {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.6;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* ============ REFERRAL TIERS ============ */
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .tier-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+            border: 2px solid transparent;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+        .tier-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+        .tier-card.featured {
+            border-color: var(--terracotta);
+        }
+        .tier-badge {
+            display: inline-block;
+            background: var(--terracotta);
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 50px;
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .tier-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 4px;
+        }
+        .tier-label {
+            font-size: 0.82rem;
+            color: var(--warm-gray);
+            margin-bottom: 20px;
+        }
+        .tier-amount {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            font-weight: 700;
+            color: var(--terracotta);
+            margin-bottom: 4px;
+        }
+        .tier-per {
+            font-size: 0.82rem;
+            color: var(--warm-gray);
+            margin-bottom: 24px;
+        }
+        .tier-features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        .tier-features li {
+            font-size: 0.88rem;
+            color: var(--charcoal);
+            padding: 8px 0;
+            padding-left: 26px;
+            position: relative;
+            border-bottom: 1px solid var(--cream);
+            line-height: 1.5;
+        }
+        .tier-features li:last-child { border-bottom: none; }
+        .tier-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--terracotta);
+            font-weight: 700;
+        }
+
+        /* ============ PARTNER FORM ============ */
+        .form-section {
+            background: var(--cream);
+        }
+        .partner-form-wrapper {
+            max-width: 640px;
+            margin: 48px auto 0;
+            background: white;
+            border-radius: 16px;
+            padding: clamp(32px, 5vw, 48px);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 6px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--light-gray);
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background: var(--warm-white);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(255,92,52,0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B6B6B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+        }
+        .form-submit {
+            width: 100%;
+            padding: 16px 32px;
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            margin-top: 8px;
+        }
+        .form-submit:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-1px);
+        }
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .ohnohoney { display: none !important; }
+
+        /* ============ FAQ ============ */
+        .faq-list {
+            max-width: 720px;
+            margin: 48px auto 0;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--cream-dark);
+        }
+        .faq-item summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            cursor: pointer;
+            list-style: none;
+            transition: color 0.2s;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: var(--terracotta);
+            transition: transform 0.2s;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+        .faq-item summary:hover {
+            color: var(--terracotta);
+        }
+        .faq-answer {
+            padding: 0 0 20px;
+            font-size: 0.92rem;
+            color: var(--warm-gray);
+            line-height: 1.7;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--forest-deep);
+            color: rgba(255,255,255,0.75);
+            padding: 64px 0 0;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 48px;
+        }
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 320px;
+        }
+        .footer-col h4 {
+            color: white;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.88rem;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: var(--terracotta-light);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .footer-bottom p {
+            font-size: 0.82rem;
+        }
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+        .footer-social a {
+            color: rgba(255,255,255,0.5);
+            transition: color 0.2s;
+        }
+        .footer-social a:hover {
+            color: var(--terracotta-light);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 960px) {
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .tiers-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                gap: 0;
+                max-height: calc(100vh - 72px);
+                overflow-y: auto;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links > a, .nav-dropdown-toggle {
+                padding: 14px 0;
+                width: 100%;
+                border-bottom: 1px solid var(--cream);
+                font-size: 1rem;
+            }
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding-left: 16px;
+                background: var(--cream);
+                border-radius: 8px;
+                margin: 8px 0;
+            }
+            .mobile-toggle { display: flex; }
+            .nav-phone { display: none; }
+            .partner-types-grid { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr; max-width: 340px; margin-left: auto; margin-right: auto; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; text-align: center; }
+            .footer-brand p { margin-left: auto; margin-right: auto; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+            .hero-btns { justify-content: center; }
+            .partner-hero { text-align: center; }
+            .partner-hero-sub { margin-left: auto; margin-right: auto; }
+            .hide-mobile { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .benefits-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ============ BACK TO TOP ============ */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 44px;
+            height: 44px;
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            box-shadow: 0 4px 16px rgba(255,92,52,0.3);
+            transition: opacity 0.3s, transform 0.2s;
+        }
+        .back-to-top.visible { display: flex; }
+        .back-to-top:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ============ WEATHER BAR ============ -->
+    <div class="weather-bar" id="weatherBar">
+        <div class="weather-bar-inner">
+            <span class="weather-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>El Paso, TX</span>
+            </span>
+            <span class="weather-divider">|</span>
+            <span class="weather-icon" id="weatherIcon">☀️</span>
+            <span class="weather-temp" id="weatherTemp">--°F</span>
+            <span class="weather-condition" id="weatherCondition">Loading...</span>
+            <span class="weather-divider">|</span>
+            <span class="weather-uv">
+                UV Index:
+                <span class="uv-badge" id="weatherUV">--</span>
+            </span>
+            <span class="weather-divider hide-mobile">|</span>
+            <a href="index.html#estimate" class="weather-cta">Schedule your free roof inspection →</a>
+        </div>
+    </div>
+
+    <!-- ============ NAVIGATION ============ -->
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logos/logov2/meraki-navbar-logo-files/meraki-navbar-logo.webp" alt="Meraki Roofing" class="nav-logo-img horizontal-logo" width="350" height="80">
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="residential.html">Residential</a>
+                <a href="commercial.html">Commercial</a>
+                <a href="storm-damage.html">Storm Damage</a>
+                <a href="maintenance.html">Maintenance</a>
+                <div class="nav-dropdown" id="resourcesDropdown">
+                    <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="gallery.html" role="menuitem"><span class="dropdown-icon">📸</span><span>Gallery</span></a>
+                        <a href="insurance-claims.html" role="menuitem"><span class="dropdown-icon">📋</span><span>Insurance Claims</span></a>
+                        <a href="financing.html" role="menuitem"><span class="dropdown-icon">💰</span><span>Financing Options</span></a>
+                        <a href="gaf.html" role="menuitem"><span class="dropdown-icon">🛡️</span><span>GAF Products</span></a>
+                        <a href="blog.html" role="menuitem"><span class="dropdown-icon">📝</span><span>Blog</span></a>
+                        <a href="index.html#faq" role="menuitem"><span class="dropdown-icon">❓</span><span>FAQs</span></a>
+                        <a href="index.html#about" role="menuitem"><span class="dropdown-icon">🏠</span><span>About Us</span></a>
+                    </div>
+                </div>
+                <a href="estimate.html">Free Estimate</a>
+                <a href="tel:+19158618039" class="nav-phone" aria-label="Call Meraki Roofing">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    (915) 861-8039
+                </a>
+                <a href="index.html#contact" class="nav-cta">Get Started</a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <main id="main-content">
+    <section class="partner-hero">
+        <div class="container">
+            <div class="partner-hero-badge">🤝 Referral Partnership Program</div>
+            <h1>Partner With<br>Meraki Roofing<em>Grow Your Business. Earn Rewards. Serve Clients Better.</em></h1>
+            <p class="partner-hero-sub">Join our referral network and give your clients access to El Paso's top-rated roofing team — while earning generous commissions on every closed job.</p>
+            <div class="hero-btns">
+                <a href="#partner-form" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                    Become a Partner
+                </a>
+                <a href="tel:+19158618039" class="btn btn-outline-light">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Call (915) 861-8039
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ WHY PARTNER WITH US ============ -->
+    <section class="benefits-section">
+        <div class="container">
+            <p class="section-label text-center">Why Partner With Us</p>
+            <h2 class="section-title text-center mx-auto">Built for Professionals Who<br>Value Their Reputation</h2>
+            <p class="section-sub text-center mx-auto">When you refer a client to Meraki, you're staking your name on us. We take that seriously with fast turnarounds, detailed reports, and white-glove service.</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Priority Scheduling</h3>
+                    <p>Partner referrals jump to the front of the queue. Same-day or next-day inspections guaranteed.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📞</div>
+                    <h3>Dedicated Partner Line</h3>
+                    <p>Skip the phone tree. Your dedicated line connects you straight to your account manager.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📄</div>
+                    <h3>Co-Branded Reports</h3>
+                    <p>Professional inspection reports with your logo and branding — ready to share with clients.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Referral Commissions</h3>
+                    <p>Earn $250–$500 per closed job. Commissions paid within 7 days of completion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ STATS ROW ============ -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <strong>587+</strong>
+                    <span>Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <strong>4.9</strong>
+                    <span>Star Rating</span>
+                </div>
+                <div class="stat-item">
+                    <strong>GAF</strong>
+                    <span>Certified Contractor</span>
+                </div>
+                <div class="stat-item">
+                    <strong>10-Year</strong>
+                    <span>Workmanship Warranty</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PARTNER TYPES ============ -->
+    <section class="partner-types-section">
+        <div class="container">
+            <p class="section-label text-center">Who We Work With</p>
+            <h2 class="section-title text-center mx-auto">Tailored Programs for Every Partner</h2>
+            <p class="section-sub text-center mx-auto">Whether you're closing deals, managing properties, adjusting claims, or building projects — we have a partnership model designed for your workflow.</p>
+            <div class="partner-types-grid">
+                <div class="partner-type-card">
+                    <div class="partner-type-icon">🏡</div>
+                    <h3>Real Estate Agents</h3>
+                    <ul>
+                        <li>Fast pre-sale and pre-purchase roof inspections</li>
+                        <li>Same-day digital reports for listings</li>
+                        <li>Repair estimates that help close deals faster</li>
+                        <li>Co-branded inspection summaries for buyers</li>
+                    </ul>
+                </div>
+                <div class="partner-type-card">
+                    <div class="partner-type-icon">🏢</div>
+                    <h3>Property Managers</h3>
+                    <ul>
+                        <li>Volume pricing on multi-unit properties</li>
+                        <li>Annual inspection contracts with priority scheduling</li>
+                        <li>Portfolio dashboards to track roof health</li>
+                        <li>Emergency response within 2 hours</li>
+                    </ul>
+                </div>
+                <div class="partner-type-card">
+                    <div class="partner-type-icon">📋</div>
+                    <h3>Insurance Adjusters</h3>
+                    <ul>
+                        <li>Drone thermal imaging reports for claims documentation</li>
+                        <li>Detailed damage assessments with photo evidence</li>
+                        <li>Adjuster meet-on-site coordination</li>
+                        <li>Xactimate-compatible line items</li>
+                    </ul>
+                </div>
+                <div class="partner-type-card">
+                    <div class="partner-type-icon">🔨</div>
+                    <h3>General Contractors</h3>
+                    <ul>
+                        <li>Licensed sub-contractor for roofing scope of work</li>
+                        <li>All permits pulled and code compliance handled</li>
+                        <li>Warranty transfers directly to homeowner</li>
+                        <li>Flexible scheduling around your project timelines</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="how-section">
+        <div class="container">
+            <p class="section-label text-center">How It Works</p>
+            <h2 class="section-title text-center mx-auto">Three Simple Steps to Start Earning</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Sign Up</h3>
+                    <p>Fill out the partner form below. We'll reach out within 24 hours to set up your account.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Refer Clients</h3>
+                    <p>Share your unique referral link, give us a call, or simply send a warm introduction by email.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Earn Rewards</h3>
+                    <p>Commission paid via check or direct deposit within 7 days of job completion. No caps, no limits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ REFERRAL TIERS ============ -->
+    <section class="tiers-section">
+        <div class="container">
+            <p class="section-label text-center">Referral Tiers</p>
+            <h2 class="section-title text-center mx-auto">The More You Refer, The More You Earn</h2>
+            <p class="section-sub text-center mx-auto">Every tier includes priority scheduling and a dedicated account manager. As your referrals grow, so do your rewards.</p>
+            <div class="tiers-grid">
+                <div class="tier-card">
+                    <h3>Referral Partner</h3>
+                    <p class="tier-label">Casual referrals</p>
+                    <div class="tier-amount">$250</div>
+                    <p class="tier-per">per closed referral</p>
+                    <ul class="tier-features">
+                        <li>Unlimited referrals</li>
+                        <li>Priority scheduling for your clients</li>
+                        <li>Digital inspection reports</li>
+                        <li>Paid within 7 days of completion</li>
+                    </ul>
+                </div>
+                <div class="tier-card featured">
+                    <span class="tier-badge">Most Popular</span>
+                    <h3>Preferred Partner</h3>
+                    <p class="tier-label">5+ referrals per quarter</p>
+                    <div class="tier-amount">$400</div>
+                    <p class="tier-per">per closed referral</p>
+                    <ul class="tier-features">
+                        <li>Everything in Referral Partner</li>
+                        <li>Co-branded inspection reports</li>
+                        <li>Dedicated partner phone line</li>
+                        <li>Quarterly partner appreciation events</li>
+                    </ul>
+                </div>
+                <div class="tier-card">
+                    <h3>Elite Partner</h3>
+                    <p class="tier-label">15+ referrals per quarter</p>
+                    <div class="tier-amount">$500</div>
+                    <p class="tier-per">per closed referral</p>
+                    <ul class="tier-features">
+                        <li>Everything in Preferred Partner</li>
+                        <li>Co-branded marketing materials</li>
+                        <li>Dedicated account manager</li>
+                        <li>Featured partner spotlight on our site</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PARTNER SIGNUP FORM ============ -->
+    <section class="form-section" id="partner-form">
+        <div class="container">
+            <p class="section-label text-center">Get Started</p>
+            <h2 class="section-title text-center mx-auto">Join the Meraki Partner Network</h2>
+            <p class="section-sub text-center mx-auto">Fill out the form below and our partnership team will reach out within 24 hours to get you set up.</p>
+            <div class="partner-form-wrapper">
+                <form id="partnerForm" autocomplete="on">
+                    <input type="hidden" name="access_key" value="9996427a-e610-43eb-a8d8-f2896b9529fc">
+                    <input type="hidden" name="subject" value="🤝 New Partner Signup — Meraki Roofing">
+                    <input type="hidden" name="from_name" value="Meraki Roofing Website">
+                    <!-- Honeypot -->
+                    <div class="ohnohoney">
+                        <label>If you're human, leave this blank</label>
+                        <input type="text" name="honeypot" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="partnerName">Full Name *</label>
+                            <input type="text" id="partnerName" name="name" required placeholder="John Smith" autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="partnerCompany">Company Name</label>
+                            <input type="text" id="partnerCompany" name="company" placeholder="ABC Realty" autocomplete="organization">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="partnerEmail">Email Address *</label>
+                            <input type="email" id="partnerEmail" name="email" required placeholder="john@example.com" autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="partnerPhone">Phone Number *</label>
+                            <input type="tel" id="partnerPhone" name="phone" required placeholder="(915) 555-1234" autocomplete="tel">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="partnerType">Partner Type *</label>
+                        <select id="partnerType" name="partner_type" required>
+                            <option value="" disabled selected>Select your role...</option>
+                            <option value="Real Estate Agent">Real Estate Agent</option>
+                            <option value="Property Manager">Property Manager</option>
+                            <option value="Insurance Adjuster">Insurance Adjuster</option>
+                            <option value="General Contractor">General Contractor</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="partnerMessage">Anything else we should know?</label>
+                        <textarea id="partnerMessage" name="message" placeholder="Tell us about your business, expected referral volume, or any questions you have..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Submit Partnership Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="faq-section">
+        <div class="container">
+            <p class="section-label text-center">Frequently Asked Questions</p>
+            <h2 class="section-title text-center mx-auto">Partner Program FAQ</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>How is referral tracking handled?</summary>
+                    <div class="faq-answer">Each partner receives a unique referral ID or link upon signup. When your client contacts us, we log it to your account automatically. You can also call or email us with the referral details, and we'll manually tag it to your profile.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>When do I get paid?</summary>
+                    <div class="faq-answer">Referral commissions are paid within 7 business days of job completion. We offer payment via check or direct deposit — your choice. You'll receive an email notification when payment is processed.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Is the partnership exclusive?</summary>
+                    <div class="faq-answer">Not at all. You're free to work with other contractors. We earn your referrals by delivering outstanding service to your clients — no lock-in contracts, no exclusivity requirements.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>What territory do you cover?</summary>
+                    <div class="faq-answer">We serve the greater El Paso metropolitan area including Upper Valley, Lower Valley, East El Paso, West El Paso, Northeast, Central, Horizon City, Socorro, Canutillo, Vinton, Anthony, and surrounding communities within 50 miles.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>What support do partners receive?</summary>
+                    <div class="faq-answer">All partners get priority scheduling, digital inspection reports, and a dedicated point of contact. Preferred and Elite partners also receive co-branded marketing materials, a dedicated phone line, and invitations to quarterly appreciation events.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I track my referral status?</summary>
+                    <div class="faq-answer">Yes. We'll provide regular updates on every referral — from initial inspection through job completion. Elite partners also receive a monthly performance summary with stats on closed jobs, earnings, and pipeline status.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo" aria-label="Meraki Roofing home">
+                        <img src="images/logos/primary_light_HQ.webp" alt="Meraki Roofing" width="400" height="301" style="height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1) brightness(1.1);">
+                    </a>
+                    <p>Meraki Roofing is El Paso's top-rated roofing contractor. We deliver expert roof replacements, repairs, and storm damage restoration backed by GAF-certified quality and a 10-year workmanship warranty.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="residential.html">Residential Roofing</a>
+                    <a href="commercial.html">Commercial Roofing</a>
+                    <a href="storm-damage.html">Storm Damage</a>
+                    <a href="estimate.html">Free Estimate</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="storm-damage.html">Storm Damage</a>
+                    <a href="insurance-claims.html">Insurance Claims</a>
+                    <a href="financing.html">Financing</a>
+                    <a href="maintenance.html">Maintenance Plans</a>
+                    <a href="index.html#testimonials">Reviews</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="tel:+19158618039">(915) 861-8039</a>
+                    <a href="mailto:axmartinez22@gmail.com">Email Us</a>
+                    <a href="index.html#contact">Free Inspection</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Meraki Roofing. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="Google">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script>
+        // ========== MOBILE NAV TOGGLE ==========
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('open');
+                this.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+            });
+        }
+
+        // ========== RESOURCES DROPDOWN (touch support) ==========
+        const dropdown = document.getElementById('resourcesDropdown');
+        if (dropdown) {
+            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdown.classList.toggle('open');
+                this.setAttribute('aria-expanded', dropdown.classList.contains('open'));
+            });
+            document.addEventListener('click', function(e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // ========== BACK TO TOP ==========
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ========== PHONE NUMBER AUTO-FORMATTER ==========
+        function formatPhoneDigits(digits) {
+            let f = '';
+            if (digits.length > 0) f = '(' + digits.slice(0, 3);
+            if (digits.length >= 3) f += ') ';
+            if (digits.length > 3) f += digits.slice(3, 6);
+            if (digits.length >= 6) f += '-';
+            if (digits.length > 6) f += digits.slice(6, 10);
+            return f;
+        }
+
+        function formatPhoneInput(input) {
+            if (!input) return;
+            let prevDigitCount = 0;
+            input.addEventListener('keydown', function() {
+                prevDigitCount = this.value.replace(/\D/g, '').length;
+            });
+            input.addEventListener('input', function(e) {
+                const isDelete = e.inputType && e.inputType.indexOf('delete') !== -1;
+                let digits = this.value.replace(/\D/g, '');
+                if (digits.length > 10) digits = digits.slice(0, 10);
+                if (isDelete && digits.length >= prevDigitCount && prevDigitCount > 0) {
+                    digits = digits.slice(0, prevDigitCount - 1);
+                }
+                if (digits.length === 0) { this.value = ''; prevDigitCount = 0; return; }
+                const formatted = formatPhoneDigits(digits);
+                this.value = formatted;
+                prevDigitCount = digits.length;
+                if (isDelete) {
+                    const pos = formatted.length;
+                    this.setSelectionRange(pos, pos);
+                }
+            });
+            input.addEventListener('paste', function(e) {
+                e.preventDefault();
+                const pasted = (e.clipboardData || window.clipboardData).getData('text');
+                let digits = pasted.replace(/\D/g, '');
+                if (digits.length === 11 && digits[0] === '1') digits = digits.slice(1);
+                if (digits.length > 10) digits = digits.slice(0, 10);
+                this.value = digits.length > 0 ? formatPhoneDigits(digits) : '';
+                prevDigitCount = digits.length;
+            });
+        }
+
+        // Attach phone formatter
+        formatPhoneInput(document.getElementById('partnerPhone'));
+
+        // ========== PARTNER FORM HANDLER ==========
+        const partnerForm = document.getElementById('partnerForm');
+        partnerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Honeypot check
+            if (this.querySelector('[name="honeypot"]').value) return;
+
+            const formData = {
+                name: document.getElementById('partnerName').value.trim(),
+                company: document.getElementById('partnerCompany').value.trim(),
+                email: document.getElementById('partnerEmail').value.trim(),
+                phone: document.getElementById('partnerPhone').value.trim(),
+                partner_type: document.getElementById('partnerType').value,
+                message: document.getElementById('partnerMessage').value.trim()
+            };
+
+            const submitBtn = this.querySelector('.form-submit');
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Log to Google Sheet
+            logLeadToSheet({
+                source: 'Partner Signup',
+                name: formData.name,
+                company: formData.company,
+                email: formData.email,
+                phone: formData.phone,
+                partnerType: formData.partner_type,
+                message: formData.message
+            });
+
+            // Submit to Web3Forms
+            const web3Data = {
+                access_key: '9996427a-e610-43eb-a8d8-f2896b9529fc',
+                subject: '🤝 New Partner Signup — Meraki Roofing',
+                from_name: 'Meraki Roofing Website',
+                name: formData.name,
+                company: formData.company || 'Not provided',
+                email: formData.email,
+                phone: formData.phone,
+                partner_type: formData.partner_type,
+                message: formData.message || 'No message',
+                source: 'Partner Signup Page'
+            };
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(web3Data)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    submitBtn.textContent = 'Application Submitted! We\'ll be in touch soon.';
+                    submitBtn.style.background = 'var(--forest)';
+                    partnerForm.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+                } else {
+                    submitBtn.textContent = 'Something went wrong. Please call us!';
+                    submitBtn.style.background = '#cc3333';
+                    submitBtn.disabled = false;
+                }
+            })
+            .catch(() => {
+                submitBtn.textContent = 'Error — Please call (915) 861-8039';
+                submitBtn.style.background = '#cc3333';
+                submitBtn.disabled = false;
+            });
+        });
+
+        // ========== WEATHER BAR ==========
+        (async function loadWeather() {
+            try {
+                const res = await fetch('https://api.weatherapi.com/v1/current.json?key=a93b4b59fa7f42b2b4b211536230106&q=El+Paso+TX');
+                const d = await res.json();
+                document.getElementById('weatherTemp').textContent = Math.round(d.current.temp_f) + '°F';
+                document.getElementById('weatherCondition').textContent = d.current.condition.text;
+                document.getElementById('weatherUV').textContent = d.current.uv;
+                const iconMap = { sunny: '☀️', clear: '🌙', cloud: '☁️', overcast: '☁️', rain: '🌧️', drizzle: '🌦️', snow: '🌨️', thunder: '⛈️', mist: '🌫️', fog: '🌫️', wind: '💨' };
+                const cond = d.current.condition.text.toLowerCase();
+                const icon = Object.keys(iconMap).find(k => cond.includes(k));
+                if (icon) document.getElementById('weatherIcon').textContent = iconMap[icon];
+            } catch(e) {
+                document.getElementById('weatherCondition').textContent = 'Weather unavailable';
+            }
+        })();
+    </script>
+
+</body>
+</html>
