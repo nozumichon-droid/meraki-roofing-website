@@ -3335,7 +3335,7 @@
             // Load Google Maps Places library
             if (GOOGLE_API_KEY !== 'YOUR_API_KEY_HERE') {
                 const script = document.createElement('script');
-                script.src = \`https://maps.googleapis.com/maps/api/js?key=\${GOOGLE_API_KEY}&libraries=places&loading=async&callback=initPlacesAutocomplete\`;
+                script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places&loading=async&callback=initPlacesAutocomplete`;
                 script.async = true;
                 script.defer = true;
                 script.onerror = function() {
