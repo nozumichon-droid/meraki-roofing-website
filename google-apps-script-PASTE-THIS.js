@@ -1,11 +1,10 @@
 // ============================================================
-// MERAKI ROOFING — Google Apps Script (Lead Tracker)
+// MERAKI ROOFING - Google Apps Script (Lead Tracker)
 // ============================================================
 //
 // SETUP INSTRUCTIONS:
-// ───────────────────
-// 1. Go to https://sheets.google.com → create a new spreadsheet
-// 2. Name it "Meraki Roofing — Leads"
+// 1. Go to https://sheets.google.com - create a new spreadsheet
+// 2. Name it "Meraki Roofing - Leads"
 // 3. Rename the first sheet tab to "Leads"
 // 4. In Row 1, add these headers exactly:
 //
@@ -28,35 +27,35 @@
 //    Q1: Latitude
 //    R1: Longitude
 //
-// 5. (Optional) Bold Row 1 and freeze it: View → Freeze → 1 row
+// 5. (Optional) Bold Row 1 and freeze it: View - Freeze - 1 row
 // 6. (Optional) Format column A as Date/Time
-// 7. Click Extensions → Apps Script
+// 7. Click Extensions - Apps Script
 // 8. Delete the default code and paste EVERYTHING below
-// 9. Click 💾 Save (Ctrl+S)
-// 10. Click Deploy → New deployment
-//     • Type: "Web app"
-//     • Execute as: Me
-//     • Who has access: Anyone
-// 11. Click Deploy → Authorize when prompted → Copy the Web App URL
+// 9. Click Save (Ctrl+S)
+// 10. Click Deploy - New deployment
+//     Type: "Web app"
+//     Execute as: Me
+//     Who has access: Anyone
+// 11. Click Deploy - Authorize when prompted - Copy the Web App URL
 // 12. Paste that URL into BOTH files:
-//     • index.html  → line ~32: const GOOGLE_SHEET_WEBHOOK_URL = 'YOUR_URL';
-//     • estimate.html → line ~33: const GOOGLE_SHEET_WEBHOOK_URL = 'YOUR_URL';
+//     index.html  - line ~32: const GOOGLE_SHEET_WEBHOOK_URL = 'YOUR_URL';
+//     estimate.html - line ~33: const GOOGLE_SHEET_WEBHOOK_URL = 'YOUR_URL';
 //
 // LEAD SOURCES THAT LOG HERE:
-// • Hero Scanner gate (name/phone/email + roof data)
-// • Homepage Calculator gate (name/phone/email + calculator inputs)
-// • Homepage Satellite Scanner gate (name/phone/email + roof data)
-// • Hero Contact Form ("Request a Call" tab)
-// • Main Contact Form (bottom of page)
-// • Estimate Page Scanner gate (name/phone/email + roof data)
-// • Estimate Page Final Results (full estimate details)
+// Hero Scanner gate (name/phone/email + roof data)
+// Homepage Calculator gate (name/phone/email + calculator inputs)
+// Homepage Satellite Scanner gate (name/phone/email + roof data)
+// Hero Contact Form ("Request a Call" tab)
+// Main Contact Form (bottom of page)
+// Estimate Page Scanner gate (name/phone/email + roof data)
+// Estimate Page Final Results (full estimate details)
 //
 // UPDATING THE SCRIPT:
 // If you change the script later, redeploy:
-//   Deploy → Manage deployments → ✏️ Edit → Version: New version → Deploy
+//   Deploy - Manage deployments - Edit - Version: New version - Deploy
 // ============================================================
 
-// ⚠️ SECRET TOKEN — must match the token in your HTML files
+// SECRET TOKEN - must match the token in your HTML files
 // Change this to any random string, then update WEBHOOK_SECRET in index.html, estimate.html, and partners.html
 var WEBHOOK_SECRET = 'meraki-2026-secure-lead-token';
 
@@ -64,7 +63,7 @@ function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
 
-    // Validate secret token — reject requests without it
+    // Validate secret token - reject requests without it
     if (data._token !== WEBHOOK_SECRET) {
       return ContentService
         .createTextOutput(JSON.stringify({ status: 'error', message: 'Unauthorized' }))
@@ -95,26 +94,26 @@ function doPost(e) {
       data.lng            || ''    // R: Longitude
     ]);
 
-    // ========== AUTO-HIGHLIGHT ROW BY URGENCY ==========
+    // AUTO-HIGHLIGHT ROW BY URGENCY
     var urgency = (data.urgency || '').toLowerCase();
     if (urgency) {
       var lastRow = sheet.getLastRow();
-      var rowRange = sheet.getRange(lastRow, 1, 1, 18); // columns A–R
+      var rowRange = sheet.getRange(lastRow, 1, 1, 18);
 
       switch (urgency) {
         case 'emergency':
-          rowRange.setBackground('#f4cccc');   // Red — drop everything
+          rowRange.setBackground('#f4cccc');
           rowRange.setFontWeight('bold');
           break;
         case 'asap':
-          rowRange.setBackground('#fce5cd');   // Orange — urgent (3 days)
+          rowRange.setBackground('#fce5cd');
           rowRange.setFontWeight('bold');
           break;
         case '2weeks':
-          rowRange.setBackground('#fff2cc');   // Yellow — within 2 weeks
+          rowRange.setBackground('#fff2cc');
           break;
         case 'flexible':
-          rowRange.setBackground('#d9ead3');   // Green — no rush
+          rowRange.setBackground('#d9ead3');
           break;
       }
     }

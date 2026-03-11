@@ -3068,6 +3068,9 @@
             const scan = window._estimateScanData;
             if (!scan) return;
 
+            // Store contact info so it carries into step 1 submission
+            window._prefillContact = { name: contact.name, phone: contact.phone, email: contact.email };
+
             // Send lead via Web3Forms
             try {
                 fetch('https://api.web3forms.com/submit', {
@@ -3426,6 +3429,19 @@
                 document.querySelector('.calculator').scrollIntoView({ behavior: 'smooth' });
                 currentStep = stepNumber;
                 trackEvent('step_view', { step: stepNumber });
+
+                // Show satellite banner on step 1 if scan data exists
+                if (stepNumber === 1 && (formData.address || formData.roofSize)) {
+                    const banner = document.getElementById('satelliteBanner');
+                    if (banner) {
+                        let bannerText = 'Roof data captured from satellite scan';
+                        if (formData.roofSize) bannerText += ' — ~' + Number(formData.roofSize).toLocaleString() + ' sq ft';
+                        if (formData.roofComplexity) bannerText += ', ' + formData.roofComplexity;
+                        if (formData.pitch) bannerText += ' | Pitch: ' + formData.pitch;
+                        document.getElementById('satelliteBannerText').textContent = bannerText;
+                        banner.style.display = 'flex';
+                    }
+                }
             }, 200);
         }
 
