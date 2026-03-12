@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5M18WW9ZS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Z5M18WW9ZS');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Protect your roof year-round with Meraki Roofing's comprehensive maintenance program. Choose from Essential, Premium, or Elite plans. Save up to $2,400 in avoided repairs.">
@@ -26,13 +34,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
 
     <style>
         :root {
@@ -1944,5 +1945,80 @@
 
 </script>
 
+
+    <!-- GA4 Custom Event Tracking -->
+    <script>
+        (function() {
+            function trackEvent(name, params) {
+                if (typeof gtag === 'function') gtag('event', name, params || {});
+            }
+
+            // Detect page type from URL
+            var path = location.pathname.replace(/\/$/, '').split('/').pop() || 'index';
+            var pageType = path.replace('.html', '');
+
+            // Track all phone link clicks
+            document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    trackEvent('click_to_call', {
+                        phone_number: link.getAttribute('href').replace('tel:', ''),
+                        page_type: pageType,
+                        source: link.closest('.nav') ? 'nav' : link.closest('.footer') ? 'footer' : 'page'
+                    });
+                });
+            });
+
+            // Track CTA button clicks (Get Started, Book Inspection, etc.)
+            document.querySelectorAll('.nav-cta, .btn, [data-event]').forEach(function(el) {
+                el.addEventListener('click', function() {
+                    trackEvent(el.dataset.event || 'cta_click', {
+                        text: (el.textContent || '').trim().substring(0, 50),
+                        page_type: pageType,
+                        source: el.dataset.source || el.closest('.nav') ? 'nav' : 'page'
+                    });
+                });
+            });
+
+            // Track outbound link clicks
+            document.querySelectorAll('a[href^="http"]').forEach(function(link) {
+                if (link.hostname !== location.hostname) {
+                    link.addEventListener('click', function() {
+                        trackEvent('outbound_click', {
+                            url: link.href,
+                            page_type: pageType
+                        });
+                    });
+                }
+            });
+
+            // Track form submissions (estimate, contact, hero forms)
+            document.querySelectorAll('form').forEach(function(form) {
+                form.addEventListener('submit', function() {
+                    trackEvent('form_submit', {
+                        form_id: form.id || 'unnamed',
+                        page_type: pageType
+                    });
+                });
+                form.addEventListener('focusin', function() {
+                    trackEvent('form_start', {
+                        form_id: form.id || 'unnamed',
+                        page_type: pageType
+                    });
+                }, { once: true });
+            });
+
+            // Track scroll depth (25%, 50%, 75%, 100%)
+            var scrollMarks = {};
+            window.addEventListener('scroll', function() {
+                var scrollPct = Math.round((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100);
+                [25, 50, 75, 100].forEach(function(mark) {
+                    if (scrollPct >= mark && !scrollMarks[mark]) {
+                        scrollMarks[mark] = true;
+                        trackEvent('scroll_depth', { percent: mark, page_type: pageType });
+                    }
+                });
+            }, { passive: true });
+        })();
+    </script>
 </body>
 </html>
