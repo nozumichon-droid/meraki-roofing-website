@@ -1,0 +1,36 @@
+# Meraki Roofing — merakirestoration.com
+# robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /WEBSITE-AUDIT-REPORT.html
+Disallow: /meraki-drone-swot.html
+Disallow: /www.merakirestoration.com_2026-03-08_01-40-44.report.html
+Disallow: /SEO-GEO-AEO-AUDIT.html
+
+# AI Crawlers — explicitly allowed for GEO/AEO visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://merakirestoration.com/sitemap.xml

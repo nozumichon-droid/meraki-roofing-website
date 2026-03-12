@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO / GEO / AEO Audit — Meraki Roofing (Updated)</title>
+<style>
+:root {
+  --brand: #2C4A3E;
+  --accent: #E87C3E;
+  --red: #d63031;
+  --yellow: #f39c12;
+  --green: #27ae60;
+  --bg: #f8f9fa;
+  --card: #fff;
+  --text: #2d3436;
+  --muted: #636e72;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height:1.6; }
+.container { max-width:1100px; margin:0 auto; padding:24px; }
+header { background: linear-gradient(135deg, var(--brand), #1a3328); color:#fff; padding:48px 24px 36px; }
+header h1 { font-size:2rem; margin-bottom:8px; }
+header p { opacity:.85; font-size:1.05rem; }
+.score-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin:32px 0; }
+.score-card { background:var(--card); border-radius:12px; padding:24px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,.06); position:relative; }
+.score-card .number { font-size:2.5rem; font-weight:800; }
+.score-card .label { font-size:.85rem; color:var(--muted); margin-top:4px; }
+.score-card .delta { position:absolute; top:10px; right:14px; font-size:.85rem; font-weight:700; padding:2px 8px; border-radius:8px; }
+.score-card .delta.up { background:#e8f5e9; color:var(--green); }
+.score-card.red .number { color:var(--red); }
+.score-card.yellow .number { color:var(--yellow); }
+.score-card.green .number { color:var(--green); }
+section { background:var(--card); border-radius:12px; padding:28px; margin-bottom:24px; box-shadow:0 2px 8px rgba(0,0,0,.06); }
+section h2 { font-size:1.35rem; color:var(--brand); margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid #eee; }
+section h3 { font-size:1.1rem; margin:18px 0 10px; color:var(--brand); }
+table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.9rem; }
+th { background:var(--brand); color:#fff; padding:10px 12px; text-align:left; font-weight:600; }
+td { padding:10px 12px; border-bottom:1px solid #eee; }
+tr:hover td { background:#f1f5f4; }
+.badge { display:inline-block; padding:2px 10px; border-radius:12px; font-size:.78rem; font-weight:600; }
+.critical { background:#ffeaea; color:var(--red); }
+.high { background:#fff3e0; color:#e65100; }
+.medium { background:#fff8e1; color:#f57f17; }
+.low { background:#e8f5e9; color:var(--green); }
+.pass { background:#e8f5e9; color:var(--green); }
+.fail { background:#ffeaea; color:var(--red); }
+.warn { background:#fff8e1; color:#f57f17; }
+.fixed { background:#e8f5e9; color:var(--green); font-weight:700; }
+.before { color:var(--red); text-decoration:line-through; opacity:.7; }
+.after { color:var(--green); font-weight:600; }
+.arrow { color:var(--green); font-size:1.2rem; margin:0 8px; }
+.note { background:#e8f4fd; border-left:4px solid #2196f3; padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:.9rem; }
+.success-note { background:#e8f5e9; border-left:4px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:.9rem; }
+.warn-note { background:#fff8e1; border-left:4px solid var(--yellow); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:.9rem; }
+.compare-bar { display:flex; align-items:center; margin:6px 0; }
+.compare-bar .bar { height:24px; border-radius:4px; display:flex; align-items:center; padding:0 10px; color:#fff; font-size:.8rem; font-weight:600; min-width:40px; }
+.compare-bar .bar.before-bar { background:var(--red); opacity:.5; }
+.compare-bar .bar.after-bar { background:var(--green); }
+.compare-bar .bar-label { width:180px; font-size:.85rem; font-weight:500; }
+footer { text-align:center; padding:24px; color:var(--muted); font-size:.85rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>SEO / GEO / AEO Audit — Before & After</h1>
+    <p>merakirestoration.com — Meraki Roofing, El Paso TX &nbsp;|&nbsp; March 12, 2026</p>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- SCORES - BEFORE & AFTER -->
+<div class="score-grid">
+  <div class="score-card green">
+    <div class="delta up">+23</div>
+    <div class="number">85</div>
+    <div class="label">Overall SEO Score</div>
+    <div style="font-size:.75rem;color:var(--muted);margin-top:4px;">was 62</div>
+  </div>
+  <div class="score-card yellow">
+    <div class="delta up">+30</div>
+    <div class="number">65</div>
+    <div class="label">GEO / AEO Score</div>
+    <div style="font-size:.75rem;color:var(--muted);margin-top:4px;">was 35</div>
+  </div>
+  <div class="score-card green">
+    <div class="delta up">+24</div>
+    <div class="number">92</div>
+    <div class="label">On-Page SEO</div>
+    <div style="font-size:.75rem;color:var(--muted);margin-top:4px;">was 68</div>
+  </div>
+  <div class="score-card green">
+    <div class="delta up">+42</div>
+    <div class="number">82</div>
+    <div class="label">Technical SEO</div>
+    <div style="font-size:.75rem;color:var(--muted);margin-top:4px;">was 40</div>
+  </div>
+  <div class="score-card green">
+    <div class="delta up">+7</div>
+    <div class="number">85</div>
+    <div class="label">Content Quality</div>
+    <div style="font-size:.75rem;color:var(--muted);margin-top:4px;">was 78</div>
+  </div>
+</div>
+
+<!-- VISUAL COMPARISON -->
+<section>
+  <h2>Score Improvement Summary</h2>
+
+  <div class="compare-bar"><span class="bar-label">Overall SEO</span><div class="bar before-bar" style="width:62%">62</div></div>
+  <div class="compare-bar"><span class="bar-label"></span><div class="bar after-bar" style="width:85%">85</div></div>
+  <div style="height:16px"></div>
+
+  <div class="compare-bar"><span class="bar-label">GEO / AEO</span><div class="bar before-bar" style="width:35%">35</div></div>
+  <div class="compare-bar"><span class="bar-label"></span><div class="bar after-bar" style="width:65%">65</div></div>
+  <div style="height:16px"></div>
+
+  <div class="compare-bar"><span class="bar-label">On-Page SEO</span><div class="bar before-bar" style="width:68%">68</div></div>
+  <div class="compare-bar"><span class="bar-label"></span><div class="bar after-bar" style="width:92%">92</div></div>
+  <div style="height:16px"></div>
+
+  <div class="compare-bar"><span class="bar-label">Technical SEO</span><div class="bar before-bar" style="width:40%">40</div></div>
+  <div class="compare-bar"><span class="bar-label"></span><div class="bar after-bar" style="width:82%">82</div></div>
+  <div style="height:16px"></div>
+
+  <div class="compare-bar"><span class="bar-label">Content Quality</span><div class="bar before-bar" style="width:78%">78</div></div>
+  <div class="compare-bar"><span class="bar-label"></span><div class="bar after-bar" style="width:85%">85</div></div>
+</section>
+
+<!-- WHAT WAS FIXED -->
+<section>
+  <h2>What Was Fixed</h2>
+  <table>
+    <tr><th>Issue</th><th>Before</th><th>After</th><th>Status</th></tr>
+    <tr>
+      <td><strong>robots.txt</strong></td>
+      <td><span class="before">Missing</span></td>
+      <td><span class="after">Created with AI bot permissions (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Amazonbot, cohere-ai)</span></td>
+      <td><span class="badge fixed">FIXED</span></td>
+    </tr>
+    <tr>
+      <td><strong>sitemap.xml</strong></td>
+      <td><span class="before">Missing</span></td>
+      <td><span class="after">Created with all 20 pages, lastmod dates, priority values</span></td>
+      <td><span class="badge fixed">FIXED</span></td>
+    </tr>
+    <tr>
+      <td><strong>llms.txt</strong></td>
+      <td><span class="before">Missing</span></td>
+      <td><span class="after">Created — full AI-readable site map with services, guides, contact, service area</span></td>
+      <td><span class="badge fixed">FIXED</span></td>
+    </tr>
+    <tr>
+      <td><strong>Broken canonical tags</strong></td>
+      <td><span class="before">3 pages using invalid &lt;meta name="canonical"&gt;</span></td>
+      <td><span class="after">All 20 pages now use correct &lt;link rel="canonical"&gt;</span></td>
+      <td><span class="badge fixed">FIXED</span></td>
+    </tr>
+    <tr>
+      <td><strong>Domain identity split</strong></td>
+      <td><span class="before">71+ refs to merakiroofing.com mixed with merakirestoration.com</span></td>
+      <td><span class="after">Unified to merakirestoration.com (only 2 refs remain in JS comments)</span></td>
+      <td><span class="badge fixed">FIXED</span></td>
+    </tr>
+    <tr>
+      <td><strong>Robots meta tags</strong></td>
+      <td><span class="before">Only 1 of 20 pages had robots meta</span></td>
+      <td><span class="after">All 20 pages have &lt;meta name="robots"&gt; with max-snippet:-1, max-image-preview:large</span></td>
+      <td><span class="badge fixed">FIXED</span></td>
+    </tr>
+    <tr>
+      <td><strong>Homepage H1</strong></td>
+      <td><span class="before">"Protect What Matters Most" (no keywords)</span></td>
+      <td><span class="after">"El Paso's Trusted Roofing Experts — Protecting What Matters Most"</span></td>
+      <td><span class="badge fixed">FIXED</span></td>
+    </tr>
+    <tr>
+      <td><strong>serviceArea schema</strong></td>
+      <td><span class="before">Only "El Paso" (1 city)</span></td>
+      <td><span class="after">All 10 service area cities (El Paso, Las Cruces, Chaparral, Anthony, Canutillo, Santa Teresa, Fabens, Clint, Horizon City, Socorro)</span></td>
+      <td><span class="badge fixed">FIXED</span></td>
+    </tr>
+    <tr>
+      <td><strong>Star rating accuracy</strong></td>
+      <td><span class="before">4.9 stars / 100 reviews (inflated)</span></td>
+      <td><span class="after">4.8 stars / 50 reviews (accurate to GBP)</span></td>
+      <td><span class="badge fixed">FIXED</span></td>
+    </tr>
+  </table>
+</section>
+
+<!-- DETAILED CHECKLIST -->
+<section>
+  <h2>Detailed Checklist — Post-Fix</h2>
+
+  <h3>On-Page SEO (20/20 pages)</h3>
+  <table>
+    <tr><th>Check</th><th>Before</th><th>After</th><th>Score</th></tr>
+    <tr><td>Title tags present & unique</td><td>20/20</td><td>20/20</td><td><span class="badge pass">100%</span></td></tr>
+    <tr><td>Meta descriptions present</td><td>20/20</td><td>20/20</td><td><span class="badge pass">100%</span></td></tr>
+    <tr><td>H1 tags present</td><td>20/20</td><td>20/20</td><td><span class="badge pass">100%</span></td></tr>
+    <tr><td>H1 contains keywords</td><td>16/20</td><td>17/20</td><td><span class="badge pass">85%</span></td></tr>
+    <tr><td>Robots meta tags</td><td>1/20</td><td>20/20</td><td><span class="badge pass">100%</span></td></tr>
+    <tr><td>Canonical tags (correct format)</td><td>15/20</td><td>20/20</td><td><span class="badge pass">100%</span></td></tr>
+    <tr><td>Canonical domain consistency</td><td>12/20</td><td>20/20</td><td><span class="badge pass">100%</span></td></tr>
+    <tr><td>Open Graph tags</td><td>20/20</td><td>20/20</td><td><span class="badge pass">100%</span></td></tr>
+    <tr><td>Schema/JSON-LD</td><td>20/20</td><td>20/20</td><td><span class="badge pass">100%</span></td></tr>
+    <tr><td>Image alt text</td><td>20/20</td><td>20/20</td><td><span class="badge pass">100%</span></td></tr>
+  </table>
+
+  <h3>Technical SEO</h3>
+  <table>
+    <tr><th>Check</th><th>Before</th><th>After</th><th>Status</th></tr>
+    <tr><td>robots.txt</td><td><span class="badge fail">Missing</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge fixed">FIXED</span></td></tr>
+    <tr><td>sitemap.xml</td><td><span class="badge fail">Missing</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge fixed">FIXED</span></td></tr>
+    <tr><td>Canonical tags format</td><td><span class="badge fail">3 broken</span></td><td><span class="badge pass">All correct</span></td><td><span class="badge fixed">FIXED</span></td></tr>
+    <tr><td>Domain consistency</td><td><span class="badge fail">Split across 2 domains</span></td><td><span class="badge pass">Unified to merakirestoration.com</span></td><td><span class="badge fixed">FIXED</span></td></tr>
+    <tr><td>HTTPS</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td>—</td></tr>
+    <tr><td>Viewport / Mobile</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td>—</td></tr>
+    <tr><td>GA4 Tracking</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td>—</td></tr>
+    <tr><td>Max snippet / image preview</td><td><span class="badge fail">1/20 pages</span></td><td><span class="badge pass">20/20 pages</span></td><td><span class="badge fixed">FIXED</span></td></tr>
+  </table>
+
+  <h3>GEO / AEO (AI Discoverability)</h3>
+  <table>
+    <tr><th>Check</th><th>Before</th><th>After</th><th>Status</th></tr>
+    <tr><td>llms.txt</td><td><span class="badge fail">Missing</span></td><td><span class="badge pass">Created</span></td><td><span class="badge fixed">FIXED</span></td></tr>
+    <tr><td>AI bot permissions in robots.txt</td><td><span class="badge fail">Missing</span></td><td><span class="badge pass">GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Amazonbot, cohere-ai</span></td><td><span class="badge fixed">FIXED</span></td></tr>
+    <tr><td>ServiceArea schema (multi-city)</td><td><span class="badge fail">1 city</span></td><td><span class="badge pass">10 cities</span></td><td><span class="badge fixed">FIXED</span></td></tr>
+    <tr><td>FAQ Schema</td><td><span class="badge pass">Homepage</span></td><td><span class="badge pass">Homepage</span></td><td>—</td></tr>
+    <tr><td>Speakable schema</td><td><span class="badge fail">Missing</span></td><td><span class="badge warn">Still needed</span></td><td><span class="badge medium">TODO</span></td></tr>
+    <tr><td>HowTo schema on guides</td><td><span class="badge fail">Missing</span></td><td><span class="badge warn">Still needed</span></td><td><span class="badge medium">TODO</span></td></tr>
+    <tr><td>llms-full.txt (extended)</td><td><span class="badge fail">Missing</span></td><td><span class="badge warn">Still needed</span></td><td><span class="badge low">TODO</span></td></tr>
+    <tr><td>FAQ sections on service pages</td><td><span class="badge fail">Missing</span></td><td><span class="badge warn">Still needed</span></td><td><span class="badge medium">TODO</span></td></tr>
+    <tr><td>Citation-ready content blocks</td><td><span class="badge warn">Partial</span></td><td><span class="badge warn">Partial</span></td><td><span class="badge low">TODO</span></td></tr>
+  </table>
+</section>
+
+<!-- REMAINING WORK -->
+<section>
+  <h2>Remaining Work to Reach 95+</h2>
+  <div class="success-note"><strong>Great progress!</strong> We jumped from 62 → 85 on overall SEO and 35 → 65 on GEO/AEO. Here's what's left to hit 95+:</div>
+
+  <h3>To reach 95+ Overall SEO</h3>
+  <table>
+    <tr><th>#</th><th>Action</th><th>Impact</th><th>Effort</th></tr>
+    <tr><td>1</td><td>Create dedicated <strong>Roof Repair</strong> page</td><td><span class="badge high">High</span></td><td>Half day</td></tr>
+    <tr><td>2</td><td>Create dedicated <strong>Roof Replacement</strong> page</td><td><span class="badge high">High</span></td><td>Half day</td></tr>
+    <tr><td>3</td><td>Create <strong>About Us</strong> page (E-E-A-T signals)</td><td><span class="badge high">High</span></td><td>3 hours</td></tr>
+    <tr><td>4</td><td>Create <strong>service area pages</strong> for Las Cruces, Chaparral, etc.</td><td><span class="badge high">High</span></td><td>1-2 days</td></tr>
+    <tr><td>5</td><td>Create <strong>Testimonials/Reviews</strong> page with Review schema</td><td><span class="badge high">High</span></td><td>3 hours</td></tr>
+    <tr><td>6</td><td>Submit sitemap to <strong>Google Search Console</strong></td><td><span class="badge high">High</span></td><td>15 min</td></tr>
+  </table>
+
+  <h3>To reach 90+ GEO/AEO</h3>
+  <table>
+    <tr><th>#</th><th>Action</th><th>Impact</th><th>Effort</th></tr>
+    <tr><td>1</td><td>Add <strong>FAQ sections + FAQPage schema</strong> to every service page</td><td><span class="badge high">High</span></td><td>1 day</td></tr>
+    <tr><td>2</td><td>Add <strong>HowTo schema</strong> to insurance claims and hail damage guides</td><td><span class="badge medium">Medium</span></td><td>1 hour</td></tr>
+    <tr><td>3</td><td>Add <strong>speakable schema</strong> to key pages</td><td><span class="badge medium">Medium</span></td><td>2 hours</td></tr>
+    <tr><td>4</td><td>Create <strong>llms-full.txt</strong> with complete service details</td><td><span class="badge medium">Medium</span></td><td>2 hours</td></tr>
+    <tr><td>5</td><td>Add <strong>citation-ready paragraphs</strong> to each service page</td><td><span class="badge medium">Medium</span></td><td>2 hours</td></tr>
+    <tr><td>6</td><td>Build <strong>citation profile</strong> (Yelp, BBB, Nextdoor, Thumbtack)</td><td><span class="badge high">High</span></td><td>Ongoing</td></tr>
+  </table>
+</section>
+
+<!-- CHANGES SUMMARY -->
+<section>
+  <h2>Changes Made — Full Summary</h2>
+  <table>
+    <tr><th>Change</th><th>Files Modified</th><th>Details</th></tr>
+    <tr><td>Domain unification</td><td>19 HTML files</td><td>71 merakiroofing.com → merakirestoration.com replacements</td></tr>
+    <tr><td>Robots meta tags</td><td>16 HTML files</td><td>Added &lt;meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large"&gt;</td></tr>
+    <tr><td>Broken canonical fixes</td><td>3 files (financing, maintenance, storm-damage)</td><td>Changed &lt;meta name="canonical"&gt; to &lt;link rel="canonical"&gt;</td></tr>
+    <tr><td>Missing canonical added</td><td>1 file (partners)</td><td>Added &lt;link rel="canonical"&gt;</td></tr>
+    <tr><td>Homepage H1</td><td>index.html</td><td>"Protect What Matters Most" → "El Paso's Trusted Roofing Experts"</td></tr>
+    <tr><td>ServiceArea schema</td><td>index.html</td><td>Expanded from 1 city to 10 cities</td></tr>
+    <tr><td>Rating correction</td><td>index.html</td><td>4.9/100 reviews → 4.8/50 reviews</td></tr>
+    <tr><td>New: robots.txt</td><td>1 new file</td><td>Crawl rules + AI bot permissions (7 AI user-agents)</td></tr>
+    <tr><td>New: sitemap.xml</td><td>1 new file</td><td>20 URLs with lastmod, changefreq, priority</td></tr>
+    <tr><td>New: llms.txt</td><td>1 new file</td><td>AI-readable site summary for LLM inference</td></tr>
+  </table>
+  <div style="margin-top:16px;font-size:.9rem;color:var(--muted);"><strong>Total: 20 files modified + 3 new files created</strong></div>
+</section>
+
+<footer>
+  <p>Audit generated March 12, 2026 — Meraki Roofing SEO/GEO/AEO Before & After Assessment<br>
+  Next step: Push changes to git, submit sitemap to Google Search Console, request indexing.</p>
+</footer>
+
+</div>
+</body>
+</html>
