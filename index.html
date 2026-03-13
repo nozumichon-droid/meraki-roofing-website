@@ -10,6 +10,10 @@
         gtag('config', 'G-Z5M18WW9ZS');
     </script>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meraki Roofing | Roofing Experts — El Paso, TX</title>
     <meta name="description" content="Meraki Roofing — El Paso's trusted roofing experts. Free inspections, 4.8 rated, locally owned. Asphalt, slate, flat roofing & more.">
@@ -4976,28 +4980,28 @@
                     <div class="stat-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     </div>
-                    <div class="stat-number"><span data-target="587" class="counter">0</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-number"><span data-target="587" class="counter">587</span><span class="stat-suffix">+</span></div>
                     <div class="stat-label" data-i18n="stats.served">Projects Completed</div>
                 </div>
                 <div class="stat-item fade-up">
                     <div class="stat-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                     </div>
-                    <div class="stat-number"><span data-target="10" class="counter">0</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-number"><span data-target="10" class="counter">10</span><span class="stat-suffix">+</span></div>
                     <div class="stat-label" data-i18n="stats.years">Years in El Paso</div>
                 </div>
                 <div class="stat-item fade-up">
                     <div class="stat-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
                     </div>
-                    <div class="stat-number"><span data-target="4.8" data-decimals="1" class="counter">0</span><span class="stat-suffix">★</span></div>
+                    <div class="stat-number"><span data-target="4.8" data-decimals="1" class="counter">4.8</span><span class="stat-suffix">★</span></div>
                     <div class="stat-label" data-i18n="stats.rating">Avg. Customer Rating</div>
                 </div>
                 <div class="stat-item fade-up">
                     <div class="stat-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                     </div>
-                    <div class="stat-number"><span data-target="238" class="counter">0</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-number"><span data-target="238" class="counter">238</span><span class="stat-suffix">+</span></div>
                     <div class="stat-label" data-i18n="stats.warranty">Insurance Claims Handled</div>
                 </div>
             </div>
@@ -6388,6 +6392,7 @@
                     counters.forEach(counter => {
                         const target = parseFloat(counter.getAttribute('data-target'));
                         const decimals = parseInt(counter.getAttribute('data-decimals') || '0');
+                        counter.textContent = '0';
                         const duration = 2000;
                         const startTime = performance.now();
 
