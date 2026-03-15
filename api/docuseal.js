@@ -4,6 +4,15 @@
 const DOCUSEAL_API_KEY = process.env.DOCUSEAL_API_KEY || 'inmzjT48jVAGrSH6tAtuV2pc9739wTQrzvh3fdMTkJv';
 const DOCUSEAL_ENDPOINT = process.env.DOCUSEAL_ENDPOINT || 'https://api.docuseal.com';
 
+// Increase body parser limit to 20MB (PDFs with images can be large)
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '20mb',
+    },
+  },
+};
+
 export default async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
