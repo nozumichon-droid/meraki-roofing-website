@@ -1761,8 +1761,9 @@ async function sendForSignature(){
   overlay.classList.remove('hidden');
 
   try{
-    // Step 1: Generate PDF as base64
-    const pdfBase64=await generatePDFBase64();
+    // Step 1: Generate PDF as base64 (strip data URI prefix — DocuSeal needs raw base64)
+    const pdfDataUri=await generatePDFBase64();
+    const pdfBase64=pdfDataUri.replace(/^data:application\/pdf;base64,/,'');
 
     // Step 2: Create template from PDF with signature fields
     const templateName='Meraki Proposal - '+customerName+' - '+(v('proposalDate')||new Date().toISOString().slice(0,10));
