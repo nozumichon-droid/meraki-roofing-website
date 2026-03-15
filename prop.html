@@ -1774,16 +1774,16 @@ async function sendForSignature(){
         file:pdfBase64,
         fields:[
           {name:'Customer Signature',type:'signature',role:'Customer',required:true,
-            areas:[{x:0.05,y:0.68,w:0.35,h:0.04,page:5}]},
+            areas:[{x:0.05,y:0.77,w:0.4,h:0.04,page:6}]},
           {name:'Customer Name',type:'text',role:'Customer',required:true,
             default_value:customerName,
-            areas:[{x:0.05,y:0.73,w:0.35,h:0.02,page:5}]},
+            areas:[{x:0.05,y:0.82,w:0.4,h:0.02,page:6}]},
           {name:'Signature Date',type:'date',role:'Customer',required:true,
-            areas:[{x:0.05,y:0.76,w:0.2,h:0.02,page:5}]},
+            areas:[{x:0.05,y:0.85,w:0.2,h:0.02,page:6}]},
           {name:'Co-Signer Signature',type:'signature',role:'Customer',required:false,
-            areas:[{x:0.55,y:0.68,w:0.35,h:0.04,page:5}]},
+            areas:[{x:0.55,y:0.77,w:0.4,h:0.04,page:6}]},
           {name:'Co-Signer Date',type:'date',role:'Customer',required:false,
-            areas:[{x:0.55,y:0.76,w:0.2,h:0.02,page:5}]}
+            areas:[{x:0.55,y:0.85,w:0.2,h:0.02,page:6}]}
         ]
       }]
     });
