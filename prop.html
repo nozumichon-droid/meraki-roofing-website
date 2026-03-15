@@ -1800,7 +1800,7 @@ async function sendForSignature(){
       order:'preserved',
       message:{
         subject:'Meraki Roofing \u2014 Proposal for '+customerName,
-        body:'Hi '+customerName+',\n\nThank you for choosing Meraki Roofing! Please review and sign your roofing proposal for the property at '+addr+'.\n\nClick the button below to review and sign your proposal. If you have any questions, don\'t hesitate to reach out.\n\nBest regards,\n'+pm+'\nMeraki Roofing\n(915) 861-8039'
+        body:'Hi '+customerName+',\n\nThank you for choosing Meraki Roofing! Please review and sign your roofing proposal for the property at '+addr+'.\n\nReview and sign your proposal here:\n{{submitter.link}}\n\nIf you have any questions, don\'t hesitate to reach out.\n\nBest regards,\n'+pm+'\nMeraki Roofing\n(915) 861-8039\naxmartinez22@gmail.com'
       },
       completed_redirect_url:'https://merakirestoration.com',
       submitters:[{
