@@ -1808,7 +1808,12 @@ async function sendForSignature(){
             areas:[{x:0.52,y:0.80,w:0.42,h:0.04,page:6}]},
           // Co-Signer Date — below right signature
           {name:'Co-Signer Date',type:'date',role:'Customer',required:false,
-            areas:[{x:0.52,y:0.86,w:0.2,h:0.02,page:6}]}
+            areas:[{x:0.52,y:0.86,w:0.2,h:0.02,page:6}]},
+          // Page 7 — Customer Acknowledgment initials & date at bottom of Terms page
+          {name:'T&C Initials',type:'initials',role:'Customer',required:true,
+            areas:[{x:0.15,y:0.92,w:0.15,h:0.03,page:7}]},
+          {name:'T&C Date',type:'date',role:'Customer',required:true,
+            areas:[{x:0.45,y:0.92,w:0.2,h:0.03,page:7}]}
         ]
       }]
     });
