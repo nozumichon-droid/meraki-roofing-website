@@ -995,6 +995,27 @@ function updateShingleOptions(){
 let svDataUrl=null;
 const MAPS_KEY='AIzaSyA269dHv4JnjkUdMnTLerhWj_eaMwaIXhU';
 
+// === AUTO-FILL ZIP CODE via Google Geocoding API ===
+function autoFillZip(){
+  const address=v('address'),city=v('city'),state=v('state');
+  if(!city||!state)return; // need at least city+state
+  const query=(address?address+', ':'')+city+', '+state;
+  fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURIComponent(query)+'&key='+MAPS_KEY)
+    .then(r=>r.json())
+    .then(data=>{
+      if(data.status!=='OK'||!data.results.length)return;
+      const components=data.results[0].address_components;
+      const zipComp=components.find(c=>c.types.includes('postal_code'));
+      if(zipComp&&!v('zip')){
+        document.getElementById('zip').value=zipComp.short_name;
+      }
+    }).catch(()=>{});
+}
+// Trigger zip lookup when user leaves address, city, or state fields
+['address','city','state'].forEach(id=>{
+  document.getElementById(id).addEventListener('blur',autoFillZip);
+});
+
 function loadPropertyImage(){
   const addr=`${v('address')}, ${v('city')}, ${v('state')} ${v('zip')}`;
   if(!v('address')){alert('Enter a street address first.');return}
@@ -1773,17 +1794,21 @@ async function sendForSignature(){
         name:'Roofing Proposal',
         file:pdfBase64,
         fields:[
+          // Customer Initials — "Important Information" box on page 6
+          {name:'Customer Initials',type:'initials',role:'Customer',required:true,
+            areas:[{x:0.12,y:0.52,w:0.15,h:0.03,page:6}]},
+          // Customer Signature — left side signature line
           {name:'Customer Signature',type:'signature',role:'Customer',required:true,
-            areas:[{x:0.05,y:0.77,w:0.4,h:0.04,page:6}]},
-          {name:'Customer Name',type:'text',role:'Customer',required:true,
-            default_value:customerName,
-            areas:[{x:0.05,y:0.82,w:0.4,h:0.02,page:6}]},
-          {name:'Signature Date',type:'date',role:'Customer',required:true,
-            areas:[{x:0.05,y:0.85,w:0.2,h:0.02,page:6}]},
+            areas:[{x:0.04,y:0.80,w:0.42,h:0.04,page:6}]},
+          // Customer Date — below left signature
+          {name:'Date',type:'date',role:'Customer',required:true,
+            areas:[{x:0.04,y:0.86,w:0.2,h:0.02,page:6}]},
+          // Co-Signer Signature — right side signature line (optional)
           {name:'Co-Signer Signature',type:'signature',role:'Customer',required:false,
-            areas:[{x:0.55,y:0.77,w:0.4,h:0.04,page:6}]},
+            areas:[{x:0.52,y:0.80,w:0.42,h:0.04,page:6}]},
+          // Co-Signer Date — below right signature
           {name:'Co-Signer Date',type:'date',role:'Customer',required:false,
-            areas:[{x:0.55,y:0.85,w:0.2,h:0.02,page:6}]}
+            areas:[{x:0.52,y:0.86,w:0.2,h:0.02,page:6}]}
         ]
       }]
     });
