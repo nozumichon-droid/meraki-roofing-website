@@ -1860,16 +1860,23 @@ function generatePDFBase64(){
         html2canvas:{scale:2,useCORS:true,logging:false},
         jsPDF:{unit:'in',format:'letter',orientation:'portrait'},
         pagebreak:{mode:['css']}
-      }).from(container).outputPdf('datauristring').then(dataUri=>{
-        document.body.removeChild(container);
-        window.scrollTo(0,prevScroll);
-        // dataUri is "data:application/pdf;base64,..."
-        resolve(dataUri);
-      }).catch(err=>{
-        document.body.removeChild(container);
-        window.scrollTo(0,prevScroll);
-        reject(err);
-      });
+      }).from(container)
+        .toContainer()
+        .toCanvas()
+        .toImg()
+        .toPdf()
+        .get('pdf')
+        .then(pdf=>{
+          document.body.removeChild(container);
+          window.scrollTo(0,prevScroll);
+          // Get data URI from the fully-rendered jsPDF object
+          const dataUri=pdf.output('datauristring');
+          resolve(dataUri);
+        }).catch(err=>{
+          document.body.removeChild(container);
+          window.scrollTo(0,prevScroll);
+          reject(err);
+        });
     },1000);
   });
 }
